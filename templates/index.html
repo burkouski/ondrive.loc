@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<![endif]-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block meta %}
+        <meta name="description" content="{{ config.meta_description }}">
+        <meta name="keyword" content="{{ config.meta_keywords }}">
+        <title>{{ config.title }}</title>
+    {% endblock %}
+
+
+    <!-- Google Web Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700"
+          rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+
+    <!-- CSS Files -->
+    <link href="{% static 'css/bootstrap-template/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-template/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-template/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/widgets.css' %}">
+
+    <!--[if lt IE 9]>
+		<script src="js/ie8-responsive-file-warning.js"></script>
+	<![endif]-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/fav-144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/fav-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/fav-72.png">
+    <link rel="apple-touch-icon-precomposed" href="images/fav-57.png">
+    <link rel="shortcut icon" href="images/fav.png">
+
+</head>
+<body ng-app="ymapsApp">
+
+
+<!-- JavaScript Files -->
+<script src="{% static 'js/vendor/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular-pagination.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular-resource.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular-route.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular-ymaps.js' %}"></script>
+
+<script src="{% static 'js/app/app.js' %}"></script>
+<script src="{% static 'js/app/services/getJsonService.js' %}"></script>
+<script src="{% static 'js/app/controllers/mainmapCtrl.js' %}"></script>
+<script src="{% static 'js/app/controllers/autoserviceCtrl.js' %}"></script>
+<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/vendor/bootstrap-hover-dropdown.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/vendor/custom.js' %}"></script>
+</body>
+</html>

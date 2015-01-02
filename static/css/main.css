@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+p {
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
+.icon {
+  font-family: auto;
+}
+body {
+  background: url("../img/bg/witewall_3.png");
+}
+.container {
+  margin: 0 auto;
+}
+.header {
+  height: 100px;
+  background: url("../img/bg/tweed.png");
+}
+.main-page .main__item--item0 {
+  margin-bottom: 30px;
+  padding: 50px 0;
+  background: #ff670f;
+}
+.footer {
+  background: url("../img/bg/tweed.png");
+}
+.footer .cprgt {
+  color: #fff;
+  line-height: 40px;
+}
+
+.wrapper {
+    max-width: 1210px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+    background: #ffffff;
+}
+
