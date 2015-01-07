@@ -2,23 +2,12 @@
 
 @media (min-width: 1200px) {
 
-/* Tooltip Styles Starts */
-	
-	.header-links .tooltip{
-		display:none !important;
-	}
 	
 }
 
 /* Medium Devices Styles Starts */
 
 @media (min-width: 992px) and (max-width: 1199px) {
-
-/* Tooltip Styles Starts */
-	
-	.header-links .tooltip{
-		display:none !important;
-	}
 
 /* Cart Style Starts */	
 
@@ -42,6 +31,12 @@
 	.product-col .btn-cart{
 		margin-top:5px;
 	}
+	
+/* Product Carousel Styles Starts */	
+
+	.product-carousel .owl-controls .owl-buttons .owl-prev{
+		left:89%;
+	}	
 
 /* Footer Links Styles Starts */
 
@@ -70,20 +65,64 @@
 	#logo .img-responsive{
 		margin-left:auto;
 		margin-right:auto;
+	}	
+	.header-top{
+		margin-top:20px;
+		margin-bottom:5px;
 	}
+	
+/* Header Links Styles Starts */
+
+	.header-links ul.pull-left, 
+	.header-top .pull-right{
+		float:none !important;
+		text-align:center;
+	}
+	
+/* Search Styles Starts */
+
+	#search{
+		margin-top:20px;
+		margin-bottom:20px;
+	}	
+	
+/* Cart Style Starts */
+
+	#cart .btn-block1.text-right{
+		text-align:center !important;
+	}	
 
 /* Main Menu Styles Starts */
 
 	#main-menu .navbar-nav > li a{
 		font-size:13px;
-		padding-left:6px;
-		padding-right:6px;
 	}
 	
 /* Products Box Styles */
 
 	.product-col.list .image{
 		padding:40px 30px 10px 0;
+	}	
+	
+/* Product Carousel Styles Starts */	
+
+	.product-carousel .row{
+		margin-left:-3px;
+		margin-right:-3px;
+	}
+	.product-carousel .col-xs-12{
+		padding-left:0;
+		padding-right:0;
+	}
+	.product-carousel .owl-wrapper-outer{
+	}
+    .product-carousel #owl-product .item{
+		padding-left:3px;
+		padding-right:3px;
+		text-align:center;
+    }
+	.product-carousel .owl-controls .owl-buttons .owl-prev{
+		left:86%;
 	}	
 	
 /* Pagination Styles Starts */
@@ -117,10 +156,57 @@
 
 @media (max-width: 767px) {
 
+body {
+	padding:10px;
+}
+
+/* Wrapper Styles Starts */
+
+#wrapper {
+	margin-top:0;
+	margin-bottom:0;
+	padding:10px;
+}
+
 /* Responsive Image Styles Starts */
 
 	#logo .img-responsive, .col3-banners .img-responsive, .col2-banners .img-responsive, .product-col .img-responsive{
 		margin:0 auto;
+	}
+	
+	.header-top{
+		margin-top:25px;
+		margin-bottom:5px;
+	}
+	
+/* Header Links Styles Starts */
+
+	.header-links ul.pull-left, 
+	.header-top .pull-right{
+		float:none !important;
+		text-align:center;
+	}
+	.header-top .pull-right{
+		margin-top:10px;
+	}
+	
+/* Search Styles Starts */
+
+	#search{
+		margin-top:5px;
+		margin-bottom:20px;
+	}	
+	
+/* Cart Style Starts */
+
+	#cart .btn .fa-shopping-cart{
+		font-size:20px;
+	}
+	#cart .btn span#cart-total{
+		font-size:16px;
+	}
+	#cart .btn-block1.text-right{
+		text-align:center !important;
 	}
 	
 /* Main Menu Styles Starts */
@@ -164,6 +250,23 @@
 			float:none;
 			padding:0;
 		}
+		
+/* Product Carousel Styles Starts */	
+
+	.product-head{
+		font-size:18px;
+	}
+	#owl-product .owl-controls .owl-buttons .owl-prev, 
+	#owl-product .owl-controls .owl-buttons .owl-next{
+		top:-56px;
+		font-size:20px;
+	}
+	.product-carousel .owl-controls .owl-buttons .owl-prev{
+		left:15px;
+	}	 
+	.product-carousel .owl-controls .owl-buttons .owl-next{
+		right:20px;
+	}		
 			
 /* Three Column Banner Styles Starts */
 

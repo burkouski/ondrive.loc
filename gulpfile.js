@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
     stylus = require('gulp-stylus'),
     imagemin = require('gulp-imagemin'),
-    pngquant = require('imagemin-pngquant'),
+    //pngquant = require('imagemin-pngquant'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     spritesmith  = require('gulp.spritesmith'),
@@ -14,6 +14,8 @@ var gulp = require('gulp'),
         './static/js/vendor/bootstrap.min.js',
         './static/js/vendor/bootstrap-hover-dropdown.min.js',
         './static/js/vendor/jquery.magnific-popup.min.js',
+        './static/js/vendor/masonry.js',
+        './static/js/vendor/imagesLoaded.js',
         './static/js/vendor/custom.js',
         './static/js/app/vendor/angular.js',
         './static/js/app/vendor/angular-pagination.js',
@@ -62,7 +64,7 @@ gulp.task('watch', function () {
 
     // компиляция stylus
 gulp.task('stylus', function () {
-    gulp.src(['./static/stylus/*.styl', '!./static/stylus/mixins/*.styl'])
+    gulp.src(['./stylus/*.styl', '!./stylus/mixins/*.styl'])
         .pipe(stylus())
         .pipe(autoprefixer())
         .pipe(gulp.dest('./static/css'))

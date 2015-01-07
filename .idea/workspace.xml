@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c15395e8-eb0c-4315-9347-36f8ad6acd7f" name="Default" comment="" />
+    <list default="true" id="c15395e8-eb0c-4315-9347-36f8ad6acd7f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
+    </list>
     <ignored path="ondrive.loc.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,10 +25,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="29" selection-start="2562" selection-end="2562" vertical-scroll-proportion="0.8903437" vertical-offset="1071" max-vertical-offset="2006">
+            <state line="96" column="29" selection-start="2562" selection-end="2562" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="2023">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/GoogleDrive/шаблоны/products-WB05481LT/html-files/grocery-shoppe/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="882" column="6" selection-start="2042" selection-end="38141" vertical-scroll-proportion="0.0" vertical-offset="14994" max-vertical-offset="15283">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="667" column="144" selection-start="35224" selection-end="35224" vertical-scroll-proportion="14.284905" vertical-offset="3768" max-vertical-offset="17323">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/bootstrap-template/bootstrap.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3651" column="17" selection-start="72110" selection-end="72110" vertical-scroll-proportion="0.0" vertical-offset="62019" max-vertical-offset="107831">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/bootstrap-template/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="103" column="0" selection-start="1429" selection-end="1429" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="18309">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blocks.styl" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stylus/blocks.styl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="87" column="19" selection-start="1518" selection-end="1518" vertical-scroll-proportion="-17.32" vertical-offset="1046" max-vertical-offset="1717">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="imagesLoaded.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/vendor/imagesLoaded.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="892" column="3" selection-start="26642" selection-end="26642" vertical-scroll-proportion="0.0" vertical-offset="14026" max-vertical-offset="15266">
               <folding />
             </state>
           </provider>
@@ -35,18 +91,7 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="1" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="65" selection-start="886" selection-end="1356" vertical-scroll-proportion="-17.26923" vertical-offset="78" max-vertical-offset="1343">
+            <state line="19" column="1" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442">
               <folding />
             </state>
           </provider>
@@ -55,16 +100,16 @@
       <file leaf-file-name="gulpfile.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gulpfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="33" selection-start="3625" selection-end="3625" vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="2227">
+            <state line="16" column="40" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2261">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sprite.styl" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stylus/mixins/sprite.styl">
+      <file leaf-file-name="plugins.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/plugins.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="408">
+            <state line="12" column="7" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="323">
               <folding />
             </state>
           </provider>
@@ -83,10 +128,18 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/project/urls.py" />
         <option value="$PROJECT_DIR$/project/settings.py" />
+        <option value="D:/GoogleDrive/шаблоны/products-WB05481LT/html-files/grocery-shoppe/index.html" />
+        <option value="$PROJECT_DIR$/stylus/global.styl" />
+        <option value="$PROJECT_DIR$/static/js/vendor/imagesLoaded.js" />
+        <option value="$PROJECT_DIR$/gulpfile.js" />
+        <option value="$PROJECT_DIR$/static/js/vendor/masonry.js" />
+        <option value="$PROJECT_DIR$/static/js/plugins.js" />
+        <option value="$PROJECT_DIR$/static/css/bootstrap-template/bootstrap.css" />
+        <option value="$PROJECT_DIR$/static/css/bootstrap-template/style.css" />
+        <option value="$PROJECT_DIR$/stylus/blocks.styl" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
       </list>
     </option>
   </component>
@@ -151,7 +204,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
+              <option name="myItemId" value="stylus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -160,10 +245,24 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/GoogleDrive/шаблоны/products-WB05481LT/html-files/grocery-shoppe/css/style.css" />
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
+    <property name="LayoutCode.rearrangeEntriesDjangoTemplate" value="false" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="LayoutCode.rearrangeEntriesStylus" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
   </component>
   <component name="RunManager" selected="Django server.ondrive.loc">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -376,27 +475,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32947367" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32947367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -416,67 +515,343 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manage.py">
+    <entry file="file://$PROJECT_DIR$/static/js/vendor/masonry.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/font-awesome/css/font-awesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="2601" max-vertical-offset="22848">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="65" selection-start="886" selection-end="1356" vertical-scroll-proportion="-17.26923" vertical-offset="78" max-vertical-offset="1343">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stylus/stylus.template.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="611">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stylus/mixins/mixins.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="33" selection-start="3625" selection-end="3625" vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="2227">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stylus/mixins/sprite.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="611">
+        <state line="7" column="0" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="238">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="1" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
+        <state line="19" column="1" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="40" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="30" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="357">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="29" selection-start="2562" selection-end="2562" vertical-scroll-proportion="0.8903437" vertical-offset="1071" max-vertical-offset="2006">
+        <state line="96" column="29" selection-start="2562" selection-end="2562" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="2023">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/GoogleDrive/шаблоны/products-WB05481LT/html-files/grocery-shoppe/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="882" column="6" selection-start="2042" selection-end="38141" vertical-scroll-proportion="0.0" vertical-offset="14994" max-vertical-offset="15283">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="414" column="37" selection-start="20600" selection-end="20600" vertical-scroll-proportion="0.0" vertical-offset="7038" max-vertical-offset="12376">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/vendor/imagesLoaded.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="892" column="3" selection-start="26642" selection-end="26642" vertical-scroll-proportion="0.0" vertical-offset="14026" max-vertical-offset="15266">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/global.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="14" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="935">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/blocks.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="16" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/vendor/masonry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="1" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="40" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="30" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="29" selection-start="2562" selection-end="2562" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="2023">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/GoogleDrive/шаблоны/products-WB05481LT/html-files/grocery-shoppe/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="882" column="6" selection-start="2042" selection-end="38141" vertical-scroll-proportion="0.0" vertical-offset="14994" max-vertical-offset="15283">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="325" column="7" selection-start="15836" selection-end="15836" vertical-scroll-proportion="0.0" vertical-offset="5525" max-vertical-offset="10472">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/global.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="14" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="935">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/blocks.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/vendor/masonry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="1" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="40" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2244">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="26" selection-start="127" selection-end="127" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="204">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="29" selection-start="2562" selection-end="2562" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="2023">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/GoogleDrive/шаблоны/products-WB05481LT/html-files/grocery-shoppe/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="882" column="6" selection-start="2042" selection-end="38141" vertical-scroll-proportion="0.0" vertical-offset="14994" max-vertical-offset="15283">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="305" column="14" selection-start="14942" selection-end="14942" vertical-scroll-proportion="0.0" vertical-offset="5185" max-vertical-offset="10047">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/global.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="14" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="935">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/GoogleDrive/шаблоны/products-WB05481LT/html-files/grocery-shoppe/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="26" selection-start="1491" selection-end="1703" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="18241" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/blocks.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="18" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="1" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="36" selection-start="2166" selection-end="2166" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="2227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/font-awesome/css/font-awesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="2601" max-vertical-offset="22848" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/stylus.template.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="611" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/mixins/mixins.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/mixins/sprite.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="611" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="1" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="29" selection-start="2562" selection-end="2562" vertical-scroll-proportion="0.0" vertical-offset="1395" max-vertical-offset="2006">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="611" />
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/phrase.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="20" selection-start="330" selection-end="330" vertical-scroll-proportion="0.16693944" vertical-offset="51" max-vertical-offset="6902">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/GoogleDrive/шаблоны/products-WB05481LT/html-files/grocery-shoppe/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="882" column="6" selection-start="2042" selection-end="38141" vertical-scroll-proportion="0.0" vertical-offset="14994" max-vertical-offset="15283">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/GoogleDrive/шаблоны/products-WB05481LT/html-files/grocery-shoppe/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="26" selection-start="1491" selection-end="1703" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="18241" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/vendor/imagesLoaded.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="892" column="3" selection-start="26642" selection-end="26642" vertical-scroll-proportion="0.0" vertical-offset="14026" max-vertical-offset="15266">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="40" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/global.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="14" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="935">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/vendor/masonry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="0" selection-end="26179" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="7" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/bootstrap-template/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3651" column="17" selection-start="72110" selection-end="72110" vertical-scroll-proportion="0.0" vertical-offset="62019" max-vertical-offset="107831">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/bootstrap-template/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="0" selection-start="1429" selection-end="1429" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="18309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/blocks.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="19" selection-start="1518" selection-end="1518" vertical-scroll-proportion="-17.32" vertical-offset="1046" max-vertical-offset="1717">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="667" column="144" selection-start="35224" selection-end="35224" vertical-scroll-proportion="14.284905" vertical-offset="3768" max-vertical-offset="17323">
           <folding />
         </state>
       </provider>
