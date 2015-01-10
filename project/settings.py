@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     #'app.main',
     #'app.service',
     #'tastypie',
-    #'ckeditor',
+    'ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
