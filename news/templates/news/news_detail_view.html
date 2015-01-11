@@ -1,0 +1,18 @@
+{% extends "news/layout.html" %}
+{% block content %}
+    <!-- About Content Starts -->
+    <div class="page-box">
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="{{ post.preview_img.url }}" alt="{{ post.title }}" class="img-responsive"/>
+            </div>
+            <div class="col-sm-12">
+                <h3>{{ post.title }}</h3>
+            </div>
+        </div>
+        <br/>
+        {{ post.text|safe }}
+    </div>
+    <!-- About Content Ends -->
+    <hr />
+{% endblock %}
