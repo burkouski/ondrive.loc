@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from django.contrib import admin
+from django.conf import settings
 from tastypie.api import Api
 
 #from app.service.api import AutoserviceRes, TopAutoserviceRes, AutoserviceWorkRes
@@ -16,5 +17,9 @@ urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html')),
     #url(r'', include('app.service.urls', namespace='service')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^news/', include('news.urls', namespace='news')),
+    url(r'^ckeditor/', include('ckeditor.urls')),
     #url(r'^api/', include(v1_api.urls)),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT})
 )
