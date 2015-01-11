@@ -3,14 +3,14 @@ from news.models import Post, Category
 
 
 def get_post_list(request):
-    posts = get_list_or_404(Post).order_by('-pub_date')
+    posts = get_list_or_404(Post)
     args = {'posts': posts}
     return render(request, 'news/news_list_view.html', args)
 
 
 def get_category_posts(request, category_alias):
     category_id = get_object_or_404(Category, alias=category_alias).id
-    posts = get_list_or_404(Post, category=category_id).order_by('-pub_date')
+    posts = get_list_or_404(Post, category=category_id)
     args = {'posts': posts}
     return render(request, 'news/news_list_view.html', args)
 
