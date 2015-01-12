@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'app.main',
+    'news',
     #'app.service',
     #'tastypie',
     'ckeditor',
@@ -90,7 +90,8 @@ TEMPLATE_DIRS = (
 )
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-#STATIC_ROOT = 'd:/BVS/Projects/bvs-project/avs.loc/static/'
+#STATIC_ROOT = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..','static'))
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
@@ -107,6 +108,7 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Full',
     },
 }
+
 CKEDITOR_UPLOAD_PATH = "upload/"
 
 

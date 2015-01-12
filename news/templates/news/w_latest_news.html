@@ -1,0 +1,31 @@
+<section class="latest-posts">
+    <h2 class="product-head">Последние новости</h2>
+
+    <div class="masonry">
+        {% for post in posts %}
+        <article class="post-preview">
+            <figure class="post-preview__figure">
+                <a class="post-preview__link" href="{{ post.get_absolute_url }}">
+                    <img class="post-preview__img img-responsive" src="{{ post.preview_img.url }}"
+                         alt="{{ post.title }}"/>
+                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
+                </a>
+            </figure>
+            <section class="post-preview__content">
+                <h2 class="post-preview__title"><a class="post-preview__link" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+
+                <div class="post-preview__meta">
+                    <a href="{{ post.category.get_absolute_url }}" class="meta__category">{{ post.category }}</a><span class="meta__date">{{ post.pub_date }}</span>
+                </div>
+                <div class="post-preview__text">
+                    <p>{{ post.preview }}</p>
+                </div>
+                <div class="post-preview__meta">
+                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
+                </div>
+            </section>
+        </article>
+       {% endfor %}
+    </div>
+
+</section>
