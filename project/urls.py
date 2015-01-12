@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^news/', include('news.urls', namespace='news')),
     url(r'^ckeditor/', include('ckeditor.urls')),
     #url(r'^api/', include(v1_api.urls)),
+    url(r'^comments/', include('django_comments_xtd.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT})
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 )

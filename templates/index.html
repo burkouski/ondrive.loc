@@ -3,297 +3,55 @@
 {% load latest_news %}
 {% block page %}
 
-<!-- Slider Section Starts -->
-<div class="slider">
-    <div id="main-carousel" class="carousel slide" data-ride="carousel">
-        <!-- Wrapper For Slides Starts -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="{% static 'img/slider-imgs/slide5-img.jpg' %}" alt="Slider" class="img-responsive"/>
+    <!-- Slider Section Starts -->
+    <div class="slider">
+        <div id="main-carousel" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper For Slides Starts -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="{% static 'img/slider-imgs/slide5-img.jpg' %}" alt="Slider" class="img-responsive"/>
+                </div>
+                <div class="item">
+                    <img src="{% static 'img/slider-imgs/slide6-img.jpg' %}" alt="Slider" class="img-responsive"/>
+                </div>
+                <div class="item">
+                    <img src="{% static 'img/slider-imgs/slide7-img.jpg' %}" alt="Slider" class="img-responsive"/>
+                </div>
+                <div class="item">
+                    <img src="{% static 'img/slider-imgs/slide8-img.jpg' %}" alt="Slider" class="img-responsive"/>
+                </div>
+                <div class="item">
+                    <img src="{% static 'img/slider-imgs/slide9-img.jpg' %}" alt="Slider" class="img-responsive"/>
+                </div>
+                <div class="item">
+                    <img src="{% static 'img/slider-imgs/slide10-img.jpg' %}" alt="Slider" class="img-responsive"/>
+                </div>
+                <div class="item">
+                    <img src="{% static 'img/slider-imgs/slide11-img.jpg' %}" alt="Slider" class="img-responsive"/>
+                </div>
             </div>
-            <div class="item">
-                <img src="{% static 'img/slider-imgs/slide6-img.jpg' %}" alt="Slider" class="img-responsive"/>
-            </div>
-            <div class="item">
-                <img src="{% static 'img/slider-imgs/slide7-img.jpg' %}" alt="Slider" class="img-responsive"/>
-            </div>
-            <div class="item">
-                <img src="{% static 'img/slider-imgs/slide8-img.jpg' %}" alt="Slider" class="img-responsive"/>
-            </div>
-            <div class="item">
-                <img src="{% static 'img/slider-imgs/slide9-img.jpg' %}" alt="Slider" class="img-responsive"/>
-            </div>
-            <div class="item">
-                <img src="{% static 'img/slider-imgs/slide10-img.jpg' %}" alt="Slider" class="img-responsive"/>
-            </div>
-            <div class="item">
-                <img src="{% static 'img/slider-imgs/slide11-img.jpg' %}" alt="Slider" class="img-responsive"/>
-            </div>
+            <!-- Wrapper For Slides Ends -->
+            <!-- Controls Starts -->
+            <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+            <!-- Controls Ends -->
         </div>
-        <!-- Wrapper For Slides Ends -->
-        <!-- Controls Starts -->
-        <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-        <!-- Controls Ends -->
     </div>
-</div>
-<!-- Slider Section Ends -->
-{% show_latest_news %}
-<section class="latest-posts">
-    <h2 class="product-head">Новое в блогах</h2>
-
-    <div class="masonry">
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide4-img.jpg' %}"
-                         alt="" height="188"/>
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW! I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide1-img.jpg' %}"
-                         alt="" height="188"/>
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide3-img.jpg' %}"
-                         alt="" height="188"/>
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide2-img.jpg' %}"
-                         alt="" height="188"/>
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide1-img.jpg' %}"
-                         alt="" height="188"/>
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW! I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide2-img.jpg' %}"
-                         alt="" height="188"/>
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW! I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide3-img.jpg' %}"
-                         alt="" height="188"/>
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide4-img.jpg' %}"
-                         alt="" height="188"/>
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide1-img.jpg' %}"
-                         alt="" height="188"/>
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-        <article class="post-preview">
-            <figure class="post-preview__figure">
-                <a class="post-preview__link" href="">
-                    <img class="post-preview__img img-responsive" src="{% static 'img/slider-imgs/slide2-img.jpg' %}"
-                         alt="" height="188"/>
-
-                    <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                </a>
-            </figure>
-            <section class="post-preview__content">
-                <h2 class="post-preview__title"><a class="post-preview__link" href="">Egypt by tinou bao</a></h2>
-
-                <div class="post-preview__meta">
-                    <a href="/" class="meta__category">Категория</a><span class="meta__date">27 фев. 2014</span>
-                </div>
-                <div class="post-preview__text">
-                    <p>I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW! I've been looking for some cool images at Flickr and suddenly came across this one. All I can say
-                        is WOW!</p>
-                </div>
-                <div class="post-preview__meta">
-                    <span class="meta__like">173 <i class="fa fa-eye"></i></span><span class="meta__comments">1 <i class="fa fa-comments-o"></i></span>
-                </div>
-            </section>
-        </article>
-    </div>
-
-</section>
-<section class="map map_main" ng-controller="mainmapCtrl">
-            <h2 class="product-head">Все сервисы для вашего автомобиля на карте минска</h2>
-            {% verbatim %}
-            <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[55.21, 34.30];zoom=10">
-                <yandex-map center="center" zoom="zoom" class="map__container">
-                    <ymap-marker ng-repeat="obj in geoObjects"
-                                 coordinates="[obj.longitude ,obj.latitude]"
-                                 properties="{balloonContent: '<strong style='+'color:red'+'>'+obj.name+'</strong><br>'+obj.teaser+'<br>'+obj.address, iconStyle.size: '300'}"
-                                 options="{
+    <!-- Slider Section Ends -->
+    {% show_latest_news %}
+    <section ng-app="ymapsApp" class="map map_main" ng-controller="mainmapCtrl">
+        <h2 class="product-head">Все сервисы для вашего автомобиля на карте минска</h2>
+        {% verbatim %}
+        <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[55.21, 34.30];zoom=10">
+            <yandex-map center="center" zoom="zoom" class="map__container">
+                <ymap-marker ng-repeat="obj in geoObjects"
+                             coordinates="[obj.longitude ,obj.latitude]"
+                             properties="{balloonContent: '<strong style='+'color:red'+'>'+obj.name+'</strong><br>'+obj.teaser+'<br>'+obj.address, iconStyle.size: '300'}"
+                             options="{
                         iconLayout: 'default#image',
                         iconImageHref: './static/img/map/as-ico.png',
                         iconImageSize: [40, 40],
@@ -306,286 +64,287 @@
                         },
                      }">
 
-                    </ymap-marker>
-                </yandex-map>
-            </div>
-            {% endverbatim %}
-        </section>
-<!-- Featured Products Starts -->
-<section class="products-list">
-            <!-- Products Row Starts -->
-            <div class="row">
-                <!-- Product #1 Starts -->
-                <div class="col-md-4 col-sm-6">
-                    <!-- Heading Starts -->
-                    <h2 class="product-head">Автосервисы</h2>
-                  <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <!-- Product #1 Ends -->
-                <!-- Product #2 Starts -->
-                <div class="col-md-4 col-sm-6">
-                    <!-- Heading Starts -->
-                    <h2 class="product-head">Автомойки</h2>
-                    <!-- Heading Ends -->
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-                <!-- Product #2 Ends -->
-                <!-- Product #3 Starts -->
-                <div class="col-md-4 col-sm-6">
-                    <!-- Heading Starts -->
-                    <h2 class="product-head">Шиномонтажи</h2>
-                    <!-- Heading Ends -->
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="product-col">
-                    <div class="image">
-                        <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-                    </div>
-                    <div class="caption">
-                        <h4><a href="/">Автосервис</a></h4>
-
-                        <div class="description">
-                            We are so lucky living in such a wonderful time. Our almost unlimited ...
-                        </div>
-                        <div class="address">
-                            ул.Красная д.5 кв.26
-                        </div>
-                        <div class="cart-button button-group">
-
-                            <a href="/" class="btn btn-cart">
-                                Подробнее
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <!-- Product #3 Ends -->
-
-            </div>
-            <!-- Products Row Ends -->
+                </ymap-marker>
+            </yandex-map>
+        </div>
+        {% endverbatim %}
     </section>
-<!-- Latest Products Ends -->
-<!-- Footer Section Starts -->
+    <!-- Featured Products Starts -->
+    <section class="products-list">
+    <!-- Products Row Starts -->
+    <div class="row">
+    <!-- Product #1 Starts -->
+    <div class="col-md-4 col-sm-6">
+        <!-- Heading Starts -->
+        <h2 class="product-head">Автосервисы</h2>
 
-<!-- Footer Section Ends -->
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Product #1 Ends -->
+    <!-- Product #2 Starts -->
+    <div class="col-md-4 col-sm-6">
+        <!-- Heading Starts -->
+        <h2 class="product-head">Автомойки</h2>
+        <!-- Heading Ends -->
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Product #2 Ends -->
+    <!-- Product #3 Starts -->
+    <div class="col-md-4 col-sm-6">
+        <!-- Heading Starts -->
+        <h2 class="product-head">Шиномонтажи</h2>
+        <!-- Heading Ends -->
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product-col">
+            <div class="image">
+                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">Автосервис</a></h4>
+
+                <div class="description">
+                    We are so lucky living in such a wonderful time. Our almost unlimited ...
+                </div>
+                <div class="address">
+                    ул.Красная д.5 кв.26
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="/" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Product #3 Ends -->
+
+    </div>
+    <!-- Products Row Ends -->
+    </section>
+    <!-- Latest Products Ends -->
+    <!-- Footer Section Starts -->
+
+    <!-- Footer Section Ends -->
 {% endblock %}
 
 
