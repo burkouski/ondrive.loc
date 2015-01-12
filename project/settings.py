@@ -41,8 +41,9 @@ INSTALLED_APPS = (
     #'app.service',
     #'tastypie',
     'ckeditor',
+    #'visits',
 )
-
+COMMENTS_APP = "django_comments_xtd"
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -83,7 +84,7 @@ USE_TZ = True
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
-    'django.core.context_processors.media'
+    'django.core.context_processors.media',
 )
 TEMPLATE_DIRS = (
     PROJECT_PATH + '/templates',

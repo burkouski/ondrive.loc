@@ -28,6 +28,10 @@ class Post(models.Model):
     preview = models.TextField('Вступительный текст')
     text = RichTextField('Полный текст')
     category = models.ForeignKey(Category)
+    views = models.IntegerField('Количество просмотров')
+
+    class Meta:
+        ordering = ['-pub_date']
 
     def __str__(self):
         return self.title

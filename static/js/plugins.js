@@ -1,9 +1,4 @@
 $(function () {
-
-
-})
-
-$(window).load(function() {
 var $container = $('.masonry').masonry();
     $container.imagesLoaded(function () {
         $container.masonry({
@@ -11,4 +6,5 @@ var $container = $('.masonry').masonry();
             isResizable: true
         });
     });
+
 })
