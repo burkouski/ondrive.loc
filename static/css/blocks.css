@@ -1,7 +1,11 @@
 /*main menu*/
+.latest-posts {
+  margin: 0 0 20px 0;
+}
 .masonry {
   position: relative;
   min-height: 300px;
+/*блок post-preview*/
 }
 .masonry:before,
 .masonry:after {
@@ -13,10 +17,14 @@
 }
 .post-preview {
   float: left;
-  width: 25%;
+  width: 275px;
+  background: #f6ffff;
 }
 .post-preview_big {
-  width: 33%;
+  width: 273px;
+}
+.post-preview__figure {
+  padding: 10px;
 }
 .post-preview__content {
   margin: 20px 10px;
@@ -71,9 +79,25 @@
   height: 30%;
   margin: auto;
 }
+/*блок post*/
+.post__img-wrap {
+  width: 100%;
+}
+.post__meta {
+  margin: 0 0 20px 0;
+}
 .meta__comments,
 .meta__date {
   float: right;
+}
+.meta__comments {
+  color: #000;
+  text-decoration: none;
+}
+.meta__comments:hover,
+.meta__comments:active {
+  color: #ef4135;
+  text-decoration: none;
 }
 /* block .form*/
 .form__item {

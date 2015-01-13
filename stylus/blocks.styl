@@ -2,17 +2,28 @@
 @import '/mixins/sprite'
 
 /*main menu*/
+.latest-posts
+  margin 0 0 20px 0
 .masonry
   clearfix()
   position relative
   min-height 300px
+
+  /*блок post-preview*/
 .post-preview
   float left
-  width 25%
+  width 275px
+  background #f6ffff
+
 .post-preview_big
-  width 33%
+  width  273px
+
+.post-preview__figure
+  padding 10px
+
 .post-preview__content
   margin 20px 10px
+
 .post-preview__title
 .post-preview__link
   position relative
@@ -22,12 +33,15 @@
   &:hover
     .post-preview__hover
       opacity 1
+
 .post-preview__title
   margin 0 0 10px 0
+
 .post-preview__meta
   clearfix()
   margin 0 0 10px 0
   font-size 13px
+
 .post-preview__hover
   position absolute
   top 0
@@ -40,6 +54,7 @@
   font-size 40px
   text-align center
   transition all 0.5s linear
+
 .post-preview__icon
   position: absolute;
   top 0
@@ -49,10 +64,22 @@
   width 50%
   height 30%
   margin auto
+
+/*блок post*/
+.post__img-wrap
+  width 100%
+.post__meta
+  margin 0 0 20px 0
 .meta__comments
 .meta__date
   float right
-
+.meta__comments
+  color #000000
+  text-decoration none
+  &:hover
+  &:active
+    color #ef4135
+    text-decoration none
 /* block .form*/
 .form__item
   margin 5px 0 0 0

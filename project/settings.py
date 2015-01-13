@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     #'app.service',
     #'tastypie',
     'ckeditor',
+    'sitetree'
     #'visits',
 )
 COMMENTS_APP = "django_comments_xtd"

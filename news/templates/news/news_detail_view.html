@@ -1,17 +1,21 @@
 {% extends "news/layout.html" %}
 {% block content %}
     <!-- About Content Starts -->
-    <div class="page-box">
+    <div class="post">
         <div class="row">
             <div class="col-sm-12">
-                <img src="{{ post.preview_img.url }}" alt="{{ post.title }}" class="img-responsive"/>
+                <div class="post__img-wrap">
+                    <img class="post__img img-responsive" src="{{ post.preview_img.url }}" alt="{{ post.title }}" class="img-responsive"/>
+                </div>
+                <h3 class="post__title">{{ post.title }}</h3>
+                <div class="post__meta">
+                    <a href="{{ post.category.get_absolute_url }}" class="meta__category">{{ post.category }}</a><span class="meta__date">{{ post.pub_date }} </span>
+                </div>
+                {{ post.text|safe }}
             </div>
-            <div class="col-sm-12">
-                <h3>{{ post.title }}</h3>
-            </div>
+
         </div>
-        <br/>
-        {{ post.text|safe }}
+
     </div>
     <!-- About Content Ends -->
     <hr />
