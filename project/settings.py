@@ -37,11 +37,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'django.contrib.sites',
     'news',
     #'app.service',
     #'tastypie',
     'ckeditor',
-    'sitetree'
+    'sitetree',
+    'registration'
     #'visits',
 )
 COMMENTS_APP = "django_comments_xtd"
@@ -113,5 +115,9 @@ CKEDITOR_CONFIGS = {
 
 CKEDITOR_UPLOAD_PATH = "upload/"
 
+REGISTRATION_OPEN = True                # If True, users can register
+ACCOUNT_ACTIVATION_DAYS = 7
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
 
 

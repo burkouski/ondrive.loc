@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block page %}
+    <div id="main-container">
+        <!-- Breadcrumb Starts -->
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Register</li>
+        </ol>
+        <!-- Breadcrumb Ends -->
+        <!-- Main Heading Starts -->
+        <h2 class="main-heading text-center">
+            Войдите или зарегистрируйтесь
+        </h2>
+        <!-- Main Heading Ends -->
+        <!-- Login Form Section Starts -->
+        <section class="login-area">
+            <div class="row">
+                <div class="col-sm-6">
+                    <!-- Login Panel Starts -->
+                    <div class="panel panel-smart">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Login</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                Войдите под своим аккаунтом
+                            </p>
+                            <!-- Login Form Starts -->
+                            <form class="form-inline" method="post" action="." role="form">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="sr-only" for="id_username">Имя пользователя:</label>
+                                    <input class="form-control" id="id_username" maxlength="254" name="username" type="text" placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                     <label class="sr-only" for="id_password">Пароль:</label>
+                                    <input class="form-control" id="id_password" name="password" type="password" placeholder="Username">
+                                </div>
+
+
+                                <input type="submit" value="{% trans 'Log in' %}" class="btn btn-danger"/>
+                                <input type="hidden" name="next" value="{{ next }}"/>
+                            </form>
+
+                            <!-- Login Form Ends -->
+                        </div>
+                    </div>
+                    <!-- Login Panel Ends -->
+                </div>
+                <div class="col-sm-6">
+                    <!-- Account Panel Starts -->
+                    <div class="panel panel-smart">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Создать нового пользователя
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                Регистрация на сайте позволяет вам оставлять комментарии и отзывы, а также дает возможность ввести свой личный блог
+                            </p>
+                            <a href="register.html" class="btn btn-danger">
+                                Зарегистрироватся
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Account Panel Ends -->
+
+                </div>
+            </div>
+        </section>
+        <!-- Login Form Section Ends -->
+    </div>
+
+
+{% endblock %}
