@@ -1,5 +1,15 @@
 {% extends "layout.html" %}
+{% load w_news %}
 {% load sitetree %}
+
+{% block meta %}
+    <meta name="description" content="{% sitetree_page_description from "for_news" %}">
+{% endblock %}
+
+{% block title %}
+    <title>{% sitetree_page_title from "for_news" %}</title>
+{% endblock %}
+
 {% block page %}
     <!-- Main Container Starts -->
     <div id="main-container">
@@ -7,11 +17,10 @@
             <!-- Primary Content Starts -->
             <div class="col-md-9">
                 <!-- Breadcrumb Starts -->
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">About Us</li>
-                </ol>
-            {% sitetree_breadcrumbs from "for_news" %}
+                {% block breadcrumbs %}
+
+                    {% sitetree_breadcrumbs from "for_news" %}
+                {% endblock %}
                 <!-- Breadcrumb Ends -->
                 {% block content %}
 
@@ -20,32 +29,7 @@
             <!-- Primary Content Ends -->
             <!-- Sidebar Starts -->
             <div class="col-md-3">
-                <!-- Categories Links Starts -->
-                <h3 class="side-heading">Categories</h3>
-
-                <div class="list-group">
-                    <a href="category-grid.html" class="list-group-item">
-                        <i class="fa fa-chevron-right"></i>
-                        Spices &amp; Herbs
-                    </a>
-                    <a href="category-grid.html" class="list-group-item">
-                        <i class="fa fa-chevron-right"></i>
-                        Chili Powder
-                    </a>
-                    <a href="category-grid.html" class="list-group-item">
-                        <i class="fa fa-chevron-right"></i>
-                        Herb Blends
-                    </a>
-                    <a href="category-grid.html" class="list-group-item">
-                        <i class="fa fa-chevron-right"></i>
-                        Seasonings
-                    </a>
-                    <a href="category-grid.html" class="list-group-item">
-                        <i class="fa fa-chevron-right"></i>
-                        Salt Free Spices
-                    </a>
-                </div>
-                <!-- Categories Links Ends -->
+               {% show_categories %}
             </div>
             <!-- Sidebar Ends -->
         </div>
