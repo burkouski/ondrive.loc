@@ -1,9 +1,10 @@
 $(function () {
-var $container = $('.masonry').masonry();
+var $container = $('.masonry').packery();
     $container.imagesLoaded(function () {
-        $container.masonry({
+        $container.packery({
             itemSelector: '.post-preview',
-            isResizable: true
+            isResizable: false,
+            gutter: 10
         });
     });
 
