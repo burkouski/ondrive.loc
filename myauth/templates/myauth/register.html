@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block page %}
+    <div id="main-container">
+		<!-- Breadcrumb Starts -->
+			<ol class="breadcrumb">
+				<li><a href="index.html">Home</a></li>
+				<li class="active">Register</li>
+			</ol>
+		<!-- Breadcrumb Ends -->
+		<!-- Main Heading Starts -->
+			<h2 class="main-heading text-center">
+				Регистрация <br>
+				<span>Создайте нового пользователя</span>
+			</h2>
+		<!-- Main Heading Ends -->
+		<!-- Registration Section Starts -->
+			<section class="registration-area">
+				<div class="row">
+					<div class="col-sm-offset-3 col-sm-6">
+                        <div class="panel panel-smart">
+                            <h3>{{ mess }}</h3>
+                            <form method="post" action="." autocomplete="off" class="form-horizontal" role="form">
+                                {% csrf_token %}
+								<!-- Personal Information Starts -->
+									<div class="form-group">
+										<label for="inputFname" class="col-sm-5 control-label">Имя пользователя:</label>
+										<div class="col-sm-7">
+											{{ user_form.username }}
+                                            <span>{{ user_form.username.errors| safe }}</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputLname" class="col-sm-5 control-label">Ваш email:</label>
+										<div class="col-sm-7">
+											{{ user_form.email }}
+                                            <span>{{ user_form.email.errors| safe }}</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputLname" class="col-sm-5 control-label">Пароль:</label>
+										<div class="col-sm-7">
+											{{ user_form.password }}
+                                            <span>{{ user_form.password.errors | safe }}</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-offset-3 col-sm-9">
+											<button type="submit" class="btn btn-danger">
+												Регистрация
+											</button>
+										</div>
+									</div>
+								<!-- Password Area Ends -->
+								</form>
+                        </div>
+
+					</div>
+
+				</div>
+			</section>
+		<!-- Registration Section Ends -->
+		</div>
+{% endblock %}
