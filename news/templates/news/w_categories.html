@@ -1,0 +1,16 @@
+<!-- Categories Links Starts -->
+                <h3 class="side-heading">Категории</h3>
+
+                <div class="list-group">
+                    {% for category in categories  %}
+
+                            <a href="{{ category.get_absolute_url }}" class="list-group-item">
+                                <i class="fa fa-chevron-right"></i>
+                                {{ category.category }}
+                            </a>
+
+
+                    {% endfor %}
+
+                </div>
+                <!-- Categories Links Ends -->

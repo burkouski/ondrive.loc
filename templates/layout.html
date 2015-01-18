@@ -7,14 +7,18 @@
     <!--[if IE]>
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<![endif]-->
-
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block meta %}
         <meta name="description" content="{{ config.meta_description }}">
         <meta name="keyword" content="{{ config.meta_keywords }}">
-        <title>{{ config.title }}</title>
     {% endblock %}
+    {% block title %}
+        <title>ondrive.by | Портал автолюбителей Беларуси</title>
+    {% endblock %}
+
 
 
     <!-- Google Web Fonts -->
@@ -48,37 +52,38 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/fav-72.png">
     <link rel="apple-touch-icon-precomposed" href="images/fav-57.png">
     <link rel="shortcut icon" href="images/fav.png">
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'ondrive'; // required: replace example with your forum shortname
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ondrive'; // required: replace example with your forum shortname
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
     </script>
 </head>
 
 <body>
 <div id="wrapper" class="container">
     <header id="header-area">
-    <!-- Nested Row Starts -->
-    <div class="row">
-        <!-- Logo Starts -->
-        <div class="col-md-3 col-xs-12">
-            <div id="logo">
-                <a href="/"><img src="{% static 'img/logo.png' %}" title="Grocery Shoppe" alt="Grocery Shoppe"
-                                          class="img-responsive"/></a>
+        <!-- Nested Row Starts -->
+        <div class="row">
+            <!-- Logo Starts -->
+            <div class="col-md-3 col-xs-12">
+                <div id="logo">
+                    <a href="/"><img src="{% static 'img/logo.png' %}" title="Grocery Shoppe" alt="Grocery Shoppe"
+                                     class="img-responsive"/></a>
+                </div>
             </div>
-        </div>
-        <!-- Logo Ends -->
-        <!-- Header Right Starts -->
-        <div class="col-md-7 col-xs-12">
-            <div class="row header-top">
-                <!-- Header Links Starts -->
+            <!-- Logo Ends -->
+            <!-- Header Right Starts -->
+            <div class="col-md-7 col-xs-12">
+                <div class="row header-top">
+                    <!-- Header Links Starts -->
 
                     <div class="header-links">
                         <ul class="list-unstyled list-inline pull-left">
@@ -86,79 +91,106 @@
                             <!--li><a href="#">Мой блог</a></li-->
                             <!--li><a href="#">Мой профиль</a></li-->
                             <!--li><a href="cart.html">Пользовательское соглашение</a></li-->
+                            {% if user.is_authenticated %}
+                                <li><a href="#">Мой профиль</a></li>
+                                <li><a href="/auth/logout">Выйти</a></li>
+                            {% else %}
+                                <li><a href="/auth/registration">Регистрация</a></li>
+                                <li><a href="/auth/login">Войти</a></li>
+                            {% endif %}
 
-                            <!--li><a href="register.html">Регистрация</a></li-->
                             <!--li><a href="login.html">Книга жалоб и предложений</a></li-->
                         </ul>
                     </div>
 
-                <!-- Header Links Ends -->
+                    <!-- Header Links Ends -->
+                </div>
+
             </div>
+            <!-- Header Right Ends -->
+            <div class="col-md-2 col-xs-12">
+                {% if user.is_authenticated %}
+                    Вы вошли как: {{ user.username }}
+                {% else %}
+                    <form class="form-inline" method="post" action="/accounts/login/" role="form">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="sr-only" for="id_username">Имя пользователя:</label>
+                                    <input class="form-control" id="id_username" maxlength="254" name="username" type="text" placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                     <label class="sr-only" for="id_password">Пароль:</label>
+                                    <input class="form-control" id="id_password" name="password" type="password" placeholder="Username">
+                                </div>
 
+
+                                <input type="submit" value="Log in" class="btn btn-danger"/>
+                                <input type="hidden" name="next" value="{{ next }}"/>
+                            </form>
+                {% endif %}
+
+                <!-- Login Panel Starts -->
+                <!-- Login Form Starts -->
+                <!--form class="form form_login" role="form" autocomplete="off">
+                    <div class="form__item">
+                        <label class="sr-only" for="username">Username</label>
+                        <input class="form__itext" type="text" id="username" placeholder="Логин">
+                    </div>
+                    <div class="form__item">
+                        <label class="sr-only" for="exampleInputPassword2">Password</label>
+                        <input class="form__itext" type="password" id="exampleInputPassword2" placeholder="Password">
+                    </div>
+                    <div class="form__item">
+                        <input class="form__ilogin" type="submit" value="Войти"/>
+                        <a class="form__restore-link" href="/">Забыли пароль?</a>
+                    </div>
+                </form-->
+
+                <!-- Login Form Ends -->
+
+
+                <!-- Login Panel Ends -->
+            </div>
         </div>
-        <!-- Header Right Ends -->
-        <div class="col-md-2 col-xs-12">
-            <!-- Login Panel Starts -->
-							<!-- Login Form Starts -->
-								<form class="form form_login" role="form" autocomplete="off">
-									<div class="form__item">
-										<label class="sr-only" for="username">Username</label>
-										<input class="form__itext" type="text" id="username" placeholder="Логин">
-									</div>
-									<div class="form__item">
-										<label class="sr-only" for="exampleInputPassword2">Password</label>
-										<input class="form__itext" type="password" id="exampleInputPassword2" placeholder="Password">
-									</div>
-									<div class="form__item">
-                                        <input class="form__ilogin" type="submit" value="Войти"/>
-                                        <a class="form__restore-link" href="/">Забыли пароль?</a>
-									</div>
-								</form>
-							<!-- Login Form Ends -->
-
-
-					<!-- Login Panel Ends -->
+        <!-- Nested Row Ends -->
+    </header>
+    <!-- Header Section Ends -->
+    <!-- Main Menu Starts -->
+    <nav id="main-menu" class="navbar" role="navigation">
+        <!-- Nav Header Starts -->
+        <div class="navbar-header">
+            <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-cat-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <i class="fa fa-bars"></i>
+            </button>
         </div>
-    </div>
-    <!-- Nested Row Ends -->
-</header>
-<!-- Header Section Ends -->
-<!-- Main Menu Starts -->
-<nav id="main-menu" class="navbar" role="navigation">
-    <!-- Nav Header Starts -->
-    <div class="navbar-header">
-        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse"
-                data-target=".navbar-cat-collapse">
-            <span class="sr-only">Toggle Navigation</span>
-            <i class="fa fa-bars"></i>
-        </button>
-    </div>
-    <!-- Nav Header Ends -->
-    <!-- Navbar Cat collapse Starts -->
-    <div class="collapse navbar-collapse navbar-cat-collapse">
-        <ul class="nav navbar-nav">
-            <li><a href="/news">Новости</a></li>
-            <!--li><a href="category-list.html">Блоги</a></li-->
-            <li class="dropdown">
-                <span class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                   data-delay="10">
-                    Сервисы
-                </span>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a tabindex="-1" href="#">Автосервисы</a></li>
-                    <li><a tabindex="-1" href="#">Автомойки</a></li>
-                    <li><a tabindex="-1" href="#">Шиномонтажи</a></li>
-                </ul>
-            </li>
-            <li><a href="category-list.html">О проекте</a></li>
-            <li><a href="category-list.html">Контакты</a></li>
-        </ul>
-    </div>
-    <!-- Navbar Cat collapse Ends -->
-</nav>
-<!-- Main Menu Ends -->
-{% block page %}
-{% endblock %}
+        <!-- Nav Header Ends -->
+        <!-- Navbar Cat collapse Starts -->
+        <div class="collapse navbar-collapse navbar-cat-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/news">Новости</a></li>
+                <!--li><a href="category-list.html">Блоги</a></li-->
+                <!--li class="dropdown">
+                    <span class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                       data-delay="10">
+                        Сервисы
+                    </span>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a tabindex="-1" href="#">Автосервисы</a></li>
+                        <li><a tabindex="-1" href="#">Автомойки</a></li>
+                        <li><a tabindex="-1" href="#">Шиномонтажи</a></li>
+                    </ul>
+                </li>
+                <li><a href="category-list.html">О проекте</a></li>
+                <li><a href="category-list.html">Контакты</a></li-->
+            </ul>
+        </div>
+        <!-- Navbar Cat collapse Ends -->
+    </nav>
+    <!-- Main Menu Ends -->
+    {% block page %}
+    {% endblock %}
 </div>
 <div class="copyright container">
     <div class="clearfix">

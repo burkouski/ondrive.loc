@@ -1,0 +1,24 @@
+{% for service in service_list %}
+<div class="product-col">
+            <div class="image">
+                <img src="{{ service.logo.url }}" class="img-responsive"/>
+            </div>
+            <div class="caption">
+                <h4><a href="/">{{ service.name }}</a></h4>
+
+                <div class="description">
+                    {{ service.teaser|safe }}
+                </div>
+                <div class="address">
+                    {{ service.address }}
+                </div>
+                <div class="cart-button button-group">
+
+                    <a href="{{ service.get_absolute_url }}" class="btn btn-cart">
+                        Подробнее
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+{% endfor %}

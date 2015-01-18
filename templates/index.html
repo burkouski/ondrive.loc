@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% load staticfiles %}
-{% load latest_news %}
+{% load w_news %}
+{% load w_autoservice %}
 {% block page %}
 
     <!-- Slider Section Starts -->
@@ -78,94 +79,7 @@
         <!-- Heading Starts -->
         <h2 class="product-head">Автосервисы</h2>
 
-        <div class="product-col">
-            <div class="image">
-                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-            </div>
-            <div class="caption">
-                <h4><a href="/">Автосервис</a></h4>
-
-                <div class="description">
-                    We are so lucky living in such a wonderful time. Our almost unlimited ...
-                </div>
-                <div class="address">
-                    ул.Красная д.5 кв.26
-                </div>
-                <div class="cart-button button-group">
-
-                    <a href="/" class="btn btn-cart">
-                        Подробнее
-                        <i class="fa fa-angle-double-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="product-col">
-            <div class="image">
-                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-            </div>
-            <div class="caption">
-                <h4><a href="/">Автосервис</a></h4>
-
-                <div class="description">
-                    We are so lucky living in such a wonderful time. Our almost unlimited ...
-                </div>
-                <div class="address">
-                    ул.Красная д.5 кв.26
-                </div>
-                <div class="cart-button button-group">
-
-                    <a href="/" class="btn btn-cart">
-                        Подробнее
-                        <i class="fa fa-angle-double-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="product-col">
-            <div class="image">
-                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-            </div>
-            <div class="caption">
-                <h4><a href="/">Автосервис</a></h4>
-
-                <div class="description">
-                    We are so lucky living in such a wonderful time. Our almost unlimited ...
-                </div>
-                <div class="address">
-                    ул.Красная д.5 кв.26
-                </div>
-                <div class="cart-button button-group">
-
-                    <a href="/" class="btn btn-cart">
-                        Подробнее
-                        <i class="fa fa-angle-double-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="product-col">
-            <div class="image">
-                <img src="{% static 'img/slider-imgs/slide1-img.jpg' %}" class="img-responsive"/>
-            </div>
-            <div class="caption">
-                <h4><a href="/">Автосервис</a></h4>
-
-                <div class="description">
-                    We are so lucky living in such a wonderful time. Our almost unlimited ...
-                </div>
-                <div class="address">
-                    ул.Красная д.5 кв.26
-                </div>
-                <div class="cart-button button-group">
-
-                    <a href="/" class="btn btn-cart">
-                        Подробнее
-                        <i class="fa fa-angle-double-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% show_top_autoservice %}
     </div>
     <!-- Product #1 Ends -->
     <!-- Product #2 Starts -->

@@ -21,6 +21,12 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    POST_CLASS_CHOICE = (
+        ('', '1 колонка'),
+        ('post-preview_medium', '2 колонки'),
+        ('post-preview_huge', '3 колонки'),
+
+    )
     title = models.CharField('Заголовок статьи', max_length=200)
     alias = models.SlugField(max_length=100, blank=True)
     pub_date = models.DateField('Дата публикации')
@@ -29,6 +35,8 @@ class Post(models.Model):
     text = RichTextField('Полный текст')
     category = models.ForeignKey(Category)
     views = models.IntegerField('Количество просмотров')
+
+    post_class = models.CharField(max_length=100, default='', choices=POST_CLASS_CHOICE, blank=True)
 
     class Meta:
         ordering = ['-pub_date']

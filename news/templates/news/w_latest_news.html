@@ -4,7 +4,8 @@
 
     <div class="masonry">
         {% for post in posts %}
-        <article class="post-preview">
+
+        <article class="post-preview {% if forloop.counter|divisibleby:4 or forloop.counter == 1 %}post-preview_medium{% endif %}">
             <figure class="post-preview__figure">
                 <a class="post-preview__link" href="{{ post.get_absolute_url }}">
                     <img class="post-preview__img img-responsive" src="{{ post.preview_img.url }}"
