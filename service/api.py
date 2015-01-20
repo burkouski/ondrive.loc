@@ -33,7 +33,7 @@ class TopAutoserviceRes(ModelResource):
 
 
 class AutoserviceRes(ModelResource):
-    workTypes = fields.ForeignKey('service.api.AutoserviceWorkRes', 'autoservice',  full=True, null=True)
+    work_types = fields.ForeignKey('service.api.AutoserviceWorkRes', 'autoservice',  full=True, null=True)
     url = fields.CharField(attribute='get_absolute_url', readonly=True)
 
     class Meta:
@@ -42,7 +42,7 @@ class AutoserviceRes(ModelResource):
         excludes = ['phone_city',
                     'id',
                     'title',
-                    'phoneMts',
+                    'phone_mts',
                     'phone_velcom',
                     'phone_life',
                     'work_start',

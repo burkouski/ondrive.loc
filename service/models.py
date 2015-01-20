@@ -98,7 +98,6 @@ class Service(models.Model):
         return self.name
 
 
-
 class AutoService(Service):
 
     def get_absolute_url(self):

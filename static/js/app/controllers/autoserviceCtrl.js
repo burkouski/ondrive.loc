@@ -46,7 +46,7 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'getJsonService', function ($s
             console.log($scope.options)
             angular.forEach($scope.options, function (val, key) {
                 //console.log(val, ids.workTypes[key])
-                if (val != curObject.workTypes[key]) {
+                if (val != curObject.work_types[key]) {
                     selected = false
                 }
 
