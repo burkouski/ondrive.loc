@@ -1,25 +1,21 @@
 from django.contrib import admin
-from service.models import AutoService, TireService, CarWash, AutoServiceWork, TireServiceWork, CarWashWork
+from service.models import AutoService, TireService, CarWash, ElectricianWork, BodyRepairWork, TireServiceWork, CarWashWork
 from django.contrib.contenttypes.admin import GenericTabularInline
 
 
-class AutoServiceWorkInline(admin.StackedInline):
-    model = AutoServiceWork
-    fieldsets = (
-        ('АвтоЭлектрика', {
-            'fields': ('comp_diag', 'rep_elect', 'rep_gen')
-        }),
-        ('Кузовной ремонт', {
-            'fields': ('car_paint', 'rec_geo', 'body_work', 'welding', 'select_paint', 'rep_bump', 'rep_paint','sand_blasting', 'cor_treatment')
-        })
-    )
+class ElectricianWorkInline(admin.StackedInline):
+    model = ElectricianWork
+
+
+class BodyRepairWorkInline(admin.StackedInline):
+    model = BodyRepairWork
 
 
 class AutoServiceAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Контактные данные', {
             'fields': (
-            'name', 'alias', 'address', 'site_url', 'email', ('work_start', 'work_end'), 'get_logo_img', 'logo',)
+            'name', 'alias', 'address', 'site_url', 'email', 'get_logo_img', 'logo',)
         }),
         ('Рабочие дни', {
             'fields': ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')
@@ -41,7 +37,8 @@ class AutoServiceAdmin(admin.ModelAdmin):
     )
     readonly_fields = ('get_logo_img',)
     inlines = [
-        AutoServiceWorkInline
+        ElectricianWorkInline,
+        BodyRepairWorkInline
     ]
 
 
