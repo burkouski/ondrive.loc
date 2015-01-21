@@ -64,7 +64,6 @@ class AutoserviceRes(ModelResource):
 
 
 class AutoserviceWorkRes(ModelResource):
-    #service = fields.ToManyField('app.service.api.TopAutoserviceRes', 'entry')
 
     class Meta:
         queryset = AutoServiceWork.objects.all()

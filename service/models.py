@@ -23,11 +23,11 @@ class Service(models.Model):
     phone_city = models.CharField("Городской", max_length=10, blank=True)
     work_start = models.TimeField('Время начала работы')
     work_end = models.TimeField('Время завершения работы')
-    break_time_start = models.TimeField('Время начала обеда')
-    break_time_end = models.TimeField('Время завершения обеда')
+    break_time_start = models.TimeField('Время начала обеда', blank=True)
+    break_time_end = models.TimeField('Время завершения обеда', blank=True)
     holiday = models.CharField("Сокращенные дни", max_length=10, blank=True)
-    holiday_time_start = models.TimeField('Время начала сокращенного дня')
-    holiday_time_end = models.TimeField('Время завершения сокращенного дня')
+    holiday_time_start = models.TimeField('Время начала сокращенного дня', blank=True)
+    holiday_time_end = models.TimeField('Время завершения сокращенного дня', blank=True)
     monday = models.BooleanField('Понедельник', blank=True)
     tuesday = models.BooleanField('Вторник', blank=True)
     wednesday = models.BooleanField('Среда', blank=True)
@@ -99,7 +99,6 @@ class Service(models.Model):
 
 
 class AutoService(Service):
-
     def get_absolute_url(self):
         return reverse('service:autoservice_detail', kwargs={'service_alias': self.alias})
 
@@ -125,9 +124,14 @@ class CarWash(Service):
 
 
 class AutoServiceWork(models.Model):
-    comp_diag = models.BooleanField('Компьютерная диагностика')
+    autoservice = models.OneToOneField(AutoService, related_name="autoservice")
+
+    # АВТОЭЛЕКТРИКА
+    comp_diag = models.BooleanField(verbose_name='Компьютерная диагностика')
     rep_elect = models.BooleanField('Ремонт электрооборудования')
     rep_gen = models.BooleanField('Ремонт генераторов, стартеров')
+
+    # КУЗОВНОЙ РЕМОНТ
     car_paint = models.BooleanField('Покраска авто')
     rec_geo = models.BooleanField('Восстановление геометрии')
     body_work = models.BooleanField('Кузовные работы, рихтовка')
@@ -137,16 +141,31 @@ class AutoServiceWork(models.Model):
     rep_paint = models.BooleanField('Беспокрасочное удаление вмятин')
     sand_blasting = models.BooleanField('Пескоструйная обработка')
     cor_treatment = models.BooleanField('Антикоррозийная обработка')
-    autoservice = models.OneToOneField(AutoService, related_name="autoservice")
 
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Виды работ"
 
-    def get_work_list(self):
-        work_list = self._meta.get_all_field_names()
-        return work_list
+    def get_work_dict(self):
+        electrician_list = ['comp_diag', 'rep_elect', 'rep_gen']
+        work_dict = {'Автоэлектрика': self.get_list(electrician_list),
+                     'Кузовной ремонт': [
+            [self._meta.get_field("car_paint").verbose_name, self.car_paint],
+            [self._meta.get_field("rec_geo").verbose_name, self.rec_geo],
+            [self._meta.get_field("body_work").verbose_name, self.body_work],
+            [self._meta.get_field("welding").verbose_name, self.welding],
+            [self._meta.get_field("select_paint").verbose_name, self.select_paint],
+            [self._meta.get_field("rep_bump").verbose_name, self.rep_bump],
+            [self._meta.get_field("rep_paint").verbose_name, self.rep_paint],
+            [self._meta.get_field("sand_blasting").verbose_name, self.sand_blasting],
+            [self._meta.get_field("cor_treatment").verbose_name, self.cor_treatment]
+                    ]
+        }
+        return work_dict
 
+    def get_list(self, f_list):
+        f_list = [[self._meta.get_field(field).verbose_name, self.__dict__[field]] for field in f_list if self.__dict__[field]]
+        return f_list
 
 class TireServiceWork(models.Model):
     pass
