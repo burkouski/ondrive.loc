@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c15395e8-eb0c-4315-9347-36f8ad6acd7f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/admin.py" afterPath="$PROJECT_DIR$/service/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/api.py" afterPath="$PROJECT_DIR$/service/api.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/models.py" afterPath="$PROJECT_DIR$/service/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/views.py" afterPath="$PROJECT_DIR$/service/views.py" />
-    </list>
+    <list default="true" id="c15395e8-eb0c-4315-9347-36f8ad6acd7f" name="Default" comment="" />
     <ignored path="ondrive.loc.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -106,7 +100,7 @@
       <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="68" selection-start="5962" selection-end="5962" vertical-scroll-proportion="0.5471698" vertical-offset="1904" max-vertical-offset="2907">
+            <state line="150" column="68" selection-start="5962" selection-end="5962" vertical-scroll-proportion="0.6603774" vertical-offset="1802" max-vertical-offset="2907">
               <folding />
             </state>
           </provider>
@@ -630,7 +624,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3365801" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -979,7 +973,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="68" selection-start="5962" selection-end="5962" vertical-scroll-proportion="0.5471698" vertical-offset="1904" max-vertical-offset="2907">
+        <state line="150" column="68" selection-start="5962" selection-end="5962" vertical-scroll-proportion="0.6603774" vertical-offset="1802" max-vertical-offset="2907">
           <folding />
         </state>
       </provider>
