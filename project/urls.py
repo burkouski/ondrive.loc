@@ -4,13 +4,14 @@ from django.contrib import admin
 from django.conf import settings
 from tastypie.api import Api
 
-from service.api import AutoserviceRes, TopAutoserviceRes, AutoserviceWorkRes
+from service.api import AutoserviceRes, TopAutoserviceRes, ElectricianWorkRes, BodyRepairWorkRes
 
 
 v1_api = Api(api_name='v1')
 v1_api.register(TopAutoserviceRes())
 v1_api.register(AutoserviceRes())
-v1_api.register(AutoserviceWorkRes())
+v1_api.register(ElectricianWorkRes())
+v1_api.register(BodyRepairWorkRes())
 
 
 urlpatterns = patterns('',

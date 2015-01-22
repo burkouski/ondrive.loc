@@ -46,27 +46,8 @@
                     <div class="options">
                         <h3>Виды работ:</h3>
                             <div class="row">
-                            {% for key,list in works.get_work_dict.items %}
-                                {% if list %}
-                                <div class="col-md-4">
+{{ works.get_work_dict }}
 
-                                <h3>{{ key }}</h3>
-
-                                <ul class="">
-
-                                {% for item in list %}
-                                    {% if item.1 %}
-                                        <li>{{ item.0 }} <span>green</span></li>
-                                    {% else %}
-                                        <li>{{ item.0 }} <span>red</span></li>
-                                    {% endif %}
-
-
-                                {% endfor %}
-                                 </ul>
-                                </div>
-                                {% endif %}
-                            {% endfor %}
 
                     </div>
 

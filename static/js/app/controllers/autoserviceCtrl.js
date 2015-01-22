@@ -2,26 +2,34 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'getJsonService', function ($s
 
     $scope.isLoading = false;
     $scope.objects = []
-    loadRemoteData();
+    var apiUrl = "/api/v1/autoservices/?format=jsonp",
+        workList = ['electrician_work','body_repair__work']
+    loadRemoteData(apiUrl, workList);
 
-    function loadRemoteData() {
+    function loadRemoteData(url, list) {
 
         $scope.isLoading = true;
 
-        getJsonService.square().getJson().$promise.then(
+        getJsonService.square(url).getJson().$promise.then(
             function (data) {
-                console.log(data.objects)
+                //console.log(data.objects)
                 $scope.objects = data.objects
+                for (var i = 0; i < $scope.objects.length; i++) {
+                    var curObject = $scope.objects[i];
+                        curObject['work_list'] = {};
+                    console.log(curObject['body_repair__work'])
+                    for (var j = 0; j < list.length; j++) {
+                        curObject['work_list']= angular.extend({}, curObject['work_list'], curObject[list[j]])
+                    }
 
+                    curObject['work_list'] = angular.extend({}, curObject['work_list'], curObject['body_repair__work'])
+                    console.log(curObject)
+                }
                 $scope.filteredService = $scope.objects
-                //console.log($scope.isLoading)
 
             },
             function (error) {
 
-                // If something goes wrong with a JSONP request in AngularJS,
-                // the status code is always reported as a "0". As such, it's
-                // a bit of black-box, programmatically speaking.
                 alert("Something went wrong!");
 
             }
@@ -42,11 +50,11 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'getJsonService', function ($s
         })
         for (var i = 0; i < $scope.objects.length; i++) {
             selected = true
-            curObject = $scope.objects[i];
-            console.log($scope.options)
+            var curObject = $scope.objects[i];
+            //console.log($scope.options)
             angular.forEach($scope.options, function (val, key) {
                 //console.log(val, ids.workTypes[key])
-                if (val != curObject.work_types[key]) {
+                if (val != curObject.work_list[key]) {
                     selected = false
                 }
 

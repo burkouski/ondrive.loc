@@ -1,7 +1,7 @@
 ymapsApp.service('getJsonService',['$http','$resource', function ($http, $resource) {
 
-this.square = function() { return $resource(
-                    "/api/v1/allAutoservice/?format=jsonp",
+this.square = function(url) { return $resource(
+                    url,
                     {
                         callback: "JSON_CALLBACK"
                     },
