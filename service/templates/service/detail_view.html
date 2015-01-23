@@ -45,11 +45,20 @@
                     <!-- Available Options Starts -->
                     <div class="options">
                         <h3>Виды работ:</h3>
-                            <div class="row">
-{{ works.get_work_dict }}
 
+                        <div class="row">
+                            {% if service.electrician_work.all %}
+                                <div class="col-md-4">
+                                    <h5>{{ service.electrician_work.first.get_model_name }}</h5>
+                                    <ul>
+                                        {% for work in service.electrician_work.all %}
+                                            <li>{{ work }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
 
-                    </div>
+                        </div>
 
 
                     </div>

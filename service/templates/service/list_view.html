@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block page %}
     <!-- Main Container Starts -->
-    <div id="main-container" ng-app="ymapsApp" ng-controller="autoserviceCtrl">
+    <div id="main-container" ng-app="ymapsApp"  ng-cloak  ng-controller="autoserviceCtrl">
     <div class="row">
     <!-- Primary Content Starts -->
     <div class="col-md-9">
@@ -143,8 +143,8 @@
             <div class="list-group-item">
                 <div class="filter-group">
                     <label class="checkbox">
-                        <input name="filter1" type="checkbox" ng-model="options.comp_diag"/>
-                        компьютерная диагностика
+                        <input name="filter1" type="checkbox" ng-model="options['Компьютерная диагностика']"/>
+                        Компьютерная диагностика
                     </label>
                     <label class="checkbox">
                         <input name="filter1" type="checkbox" ng-model="options.rep_elect"/>

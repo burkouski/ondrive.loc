@@ -23,8 +23,8 @@ class Service(models.Model):
     phone_city = models.CharField("Городской", max_length=10, blank=True)
     work_start = models.TimeField('Время начала работы', null=True)
     work_end = models.TimeField('Время завершения работы', null=True)
-    break_time_start = models.TimeField('Время начала обеда',  null=True)
-    break_time_end = models.TimeField('Время завершения обеда',  null=True)
+    break_time_start = models.TimeField('Время начала обеда', null=True)
+    break_time_end = models.TimeField('Время завершения обеда', null=True)
     holiday = models.CharField("Сокращенные дни", max_length=10, blank=True)
     holiday_time_start = models.TimeField('Время начала сокращенного дня', null=True)
     holiday_time_end = models.TimeField('Время завершения сокращенного дня', null=True)
@@ -98,55 +98,30 @@ class Service(models.Model):
         return self.name
 
 
-class AutoService(Service):
-    def get_absolute_url(self):
-        return reverse('service:autoservice_detail', kwargs={'service_alias': self.alias})
-
-    class Meta:
-        verbose_name = u"Автосервис"
-        verbose_name_plural = u"Автосервисы"
-
-
-class TireService(Service):
-    pass
-
-    class Meta:
-        verbose_name = u"Шиномонтаж"
-        verbose_name_plural = u"Шиномонтажи"
-
-
-class CarWash(Service):
-    pass
-
-    class Meta:
-        verbose_name = u"Автомойка"
-        verbose_name_plural = u"Автомойки"
-
-
 class AutoserviceWork(models.Model):
+    work_name = models.CharField("Вид работы", max_length=200)
 
     class Meta:
         abstract = True
 
-    def get_work_dict(self):
-        work_dict = {}
-        field_list = self._meta.get_all_field_names()[1:]
-        model_name = self._meta.verbose_name_plural
-        work_dict ={'fgfgf' :[[self._meta.get_field(field).verbose_name, self.__dict__[field]] for field in field_list if self.__dict__[field]]}
-        return work_dict
+    def __str__(self):
+        return self.work_name
+
+    def get_model_name(self):
+        model_name = self._meta.verbose_name_plural.title()
+        return model_name
+        # def get_work_dict(self):
+        #     work_dict = {}
+        #     field_list = self._meta.get_all_field_names()[1:]
+        #     model_name = self._meta.verbose_name_plural
+        #     work_dict ={'fgfgf' :[[self._meta.get_field(field).verbose_name, self.__dict__[field]] for field in field_list if self.__dict__[field]]}
+        #     return work_dict
 
 
- # АВТОЭЛЕКТРИКА
+        # АВТОЭЛЕКТРИКА
+
+
 class ElectricianWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='electrician_work')
-    rep_elect = models.BooleanField('Ремонт электрооборудования')
-    rep_control_unit = models.BooleanField('Ремонт блоков управления')
-    rep_gen = models.BooleanField('Ремонт генераторов, стартеров')
-    inst_ksen = models.BooleanField('Установка ксенона')
-    inst_park = models.BooleanField('Установка парктроника')
-    rep_range = models.BooleanField('ремонт фар')
-    reg_range = models.BooleanField('регулировка света фар')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Автоэлектрика"
@@ -154,17 +129,6 @@ class ElectricianWork(AutoserviceWork):
 
 # КУЗОВНОЙ РЕМОНТ
 class BodyRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='body_repair_work')
-    car_paint = models.BooleanField('Покраска авто')
-    rec_geo = models.BooleanField('Восстановление геометрии')
-    body_work = models.BooleanField('Кузовные работы, рихтовка')
-    welding = models.BooleanField('Сварочные работы')
-    select_paint = models.BooleanField('Подбор краски')
-    rep_bump = models.BooleanField('Ремонт бамперов, пластика')
-    rep_paint = models.BooleanField('Беспокрасочное удаление вмятин')
-    sand_blasting = models.BooleanField('Пескоструйная обработка')
-    cor_treatment = models.BooleanField('Антикоррозийная обработка')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Кузовной ремонт"
@@ -172,16 +136,6 @@ class BodyRepairWork(AutoserviceWork):
 
 #РЕМОНТ ДВИГАТЕЛЯ
 class EngineRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='engine_repair_work')
-    rep_gas_ing = models.BooleanField('Ремонт бензинового двигателя')
-    rep_dies_ing = models.BooleanField('Ремонт дизельного двигателя')
-    rep_hybr_ing = models.BooleanField('Ремонт двигателей гибридных')
-    rep_turb_ing = models.BooleanField('Ремонт турбин')
-    rep_gbc = models.BooleanField('Ремонт ГБЦ')
-    mot_prot = models.BooleanField('Установка защиты мотора СЗМО')
-    rep_cool = models.BooleanField('Ремонт системы охлаждения')
-    repl_belt= models.BooleanField('Замена ремней ГРМ')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Ремонт двигателя"
@@ -189,17 +143,6 @@ class EngineRepairWork(AutoserviceWork):
 
 #Ремонт топливной системы
 class FuelSystemRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='fuel_system_repair_work')
-    rep_gas_sys = models.BooleanField('Ремонт бензиновой топливной системы')
-    rep_dies_sys = models.BooleanField('Ремонт дизельной топливной системы')
-    rep_fuel_pump = models.BooleanField('Ремонт топливных насосов (ТНВД)')
-    flush_fuel_sys = models.BooleanField('Промывка топливной системы')
-    select_paint = models.BooleanField('Ультразвуковая чистка форсунок')
-    clean_nozz = models.BooleanField('Ремонт инжектора')
-    rep_bosch = models.BooleanField('Ремонт BOSCH')
-    rep_com_rail = models.BooleanField('Ремонт Common Rail')
-    rep_fuel_tanks = models.BooleanField('Ремонт бензобаков')
-    rep_turb = models.BooleanField('Ремонт турбин')
 
     class Meta:
         verbose_name = u""
@@ -208,12 +151,6 @@ class FuelSystemRepairWork(AutoserviceWork):
 
 #Ремонт подвески, трансмиссии
 class SuspensionRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='suspension_repair_work')
-    rep_suspen = models.BooleanField('Ремонт подвески')
-    collapse_toe = models.BooleanField('Развал схождение')
-    rep_rear_beam = models.BooleanField('Ремонт задней балки')
-    rep_cardan_shafts = models.BooleanField('Ремонт карданных валов')
-    test_absord = models.BooleanField('Шок-тест амортизаторов')
 
     class Meta:
         verbose_name = u""
@@ -222,11 +159,7 @@ class SuspensionRepairWork(AutoserviceWork):
 
 #Тормозная система
 class BreakSystemRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='break_system_repair_work')
-    rep_break_sys = models.BooleanField('Ремонт тормозной системы')
-    groove_break_disc = models.BooleanField('Проточка тормозных дисков')
-    repl_break_disc = models.BooleanField('Замена тормозных колодок и дисков')
-    rep_calipers = models.BooleanField('Ремонт суппортов')
+    autoservice = models.ManyToManyField(AutoService, related_name='break_system_repair_work')
 
     class Meta:
         verbose_name = u""
@@ -235,18 +168,7 @@ class BreakSystemRepairWork(AutoserviceWork):
 
 #Диагностика автомобилей
 class AutoDiagWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='auto_diag_work')
-    comp_diad = models.BooleanField('Компьютерная диагностика')
-    diag_suspen = models.BooleanField('Диагностика подвески')
-    diag_ing = models.BooleanField('Диагностика двигателя')
-    diag_dies_ing = models.BooleanField('Диагностика дизельных двигателей')
-    diag_gas_ing = models.BooleanField('Диагностика бензиновых двигателей')
-    diag_hybr_ing = models.BooleanField('Диагностика гибридных двигателей')
-    diag_akpp = models.BooleanField('Диагностика АКПП')
-    diag_fuel_sys = models.BooleanField('Диагностика топливной системы')
-    diag_tnvd = models.BooleanField('Диагностика ТНВД')
-    diag_turb = models.BooleanField('Диагностика турбин')
-    diag_electic = models.BooleanField('Диагностика электрооборудования')
+    autoservice = models.ManyToManyField(AutoService, related_name='auto_diag_work')
 
     class Meta:
         verbose_name = u""
@@ -255,13 +177,7 @@ class AutoDiagWork(AutoserviceWork):
 
 #Ремонт КПП
 class KppRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='kpp_repair_work')
-    rep_mkpp = models.BooleanField('Ремонт МКПП')
-    diag_akpp = models.BooleanField('Ремонт АКПП')
-    repl_mkpp = models.BooleanField('Замена МКПП')
-    repl_clutch = models.BooleanField('Замена сцепления')
-    repl_transf_case = models.BooleanField('Ремонт раздаточной коробки')
-    repl_oil_akpp = models.BooleanField('Замена масла в АКПП')
+    autoservice = models.ManyToManyField(AutoService, related_name='kpp_repair_work')
 
     class Meta:
         verbose_name = u""
@@ -270,11 +186,7 @@ class KppRepairWork(AutoserviceWork):
 
 #Кондиционер, радиаторы
 class AirConditionRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='air_condition_repair_work')
-    fill_cond = models.BooleanField('Заправка кондиционеров')
-    rep_cond = models.BooleanField('Ремонт кондиционеров')
-    argon_welding = models.BooleanField('Аргонная сварка')
-    rep_rad = models.BooleanField('Ремонт радиаторов')
+    autoservice = models.ManyToManyField(AutoService, related_name='air_condition_repair_work')
 
     class Meta:
         verbose_name = u""
@@ -283,11 +195,7 @@ class AirConditionRepairWork(AutoserviceWork):
 
 #Автостекла
 class AutoglassesRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='autoglasses_repair_work')
-    repl_autoglass = models.BooleanField('Замена автостекол')
-    rep_cracks = models.BooleanField('Ремонт сколов и трещин')
-    tint_autoglass = models.BooleanField('Тонировка автостекол')
-    man_blind = models.BooleanField('Изготовление автошторок')
+    autoservice = models.ManyToManyField(AutoService, related_name='autoglasses_repair_work')
 
     class Meta:
         verbose_name = u""
@@ -296,11 +204,7 @@ class AutoglassesRepairWork(AutoserviceWork):
 
 #Газовое оборудование
 class GasAppliancesRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='gas_appliances_repair_work')
-    rep_gas_applian = models.BooleanField('Установка, ремонт газ. оборудования')
-    train_drivers = models.BooleanField('Обучение водителей ГБО')
-    crimp_cylin_gbo = models.BooleanField('Опрессовка баллонов ГБО')
-    exam_cylin_gbo = models.BooleanField('Освидетельствование баллонов ГБО')
+    autoservice = models.ManyToManyField(AutoService, related_name='gas_appliances_repair_work')
 
     class Meta:
         verbose_name = u""
@@ -309,9 +213,7 @@ class GasAppliancesRepairWork(AutoserviceWork):
 
 #Замена масла, ремней
 class OilReplaceWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='oil_replace_work')
-    repl_oil = models.BooleanField('Замена масла, фильтров')
-    repl_oil_akkp = models.BooleanField('Замена масла в АКПП')
+    autoservice = models.ManyToManyField(AutoService, related_name='oil_replace_work')
 
     class Meta:
         verbose_name = u""
@@ -320,11 +222,7 @@ class OilReplaceWork(AutoserviceWork):
 
 #Аудио, Сигнализации
 class AudioAlarmRepairWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='audio_alarm_repair_work')
-    inst_audio = models.BooleanField('Установка автомагнитол, видео')
-    inst_alarm = models.BooleanField('Установка втосигнализации')
-    keys_imba = models.BooleanField('Ключи с иммобилайзером')
-    inst_search = models.BooleanField('Установка поисковых систем')
+    autoservice = models.ManyToManyField(AutoService, related_name='audio_alarm_repair_work')
 
     class Meta:
         verbose_name = u""
@@ -333,15 +231,7 @@ class AudioAlarmRepairWork(AutoserviceWork):
 
 #Тюнинг
 class TuningWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='tuning_work')
-    tun_salon = models.BooleanField('Перетяжка салона')
-    tun_body = models.BooleanField('Тюнинг кузова')
-    aerography = models.BooleanField('Аэрография')
-    tun_range = models.BooleanField('Тюнинг фар')
-    tun_exhaust_sys = models.BooleanField('Тюнинг выхлопной системы')
-    tun_ing = models.BooleanField('Тюнинг двигателя')
-    insulation = models.BooleanField('Шумоизоляция')
-    past_auto_film = models.BooleanField('Оклейка авто пленкой')
+    autoservice = models.ManyToManyField(AutoService, related_name='tuning_work')
 
     class Meta:
         verbose_name = u""
@@ -350,49 +240,64 @@ class TuningWork(AutoserviceWork):
 
 #Прочее
 class OtherAutogWork(AutoserviceWork):
-    autoservice = models.OneToOneField(AutoService, related_name='other_auto_work')
-    man_rugs = models.BooleanField('Изготовление ковриков')
-    man_covers = models.BooleanField('Изготовление чехлов')
-    tun_salon = models.BooleanField('ремонт рулевой рейки')
-    tun_body = models.BooleanField('ремонт сажевого фильтра')
-    aerography = models.BooleanField('ремонт глушителей')
-    tun_range = models.BooleanField('ремонт печек')
-    tun_exhaust_sys = models.BooleanField('отопители webasto')
-    rep_gydro = models.BooleanField('Ремонт гидроусилителя')
-    inst_farcop = models.BooleanField('Установка Фаркопа')
-    red_dv = models.BooleanField('Ремонт дворников')
-
+    autoservice = models.ManyToManyField(AutoService, related_name='other_auto_work')
 
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Прочее"
 
-    # def get_work_dict(self):
-    #     electrician_list = ['comp_diag', 'rep_elect', 'rep_gen']
-    #     work_dict = {'Автоэлектрика': self.get_list(electrician_list),
-    #                  'Кузовной ремонт': [
-    #         [self._meta.get_field("car_paint").verbose_name, self.car_paint],
-    #         [self._meta.get_field("rec_geo").verbose_name, self.rec_geo],
-    #         [self._meta.get_field("body_work").verbose_name, self.body_work],
-    #         [self._meta.get_field("welding").verbose_name, self.welding],
-    #         [self._meta.get_field("select_paint").verbose_name, self.select_paint],
-    #         [self._meta.get_field("rep_bump").verbose_name, self.rep_bump],
-    #         [self._meta.get_field("rep_paint").verbose_name, self.rep_paint],
-    #         [self._meta.get_field("sand_blasting").verbose_name, self.sand_blasting],
-    #         [self._meta.get_field("cor_treatment").verbose_name, self.cor_treatment]
-    #                 ]
-    #     }
-    #     return work_dict
-    #
-    # def get_list(self, f_list):
-    #     f_list = [[self._meta.get_field(field).verbose_name, self.__dict__[field]] for field in f_list if self.__dict__[field]]
-    #     return f_list
 
 
+# class TireServiceWork(models.Model):
+#     pass
+#
+#
+# class CarWashWork(models.Model):
+#     pass
 
-class TireServiceWork(models.Model):
-    pass
+
+class AutoService(Service):
+    # Виды работ
+    electrician_work = models.ManyToManyField(ElectricianWork, related_name='electrician_work',
+                                              verbose_name='Автоэлектрика')
+    body_repair_work = models.ManyToManyField(BodyRepairWork, related_name='body_repair_work',
+                                              verbose_name='Кузовной ремонт')
+    engine_repair_work = models.ManyToManyField(EngineRepairWork, related_name='body_repair_work',
+                                                verbose_name='Ремонт двигателя')
+    fuel_system_repair_work = models.ManyToManyField(FuelSystemRepairWork, related_name='fuel_system_repair_work')
+    suspension_repair_work = models.ManyToManyField(SuspensionRepairWork, related_name='suspension_repair_work')
+
+    class Meta:
+        verbose_name = u"Автосервис"
+        verbose_name_plural = u"Автосервисы"
+
+    def get_absolute_url(self):
+        return reverse('service:autoservice_detail', kwargs={'service_alias': self.alias})
+
+    def get_work_list(self):
+        work_list = []
+        model_list = [ElectricianWork.objects.filter(electrician_work=self.id),
+                      BodyRepairWork.objects.filter(body_repair_work=self.id)
+        ]
+        for model in model_list:
+            for obj in model:
+                work_list.append(obj)
+
+        return work_list
 
 
-class CarWashWork(models.Model):
-    pass
+# class TireService(Service):
+#     pass
+#
+#     class Meta:
+#         verbose_name = u"Шиномонтаж"
+#         verbose_name_plural = u"Шиномонтажи"
+#
+#
+# class CarWash(Service):
+#     pass
+#
+#     class Meta:
+#         verbose_name = u"Автомойка"
+#         verbose_name_plural = u"Автомойки"
+

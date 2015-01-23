@@ -14,17 +14,7 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'getJsonService', function ($s
             function (data) {
                 //console.log(data.objects)
                 $scope.objects = data.objects
-                for (var i = 0; i < $scope.objects.length; i++) {
-                    var curObject = $scope.objects[i];
-                        curObject['work_list'] = {};
-                    console.log(curObject['body_repair__work'])
-                    for (var j = 0; j < list.length; j++) {
-                        curObject['work_list']= angular.extend({}, curObject['work_list'], curObject[list[j]])
-                    }
 
-                    curObject['work_list'] = angular.extend({}, curObject['work_list'], curObject['body_repair__work'])
-                    console.log(curObject)
-                }
                 $scope.filteredService = $scope.objects
 
             },
@@ -43,19 +33,28 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'getJsonService', function ($s
     $scope.$watch('options', function () {
         $scope.filteredService = [],
             selected = true;
-        angular.forEach($scope.options, function (val, key) {
+        angular.forEach($scope.options, function (key, val) {
             if (val == false) {
                 delete $scope.options[key];
             }
         })
+        //console.log($scope.options)
         for (var i = 0; i < $scope.objects.length; i++) {
             selected = true
             var curObject = $scope.objects[i];
             //console.log($scope.options)
             angular.forEach($scope.options, function (val, key) {
-                //console.log(val, ids.workTypes[key])
-                if (val != curObject.work_list[key]) {
-                    selected = false
+                if (val) {
+                    console.log(key )
+                    for (var j= 0; j < curObject.work_list.length; j++) {
+
+                        if (curObject.work_list[j].work_name !== key) {selected = false;}
+                        else {
+                            selected = true
+                        }
+                    }
+
+
                 }
 
             })

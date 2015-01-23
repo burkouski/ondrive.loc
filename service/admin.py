@@ -1,10 +1,7 @@
 from django.contrib import admin
-from service.models import AutoService, TireService, CarWash, ElectricianWork, BodyRepairWork, TireServiceWork, CarWashWork
+from service.models import AutoService, ElectricianWork, BodyRepairWork, EngineRepairWork
 from django.contrib.contenttypes.admin import GenericTabularInline
 
-
-class ElectricianWorkInline(admin.StackedInline):
-    model = ElectricianWork
 
 
 class BodyRepairWorkInline(admin.StackedInline):
@@ -12,6 +9,7 @@ class BodyRepairWorkInline(admin.StackedInline):
 
 
 class AutoServiceAdmin(admin.ModelAdmin):
+    filter_horizontal = ('engine_repair_work',)
     fieldsets = (
         ('Контактные данные', {
             'fields': (
@@ -28,7 +26,10 @@ class AutoServiceAdmin(admin.ModelAdmin):
             'fields': ('teaser', 'full_desc', 'is_top')
         }),
         ('Координаты для карты', {
-            'fields': (('latitude', 'longitude'))
+            'fields': ('latitude', 'longitude')
+        }),
+        ('Виды работ', {
+            'fields': ('electrician_work', 'body_repair_work', 'engine_repair_work')
         }),
         ('Мета данные', {
             'fields': ('title', 'meta_keywords', 'meta_description')
@@ -36,10 +37,7 @@ class AutoServiceAdmin(admin.ModelAdmin):
 
     )
     readonly_fields = ('get_logo_img',)
-    inlines = [
-        ElectricianWorkInline,
-        BodyRepairWorkInline
-    ]
+
 
 
 class TireServiceAdmin(admin.ModelAdmin):
@@ -60,6 +58,9 @@ class CarWashAdmin(admin.ModelAdmin):
 
 
 admin.site.register(AutoService, AutoServiceAdmin)
+admin.site.register(ElectricianWork)
+admin.site.register(BodyRepairWork)
+admin.site.register(EngineRepairWork)
 #admin.site.register(TireService, TireServiceAdmin)
 #admin.site.register(CarWash, CarWashAdmin)
 #admin.site.register(AutoServiceWork, AutoServiceWorkAdmin)

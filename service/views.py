@@ -4,8 +4,7 @@ from service.models import AutoService, ElectricianWork
 
 def autoservice_detail(request, service_alias):
     service = get_object_or_404(AutoService, alias=service_alias)
-    works = ElectricianWork.objects.get(autoservice=service.id)
-    args = {'service': service, 'works': works}
+    args = {'service': service}
     return render(request, 'service/detail_view.html', args)
 
 

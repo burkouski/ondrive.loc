@@ -34,14 +34,12 @@ class TopAutoserviceRes(ModelResource):
 
 
 class AutoserviceRes(ModelResource):
-    electrician_work = fields.ForeignKey('service.api.ElectricianWorkRes', 'electrician_work',  full=True, null=True)
-    body_repair__work = fields.ForeignKey('service.api.BodyRepairWorkRes', 'body_repair_work',  full=True, null=True)
-    url = fields.CharField(attribute='get_absolute_url', readonly=True)
+    work_list = fields.ListField(attribute='get_work_list', readonly=True)
+
     class Meta:
         queryset = AutoService.objects.all()
         resource_name = 'autoservices'
         excludes = ['phone_city',
-                    'id',
                     'title',
                     'phone_mts',
                     'phone_velcom',
@@ -64,11 +62,12 @@ class AutoserviceRes(ModelResource):
                     'is_top', ]
 
 
-class ElectricianWorkRes(ModelResource):
 
+class ElectricianWorkRes(ModelResource):
     class Meta:
         queryset = ElectricianWork.objects.all()
         resource_name = 'electrician_work'
+        excludes = ['id', 'resource_uri']
 
 
 class BodyRepairWorkRes(ModelResource):
