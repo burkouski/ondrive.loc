@@ -29,7 +29,8 @@ class AutoServiceAdmin(admin.ModelAdmin):
             'fields': ('latitude', 'longitude')
         }),
         ('Виды работ', {
-            'fields': ('electrician_work', 'body_repair_work', 'engine_repair_work')
+            'fields': ('electrician_work', 'body_repair_work', 'engine_repair_work', 'fuel_system_repair_work', 'suspension_repair_work', 'break_system_repair_work', 'auto_diag_work',
+            'kpp_repair_work', 'air_condition_repair_work', 'autoglasses_repair_work', 'gas_applianses_repair_work', 'oil_replace_work', 'audio_alarm_repair_work', 'tuning_work', 'other_auto_work')
         }),
         ('Мета данные', {
             'fields': ('title', 'meta_keywords', 'meta_description')
@@ -37,7 +38,6 @@ class AutoServiceAdmin(admin.ModelAdmin):
 
     )
     readonly_fields = ('get_logo_img',)
-
 
 
 class TireServiceAdmin(admin.ModelAdmin):

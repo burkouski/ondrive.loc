@@ -21,13 +21,13 @@ class Service(models.Model):
     phone_mts = models.CharField("МТС", max_length=10, blank=True)
     phone_life = models.CharField("Life", max_length=10, blank=True)
     phone_city = models.CharField("Городской", max_length=10, blank=True)
-    work_start = models.TimeField('Время начала работы', null=True)
-    work_end = models.TimeField('Время завершения работы', null=True)
-    break_time_start = models.TimeField('Время начала обеда', null=True)
-    break_time_end = models.TimeField('Время завершения обеда', null=True)
+    work_start = models.TimeField('Время начала работы', null=True, blank=True)
+    work_end = models.TimeField('Время завершения работы', null=True, blank=True)
+    break_time_start = models.TimeField('Время начала обеда', null=True, blank=True)
+    break_time_end = models.TimeField('Время завершения обеда', null=True, blank=True)
     holiday = models.CharField("Сокращенные дни", max_length=10, blank=True)
-    holiday_time_start = models.TimeField('Время начала сокращенного дня', null=True)
-    holiday_time_end = models.TimeField('Время завершения сокращенного дня', null=True)
+    holiday_time_start = models.TimeField('Время начала сокращенного дня', null=True, blank=True)
+    holiday_time_end = models.TimeField('Время завершения сокращенного дня', null=True, blank=True)
     monday = models.BooleanField('Понедельник', blank=True)
     tuesday = models.BooleanField('Вторник', blank=True)
     wednesday = models.BooleanField('Среда', blank=True)
@@ -39,7 +39,7 @@ class Service(models.Model):
     site_url = models.URLField('Сайт', blank=True)
     full_desc = RichTextField("Полное описание", blank=True)
     logo = models.ImageField("Логотип компании", blank=True)
-    is_top = models.BooleanField("Выводить в топ на главной?", default=None)
+    is_top = models.BooleanField("Выводить в топ на главной?", default=None, blank=True)
     latitude = models.CharField('Широта', max_length=200, blank=True)
     longitude = models.CharField('Долгота', max_length=200, blank=True)
     title = models.CharField('title страницы', max_length=200, blank=True)
@@ -63,14 +63,14 @@ class Service(models.Model):
         location = "%s" % address
         location = location.encode('utf-8')
 
-        if self.pk is not None:
-            origin_address = Service(pk=self.pk)
-
-        if not self.latitude or not self.longitude or (origin_address.address != self.address):
-            latlng = self.geocode(location)
-            latlng = latlng.split(' ')
-            self.latitude = latlng[0]
-            self.longitude = latlng[1]
+        # if self.pk is not None:
+        #     origin_address = Service(pk=self.pk)
+        #
+        # if not self.latitude or not self.longitude or (origin_address.address != self.address):
+        #     latlng = self.geocode(location)
+        #     latlng = latlng.split(' ')
+        #     self.latitude = latlng[0]
+        #     self.longitude = latlng[1]
 
         # Если не задано поле alias Получаем его из поля name
         if not self.alias:
@@ -143,7 +143,6 @@ class EngineRepairWork(AutoserviceWork):
 
 #Ремонт топливной системы
 class FuelSystemRepairWork(AutoserviceWork):
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Ремонт топливной системы"
@@ -151,7 +150,6 @@ class FuelSystemRepairWork(AutoserviceWork):
 
 #Ремонт подвески, трансмиссии
 class SuspensionRepairWork(AutoserviceWork):
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Ремонт подвески"
@@ -159,8 +157,6 @@ class SuspensionRepairWork(AutoserviceWork):
 
 #Тормозная система
 class BreakSystemRepairWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='break_system_repair_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Тормозная система"
@@ -168,8 +164,6 @@ class BreakSystemRepairWork(AutoserviceWork):
 
 #Диагностика автомобилей
 class AutoDiagWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='auto_diag_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Диагностика автомобилей"
@@ -177,8 +171,6 @@ class AutoDiagWork(AutoserviceWork):
 
 #Ремонт КПП
 class KppRepairWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='kpp_repair_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Ремонт КПП"
@@ -186,8 +178,6 @@ class KppRepairWork(AutoserviceWork):
 
 #Кондиционер, радиаторы
 class AirConditionRepairWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='air_condition_repair_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Кондиционер, радиаторы"
@@ -195,8 +185,6 @@ class AirConditionRepairWork(AutoserviceWork):
 
 #Автостекла
 class AutoglassesRepairWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='autoglasses_repair_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Автостекла"
@@ -204,8 +192,6 @@ class AutoglassesRepairWork(AutoserviceWork):
 
 #Газовое оборудование
 class GasAppliancesRepairWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='gas_appliances_repair_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Газовое оборудование"
@@ -213,8 +199,6 @@ class GasAppliancesRepairWork(AutoserviceWork):
 
 #Замена масла, ремней
 class OilReplaceWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='oil_replace_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Замена масла"
@@ -222,8 +206,6 @@ class OilReplaceWork(AutoserviceWork):
 
 #Аудио, Сигнализации
 class AudioAlarmRepairWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='audio_alarm_repair_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Аудио, Сигнализации"
@@ -231,8 +213,6 @@ class AudioAlarmRepairWork(AutoserviceWork):
 
 #Тюнинг
 class TuningWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='tuning_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Тюнинг"
@@ -240,12 +220,9 @@ class TuningWork(AutoserviceWork):
 
 #Прочее
 class OtherAutogWork(AutoserviceWork):
-    autoservice = models.ManyToManyField(AutoService, related_name='other_auto_work')
-
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Прочее"
-
 
 
 # class TireServiceWork(models.Model):
@@ -264,8 +241,31 @@ class AutoService(Service):
                                               verbose_name='Кузовной ремонт')
     engine_repair_work = models.ManyToManyField(EngineRepairWork, related_name='body_repair_work',
                                                 verbose_name='Ремонт двигателя')
-    fuel_system_repair_work = models.ManyToManyField(FuelSystemRepairWork, related_name='fuel_system_repair_work')
-    suspension_repair_work = models.ManyToManyField(SuspensionRepairWork, related_name='suspension_repair_work')
+    fuel_system_repair_work = models.ManyToManyField(FuelSystemRepairWork, related_name='fuel_system_repair_work',
+                                                     verbose_name='Ремонт топливной системы')
+    suspension_repair_work = models.ManyToManyField(SuspensionRepairWork, related_name='suspension_repair_work',
+                                                    verbose_name='Ремонт подвески')
+    break_system_repair_work = models.ManyToManyField(BreakSystemRepairWork, related_name='break_system_repair_work',
+                                                      verbose_name='Ремонт тормозной системы')
+    auto_diag_work = models.ManyToManyField(AutoDiagWork, related_name='auto_diag_work',
+                                            verbose_name='Диагностика автомобилей')
+    kpp_repair_work = models.ManyToManyField(KppRepairWork, related_name='kpp_repair_work',
+                                             verbose_name='Ремонт КПП')
+    air_condition_repair_work = models.ManyToManyField(AirConditionRepairWork, related_name='air_condition_repair_work',
+                                                       verbose_name='Кондиционер, радиаторы')
+    autoglasses_repair_work = models.ManyToManyField(AutoglassesRepairWork, related_name='autoglasses_repair_work',
+                                                     verbose_name='Автостекла')
+    gas_applianses_repair_work = models.ManyToManyField(GasAppliancesRepairWork,
+                                                        related_name='gas_applianses_repair_work',
+                                                        verbose_name='Газовое оборудование')
+    oil_replace_work = models.ManyToManyField(OilReplaceWork, related_name='oil_replace_work',
+                                              verbose_name='Замена масла')
+    audio_alarm_repair_work = models.ManyToManyField(AudioAlarmRepairWork, related_name='audio_alarm_repair_work',
+                                                     verbose_name='Аудио, Сигнализации')
+    tuning_work = models.ManyToManyField(TuningWork, related_name='tuning_work',
+                                         verbose_name='Тюнинг')
+    other_auto_work = models.ManyToManyField(OtherAutogWork, related_name='other_auto_work',
+                                             verbose_name='Прочее')
 
     class Meta:
         verbose_name = u"Автосервис"
