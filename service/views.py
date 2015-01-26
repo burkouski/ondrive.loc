@@ -10,5 +10,6 @@ def autoservice_detail(request, service_alias):
 
 
 def autoservice_list(request):
-    services = get_list_or_404(AutoService)
+    services = AutoService.objects.filter(electrician_work__in= [1,2], body_repair_work__in=[1,2]).distinct()
+    services = serializers.serialize('json',services)
     return render(request, 'service/list_view.html', {'services': services})
