@@ -110,17 +110,9 @@ class AutoserviceWork(models.Model):
     def get_model_name(self):
         model_name = self._meta.verbose_name_plural.title()
         return model_name
-        # def get_work_dict(self):
-        #     work_dict = {}
-        #     field_list = self._meta.get_all_field_names()[1:]
-        #     model_name = self._meta.verbose_name_plural
-        #     work_dict ={'fgfgf' :[[self._meta.get_field(field).verbose_name, self.__dict__[field]] for field in field_list if self.__dict__[field]]}
-        #     return work_dict
 
 
-        # АВТОЭЛЕКТРИКА
-
-
+# АВТОЭЛЕКТРИКА
 class ElectricianWork(AutoserviceWork):
     class Meta:
         verbose_name = u""
