@@ -1,14 +1,5 @@
 {% extends "layout.html" %}
 {% load w_news %}
-{% load sitetree %}
-
-{% block meta %}
-    <meta name="description" content="{% sitetree_page_description from 'for_news' %}">
-{% endblock %}
-
-{% block title %}
-    <title>{% sitetree_page_title from "for_news" %}</title>
-{% endblock %}
 
 {% block page %}
     <!-- Main Container Starts -->
@@ -18,8 +9,8 @@
             <div class="col-md-9">
                 <!-- Breadcrumb Starts -->
                 {% block breadcrumbs %}
-
-                    {% sitetree_breadcrumbs from "for_news" %}
+                    {% load sitetree %}
+                    {% sitetree_breadcrumbs from "main" %}
                 {% endblock %}
                 <!-- Breadcrumb Ends -->
                 {% block content %}

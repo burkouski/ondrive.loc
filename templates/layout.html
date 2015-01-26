@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load sitetree %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,11 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block meta %}
-        <meta name="description" content="{{ config.meta_description }}">
-        <meta name="keyword" content="{{ config.meta_keywords }}">
+        <meta name="description" content="{% sitetree_page_description from 'main' %}">
     {% endblock %}
+
     {% block title %}
-        <title>ondrive.by | Портал автолюбителей Беларуси</title>
+        <title>{% sitetree_page_title from "main" %}</title>
     {% endblock %}
 
 
@@ -113,20 +114,22 @@
                     Вы вошли как: {{ user.username }}
                 {% else %}
                     <form class="form-inline" method="post" action="/accounts/login/" role="form">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label class="sr-only" for="id_username">Имя пользователя:</label>
-                                    <input class="form-control" id="id_username" maxlength="254" name="username" type="text" placeholder="Username">
-                                </div>
-                                <div class="form-group">
-                                     <label class="sr-only" for="id_password">Пароль:</label>
-                                    <input class="form-control" id="id_password" name="password" type="password" placeholder="Username">
-                                </div>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="sr-only" for="id_username">Имя пользователя:</label>
+                            <input class="form-control" id="id_username" maxlength="254" name="username" type="text"
+                                   placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="id_password">Пароль:</label>
+                            <input class="form-control" id="id_password" name="password" type="password"
+                                   placeholder="Username">
+                        </div>
 
 
-                                <input type="submit" value="Log in" class="btn btn-danger"/>
-                                <input type="hidden" name="next" value="{{ next }}"/>
-                            </form>
+                        <input type="submit" value="Log in" class="btn btn-danger"/>
+                        <input type="hidden" name="next" value="{{ next }}"/>
+                    </form>
                 {% endif %}
 
                 <!-- Login Panel Starts -->
@@ -173,7 +176,7 @@
                 <!--li><a href="category-list.html">Блоги</a></li-->
                 <li class="dropdown">
                     <span class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                       data-delay="10">
+                          data-delay="10">
                         Сервисы
                     </span>
                     <ul class="dropdown-menu" role="menu">

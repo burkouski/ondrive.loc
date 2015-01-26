@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +45,8 @@ INSTALLED_APPS = (
     'ckeditor',
     'sitetree',
     #'registration',
-    'myauth'
+    'myauth',
+    'autofixture'
     #'visits',
 )
 COMMENTS_APP = "django_comments_xtd"
@@ -120,5 +122,13 @@ REGISTRATION_OPEN = True                # If True, users can register
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
+
+SAMPLEDATAHELPER_SEED = 123456789
+SAMPLEDATAHELPER_MODELS = [
+    # Generate 5 instances completly random
+    { 'model': 'service.AutoService', 'number': 5, }
+
+]
+API_LIMIT_PER_PAGE = 0
 
 

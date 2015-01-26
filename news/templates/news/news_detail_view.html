@@ -1,8 +1,16 @@
 {% extends "news/layout.html" %}
 
+{% block meta %}
+    <meta name="description" content="{{ post.description }}">
+{% endblock %}
+
+{% block title %}
+    <title>{{ post.title }}</title>
+{% endblock %}
+
 {% block breadcrumbs %}
     {% load sitetree %}
-    {% sitetree_breadcrumbs from "for_news_detail" %}
+    {% sitetree_breadcrumbs from "for_post" %}
 {% endblock %}
 
 {% block content %}
