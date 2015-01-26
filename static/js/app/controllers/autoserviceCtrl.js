@@ -12,7 +12,7 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'getJsonService', function ($s
 
         getJsonService.square(url).getJson().$promise.then(
             function (data) {
-                //console.log(data.objects)
+                console.log(data.objects)
                 $scope.objects = data.objects
 
                 $scope.filteredService = $scope.objects

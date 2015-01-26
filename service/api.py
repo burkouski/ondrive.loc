@@ -35,6 +35,7 @@ class TopAutoserviceRes(ModelResource):
 
 class AutoserviceRes(ModelResource):
     work_list = fields.ListField(attribute='get_work_list', readonly=True)
+    url = fields.CharField(attribute='get_absolute_url')
 
     class Meta:
         queryset = AutoService.objects.all()

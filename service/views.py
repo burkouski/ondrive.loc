@@ -11,5 +11,4 @@ def autoservice_detail(request, service_alias):
 
 def autoservice_list(request):
     services = get_list_or_404(AutoService)
-    njson = serializers.serialize('json', [ services[1], ])
-    return render(request, 'service/list_view.html', {'services': services, 'json': njson})
+    return render(request, 'service/list_view.html', {'services': services})

@@ -1,0 +1,18 @@
+<div class="list-group">
+    {% for key, val in res.items %}
+        <div class="list-group-item">
+                {{ key }}
+            </div>
+        <div class="list-group-item">
+                <div class="filter-group">
+                    {% for item in val %}
+                    <label class="checkbox">
+                        <input name="filter1" type="checkbox" ng-model="options['Компьютерная диагностика']" class="ng-pristine ng-valid">
+                        {{ item }}
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+    {% endfor %}
+
+        </div>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from service.models import AutoService, ElectricianWork, BodyRepairWork, EngineRepairWork
+from service.models import AutoService, ElectricianWork, BodyRepairWork, EngineRepairWork,FuelSystemRepairWork, SuspensionRepairWork, BreakSystemRepairWork, AutoDiagWork, KppRepairWork,AirConditionRepairWork,AutoglassesRepairWork,GasAppliancesRepairWork,OilReplaceWork,AudioAlarmRepairWork, TuningWork, OtherAutogWork
 from django.contrib.contenttypes.admin import GenericTabularInline
 
 
@@ -9,7 +9,8 @@ class BodyRepairWorkInline(admin.StackedInline):
 
 
 class AutoServiceAdmin(admin.ModelAdmin):
-    filter_horizontal = ('engine_repair_work',)
+    filter_horizontal = ('electrician_work', 'body_repair_work', 'engine_repair_work', 'fuel_system_repair_work', 'suspension_repair_work', 'break_system_repair_work', 'auto_diag_work',
+            'kpp_repair_work', 'air_condition_repair_work', 'autoglasses_repair_work', 'gas_applianses_repair_work', 'oil_replace_work', 'audio_alarm_repair_work', 'tuning_work', 'other_auto_work')
     fieldsets = (
         ('Контактные данные', {
             'fields': (
@@ -55,12 +56,22 @@ class CarWashAdmin(admin.ModelAdmin):
         #AutoServiceWorkInline
     ]
 
-
-
 admin.site.register(AutoService, AutoServiceAdmin)
 admin.site.register(ElectricianWork)
 admin.site.register(BodyRepairWork)
 admin.site.register(EngineRepairWork)
+admin.site.register(FuelSystemRepairWork)
+admin.site.register(SuspensionRepairWork)
+admin.site.register(BreakSystemRepairWork)
+admin.site.register(AutoDiagWork)
+admin.site.register(KppRepairWork)
+admin.site.register(AirConditionRepairWork)
+admin.site.register(AutoglassesRepairWork)
+admin.site.register(GasAppliancesRepairWork)
+admin.site.register(OilReplaceWork)
+admin.site.register(AudioAlarmRepairWork)
+admin.site.register(TuningWork)
+admin.site.register(OtherAutogWork)
 #admin.site.register(TireService, TireServiceAdmin)
 #admin.site.register(CarWash, CarWashAdmin)
 #admin.site.register(AutoServiceWork, AutoServiceWorkAdmin)

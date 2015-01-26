@@ -1,14 +1,22 @@
 {% extends "layout.html" %}
+
+{% block meta %}
+    <meta name="description" content="{{ service.description }}">
+{% endblock %}
+
+{% block title %}
+    <title>{{ service.title }}</title>
+{% endblock %}
+
 {% block page %}
 
     <!-- Main Container Starts -->
     <div id="main-container" class="container">
         <!-- Breadcrumb Starts -->
-        <ol class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="category-grid.html">Category</a></li>
-            <li class="active">Product</li>
-        </ol>
+        {% block breadcrumbs %}
+                    {% load sitetree %}
+                    {% sitetree_breadcrumbs from "main" %}
+                {% endblock %}
         <!-- Breadcrumb Ends -->
         <!-- Product Info Starts -->
         <div class="row product-info full">
