@@ -1,29 +1,24 @@
-ymapsApp.controller('autoserviceCtrl', ['$scope', 'getJsonService', function ($scope, getJsonService) {
+ymapsApp.controller('autoserviceCtrl', ['$scope', 'getJsonService','services', function ($scope, getJsonService, services) {
 
-    $scope.isLoading = false;
+    //$scope.isLoading = false;
     $scope.objects = []
-    var apiUrl = "/api/v1/autoservices/?format=jsonp",
+    var apiUrl = "/autoservices/",
         workList = ['electrician_work','body_repair__work']
-    loadRemoteData(apiUrl, workList);
 
-    function loadRemoteData(url, list) {
+    loadRemoteData(apiUrl);
+        //$scope.isLoading = true;
+    function loadRemoteData(apiUrl, list) {
 
-        $scope.isLoading = true;
+        services.list(apiUrl, function(services) {
+            //alert(true)
+          $scope.services = services;
+            console.log($scope.services)
+            $scope.filteredService = $scope.services
+        },
+        function(){
+            alert('wrong')
+        });
 
-        getJsonService.square(url).getJson().$promise.then(
-            function (data) {
-                console.log(data.objects)
-                $scope.objects = data.objects
-
-                $scope.filteredService = $scope.objects
-
-            },
-            function (error) {
-
-                alert("Something went wrong!");
-
-            }
-        )
 
     };
 

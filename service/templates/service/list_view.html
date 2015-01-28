@@ -2,7 +2,10 @@
 {% load sitetree %}
 {% load w_autoservice %}
 {% block page %}
-    {{ json }}
+
+    {% for service in services %}
+        {{ service.0.name}}
+    {% endfor %}
     <!-- Main Container Starts -->
     <div id="main-container" ng-app="ymapsApp"  ng-cloak  ng-controller="autoserviceCtrl">
     <div class="row">
@@ -34,7 +37,7 @@
         <div class="row cat-intro" >
             {% verbatim %}
             <section class="map map_main col-md-12">
-                <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[55.21, 34.30];zoom=10" ng-if="isLoading">
+                <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[55.21, 34.30];zoom=10">
                 <yandex-map center="center" zoom="zoom" class="map__container">
                     <ymap-marker ng-repeat="service in filteredService"
                                  coordinates="[service.longitude ,service.latitude]"
@@ -88,7 +91,7 @@
         </div>
         <!-- Product Filter Ends -->
         <!-- Product List Display Starts -->
-        <div class="row" ng-if="isLoading">
+        <div class="row">
 
             <!-- Product #1 Starts -->
             {% verbatim %}
