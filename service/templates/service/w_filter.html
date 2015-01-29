@@ -3,16 +3,23 @@
         <div class="list-group-item">
                 {{ key }}
             </div>
+        {% for item in val %}
         <div class="list-group-item">
                 <div class="filter-group">
-                    {% for item in val %}
+
                     <label class="checkbox">
-                        <input name="filter1" type="checkbox" ng-model="options['Компьютерная диагностика']" class="ng-pristine ng-valid">
+                        <input type="checkbox" checklist-model="filter.{{ item.work_field_name }}" checklist-value="{{ item.id }}">
                         {{ item }}
                     </label>
-                    {% endfor %}
+
                 </div>
             </div>
+                        {% endfor %}
     {% endfor %}
+{{ nj.name }}
 
+
+{% verbatim %}
+!!!!{{ filter | json }}
+{% endverbatim %}
         </div>

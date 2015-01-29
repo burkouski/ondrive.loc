@@ -10,10 +10,18 @@ def autoservice_detail(request, service_alias):
 
 
 def autoservice_list(request):
-    services = AutoService.objects.filter(electrician_work__in = [1,2], body_repair_work__in=[1,2]).distinct()
-    objs = request.POST
+    services = AutoService.objects.all()
+    obj = {}
+    for key in request.POST:
+        obj[key[:-2]] = request.POST.getlist(key)
+
+    for key, val in obj.items():
+        for x in val:
+            services = services.filter(**{ key: x })
+
+
     services = json.dumps([{
-        'dls': objs,
+        #'dls': obj,
                             'name': o.name,
                             'longitude': o.longitude,
                             'latitude': o.latitude,

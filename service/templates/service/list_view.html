@@ -10,7 +10,8 @@
     <div id="main-container" ng-app="ymapsApp"  ng-cloak  ng-controller="autoserviceCtrl">
     <div class="row">
     <!-- Primary Content Starts -->
-    <div class="col-md-9">
+    <div>
+        <div class="col-md-9">
         <!-- Breadcrumb Starts -->
         {% block breadcrumbs %}
                     {% load sitetree %}
@@ -91,10 +92,12 @@
         </div>
         <!-- Product Filter Ends -->
         <!-- Product List Display Starts -->
-        <div class="row">
+    !!!!!!!!!!!!!!<div ng-show="!preloader"><img src="/static/img/ajax_loader.gif" alt="preloader"/></div>
+        <div class="row" ng-show="preloader">
 
             <!-- Product #1 Starts -->
             {% verbatim %}
+            <div ng-if="!filteredService">ничего нету!!!!!!!</div>
                 <div class="col-xs-12" ng-repeat ="service in filteredService | paginate:rowPerPage">
                     <div class="product-col list clearfix">
                         <div class="image">
@@ -146,6 +149,8 @@
         <!-- Shopping Options Ends -->
 
     </div>
+    </div>
+
     <!-- Sidebar Ends -->
     </div>
     </div>

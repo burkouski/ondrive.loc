@@ -19,42 +19,19 @@ ymapsApp.service('getJsonService', ['$http', '$resource', function ($http, $reso
 }])
 
 ymapsApp.factory('services', ['$http', function ($http) {
-    data = {
-    "glossary": {
-        "title": "example glossary",
-		"GlossDiv": {
-            "title": "S",
-			"GlossList": {
-                "GlossEntry": {
-                    "ID": "SGML",
-					"SortAs": "SGML",
-					"GlossTerm": "Standard Generalized Markup Language",
-					"Acronym": "SGML",
-					"Abbrev": "ISO 8879:1986",
-					"GlossDef": {
-                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-						"GlossSeeAlso": ["GML", "XML"]
-                    },
-					"GlossSee": "markup"
-                }
-            }
-        }
-    }
-}
+
     return {
-        list: function (url, callback, error) {
+        list: function (url, data, callback, error) {
             $http({
                 method: 'POST',
-                data: { 'text': 'this is really important', 'date': '2014-06-09'},
-//                headers: {
-//                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-//                },
-                contentType: "application/x-www-form-urlencoded",
+                data: $.param(data),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                },
                 //dataType: 'json',
                 url: url,
                 cache: true,
-                responseType: 'json',
-                isArray: true
+                responseType: 'json'
             }).success(callback).error(error);
         }
     };

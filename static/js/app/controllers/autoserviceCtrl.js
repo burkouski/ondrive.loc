@@ -1,63 +1,43 @@
-ymapsApp.controller('autoserviceCtrl', ['$scope', 'getJsonService','services', function ($scope, getJsonService, services) {
+ymapsApp.controller('autoserviceCtrl', ['$scope', 'services', function ($scope, services) {
 
-    //$scope.isLoading = false;
+    var apiUrl = "/autoservices/";
+     $scope.preloader = false;
     $scope.objects = []
-    var apiUrl = "/autoservices/",
-        workList = ['electrician_work','body_repair__work']
+    $scope.filter = {}
+    data = $scope.filter
 
-    loadRemoteData(apiUrl);
-        //$scope.isLoading = true;
-    function loadRemoteData(apiUrl, list) {
+    loadRemoteData(apiUrl, data);
+    //$scope.isLoading = true;
+    function loadRemoteData(apiUrl, data) {
 
-        services.list(apiUrl, function(services) {
-            //alert(true)
-          $scope.services = services;
-            console.log($scope.services)
-            $scope.filteredService = $scope.services
-        },
-        function(){
-            alert('wrong')
-        });
+        services.list(apiUrl, data, function (services) {
+                //alert(true)
+                $scope.services = services;
+                console.log($scope.services)
+                $scope.filteredService = $scope.services
+                $scope.preloader  = true
+            },
+            function () {
+                alert('wrong')
+            });
 
 
     };
 
+    $scope.$watchCollection('filter.electrician_work', function () {
+        $scope.preloader  = false
+        data = $scope.filter
+        loadRemoteData(apiUrl, data);
 
-    $scope.options = {}
-
-    $scope.$watch('options', function () {
-        $scope.filteredService = [],
-            selected = true;
-        angular.forEach($scope.options, function (key, val) {
-            if (val == false) {
-                delete $scope.options[key];
-            }
-        })
-        //console.log($scope.options)
-        for (var i = 0; i < $scope.objects.length; i++) {
-            selected = true
-            var curObject = $scope.objects[i];
-            //console.log($scope.options)
-            angular.forEach($scope.options, function (val, key) {
-                if (val) {
-                    console.log(key )
-                    for (var j= 0; j < curObject.work_list.length; j++) {
-
-                        if (curObject.work_list[j].work_name !== key) {selected = false;}
-                        else {
-                            selected = true
-                        }
-                    }
-
-
-                }
-
-            })
-            if (selected) {
-                $scope.filteredService.push(curObject)
-            }
-        }
-        //console.log($scope.filteredService)
     }, true)
+    $scope.$watchCollection('filter.fuel_system_repair_work', function () {
+        $scope.preloader  = false
+        console.log($scope.filter)
+        data = $scope.filter
+        loadRemoteData(apiUrl, data);
+
+
+    }, true)
+
 
 }]);

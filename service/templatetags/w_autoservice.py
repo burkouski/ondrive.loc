@@ -16,4 +16,4 @@ def show_autoservice_filter():
     json = [x[0].rel.to for x in njson]
     for y in json:
         res[y._meta.verbose_name_plural.title()] = y.objects.all()
-    return {'res': res}
+    return {'res': res, 'nj': njson}

@@ -114,6 +114,8 @@ class AutoserviceWork(models.Model):
 
 # АВТОЭЛЕКТРИКА
 class ElectricianWork(AutoserviceWork):
+    work_field_name = 'electrician_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Автоэлектрика"
@@ -121,6 +123,8 @@ class ElectricianWork(AutoserviceWork):
 
 # КУЗОВНОЙ РЕМОНТ
 class BodyRepairWork(AutoserviceWork):
+    work_field_name = 'body_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Кузовной ремонт"
@@ -128,6 +132,8 @@ class BodyRepairWork(AutoserviceWork):
 
 #РЕМОНТ ДВИГАТЕЛЯ
 class EngineRepairWork(AutoserviceWork):
+    work_field_name = 'engine_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Ремонт двигателя"
@@ -135,6 +141,8 @@ class EngineRepairWork(AutoserviceWork):
 
 #Ремонт топливной системы
 class FuelSystemRepairWork(AutoserviceWork):
+    work_field_name = 'fuel_system_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Ремонт топливной системы"
@@ -142,6 +150,8 @@ class FuelSystemRepairWork(AutoserviceWork):
 
 #Ремонт подвески, трансмиссии
 class SuspensionRepairWork(AutoserviceWork):
+    work_field_name = 'suspension_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Ремонт подвески"
@@ -149,6 +159,8 @@ class SuspensionRepairWork(AutoserviceWork):
 
 #Тормозная система
 class BreakSystemRepairWork(AutoserviceWork):
+    work_field_name = 'break_system_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Тормозная система"
@@ -156,6 +168,8 @@ class BreakSystemRepairWork(AutoserviceWork):
 
 #Диагностика автомобилей
 class AutoDiagWork(AutoserviceWork):
+    work_field_name = 'auto_diag_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Диагностика автомобилей"
@@ -163,6 +177,8 @@ class AutoDiagWork(AutoserviceWork):
 
 #Ремонт КПП
 class KppRepairWork(AutoserviceWork):
+    work_field_name = 'kpp_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Ремонт КПП"
@@ -170,6 +186,8 @@ class KppRepairWork(AutoserviceWork):
 
 #Кондиционер, радиаторы
 class AirConditionRepairWork(AutoserviceWork):
+    work_field_name = 'air_condition_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Кондиционер, радиаторы"
@@ -177,6 +195,8 @@ class AirConditionRepairWork(AutoserviceWork):
 
 #Автостекла
 class AutoglassesRepairWork(AutoserviceWork):
+    work_field_name = 'autoglasses_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Автостекла"
@@ -184,6 +204,8 @@ class AutoglassesRepairWork(AutoserviceWork):
 
 #Газовое оборудование
 class GasAppliancesRepairWork(AutoserviceWork):
+    work_field_name = 'gas_appliances_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Газовое оборудование"
@@ -191,6 +213,8 @@ class GasAppliancesRepairWork(AutoserviceWork):
 
 #Замена масла, ремней
 class OilReplaceWork(AutoserviceWork):
+    work_field_name = 'oil_replace_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Замена масла"
@@ -198,6 +222,8 @@ class OilReplaceWork(AutoserviceWork):
 
 #Аудио, Сигнализации
 class AudioAlarmRepairWork(AutoserviceWork):
+    work_field_name = 'audio_alarm_repair_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Аудио, Сигнализации"
@@ -205,6 +231,8 @@ class AudioAlarmRepairWork(AutoserviceWork):
 
 #Тюнинг
 class TuningWork(AutoserviceWork):
+    work_field_name = 'tuning_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Тюнинг"
@@ -212,6 +240,8 @@ class TuningWork(AutoserviceWork):
 
 #Прочее
 class OtherAutogWork(AutoserviceWork):
+    work_field_name = 'other_auto_work'
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Прочее"
@@ -266,16 +296,6 @@ class AutoService(Service):
     def get_absolute_url(self):
         return reverse('service:autoservice_detail', kwargs={'service_alias': self.alias})
 
-    def get_work_list(self):
-        work_list = []
-        model_list = [ElectricianWork.objects.filter(electrician_work=self.id),
-                      BodyRepairWork.objects.filter(body_repair_work=self.id)
-        ]
-        for model in model_list:
-            for obj in model:
-                work_list.append(obj)
-
-        return work_list
 
 
 # class TireService(Service):

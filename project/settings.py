@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-import middleware
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
 
@@ -28,7 +27,6 @@ TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
-APPEND_SLASH = False
 # Application definition
 
 INSTALLED_APPS = (
@@ -59,7 +57,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'middleware'
 )
 
 ROOT_URLCONF = 'project.urls'
