@@ -103,19 +103,19 @@
                     <div class="row" ng-show="preloader">
 
                         <!-- Product #1 Starts -->
-                        {% verbatim %}
+
 
                         <div class="col-xs-12" ng-repeat="service in filteredService | paginate:rowPerPage" ng-cloak>
                             <div class="product-col list clearfix">
                                 <div class="image">
-                                    <a href="{{ service.url }}"><img src="{{ service.logo }}" alt=""
+                                    <a href="{$ service.url $}"><img src="{$ service.logo $}" alt=""
                                                                      class="img-responsive"/></a>
                                 </div>
                                 <div class="caption">
-                                    <h4><a href="{{ service.url }}">{{ service.name }}</a></h4>
+                                    <h4><a href="{$ service.url $}">{{ service.name }}</a></h4>
 
                                     <div class="description">
-                                        {{ service.teaser }}
+                                        {$ service.teaser $}
                                     </div>
                                     <div class="price">
                                         <p class="price-tax">Адрес: {{ service.address }}</p>
@@ -123,7 +123,7 @@
                                     </div>
                                     <div class="cart-button button-group">
 
-                                        <a href="{{ service.url }}" class="btn btn-cart">
+                                        <a href="{$ service.url $}" class="btn btn-cart">
                                             Подробнее
                                             <i class="fa fa-shopping-cart"></i>
                                         </a>
@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                         </div>
-                        {% endverbatim %}
+
                         <!-- Product #1 Ends -->
 
                     </div>

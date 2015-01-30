@@ -1,25 +1,24 @@
 <div class="list-group">
     {% for key, val in res.items %}
-        <div class="list-group-item">
-                {{ key }}
-            </div>
-        {% for item in val %}
-        <div class="list-group-item">
-                <div class="filter-group">
+        <div class="list-group-item" ng-class="{active: isOpenTab('tab{{ forloop.counter }}')}"  ng-click="openTab('tab{{ forloop.counter }}')" style="cursor: pointer">
+            {{ key }}
+        </div>
 
+        <div class="list-group-item" ng-show="isOpenTab('tab{{ forloop.counter }}')">
+            <div class="filter-group">
+                {% for item in val %}
                     <label class="checkbox">
-                        <input type="checkbox" checklist-model="filter.{{ item.work_field_name }}" checklist-value="{{ item.id }}">
+                        <input type="checkbox" checklist-model="filter.{{ item.work_field_name }}"
+                               checklist-value="{{ item.id }}">
                         {{ item }}
                     </label>
-
-                </div>
+                {% endfor %}
             </div>
-                        {% endfor %}
-    {% endfor %}
-{{ nj.name }}
-
-
-{% verbatim %}
-!!!!{{ filter | json }}
-{% endverbatim %}
         </div>
+
+    {% endfor %}
+    {{ nj.name }}
+
+
+    !!!!{$ filter | json $}
+</div>

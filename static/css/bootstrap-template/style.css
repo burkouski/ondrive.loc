@@ -979,6 +979,9 @@ hr{
 		font-size:14px;
 		text-transform:uppercase;
 	}
+    .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus{
+		background: #ef4135;
+	}
 	.list-group-item .fa{
 		font-size:12px;
 		padding-right:6px;
