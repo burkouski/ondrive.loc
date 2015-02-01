@@ -11,7 +11,7 @@
 {% block page %}
 
     <!-- Main Container Starts -->
-    <div id="main-container" class="container">
+    <div id="main-container">
         <!-- Breadcrumb Starts -->
         {% block breadcrumbs %}
                     {% load sitetree %}
@@ -40,8 +40,12 @@
                         <li>
                             <span>Адрес:</span> {{ service.address }}
                         </li>
+                        {% if service.siteUrl %}
                         <li><span>Сайт:</span> {{ service.siteUrl }}</li>
+                        {% endif %}
+                    {% if service.email %}
                         <li><span>E-mail:</span> {{ service.email }}</li>
+                    {% endif %}
                         <li>
                             <span>Телефоны:</span> <span>+375(29)333 33 33</span><span>+375(29)333 33 33</span><span>+375(29)333 33 33</span>
                         </li>

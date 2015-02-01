@@ -1,14 +1,13 @@
 ymapsApp.controller('autoserviceCtrl', ['$scope', 'services', function ($scope, services) {
 
-    var apiUrl = "/autoservices/";
-     $scope.preloader = false;
-    $scope.objects = []
-    $scope.filter = {}
-    data = $scope.filter
+    $scope.apiUrl = "/autoservices/";
+    $scope.preloader = false;
+    $scope.filter = {};
+    $scope.gridView = false
 
-    loadRemoteData(apiUrl, data);
+
     //$scope.isLoading = true;
-    function loadRemoteData(apiUrl, data) {
+    $scope.loadRemoteData = function(apiUrl, data) {
 
         services.list(apiUrl, data, function (services) {
                 //alert(true)
@@ -24,20 +23,9 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'services', function ($scope, 
 
     };
 
-    $scope.$watchCollection('filter.electrician_work', function () {
-        $scope.preloader  = false
-        data = $scope.filter
-        loadRemoteData(apiUrl, data);
-
-    }, true)
-    $scope.$watchCollection('filter.fuel_system_repair_work', function () {
-        $scope.preloader  = false
-        console.log($scope.filter)
-        data = $scope.filter
-        loadRemoteData(apiUrl, data);
+    $scope.loadRemoteData($scope.apiUrl, $scope.filter);
 
 
-    }, true)
 
     //initiate an array to hold all active tabs
     $scope.activeTabs = [];
@@ -66,5 +54,8 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'services', function ($scope, 
         }
     }
 
-
+$scope.changeView = function(view){
+            $scope.gridView = view; // path not hash
+    console.log($scope.view)
+        }
 }]);

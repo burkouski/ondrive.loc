@@ -403,13 +403,8 @@ hr{
 			background:#fff;
 			border:1px solid #e8e8e8;
 		}
-		.product-col.list .image{
-			padding:20px 30px 10px 0;
-			float:left;
-		}
-		.product-col .caption{
-			padding: 20px 0;
-		}
+
+
 			.product-col h4{
 				font-size:16px;
 				text-transform:uppercase;
@@ -647,7 +642,7 @@ hr{
 /* Product Filter Styles Starts */
 
 	.product-filter{
-		margin:30px 0;
+		margin:0px 0 30px 0;
 		padding:8px 0;
 		border:solid #d0d0d0;
 		border-width:1px 0;
@@ -655,15 +650,16 @@ hr{
 		.product-filter .display{
 			padding-top:5px;
 		}
-			.product-filter .display a{
+			.product-filter .display span{
 				color:#2f353b;
 				font-size:24px;
 				margin-right:6px;
+                cursor: pointer;
 			}
-			.product-filter .display a.active{
+			.product-filter .display span.active{
 				color:#ef4135;
 			}
-			.product-filter .display a.active:hover{
+			.product-filter .display span.active:hover{
 				text-decoration:none;
 			}
 		.product-filter .control-label{

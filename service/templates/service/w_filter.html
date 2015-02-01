@@ -1,15 +1,15 @@
-<div class="list-group">
+<div class="filter">
     {% for key, val in res.items %}
-        <div class="list-group-item" ng-class="{active: isOpenTab('tab{{ forloop.counter }}')}"  ng-click="openTab('tab{{ forloop.counter }}')" style="cursor: pointer">
-            {{ key }}
+        <div class="filter__title" ng-class="{active: isOpenTab('tab{{ forloop.counter }}')}"  ng-click="openTab('tab{{ forloop.counter }}')" style="cursor: pointer">
+            {{ key }}<i class="fa" ng-class="{'fa-arrow-circle-down': isOpenTab('tab{{ forloop.counter }}'), 'fa-arrow-circle-right': !isOpenTab('tab{{ forloop.counter }}')}"></i>
         </div>
 
-        <div class="list-group-item" ng-show="isOpenTab('tab{{ forloop.counter }}')">
+        <div class="list-group-item filter__options" ng-show="isOpenTab('tab{{ forloop.counter }}')" ng-cloak>
             <div class="filter-group">
                 {% for item in val %}
-                    <label class="checkbox">
-                        <input type="checkbox" checklist-model="filter.{{ item.work_field_name }}"
-                               checklist-value="{{ item.id }}">
+                    <label class="checkbox filter__option-label">
+                        <input class="filter__option" type="checkbox" checklist-model="filter.{{ item.work_field_name }}"
+                               checklist-value="{{ item.id }}" ng-click="loadRemoteData(apiUrl, filter)">
                         {{ item }}
                     </label>
                 {% endfor %}

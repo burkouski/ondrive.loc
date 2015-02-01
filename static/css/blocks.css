@@ -152,3 +152,34 @@
   width: 100%;
   height: 500px;
 }
+.filter__title,
+.filter__options {
+  position: relative;
+  display: block;
+  padding: 10px 20px 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-transition: 0.3s linear all;
+          transition: 0.3s linear all;
+}
+.filter__title:hover,
+.filter__title.active {
+  background: #ef4135;
+  border: 1px solid #ef4135;
+  color: #fff;
+}
+.filter__title .fa {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+.filter__options {
+  display: block;
+  -webkit-transition: all 1s ease-out 0.5s;
+          transition: all 1s ease-out 0.5s;
+}
+.filter__option-label,
+.filter__option {
+  cursor: pointer;
+}

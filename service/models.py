@@ -204,7 +204,7 @@ class AutoglassesRepairWork(AutoserviceWork):
 
 #Газовое оборудование
 class GasAppliancesRepairWork(AutoserviceWork):
-    work_field_name = 'gas_appliances_repair_work'
+    work_field_name = 'gas_applianses_repair_work'
 
     class Meta:
         verbose_name = u""

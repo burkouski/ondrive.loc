@@ -113,23 +113,7 @@
                 {% if user.is_authenticated %}
                     Вы вошли как: {{ user.username }}
                 {% else %}
-                    <form class="form-inline" method="post" action="/accounts/login/" role="form">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label class="sr-only" for="id_username">Имя пользователя:</label>
-                            <input class="form-control" id="id_username" maxlength="254" name="username" type="text"
-                                   placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="id_password">Пароль:</label>
-                            <input class="form-control" id="id_password" name="password" type="password"
-                                   placeholder="Username">
-                        </div>
 
-
-                        <input type="submit" value="Log in" class="btn btn-danger"/>
-                        <input type="hidden" name="next" value="{{ next }}"/>
-                    </form>
                 {% endif %}
 
                 <!-- Login Panel Starts -->

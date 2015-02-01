@@ -8,11 +8,9 @@
     {% endfor %}
     <!-- Main Container Starts -->
     <div id="main-container" ng-app="ymapsApp" ng-controller="autoserviceCtrl">
-        <div class="row">
-            <!-- Primary Content Starts -->
-            <div>
-                <div class="col-md-9">
-                    <!-- Breadcrumb Starts -->
+    <div class="row">
+        <dic class="col-md-12">
+            <!-- Breadcrumb Starts -->
                     {% block breadcrumbs %}
                         {% load sitetree %}
                         {% sitetree_breadcrumbs from "main" %}
@@ -48,7 +46,7 @@
                                 <yandex-map center="center" zoom="zoom" class="map__container">
                                     <ymap-marker ng-repeat="service in filteredService"
                                                  coordinates="[service.longitude ,service.latitude]"
-                                                 properties="{balloonContent: '<strong style='+'color:red'+'>'+service.name+'</strong><br>'+service.teaser+'<br>'+service.address, iconStyle.size: '300'}"
+                                                 properties="{balloonContent: '<strong style='+'color:red'+'>'+service.name+'</strong><br>+ service.teaser+<br>'+service.address}"
                                                  options="{
                         iconLayout: 'default#image',
                         iconImageHref: '/static/img/map/as-ico.png',
@@ -70,17 +68,24 @@
                         {% endverbatim %}
                     </div>
                     <!-- Category Intro Content Ends -->
+        </dic>
+    </div>
+        <div class="row">
+            <!-- Primary Content Starts -->
+
+                <div class="col-md-9">
+
                     <!-- Product Filter Starts -->
                     <div class="product-filter">
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="display">
-                                    <a href="category-list.html" class="active">
-                                        <i class="fa fa-th-list" title="List View"></i>
-                                    </a>
-                                    <a href="category-grid.html">
-                                        <i class="fa fa-th" title="Grid View"></i>
-                                    </a>
+                                    <span ng-class="{active: !gridView}" ng-click="changeView(false)">
+                                        <i class="fa fa-th-list" title="Отображать списком"></i>
+                                    </span>
+                                    <span ng-class="{active: gridView}" ng-click="changeView(true)">
+                                        <i class="fa fa-th" title="Отображать сеткой"></i>
+                                    </span>
                                 </div>
                             </div>
 
@@ -105,29 +110,31 @@
                         <!-- Product #1 Starts -->
 
 
-                        <div class="col-xs-12" ng-repeat="service in filteredService | paginate:rowPerPage" ng-cloak>
+                        <div ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}" ng-repeat="service in filteredService | paginate:rowPerPage" ng-cloak>
                             <div class="product-col list clearfix">
-                                <div class="image">
+                                <div class="row">
+                                <div class="image" ng-class="{'col-xs-4': !gridView, 'col-xs-12': gridView}">
                                     <a href="{$ service.url $}"><img src="{$ service.logo $}" alt=""
                                                                      class="img-responsive"/></a>
                                 </div>
-                                <div class="caption">
-                                    <h4><a href="{$ service.url $}">{{ service.name }}</a></h4>
+                                <div class="caption" ng-class="{'col-xs-8': !gridView, 'col-xs-12': gridView}">
+                                    <h4><a href="{$ service.url $}">{$ service.name $}</a></h4>
 
                                     <div class="description">
                                         {$ service.teaser $}
                                     </div>
                                     <div class="price">
-                                        <p class="price-tax">Адрес: {{ service.address }}</p>
+                                        <p class="price-tax">Адрес: {$ service.address $}</p>
 
                                     </div>
                                     <div class="cart-button button-group">
 
                                         <a href="{$ service.url $}" class="btn btn-cart">
                                             Подробнее
-                                            <i class="fa fa-shopping-cart"></i>
+                                            <i class="fa fa-angle-double-right"></i>
                                         </a>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +164,7 @@
                     <!-- Shopping Options Ends -->
 
                 </div>
-            </div>
+
 
             <!-- Sidebar Ends -->
         </div>
