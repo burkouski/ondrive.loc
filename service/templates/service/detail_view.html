@@ -12,155 +12,319 @@
 
     <!-- Main Container Starts -->
     <div id="main-container">
-        <!-- Breadcrumb Starts -->
-        {% block breadcrumbs %}
-                    {% load sitetree %}
-                    {% sitetree_breadcrumbs from "main" %}
-                {% endblock %}
-        <!-- Breadcrumb Ends -->
-        <!-- Product Info Starts -->
-        <div class="row product-info full">
-            <!-- Left Starts -->
-            <div class="col-sm-4 images-block">
-                <a href="images/product-images/big-pimg1.jpg">
-                    <img src="{{ service.logo.url }}" alt="{{ service.name }}" class="img-responsive thumbnail"/>
-                </a>
+    <!-- Breadcrumb Starts -->
+    {% block breadcrumbs %}
+        {% load sitetree %}
+        {% sitetree_breadcrumbs from "main" %}
+    {% endblock %}
+    <!-- Breadcrumb Ends -->
+    <!-- Product Info Starts -->
+    <div class="row product-info full">
+    <!-- Left Starts -->
+    <div class="col-sm-4 images-block">
+        <a href="images/product-images/big-pimg1.jpg">
+            <img src="{{ service.logo.url }}" alt="{{ service.name }}" class="img-responsive thumbnail"/>
+        </a>
 
-            </div>
-            <!-- Left Ends -->
-            <!-- Right Starts -->
-            <div class="col-sm-8 product-details">
-                <div class="panel-smart">
-                    <!-- Product Name Starts -->
-                    <h2>{{ service.name }}</h2>
-                    <!-- Product Name Ends -->
-                    <hr/>
-                    <!-- Manufacturer Starts -->
-                    <ul class="list-unstyled manufacturer">
-                        <li>
-                            <span>Адрес:</span> {{ service.address }}
-                        </li>
-                        {% if service.siteUrl %}
-                        <li><span>Сайт:</span> {{ service.siteUrl }}</li>
-                        {% endif %}
-                    {% if service.email %}
-                        <li><span>E-mail:</span> {{ service.email }}</li>
-                    {% endif %}
-                        <li>
-                            <span>Телефоны:</span> <span>+375(29)333 33 33</span><span>+375(29)333 33 33</span><span>+375(29)333 33 33</span>
-                        </li>
-                        <li><span>Время работы:</span> c {{ service.workStart }} до {{ service.workEnd }}</li>
-                    </ul>
-                    <!-- Manufacturer Ends -->
-                    <hr/>
-
-                    <!-- Available Options Starts -->
-                    <div class="options">
-                        <h3>Виды работ:</h3>
-
-                        <div class="row">
-                            {% if service.electrician_work.all %}
-                                <div class="col-md-4">
-                                    <h5>{{ service.electrician_work.first.get_model_name }}</h5>
-                                    <ul>
-                                        {% for work in service.electrician_work.all %}
-                                            <li>{{ work }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            {% endif %}
-
-                        </div>
-
-
-                    </div>
-                    <!-- Available Options Ends -->
-                </div>
-            </div>
-            <!-- Right Ends -->
-        </div>
-        <!-- Product Info Ends -->
-        <!-- Tabs Starts -->
-        <div class="tabs-panel panel-smart">
-            <!-- Nav Tabs Starts -->
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#tab-description">Описание</a>
+    </div>
+    <!-- Left Ends -->
+    <!-- Right Starts -->
+    <div class="col-sm-8 product-details">
+        <div class="panel-smart">
+            <!-- Product Name Starts -->
+            <h2>{{ service.name }}</h2>
+            <!-- Product Name Ends -->
+            <hr/>
+            <!-- Manufacturer Starts -->
+            <ul class="list-unstyled manufacturer">
+                <li>
+                    <span>Адрес:</span> {{ service.address }}
                 </li>
-                <li><a href="#tab-ainfo">Отзывы</a></li>
-                <li><a href="#tab-review">Оставить отзыв</a></li>
+                {% if service.siteUrl %}
+                    <li><span>Сайт:</span> {{ service.siteUrl }}</li>
+                {% endif %}
+                {% if service.email %}
+                    <li><span>E-mail:</span> {{ service.email }}</li>
+                {% endif %}
+                <li>
+                    <span>Телефоны:</span> <span>+375(29)333 33 33</span><span>+375(29)333 33 33</span><span>+375(29)333 33 33</span>
+                </li>
+                <li><span>Время работы:</span> c {{ service.workStart }} до {{ service.workEnd }}</li>
             </ul>
-            <!-- Nav Tabs Ends -->
-            <!-- Tab Content Starts -->
-            <div class="tab-content clearfix">
-                <!-- Description Starts -->
-                <div class="tab-pane active" id="tab-description"> {{ service.full_desc|safe }}</div>
-                <!-- Description Ends -->
-                <!-- Additional Information Starts -->
-                <div class="tab-pane" id="tab-ainfo">
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.
-                    </p>
+            <!-- Manufacturer Ends -->
+            <hr/>
+            <section ng-app="ymapsApp" class="map map_main">
+                            <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[55.21, 34.30]; zoom=2">
+                                <yandex-map center="center" zoom="zoom" class="map__container map__container--single">
+                                    <ymap-marker
+                                                 coordinates="[{{ service.longitude }} ,{{ service.latitude }}]"
+                                                 options="{
+                        iconLayout: 'default#image',
+                        iconImageHref: '/static/img/map/as-ico.png',
+                        iconImageSize: [30, 48],
+                        iconImageOffset: [-20, -20],
+
+                        iconShape: {
+                            type: 'Circle',
+                            coordinates: [0, 0],
+                            radius: 20
+                        },
+                     }">
+
+                                    </ymap-marker>
+                                </yandex-map>
+                            </div>
+                        </section>
+            <!-- Available Options Starts -->
+            <div class="options">
+
+                <h3>Виды работ:</h3>
+
+                <div class="row">
+                    {#Виды работ #}
+                    {% if service.electrician_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.electrician_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.electrician_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.body_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.body_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.body_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.engine_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.engine_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.engine_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.fuel_system_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.fuel_system_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.fuel_system_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.suspension_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.suspension_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.suspension_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.break_system_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.break_system_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.break_system_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.auto_diag_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.auto_diag_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.auto_diag_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.kpp_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.kpp_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.kpp_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.air_condition_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.air_condition_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.air_condition_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.autoglasses_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.autoglasses_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.autoglasses_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.gas_applianses_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.gas_applianses_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.gas_applianses_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.oil_replace_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.oil_replace_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.oil_replace_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.audio_alarm_repair_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.audio_alarm_repair_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.audio_alarm_repair_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.tuning_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.tuning_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.tuning_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if service.other_auto_work.all %}
+                        <div class="col-md-4">
+                            <h5>{{ service.other_auto_work.first.get_model_name }}</h5>
+                            <ul>
+                                {% for work in service.other_auto_work.all %}
+                                    <li>{{ work }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+
                 </div>
-                <!-- Additional Information Ends -->
-                <!-- Review Starts -->
-                <div class="tab-pane" id="tab-review">
-                    <form class="form-horizontal">
-                        <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-name">Name</label>
 
-                            <div class="col-sm-10">
-                                <input type="text" name="name" value="" id="input-name" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-review">Review</label>
 
-                            <div class="col-sm-10">
-                                <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-
-                                <div class="help-block">
-                                    Some note goes here..
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group required">
-                            <label class="col-sm-2 control-label ratings">Ratings</label>
-
-                            <div class="col-sm-10">
-                                Bad&nbsp;
-                                <input type="radio" name="rating" value="1"/>
-                                &nbsp;
-                                <input type="radio" name="rating" value="2"/>
-                                &nbsp;
-                                <input type="radio" name="rating" value="3"/>
-                                &nbsp;
-                                <input type="radio" name="rating" value="4"/>
-                                &nbsp;
-                                <input type="radio" name="rating" value="5"/>
-                                &nbsp;Good
-                            </div>
-                        </div>
-                        <div class="buttons">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="button" id="button-review" class="btn btn-warning">
-                                    Submit
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- Review Ends -->
             </div>
-            <!-- Tab Content Ends -->
+            <!-- Available Options Ends -->
         </div>
-        <!-- Tabs Ends -->
+    </div>
+    <!-- Right Ends -->
+    </div>
+    <!-- Product Info Ends -->
+    <!-- Tabs Starts -->
+    <div class="tabs-panel panel-smart">
+        <!-- Nav Tabs Starts -->
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#tab-description">Описание</a>
+            </li>
+            <li><a href="#tab-ainfo">Отзывы</a></li>
+            <li><a href="#tab-review">Оставить отзыв</a></li>
+        </ul>
+        <!-- Nav Tabs Ends -->
+        <!-- Tab Content Starts -->
+        <div class="tab-content clearfix">
+            <!-- Description Starts -->
+            <div class="tab-pane active" id="tab-description"> {{ service.full_desc|safe }}</div>
+            <!-- Description Ends -->
+            <!-- Additional Information Starts -->
+            <div class="tab-pane" id="tab-ainfo">
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                    but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more recently with desktop publishing software like Aldus PageMaker including versions of
+                    Lorem Ipsum.
+                </p>
+            </div>
+            <!-- Additional Information Ends -->
+            <!-- Review Starts -->
+            <div class="tab-pane" id="tab-review">
+                <form class="form-horizontal">
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="name" value="" id="input-name" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-review">Review</label>
+
+                        <div class="col-sm-10">
+                            <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+
+                            <div class="help-block">
+                                Some note goes here..
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label ratings">Ratings</label>
+
+                        <div class="col-sm-10">
+                            Bad&nbsp;
+                            <input type="radio" name="rating" value="1"/>
+                            &nbsp;
+                            <input type="radio" name="rating" value="2"/>
+                            &nbsp;
+                            <input type="radio" name="rating" value="3"/>
+                            &nbsp;
+                            <input type="radio" name="rating" value="4"/>
+                            &nbsp;
+                            <input type="radio" name="rating" value="5"/>
+                            &nbsp;Good
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="button-review" class="btn btn-warning">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Review Ends -->
+        </div>
+        <!-- Tab Content Ends -->
+    </div>
+    <!-- Tabs Ends -->
 
     </div>
     <!-- Main Container Ends -->

@@ -152,6 +152,9 @@
   width: 100%;
   height: 500px;
 }
+.map__container--single {
+  height: 200px;
+}
 .filter__title,
 .filter__options {
   position: relative;
