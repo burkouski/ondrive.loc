@@ -1,10 +1,10 @@
 $(function () {
-var $container = $('.masonry').packery();
+var $container = $('.masonry').masonry();
     $container.imagesLoaded(function () {
-        $container.packery({
+        $container.masonry({
             itemSelector: '.post-preview',
             isResizable: false,
-            gutter: 10
+            gutter: 0
         });
     });
 

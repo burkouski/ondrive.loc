@@ -47,14 +47,22 @@
                     <li><span>E-mail:</span> {{ service.email }}</li>
                 {% endif %}
                 <li>
-                    <span>Телефоны:</span> <span>+375(29)333 33 33</span><span>+375(29)333 33 33</span><span>+375(29)333 33 33</span>
+                    <span>Телефоны:</span>
+                    <span><i class="icon icon-mts2"></i>{{ service.phone_velcom }}</span>
+                    <span><i class="icon icon-mts2"></i>{{ service.phone_velcom2 }}</span>
+                    <span><i class="icon icon-mts2"></i>{{ service.phone_mts }}</span>
+                    <span><i class="icon icon-mts2"></i>{{ service.phone_mts2 }}</span>
+                    <span><i class="icon icon-mts2"></i>{{ service.phone_life }}</span>
+                    <span><i class="icon icon-mts2"></i>{{ service.phone_life2 }}</span>
+                    <span><i class="icon icon-mts2"></i>{{ service.phone_city }}</span>
+                    <span><i class="icon icon-mts2"></i>{{ service.phone_city2 }}</span>
                 </li>
                 <li><span>Время работы:</span> c {{ service.workStart }} до {{ service.workEnd }}</li>
             </ul>
             <!-- Manufacturer Ends -->
             <hr/>
             <section ng-app="ymapsApp" class="map map_main">
-                            <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[55.21, 34.30]; zoom=2">
+                            <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[{{ service.longitude }}, {{ service.latitude }}]; zoom='15'">
                                 <yandex-map center="center" zoom="zoom" class="map__container map__container--single">
                                     <ymap-marker
                                                  coordinates="[{{ service.longitude }} ,{{ service.latitude }}]"
@@ -75,15 +83,33 @@
                                 </yandex-map>
                             </div>
                         </section>
-            <!-- Available Options Starts -->
-            <div class="options">
 
-                <h3>Виды работ:</h3>
+        </div>
+    </div>
+    <!-- Right Ends -->
+    </div>
+    <!-- Product Info Ends -->
+    <!-- Tabs Starts -->
+    <div class="tabs-panel panel-smart">
+        <!-- Nav Tabs Starts -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-description">Описание</a></li>
+            <li><a href="#tab-work">Виды работ</a></li>
+            <li><a href="#tab-ainfo">Отзывы</a></li>
+            <li><a href="#tab-review">Оставить отзыв</a></li>
+        </ul>
+        <!-- Nav Tabs Ends -->
+        <!-- Tab Content Starts -->
+        <div class="tab-content clearfix">
+            <!-- Description Starts -->
+            <div class="tab-pane active" id="tab-description"> {{ service.full_desc|safe }}</div>
+            <div class="tab-pane" id="tab-work">
+                <!-- Available Options Starts -->
 
                 <div class="row">
                     {#Виды работ #}
                     {% if service.electrician_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.electrician_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.electrician_work.all %}
@@ -93,7 +119,7 @@
                         </div>
                     {% endif %}
                     {% if service.body_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.body_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.body_repair_work.all %}
@@ -103,7 +129,7 @@
                         </div>
                     {% endif %}
                     {% if service.engine_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.engine_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.engine_repair_work.all %}
@@ -113,7 +139,7 @@
                         </div>
                     {% endif %}
                     {% if service.fuel_system_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.fuel_system_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.fuel_system_repair_work.all %}
@@ -123,7 +149,7 @@
                         </div>
                     {% endif %}
                     {% if service.suspension_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.suspension_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.suspension_repair_work.all %}
@@ -133,7 +159,7 @@
                         </div>
                     {% endif %}
                     {% if service.break_system_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.break_system_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.break_system_repair_work.all %}
@@ -143,7 +169,7 @@
                         </div>
                     {% endif %}
                     {% if service.auto_diag_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.auto_diag_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.auto_diag_work.all %}
@@ -153,7 +179,7 @@
                         </div>
                     {% endif %}
                     {% if service.kpp_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.kpp_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.kpp_repair_work.all %}
@@ -163,7 +189,7 @@
                         </div>
                     {% endif %}
                     {% if service.air_condition_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.air_condition_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.air_condition_repair_work.all %}
@@ -173,7 +199,7 @@
                         </div>
                     {% endif %}
                     {% if service.autoglasses_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.autoglasses_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.autoglasses_repair_work.all %}
@@ -183,7 +209,7 @@
                         </div>
                     {% endif %}
                     {% if service.gas_applianses_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.gas_applianses_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.gas_applianses_repair_work.all %}
@@ -193,7 +219,7 @@
                         </div>
                     {% endif %}
                     {% if service.oil_replace_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.oil_replace_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.oil_replace_work.all %}
@@ -203,7 +229,7 @@
                         </div>
                     {% endif %}
                     {% if service.audio_alarm_repair_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.audio_alarm_repair_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.audio_alarm_repair_work.all %}
@@ -213,7 +239,7 @@
                         </div>
                     {% endif %}
                     {% if service.tuning_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.tuning_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.tuning_work.all %}
@@ -223,7 +249,7 @@
                         </div>
                     {% endif %}
                     {% if service.other_auto_work.all %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5>{{ service.other_auto_work.first.get_model_name }}</h5>
                             <ul>
                                 {% for work in service.other_auto_work.all %}
@@ -235,30 +261,8 @@
 
 
                 </div>
-
-
-            </div>
             <!-- Available Options Ends -->
-        </div>
-    </div>
-    <!-- Right Ends -->
-    </div>
-    <!-- Product Info Ends -->
-    <!-- Tabs Starts -->
-    <div class="tabs-panel panel-smart">
-        <!-- Nav Tabs Starts -->
-        <ul class="nav nav-tabs">
-            <li class="active">
-                <a href="#tab-description">Описание</a>
-            </li>
-            <li><a href="#tab-ainfo">Отзывы</a></li>
-            <li><a href="#tab-review">Оставить отзыв</a></li>
-        </ul>
-        <!-- Nav Tabs Ends -->
-        <!-- Tab Content Starts -->
-        <div class="tab-content clearfix">
-            <!-- Description Starts -->
-            <div class="tab-pane active" id="tab-description"> {{ service.full_desc|safe }}</div>
+            </div>
             <!-- Description Ends -->
             <!-- Additional Information Starts -->
             <div class="tab-pane" id="tab-ainfo">

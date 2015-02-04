@@ -69,7 +69,7 @@ angular.module('ymaps', [])
     markerOptions: {
         preset: 'islands#darkgreenIcon'
     },
-    fitMarkers: true
+    fitMarkers: false
 })
 .value('debounce', function (func, wait) {
     "use strict";

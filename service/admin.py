@@ -14,7 +14,7 @@ class AutoServiceAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Контактные данные', {
             'fields': (
-            'name', 'alias', 'address', 'site_url', 'email', 'get_logo_img', 'logo',)
+            'name', 'alias', 'address', 'site_url', 'email', 'get_logo_img', 'logo', 'phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2')
         }),
         ('Рабочие дни', {
             'fields': ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')

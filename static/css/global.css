@@ -41,6 +41,34 @@ input:-ms-input-placeholder:focus:-ms-input-placeholder {
   text-indent: 500px;
   transition: text-indent 0.3s ease;
 }
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?-4e0dpg');
+	src:url('../fonts/icomoon.eot?#iefix-4e0dpg') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?-4e0dpg') format('woff'),
+		url('../fonts/icomoon.ttf?-4e0dpg') format('truetype'),
+		url('../fonts/icomoon.svg?-4e0dpg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mts2:before {
+	content: "\e600";
+}
 /*сброс стилей для списков*/
 .unstyled {
   margin: 0;
