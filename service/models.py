@@ -17,14 +17,14 @@ class Service(models.Model):
     alias = models.SlugField(max_length=100, blank=True)
     teaser = models.TextField('Краткое описание')
     address = models.CharField('Адрес', max_length=200)
-    phone_velcom = models.CharField("Velcom", max_length=10, blank=True)
-    phone_velcom2 = models.CharField("второй Velcom", max_length=10, blank=True)
-    phone_mts = models.CharField("МТС", max_length=10, blank=True)
+    phone_velcom = models.CharField("Velcom", max_length=20, blank=True)
+    phone_velcom2 = models.CharField("второй Velcom", max_length=20, blank=True)
+    phone_mts = models.CharField("МТС", max_length=20, blank=True)
     phone_mts2 = models.CharField("второй МТС", max_length=10, blank=True)
-    phone_life = models.CharField("Life", max_length=10, blank=True)
-    phone_life2 = models.CharField("второй Life", max_length=10, blank=True)
-    phone_city = models.CharField("Городской", max_length=10, blank=True)
-    phone_city2 = models.CharField("второй Городской", max_length=10, blank=True)
+    phone_life = models.CharField("Life", max_length=20, blank=True)
+    phone_life2 = models.CharField("второй Life", max_length=20, blank=True)
+    phone_city = models.CharField("Городской", max_length=20, blank=True)
+    phone_city2 = models.CharField("второй Городской", max_length=20, blank=True)
     work_start = models.TimeField('Время начала работы', null=True, blank=True)
     work_end = models.TimeField('Время завершения работы', null=True, blank=True)
     break_time_start = models.TimeField('Время начала обеда', null=True, blank=True)
@@ -54,10 +54,10 @@ class Service(models.Model):
         abstract = True
 
     # Получаем рабочие дни ввиде списка Используеть в tastypie api
-    def get_workdays_list(self):
-        workDaysList = [self.monday, self.tuesday, self.wednesday, self.thursday, self.friday, self.saturday,
-                        self.sunday]
-        return workDaysList
+    def get_workday_list(self):
+        work_day_list = [[self.monday, 'пн'], [self.tuesday, 'вт'], [self.wednesday, 'ср'], [self.thursday, 'чт'], [self.friday, 'пт'], [self.saturday, 'сб'],
+                        [self.sunday, 'вс']]
+        return work_day_list
 
     def get_logo_img(self):
         return u'<img src="%s" />' % self.logo.url

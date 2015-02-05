@@ -48,16 +48,43 @@
                 {% endif %}
                 <li>
                     <span>Телефоны:</span>
-                    <span><i class="icon icon-mts2"></i>{{ service.phone_velcom }}</span>
-                    <span><i class="icon icon-mts2"></i>{{ service.phone_velcom2 }}</span>
-                    <span><i class="icon icon-mts2"></i>{{ service.phone_mts }}</span>
-                    <span><i class="icon icon-mts2"></i>{{ service.phone_mts2 }}</span>
-                    <span><i class="icon icon-mts2"></i>{{ service.phone_life }}</span>
-                    <span><i class="icon icon-mts2"></i>{{ service.phone_life2 }}</span>
-                    <span><i class="icon icon-mts2"></i>{{ service.phone_city }}</span>
-                    <span><i class="icon icon-mts2"></i>{{ service.phone_city2 }}</span>
+                    {% if service.phone_velcom %}
+                    <span class="phone"><i class="phone__icon icon icon-vel"><i class="path1"></i><i class="path2"></i><i class="path3"></i></i>{{ service.phone_velcom }}</span>
+                    {% endif %}
+                    {% if service.phone_velcom2 %}
+                    <span class="phone"><i class="phone__icon icon icon-city"></i>{{ service.phone_velcom2 }}</span>
+                {% endif %}
+                    {% if service.phone_mts %}
+                    <span class="phone"><i class="phone__icon icon icon-mts"></i>{{ service.phone_mts }}</span>
+                {% endif %}
+                    {% if service.phone_mts2 %}
+                    <span class="phone"><i class="phone__icon icon icon-mts"></i>{{ service.phone_mts2 }}</span>
+                {% endif %}
+                    {% if service.phone_life %}
+                    <span class="phone"><i class="phone__icon icon icon-life"></i>{{ service.phone_life }}</span>
+                {% endif %}
+                    {% if service.phone_life2 %}
+                    <span class="phone"><i class="phone__icon icon icon-life"></i>{{ service.phone_life2 }}</span>
+                {% endif %}
+                    {% if service.phone_city %}
+                    <span class="phone"><i class="phone__icon icon icon-city"></i>{{ service.phone_city }}</span>
+                {% endif %}
+                    {% if service.phone_city2 %}
+                    <span class="phone"><i class="phone__icon icon icon-city"></i>{{ service.phone_city2 }}</span>
+                {% endif %}
                 </li>
-                <li><span>Время работы:</span> c {{ service.workStart }} до {{ service.workEnd }}</li>
+                <li><span>Рабочие дни:</span>
+                <span class="workday">
+                    {% for day in service.get_workday_list %}
+                        {% if day.0 %}
+                            <span class="workday__icon workday__icon--blue">{{ day.1 }}</span>
+                            {% else %}
+                            <span class="workday__icon workday__icon--red">{{ day.1 }}</span>
+                        {% endif %}
+                    {% endfor %}
+                </span>
+                </li>
+                <li><span>Время работы:</span> c {{ service.work_start }} до {{ service.work_end }}</li>
             </ul>
             <!-- Manufacturer Ends -->
             <hr/>
