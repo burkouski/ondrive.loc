@@ -136,151 +136,151 @@
                 <div class="row">
                     {#Виды работ #}
                     {% if service.electrician_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.electrician_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.electrician_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.electrician_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.body_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.body_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3  work">
+                            <h5 class="work__title">{{ service.body_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.body_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.engine_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.engine_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3  work">
+                            <h5 class="work__title">{{ service.engine_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.engine_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.fuel_system_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.fuel_system_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.fuel_system_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.fuel_system_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.suspension_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.suspension_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.suspension_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.suspension_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.break_system_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.break_system_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.break_system_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.break_system_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.auto_diag_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.auto_diag_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.auto_diag_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.auto_diag_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.kpp_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.kpp_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.kpp_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.kpp_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.air_condition_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.air_condition_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.air_condition_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.air_condition_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.autoglasses_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.autoglasses_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.autoglasses_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.autoglasses_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.gas_applianses_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.gas_applianses_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.gas_applianses_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.gas_applianses_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.oil_replace_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.oil_replace_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.oil_replace_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.oil_replace_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.audio_alarm_repair_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.audio_alarm_repair_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.audio_alarm_repair_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.audio_alarm_repair_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.tuning_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.tuning_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.tuning_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.tuning_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     {% endif %}
                     {% if service.other_auto_work.all %}
-                        <div class="col-md-3">
-                            <h5>{{ service.other_auto_work.first.get_model_name }}</h5>
-                            <ul>
+                        <div class="col-md-3 work">
+                            <h5 class="work__title">{{ service.other_auto_work.first.get_model_name }}</h5>
+                            <ul class="work__list">
                                 {% for work in service.other_auto_work.all %}
-                                    <li>{{ work }}</li>
+                                    <li class="work__item">{{ work }}</li>
                                 {% endfor %}
                             </ul>
                         </div>

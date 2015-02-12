@@ -117,17 +117,6 @@ CKEDITOR_CONFIGS = {
 
 CKEDITOR_UPLOAD_PATH = "upload/"
 
-REGISTRATION_OPEN = True                # If True, users can register
-ACCOUNT_ACTIVATION_DAYS = 7
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/accounts/login/'
 
-SAMPLEDATAHELPER_SEED = 123456789
-SAMPLEDATAHELPER_MODELS = [
-    # Generate 5 instances completly random
-    { 'model': 'service.AutoService', 'number': 5, }
-
-]
-API_LIMIT_PER_PAGE = 0
 
 
