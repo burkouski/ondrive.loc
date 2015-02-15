@@ -79,3 +79,47 @@ input:-ms-input-placeholder:focus:-ms-input-placeholder {
 .footer {
   height: 80px;
 }
+/*иконки iconmoon*/
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?91oczr");
+  src: url("../fonts/icomoon.eot?#iefix91oczr") format('embedded-opentype'), url("../fonts/icomoon.woff?91oczr") format('woff'), url("../fonts/icomoon.ttf?91oczr") format('truetype'), url("../fonts/icomoon.svg?91oczr#icomoon") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+/* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-city:before {
+  content: "\e600";
+}
+.icon-life1:before {
+  content: "\e601";
+}
+.icon-mts:before {
+  content: "\e602";
+}
+.icon-vel .path1:before {
+  content: "\e603";
+  color: #fff635;
+}
+.icon-vel .path2:before {
+  content: "\e604";
+  margin-left: -1em;
+  color: #fff200;
+}
+.icon-vel .path3:before {
+  content: "\e605";
+  margin-left: -1em;
+  color: #f2dd00;
+}

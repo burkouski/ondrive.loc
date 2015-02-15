@@ -11,21 +11,20 @@
 
   /*блок post-preview*/
 .post-preview
-  float left
+  display inline-block
+  vertical-align top
   width 275px
-  background #f6ffff
+  margin-bottom 10px
+  box-shadow: 0 0 1px rgba(0,0,0,0.5);
 .post-preview_medium
   width 560px
-.post-preview_huge
-  width 845px
-.post-preview_big
-  width  273px
+  margin: 0 6px 10px;
 
 .post-preview__figure
   padding 10px
 
 .post-preview__content
-  margin 20px 10px
+  margin 0px 10px
 
 .post-preview__title
 .post-preview__link
@@ -38,11 +37,11 @@
       opacity 1
 
 .post-preview__title
-  margin 0 0 10px 0
+  margin 0 0 3px 0
 
 .post-preview__meta
   clearfix()
-  margin 0 0 10px 0
+  margin 0 0 5px 0
   font-size 13px
 
 .post-preview__hover
@@ -153,3 +152,29 @@
 .filter__option-label
 .filter__option
   cursor pointer
+
+.phone
+  position relative
+  display inline-block
+  padding 0 0 0 20px
+.phone__icon
+  position absolute
+  top 3px
+  left 0
+
+.workday__icon
+  display inline-block
+  vertical-align top
+  width 20px
+  min-width 20px!important
+  height 20px
+  margin 0 5px 0 0
+  color white!important
+  font-size 12px
+  text-align center
+  text-transform lowercase
+  line-height 20px
+.workday__icon--blue
+  background  darkblue
+.workday__icon--red
+  background  #ef4135

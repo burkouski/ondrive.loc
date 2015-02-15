@@ -42,8 +42,8 @@
                     <div class="row cat-intro">
                         {% verbatim %}
                         <section class="map map_main col-md-12">
-                            <div class="map__wrap" ng-init="center=[27.562298, 53.889592];zoom=16">
-                                <yandex-map center="center" zoom='16' class="map__container">
+                            <div class="map__wrap" ng-init="center=[53.889592, 27.562298];zoom=16">
+                                <yandex-map center="center" zoom='11' class="map__container">
                                     <ymap-marker ng-repeat="service in filteredService"
                                                  index="$index+1"
                                                  coordinates="[service.longitude ,service.latitude]"
