@@ -20,7 +20,7 @@
                     <a href="{{ post.category.get_absolute_url }}" class="meta__category">{{ post.category }}</a><span class="meta__date">{{ post.pub_date }}</span>
                 </div>
                 <div class="post-preview__text">
-                    <p>{{ post.preview }}</p>
+                    <p>{{ post.preview|truncatechars:150 }}</p>
                 </div>
                 <div class="post-preview__meta">
                     <span class="meta__like">{{ post.views }} <i class="fa fa-eye"></i></span><a href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">1 <i class="fa fa-comments-o"></i></a>
