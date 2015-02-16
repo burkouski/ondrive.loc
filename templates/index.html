@@ -46,16 +46,17 @@
     {% show_latest_news %}
     <section ng-app="ymapsApp" class="map map_main" ng-controller="mainmapCtrl">
         <h2 class="product-head">Все сервисы для вашего автомобиля на карте минска</h2>
-        {% verbatim %}
-        <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[55.21, 34.30];zoom=10">
+
+        <div class="map__wrap" ng-init="center=[53.889592, 27.562298];zoom=11">
             <yandex-map center="center" zoom="zoom" class="map__container">
-                <ymap-marker ng-repeat="obj in geoObjects"
-                             coordinates="[obj.longitude ,obj.latitude]"
-                             properties="{balloonContent: '<strong style='+'color:red'+'>'+obj.name+'</strong><br>'+obj.teaser+'<br>'+obj.address, iconStyle.size: '300'}"
-                             options="{
+                <ymap-marker ng-repeat="service in services"
+                                                 index="$index+1"
+                                                 coordinates="[service.longitude ,service.latitude]"
+                                                 properties="{balloonContent: '<strong style='+'color:red'+'>'+service.name+'</strong><br>'+service.teaser+'<br>'+service.address}"
+                                                 options="{
                         iconLayout: 'default#image',
-                        iconImageHref: './static/img/map/as-ico.png',
-                        iconImageSize: [40, 40],
+                        iconImageHref: '/static/img/map/as-ico.png',
+                        iconImageSize: [30, 48],
                         iconImageOffset: [-20, -20],
 
                         iconShape: {
@@ -65,10 +66,10 @@
                         },
                      }">
 
-                </ymap-marker>
+                                    </ymap-marker>
             </yandex-map>
         </div>
-        {% endverbatim %}
+
     </section>
     <!-- Featured Products Starts -->
     <section class="products-list">

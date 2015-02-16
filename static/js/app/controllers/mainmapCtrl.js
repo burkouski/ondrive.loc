@@ -1,17 +1,28 @@
-ymapsApp.controller('mainmapCtrl', ['$scope', '$http', function ($scope, $http) {
+ymapsApp.controller('mainmapCtrl', ['$scope', 'services', function ($scope, services) {
+
+$scope.apiUrl = "/api/topautoservices/";
+    $scope.preloader = false;
+    $scope.filter = {};
+    $scope.gridView = false
 
 
-    $http({method: 'JSONP',
-        params: {'callback': 'JSON_CALLBACK'},
-        url: '/api/v1/autoserviceTop/?format=jsonp'}).success(function (data) {
-            $scope.geoObjects = data.objects
-            console.log($scope.geoObjects)
+    //$scope.isLoading = true;
+    $scope.loadRemoteData = function(apiUrl) {
 
-    }).error(function (err) {
-        console.log(err);
-    });
+        services.list(apiUrl, '', function (services) {
+                //alert(true)
+                $scope.services = services;
+                console.log($scope.services)
+                $scope.filteredService = $scope.services
+                $scope.preloader  = true
+            },
+            function () {
+                alert('wrong')
+            });
 
 
-    console.log($scope.geoObjects)
+    };
+
+    $scope.loadRemoteData($scope.apiUrl);
 
 }]);

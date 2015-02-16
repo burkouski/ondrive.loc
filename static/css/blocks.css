@@ -27,10 +27,26 @@
   margin: 0 6px 10px;
 }
 .post-preview__figure {
-  padding: 10px;
+  position: relative;
 }
 .post-preview__content {
   margin: 0px 10px;
+}
+.post-preview__content--inline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+}
+.post-preview__content--inline a {
+  color: #fff;
+}
+.post-preview__content--inline a:hover {
+  color: #ef4135;
 }
 .post-preview__title,
 .post-preview__link {

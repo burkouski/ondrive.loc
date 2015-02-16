@@ -10,7 +10,7 @@
                             <img class="post-preview__img img-responsive" src="{{ post.preview_img.url }}"
                                  alt="{{ post.title }}"/>
 
-                            <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
+                            <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div></a>
                             <section class="post-preview__content post-preview__content--inline">
                                 <h2 class="post-preview__title"><a class="post-preview__link"
                                                                    href="{{ post.get_absolute_url }}">{{ post.title }}</a>
@@ -24,11 +24,11 @@
 
                                 <div class="post-preview__meta">
                                     <span class="meta__like">{{ post.views }} <i class="fa fa-eye"></i></span><a
-                                        href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">1 <i
+                                        href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">0 <i
                                         class="fa fa-comments-o"></i></a>
                                 </div>
                             </section>
-                        </a>
+
 
                     </figure>
 
@@ -55,7 +55,7 @@
 
                         <div class="post-preview__meta">
                             <span class="meta__like">{{ post.views }} <i class="fa fa-eye"></i></span><a
-                                href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">1 <i
+                                href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">0 <i
                                 class="fa fa-comments-o"></i></a>
                         </div>
                     </section>

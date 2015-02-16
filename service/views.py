@@ -35,3 +35,19 @@ def autoservice_list(request):
         return HttpResponse(services)
 
     return render(request, 'service/list_view.html')
+
+
+
+@ensure_csrf_cookie
+def autoservice_top(request):
+    services = AutoService.objects.filter(is_top=True)[:5]
+    services = json.dumps([{
+                            'name': o.name,
+                            'longitude': o.longitude,
+                            'latitude': o.latitude,
+                            'logo': o.logo.url,
+                            'teaser': o.teaser,
+                            'address': o.address,
+                            'url': o.get_absolute_url()} for o in services])
+    if request.method == 'POST':
+        return HttpResponse(services)
