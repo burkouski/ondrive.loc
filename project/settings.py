@@ -21,11 +21,11 @@ PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
 SECRET_KEY = '8y_gdfj^aaqgwwi6n8g#w42pfdqa*6p7u%q(252b@j_0o7cv9c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-#ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -116,6 +116,10 @@ CKEDITOR_CONFIGS = {
 }
 
 CKEDITOR_UPLOAD_PATH = "upload/"
+
+
+DISQUS_SECRET_KEY = 'gUE2zeP5jaMXf1D4YnaoiKRMyrLMf7oImKuNDh78QYafULtC2CMvM6pCe4mflJoc'
+DISQUS_PUBLIC_KEY = 'oCdxoSVB6daOfXK5oQWT2RBsbXnM1fd37nZkmBdq8WJiMPiafJ2i6n5fERvg7ESO'
 
 
 

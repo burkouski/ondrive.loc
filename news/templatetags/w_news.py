@@ -59,7 +59,7 @@ def disqus_sso(context, callback_func="null"):
     # generate our hmac signature
     sig = hmac.HMAC(DISQUS_SECRET_KEY, input_data, hashlib.sha1).hexdigest()
 
-    # return a script tag to insert the sso message
+    #return 'a script tag to insert the sso message'
     return """function disqus_config() {
 this.page.remote_auth_s3 = "%(message)s %(sig)s %(timestamp)s";
 this.page.api_key = "%(pub_key)s";
