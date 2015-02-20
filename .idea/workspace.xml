@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c15395e8-eb0c-4315-9347-36f8ad6acd7f" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/service/migrations/0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/service/migrations/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="D:\BVS\Projects\bvs-project\ondrive.loc\reviews\migrations\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="D:\BVS\Projects\bvs-project\ondrive.loc\service\migrations\0002_auto_20150204_1515.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news/templates/news/news_detail_view.html" afterPath="$PROJECT_DIR$/news/templates/news/news_detail_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/admin.py" afterPath="$PROJECT_DIR$/service/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/templates/service/detail_view.html" afterPath="$PROJECT_DIR$/service/templates/service/detail_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reviews/models.py" afterPath="$PROJECT_DIR$/reviews/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/models.py" afterPath="$PROJECT_DIR$/service/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/settings.py" afterPath="$PROJECT_DIR$/project/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news/views.py" afterPath="$PROJECT_DIR$/news/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news/templatetags/w_news.py" afterPath="$PROJECT_DIR$/news/templatetags/w_news.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/views.py" afterPath="$PROJECT_DIR$/service/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ondrive.loc.iws" />
@@ -33,127 +39,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="news_detail_view.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news/templates/news/news_detail_view.html">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reviews/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="30" selection-start="2050" selection-end="2050" vertical-scroll-proportion="-15.769231" vertical-offset="559" max-vertical-offset="1122">
+            <state line="1" column="64" selection-start="29" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail_view.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/templates/service/detail_view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="148" column="20" selection-start="6583" selection-end="6583" vertical-scroll-proportion="-3.2692308" vertical-offset="2346" max-vertical-offset="6409">
               <folding>
-                <marker date="1424260091266" expanded="true" signature="404:1099" placeholder="..." />
-                <marker date="1424260091266" expanded="true" signature="430:1087" placeholder="..." />
-                <marker date="1424260091266" expanded="true" signature="466:1071" placeholder="..." />
-                <marker date="1424260091266" expanded="true" signature="511:698" placeholder="..." />
-                <marker date="1424260091266" expanded="true" signature="626:675" placeholder="..." />
-                <marker date="1424260091266" expanded="true" signature="802:1015" placeholder="..." />
-                <marker date="1424260091266" expanded="true" signature="922:992" placeholder="..." />
-                <marker date="1424260091266" expanded="true" signature="1282:1904" placeholder="..." />
-                <marker date="1424260091266" expanded="true" signature="1292:1368" placeholder="/*...*/" />
-                <marker date="1424260091266" expanded="true" signature="1475:1515" placeholder="/*...*/" />
-                <marker date="1424260091266" expanded="true" signature="1537:1865" placeholder="{...}" />
-                <marker date="1424260091266" expanded="true" signature="1919:2049" placeholder="..." />
-                <marker date="1424260091266" expanded="true" signature="1999:2038" placeholder="..." />
+                <element signature="n#style#0;n#i#0;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#1;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#2;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#3;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#4;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news/views.py">
+      <file leaf-file-name="serviceCtrl.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="38" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-              <folding>
-                <element signature="e#0#70#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="26" selection-start="2134" selection-end="2156" vertical-scroll-proportion="-13.730769" vertical-offset="408" max-vertical-offset="4879">
-              <folding>
-                <marker date="1424174736362" expanded="true" signature="170:2095" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="247:2084" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="335:1574" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="377:515" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="550:688" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="723:861" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="896:1034" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="1069:1207" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="1242:1381" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="1416:1555" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="1756:1844" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="1945:2034" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="2236:3504" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="2405:3488" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="2481:3473" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="2543:3447" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="3578:11411" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="3641:11361" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="3724:3885" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="4005:7105" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="4181:5121" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="4221:4354" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="4396:5098" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="4507:4640" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="4686:4766" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="4829:5071" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="4892:5040" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="5163:6103" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="5203:5336" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="5378:6080" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="5489:5622" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="5668:5748" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="5811:6053" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="5874:6022" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="6145:7085" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="6185:6318" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="6360:7062" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="6471:6604" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="6650:6730" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="6793:7035" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="6856:7004" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="7225:11308" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="7403:8343" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="7443:7576" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="7618:8320" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="7729:7862" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="7908:7988" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="8051:8293" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="8114:8262" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="8385:9325" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="8425:8558" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="8600:9302" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="8711:8844" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="8890:8970" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="9033:9275" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="9096:9244" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="9367:10307" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="9407:9540" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="9582:10284" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="9693:9826" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="9872:9952" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="10015:10257" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="10078:10226" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="10349:11289" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="10389:10522" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="10564:11266" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="10675:10808" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="10854:10934" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="10997:11239" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="11060:11208" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="11631:11902" placeholder="..." />
-                <marker date="1424174736362" expanded="false" signature="11642:11730" placeholder="..." />
-                <marker date="1424174736362" expanded="false" signature="11769:11794" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="11795:11897" placeholder="..." />
-                <marker date="1424174736362" expanded="false" signature="11845:11860" placeholder="..." />
-                <marker date="1424174736362" expanded="false" signature="12013:12101" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="12102:12366" placeholder="..." />
-                <marker date="1424174736362" expanded="false" signature="12152:12177" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="12178:12328" placeholder="..." />
-                <marker date="1424174736362" expanded="false" signature="12228:12253" placeholder="..." />
-                <marker date="1424174736362" expanded="true" signature="12254:12311" placeholder="..." />
-              </folding>
+            <state line="2" column="0" selection-start="67" selection-end="67" vertical-scroll-proportion="0.057724956" vertical-offset="0" max-vertical-offset="589">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -161,48 +75,28 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="142" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1003">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="w_news.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news/templatetags/w_news.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="5" selection-start="1947" selection-end="1947" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1326">
+            <state line="12" column="61" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#0#85#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/settings.py">
+      <file leaf-file-name="mainmapCtrl.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2227">
+            <state line="2" column="40" selection-start="0" selection-end="712" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/reviews/models.py">
+      <file leaf-file-name="list_view.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/templates/service/list_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="230" selection-end="230" vertical-scroll-proportion="0.20203735" vertical-offset="0" max-vertical-offset="589">
+            <state line="9" column="78" selection-start="253" selection-end="284" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="3043">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="50" selection-start="947" selection-end="993" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1037">
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -220,7 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/myauth/forms.py" />
         <option value="$PROJECT_DIR$/myauth/urls.py" />
         <option value="$PROJECT_DIR$/myauth/templates/myauth/success.html" />
@@ -250,12 +143,9 @@
         <option value="$PROJECT_DIR$/static/css/blocks.css" />
         <option value="$PROJECT_DIR$/static/js/vendor/masonry.js" />
         <option value="$PROJECT_DIR$/static/js/app/vendor/angular-ymaps.js" />
-        <option value="$PROJECT_DIR$/service/admin.py" />
         <option value="$PROJECT_DIR$/static/css/global.css" />
         <option value="$PROJECT_DIR$/stylus/global.styl" />
-        <option value="$PROJECT_DIR$/service/models.py" />
         <option value="$PROJECT_DIR$/static/js/plugins.js" />
-        <option value="$PROJECT_DIR$/service/templates/service/detail_view.html" />
         <option value="$PROJECT_DIR$/stylus/blocks.styl" />
         <option value="$PROJECT_DIR$/project/urls.py" />
         <option value="$PROJECT_DIR$/service/urls.py" />
@@ -263,14 +153,18 @@
         <option value="$PROJECT_DIR$/service/templates/service/list_view.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/news/templates/news/w_latest_news.html" />
-        <option value="$PROJECT_DIR$/service/views.py" />
         <option value="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" />
         <option value="$PROJECT_DIR$/news/disqus.py" />
         <option value="$PROJECT_DIR$/news/views.py" />
         <option value="$PROJECT_DIR$/news/templatetags/w_news.py" />
         <option value="$PROJECT_DIR$/news/templates/news/news_detail_view.html" />
-        <option value="$PROJECT_DIR$/project/settings.py" />
         <option value="$PROJECT_DIR$/reviews/models.py" />
+        <option value="$PROJECT_DIR$/project/settings.py" />
+        <option value="$PROJECT_DIR$/service/models.py" />
+        <option value="$PROJECT_DIR$/service/admin.py" />
+        <option value="$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js" />
+        <option value="$PROJECT_DIR$/service/views.py" />
+        <option value="$PROJECT_DIR$/service/templates/service/detail_view.html" />
       </list>
     </option>
   </component>
@@ -306,7 +200,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -352,6 +245,108 @@
               <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -367,22 +362,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ondrive.loc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ondrive.loc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -669,14 +651,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="1" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33656958" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3094984" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31590182" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -728,11 +710,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../avs.loc/app/service/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="76" selection-start="0" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../avs.loc/app/service/api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="2482" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1411" />
@@ -843,11 +820,6 @@
         <state line="70" column="6" selection-start="2575" selection-end="2575" vertical-scroll-proportion="0.0" vertical-offset="661" max-vertical-offset="3791" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="193" selection-start="1192" selection-end="1192" vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="1445" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/blocks.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="224" column="0" selection-start="4047" selection-end="4047" vertical-scroll-proportion="0.0" vertical-offset="3808" max-vertical-offset="3910" />
@@ -868,35 +840,14 @@
         <state line="104" column="1" selection-start="1839" selection-end="1839" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="1870" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/templates/service/detail_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="30" selection-start="9993" selection-end="9993" vertical-scroll-proportion="0.0" vertical-offset="3485" max-vertical-offset="6256">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="41" selection-start="3319" selection-end="3319" vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="5525" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/plugins.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="266" selection-end="266" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="289" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/templates/service/list_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="98" selection-start="2133" selection-end="2180" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="3043">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="5" selection-start="848" selection-end="848" vertical-scroll-proportion="0.3200443" vertical-offset="0" max-vertical-offset="903">
-          <folding />
-        </state>
+        <state line="23" column="5" selection-start="848" selection-end="848" vertical-scroll-proportion="0.3200443" vertical-offset="0" max-vertical-offset="903" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/global.css">
@@ -914,11 +865,6 @@
         <state line="6" column="71" selection-start="370" selection-end="370" vertical-scroll-proportion="0.11320755" vertical-offset="0" max-vertical-offset="901" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="40" selection-start="89" selection-end="129" vertical-scroll-proportion="0.03773585" vertical-offset="0" max-vertical-offset="901" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stylus/blocks.styl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="10" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="3349" />
@@ -926,193 +872,142 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="31" selection-start="122" selection-end="142" vertical-scroll-proportion="0.056603774" vertical-offset="0" max-vertical-offset="901">
-          <folding />
-        </state>
+        <state line="5" column="31" selection-start="122" selection-end="142" vertical-scroll-proportion="0.056603774" vertical-offset="0" max-vertical-offset="901" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news/templates/news/w_latest_news.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="3078" selection-end="3078" vertical-scroll-proportion="0.69942856" vertical-offset="306" max-vertical-offset="1241">
-          <folding />
-        </state>
+        <state line="54" column="0" selection-start="3078" selection-end="3078" vertical-scroll-proportion="0.69942856" vertical-offset="306" max-vertical-offset="1241" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myauth/templates/myauth/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.7246892" vertical-offset="408" max-vertical-offset="1513">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.7246892" vertical-offset="408" max-vertical-offset="1513" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myauth/templates/myauth/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="32" selection-start="533" selection-end="533" vertical-scroll-proportion="-0.90586144" vertical-offset="816" max-vertical-offset="1819">
-          <folding />
-        </state>
+        <state line="18" column="32" selection-start="533" selection-end="533" vertical-scroll-proportion="-0.90586144" vertical-offset="816" max-vertical-offset="1819" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/templatetags/w_autoservice.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="50" selection-start="383" selection-end="429" vertical-scroll-proportion="0.37521222" vertical-offset="0" max-vertical-offset="589">
-          <folding />
-        </state>
+        <state line="14" column="50" selection-start="383" selection-end="429" vertical-scroll-proportion="0.37521222" vertical-offset="0" max-vertical-offset="589" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/news/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="26" selection-start="2134" selection-end="2156" vertical-scroll-proportion="-13.730769" vertical-offset="408" max-vertical-offset="4879">
-          <folding>
-            <marker date="1424174736362" expanded="true" signature="170:2095" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="247:2084" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="335:1574" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="377:515" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="550:688" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="723:861" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="896:1034" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="1069:1207" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="1242:1381" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="1416:1555" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="1756:1844" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="1945:2034" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="2236:3504" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="2405:3488" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="2481:3473" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="2543:3447" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="3578:11411" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="3641:11361" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="3724:3885" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="4005:7105" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="4181:5121" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="4221:4354" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="4396:5098" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="4507:4640" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="4686:4766" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="4829:5071" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="4892:5040" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="5163:6103" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="5203:5336" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="5378:6080" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="5489:5622" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="5668:5748" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="5811:6053" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="5874:6022" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="6145:7085" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="6185:6318" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="6360:7062" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="6471:6604" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="6650:6730" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="6793:7035" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="6856:7004" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="7225:11308" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="7403:8343" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="7443:7576" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="7618:8320" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="7729:7862" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="7908:7988" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="8051:8293" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="8114:8262" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="8385:9325" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="8425:8558" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="8600:9302" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="8711:8844" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="8890:8970" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="9033:9275" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="9096:9244" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="9367:10307" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="9407:9540" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="9582:10284" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="9693:9826" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="9872:9952" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="10015:10257" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="10078:10226" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="10349:11289" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="10389:10522" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="10564:11266" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="10675:10808" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="10854:10934" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="10997:11239" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="11060:11208" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="11631:11902" placeholder="..." />
-            <marker date="1424174736362" expanded="false" signature="11642:11730" placeholder="..." />
-            <marker date="1424174736362" expanded="false" signature="11769:11794" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="11795:11897" placeholder="..." />
-            <marker date="1424174736362" expanded="false" signature="11845:11860" placeholder="..." />
-            <marker date="1424174736362" expanded="false" signature="12013:12101" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="12102:12366" placeholder="..." />
-            <marker date="1424174736362" expanded="false" signature="12152:12177" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="12178:12328" placeholder="..." />
-            <marker date="1424174736362" expanded="false" signature="12228:12253" placeholder="..." />
-            <marker date="1424174736362" expanded="true" signature="12254:12311" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="142" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="1003">
+        <state line="31" column="50" selection-start="947" selection-end="993" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1037">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news/templatetags/w_news.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="5" selection-start="1947" selection-end="1947" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1326">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news/templates/news/news_detail_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="30" selection-start="2050" selection-end="2050" vertical-scroll-proportion="-15.769231" vertical-offset="559" max-vertical-offset="1122">
-          <folding>
-            <marker date="1424260091266" expanded="true" signature="404:1099" placeholder="..." />
-            <marker date="1424260091266" expanded="true" signature="430:1087" placeholder="..." />
-            <marker date="1424260091266" expanded="true" signature="466:1071" placeholder="..." />
-            <marker date="1424260091266" expanded="true" signature="511:698" placeholder="..." />
-            <marker date="1424260091266" expanded="true" signature="626:675" placeholder="..." />
-            <marker date="1424260091266" expanded="true" signature="802:1015" placeholder="..." />
-            <marker date="1424260091266" expanded="true" signature="922:992" placeholder="..." />
-            <marker date="1424260091266" expanded="true" signature="1282:1904" placeholder="..." />
-            <marker date="1424260091266" expanded="true" signature="1292:1368" placeholder="/*...*/" />
-            <marker date="1424260091266" expanded="true" signature="1475:1515" placeholder="/*...*/" />
-            <marker date="1424260091266" expanded="true" signature="1537:1865" placeholder="{...}" />
-            <marker date="1424260091266" expanded="true" signature="1919:2049" placeholder="..." />
-            <marker date="1424260091266" expanded="true" signature="1999:2038" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2227">
+        <state line="61" column="5" selection-start="1947" selection-end="1947" vertical-scroll-proportion="0.63497454" vertical-offset="527" max-vertical-offset="1190">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="50" selection-start="947" selection-end="993" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1037">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="38" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news/templates/news/news_detail_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="30" selection-start="2050" selection-end="2050" vertical-scroll-proportion="-15.769231" vertical-offset="559" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="22" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2244">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="297" column="44" selection-start="11345" selection-end="11345" vertical-scroll-proportion="0.0" vertical-offset="4528" max-vertical-offset="5525">
           <folding>
-            <element signature="e#0#70#0" expanded="true" />
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="2356" selection-end="2356" vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="1241">
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+            <marker date="1424420980653" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="26" selection-start="2134" selection-end="2156" vertical-scroll-proportion="0.6490909" vertical-offset="408" max-vertical-offset="4879">
+          <folding>
+            <marker date="1424174736362" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424174736362" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1424174736362" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424174736362" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1424174736362" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="61" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+          <folding>
+            <element signature="e#0#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reviews/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="230" selection-end="230" vertical-scroll-proportion="0.20203735" vertical-offset="0" max-vertical-offset="589">
+        <state line="1" column="64" selection-start="29" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="40" selection-start="0" selection-end="712" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/templates/service/list_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="78" selection-start="253" selection-end="284" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="3043">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/templates/service/detail_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="20" selection-start="6583" selection-end="6583" vertical-scroll-proportion="-3.2692308" vertical-offset="2346" max-vertical-offset="6409">
+          <folding>
+            <element signature="n#style#0;n#i#0;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#1;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#2;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#3;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#4;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="67" selection-end="67" vertical-scroll-proportion="0.057724956" vertical-offset="0" max-vertical-offset="589">
           <folding />
         </state>
       </provider>

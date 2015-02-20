@@ -4,10 +4,9 @@ import re
 from pytils import translit
 from django.db import models
 from django.core.urlresolvers import reverse
-
 from ckeditor.fields import RichTextField
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from reviews.models import Review
+from django.contrib.contenttypes.fields import GenericRelation
 import json
 
 
@@ -292,6 +291,7 @@ class AutoService(Service):
                                          verbose_name='Тюнинг', blank=True)
     other_auto_work = models.ManyToManyField(OtherAutogWork, related_name='other_auto_work',
                                              verbose_name='Прочее', blank=True)
+    reviews = GenericRelation(Review)
 
     class Meta:
         verbose_name = u"Автосервис"

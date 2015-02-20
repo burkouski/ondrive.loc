@@ -19,7 +19,7 @@
     {% endblock %}
     <!-- Breadcrumb Ends -->
     <!-- Product Info Starts -->
-    <div class="row product-info full">
+    <div ng-app="ymapsApp" ng-controller="serviceCtrl" class="row product-info full">
     <!-- Left Starts -->
     <div class="col-sm-4 images-block">
         <a href="images/product-images/big-pimg1.jpg">
@@ -37,6 +37,16 @@
             <hr/>
             <!-- Manufacturer Starts -->
             <ul class="list-unstyled manufacturer">
+            <li>
+                    <span>Рейтинг:{{ rating.rate__avg }}</span>
+                <span>
+                    <i style="color: red" class="fa fa-star"></i>
+                    <i style="color: red" class="fa fa-star"></i>
+                    <i style="color: red" class="fa fa-star"></i>
+                    <i style="color: red" class="fa fa-star-half-o"></i>
+                    <i style="color: red" class="fa fa-star-o"></i>
+            </span>
+                </li>
                 <li>
                     <span>Адрес:</span> {{ service.address }}
                 </li>
@@ -88,7 +98,7 @@
             </ul>
             <!-- Manufacturer Ends -->
             <hr/>
-            <section ng-app="ymapsApp" class="map map_main">
+            <section class="map map_main">
                             <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[{{ service.longitude }}, {{ service.latitude }}]; zoom='15'">
                                 <yandex-map center="center" zoom="zoom" class="map__container map__container--single">
                                     <ymap-marker
@@ -294,13 +304,12 @@
             <!-- Additional Information Starts -->
             <div class="tab-pane" id="tab-ainfo">
                 <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                    of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including versions of
-                    Lorem Ipsum.
+                    {% for review in service.reviews.all %}
+                        {{ review.author }}<br/>
+                        {{ review.pub_date }}<br/>
+                        {{ review.review }}<br/>
+                        {{ review.rate }}
+                    {% endfor %}
                 </p>
             </div>
             <!-- Additional Information Ends -->
