@@ -1,11 +1,11 @@
 from django.contrib import admin
 from service.models import AutoService, ElectricianWork, BodyRepairWork, EngineRepairWork,FuelSystemRepairWork, SuspensionRepairWork, BreakSystemRepairWork, AutoDiagWork, KppRepairWork,AirConditionRepairWork,AutoglassesRepairWork,GasAppliancesRepairWork,OilReplaceWork,AudioAlarmRepairWork, TuningWork, OtherAutogWork
+from reviews.models import Review
 from django.contrib.contenttypes.admin import GenericTabularInline
 
 
-
-class BodyRepairWorkInline(admin.StackedInline):
-    model = BodyRepairWork
+class ReviewsInline(GenericTabularInline):
+    model = Review
 
 
 class AutoServiceAdmin(admin.ModelAdmin):
@@ -38,23 +38,11 @@ class AutoServiceAdmin(admin.ModelAdmin):
         }),
 
     )
+    inlines = [ReviewsInline]
     readonly_fields = ('get_logo_img',)
 
 
-class TireServiceAdmin(admin.ModelAdmin):
-    inlines = [
-        #AutoServiceWorkInline
-    ]
 
-
-class IngredientAdmin(admin.ModelAdmin):
-    pass
-
-
-class CarWashAdmin(admin.ModelAdmin):
-    inlines = [
-        #AutoServiceWorkInline
-    ]
 
 admin.site.register(AutoService, AutoServiceAdmin)
 admin.site.register(ElectricianWork)

@@ -21,7 +21,7 @@ PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
 SECRET_KEY = '8y_gdfj^aaqgwwi6n8g#w42pfdqa*6p7u%q(252b@j_0o7cv9c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = False
 
@@ -45,7 +45,8 @@ INSTALLED_APPS = (
     'sitetree',
     #'registration',
     'myauth',
-    'autofixture'
+    'autofixture',
+    'reviews'
     #'visits',
 )
 COMMENTS_APP = "django_comments_xtd"

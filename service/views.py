@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, HttpResponse
 from service.models import AutoService, ElectricianWork
+from django.db.models import Avg
 import json
 from django.views.decorators.csrf import ensure_csrf_cookie
 
@@ -7,8 +8,9 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 def autoservice_detail(request, service_alias):
     service = get_object_or_404(AutoService, alias=service_alias)
     rel = AutoService._meta.get_m2m_with_model()
-
-    args = {'service': service, 'rel': rel}
+    reviews = service.reviews.all()
+    rating = reviews.aggregate(Avg('rate'))
+    args = {'service': service, 'rel': rel, 'rating': rating}
     return render(request, 'service/detail_view.html', args)
 
 @ensure_csrf_cookie
