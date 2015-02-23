@@ -25,13 +25,13 @@ def autoservice_list(request):
             services = services.filter(**{ key: x })
 
     services = json.dumps([{
-        #'dls': obj,
                             'name': o.name,
                             'longitude': o.longitude,
                             'latitude': o.latitude,
                             'logo': o.logo.url,
                             'teaser': o.teaser,
                             'address': o.address,
+                            'rating': o.reviews.all().aggregate(Avg('rate'))['rate__avg'],
                             'url': o.get_absolute_url()} for o in services])
     if request.method == 'POST':
         return HttpResponse(services)
