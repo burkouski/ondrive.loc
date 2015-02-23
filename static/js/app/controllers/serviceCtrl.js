@@ -2,12 +2,12 @@ ymapsApp.controller('serviceCtrl', ['$scope', function ($scope) {
 
 
 $scope.starsInit = function(rating) {
-    var rating = parseFloat(rating.replace(",", ".")),
+    var rating = rating,
         positiveStar = ~~rating,
         halfStar = 0,
         negativeStar,
         fractional = rating - positiveStar;
-console.log(rating,positiveStar,fractional)
+        console.log(rating,positiveStar,fractional)
     if (fractional > 0.25 && fractional < 0.85 ) {
         halfStar = 1;
     }

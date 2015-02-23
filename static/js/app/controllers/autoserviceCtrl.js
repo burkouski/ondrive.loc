@@ -7,14 +7,14 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'services', function ($scope, 
 
 
     //$scope.isLoading = true;
-    $scope.loadRemoteData = function(apiUrl, data) {
+    $scope.loadRemoteData = function (apiUrl, data) {
 
         services.list(apiUrl, data, function (services) {
                 //alert(true)
                 $scope.services = services;
                 console.log($scope.services)
                 $scope.filteredService = $scope.services
-                $scope.preloader  = true
+                $scope.preloader = true
             },
             function () {
                 alert('wrong')
@@ -24,7 +24,6 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'services', function ($scope, 
     };
 
     $scope.loadRemoteData($scope.apiUrl, $scope.filter);
-
 
 
     //initiate an array to hold all active tabs
@@ -54,8 +53,40 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'services', function ($scope, 
         }
     }
 
-$scope.changeView = function(view){
-            $scope.gridView = view; // path not hash
-    console.log($scope.view)
+    // function to change service view
+    $scope.changeView = function (view) {
+        $scope.gridView = view; // path not hash
+        console.log($scope.view)
+    }
+
+    // function to convert into star
+    $scope.starsInit = function (rating) {
+        console.log(rating)
+        var rating = rating,
+            positiveStar = ~~rating,
+            halfStar = 0,
+            negativeStar,
+            fractional = rating - positiveStar;
+        console.log(rating, positiveStar, fractional)
+        if (fractional > 0.25 && fractional < 0.85) {
+            halfStar = 1;
         }
+
+        else if (fractional > 0.85) {
+            positiveStar += 1;
+        }
+        else {
+            halfStar = 0;
+        }
+        negativeStar = 5 - positiveStar - halfStar;
+        console.log(halfStar)
+        return {
+            positiveStar: _getArray(positiveStar),
+            halfStar: _getArray(halfStar),
+            negativeStar: _getArray(negativeStar)
+        }
+    };
+    _getArray=function(n){
+     return new Array(n);
+};
 }]);

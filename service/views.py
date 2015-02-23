@@ -23,7 +23,7 @@ def autoservice_list(request):
     for key, val in obj.items():
         for x in val:
             services = services.filter(**{ key: x })
-
+    services = services.annotate(sort = Avg('reviews__rate')).order_by('-sort')
     services = json.dumps([{
                             'name': o.name,
                             'longitude': o.longitude,
@@ -32,7 +32,9 @@ def autoservice_list(request):
                             'teaser': o.teaser,
                             'address': o.address,
                             'rating': o.reviews.all().aggregate(Avg('rate'))['rate__avg'],
-                            'url': o.get_absolute_url()} for o in services])
+                            'sort': o.sort,
+                            'url': o.get_absolute_url()} for o in services]),
+
     if request.method == 'POST':
         return HttpResponse(services)
 

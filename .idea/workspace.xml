@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c15395e8-eb0c-4315-9347-36f8ad6acd7f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" afterPath="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/templates/service/detail_view.html" afterPath="$PROJECT_DIR$/service/templates/service/detail_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/templates/service/list_view.html" afterPath="$PROJECT_DIR$/service/templates/service/list_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js" afterPath="$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/views.py" afterPath="$PROJECT_DIR$/service/views.py" />
     </list>
     <ignored path="ondrive.loc.iws" />
@@ -31,7 +36,7 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reviews/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="64" selection-start="29" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="340">
+            <state line="1" column="64" selection-start="29" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
               <folding />
             </state>
           </provider>
@@ -40,25 +45,43 @@
       <file leaf-file-name="detail_view.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/templates/service/detail_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="148" column="20" selection-start="6583" selection-end="6583" vertical-scroll-proportion="-6.5384617" vertical-offset="2346" max-vertical-offset="6409">
+            <state line="40" column="77" selection-start="1359" selection-end="1359" vertical-scroll-proportion="-9.807693" vertical-offset="425" max-vertical-offset="6664">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serviceCtrl.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="serviceCtrl.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="67" selection-end="67" vertical-scroll-proportion="0.057724956" vertical-offset="0" max-vertical-offset="589">
+            <state line="9" column="8" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="autoserviceCtrl.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="36" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1649">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="90" selection-start="1325" selection-end="1325" vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="969">
+            <state line="25" column="77" selection-start="986" selection-end="986" vertical-scroll-proportion="0.25976232" vertical-offset="204" max-vertical-offset="1003">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="297" column="44" selection-start="11345" selection-end="11345" vertical-scroll-proportion="0.0" vertical-offset="4386" max-vertical-offset="5389">
               <folding />
             </state>
           </provider>
@@ -76,8 +99,13 @@
       <file leaf-file-name="list_view.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/templates/service/list_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="78" selection-start="253" selection-end="284" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="3043">
-              <folding />
+            <state line="133" column="83" selection-start="6939" selection-end="6939" vertical-scroll-proportion="-16.0" vertical-offset="1845" max-vertical-offset="3230">
+              <folding>
+                <element signature="e#4986#5012#0" expanded="true" />
+                <element signature="e#6349#6367#0" expanded="true" />
+                <element signature="e#6553#6571#0" expanded="true" />
+                <element signature="e#6768#6786#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,10 +159,8 @@
         <option value="$PROJECT_DIR$/project/urls.py" />
         <option value="$PROJECT_DIR$/service/urls.py" />
         <option value="$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js" />
-        <option value="$PROJECT_DIR$/service/templates/service/list_view.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/news/templates/news/w_latest_news.html" />
-        <option value="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" />
         <option value="$PROJECT_DIR$/news/disqus.py" />
         <option value="$PROJECT_DIR$/news/views.py" />
         <option value="$PROJECT_DIR$/news/templatetags/w_news.py" />
@@ -143,8 +169,10 @@
         <option value="$PROJECT_DIR$/project/settings.py" />
         <option value="$PROJECT_DIR$/service/models.py" />
         <option value="$PROJECT_DIR$/service/admin.py" />
-        <option value="$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js" />
         <option value="$PROJECT_DIR$/service/templates/service/detail_view.html" />
+        <option value="$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js" />
+        <option value="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" />
+        <option value="$PROJECT_DIR$/service/templates/service/list_view.html" />
         <option value="$PROJECT_DIR$/service/views.py" />
       </list>
     </option>
@@ -308,6 +336,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -440,7 +482,27 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ondrive.loc" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -466,27 +528,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ondrive.loc" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -595,7 +637,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -603,7 +645,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3191035" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32230523" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -633,9 +675,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29402348" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842106" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842106" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -800,11 +842,6 @@
         <state line="112" column="0" selection-start="2546" selection-end="2546" vertical-scroll-proportion="0.6362613" vertical-offset="1339" max-vertical-offset="2227" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="809" selection-end="809" vertical-scroll-proportion="0.5849057" vertical-offset="0" max-vertical-offset="1122" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="71" selection-start="370" selection-end="370" vertical-scroll-proportion="0.11320755" vertical-offset="0" max-vertical-offset="901" />
@@ -865,15 +902,6 @@
         <state line="25" column="22" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2244" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="297" column="44" selection-start="11345" selection-end="11345" vertical-scroll-proportion="0.0" vertical-offset="4528" max-vertical-offset="5525">
-          <folding>
-            <element signature="e#24#37#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="0" selection-start="2356" selection-end="2356" vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="1241" />
@@ -886,13 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reviews/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="64" selection-start="29" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="40" selection-start="0" selection-end="712" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
@@ -900,30 +921,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="8" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="36" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1649">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service/templates/service/list_view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="78" selection-start="253" selection-end="284" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="3043">
+        <state line="133" column="83" selection-start="6939" selection-end="6939" vertical-scroll-proportion="-16.0" vertical-offset="1845" max-vertical-offset="3230">
+          <folding>
+            <element signature="e#4986#5012#0" expanded="true" />
+            <element signature="e#6349#6367#0" expanded="true" />
+            <element signature="e#6553#6571#0" expanded="true" />
+            <element signature="e#6768#6786#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/templates/service/detail_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="77" selection-start="1359" selection-end="1359" vertical-scroll-proportion="-9.807693" vertical-offset="425" max-vertical-offset="6664">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="297" column="44" selection-start="11345" selection-end="11345" vertical-scroll-proportion="0.0" vertical-offset="4386" max-vertical-offset="5389">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reviews/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="64" selection-start="29" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="90" selection-start="1325" selection-end="1325" vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="969">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/templates/service/detail_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="20" selection-start="6583" selection-end="6583" vertical-scroll-proportion="-6.5384617" vertical-offset="2346" max-vertical-offset="6409">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="67" selection-end="67" vertical-scroll-proportion="0.057724956" vertical-offset="0" max-vertical-offset="589">
+        <state line="25" column="77" selection-start="986" selection-end="986" vertical-scroll-proportion="0.25976232" vertical-offset="204" max-vertical-offset="1003">
           <folding />
         </state>
       </provider>
