@@ -20,90 +20,105 @@
     <!-- Breadcrumb Ends -->
     <!-- Product Info Starts -->
     <div ng-app="ymapsApp" ng-controller="serviceCtrl" class="row product-info full">
-    <!-- Left Starts -->
-    <div class="col-sm-4 images-block">
-        <a href="images/product-images/big-pimg1.jpg">
-            <img src="{{ service.logo.url }}" alt="{{ service.name }}" class="img-responsive thumbnail"/>
-        </a>
+        <!-- Left Starts -->
+        <div class="col-sm-4 images-block">
+            <a href="images/product-images/big-pimg1.jpg">
+                <img src="{{ service.logo.url }}" alt="{{ service.name }}" class="img-responsive thumbnail"/>
+            </a>
 
-    </div>
-    <!-- Left Ends -->
-    <!-- Right Starts -->
-    <div class="col-sm-8 product-details">
-        <div class="panel-smart">
-            <!-- Product Name Starts -->
-            <h2>{{ service.name }}</h2>
-            <!-- Product Name Ends -->
-            <hr/>
-            <!-- Manufacturer Starts -->
-            <ul class="list-unstyled manufacturer">
-            <li>
-                    <span>Рейтинг:{{ rating.rate__avg }}</span>
-                <span>
-                    <i style="color: red" class="fa fa-star"></i>
-                    <i style="color: red" class="fa fa-star"></i>
-                    <i style="color: red" class="fa fa-star"></i>
-                    <i style="color: red" class="fa fa-star-half-o"></i>
-                    <i style="color: red" class="fa fa-star-o"></i>
+        </div>
+        <!-- Left Ends -->
+        <!-- Right Starts -->
+        <div class="col-sm-8 product-details">
+            <div class="panel-smart">
+                <!-- Product Name Starts -->
+                <h2>{{ service.name }}</h2>
+                <!-- Product Name Ends -->
+                <hr/>
+                <!-- Manufacturer Starts -->
+                <ul class="list-unstyled manufacturer">
+                    <li>
+                        <span>Рейтинг:</span>
+                        {% if rating.rate__avg %}
+                            <span>
+
+                    <i ng-repeat="star in starsInit('{{ rating.rate__avg }}').positiveStar track by $index"
+                       style="color: red" class="fa fa-star"></i><i
+                        ng-repeat="star in starsInit('{{ rating.rate__avg }}').halfStar track by $index"
+                        style="color: red" class="fa fa-star-half-o"></i><i
+                        ng-repeat="star in starsInit('{{ rating.rate__avg }}').negativeStar track by $index"
+                        style="color: red" class="fa fa-star-o"></i>
             </span>
-                </li>
-                <li>
-                    <span>Адрес:</span> {{ service.address }}
-                </li>
-                {% if service.siteUrl %}
-                    <li><span>Сайт:</span> {{ service.siteUrl }}</li>
-                {% endif %}
-                {% if service.email %}
-                    <li><span>E-mail:</span> {{ service.email }}</li>
-                {% endif %}
-                <li>
-                    <span>Телефоны:</span>
-                    {% if service.phone_velcom %}
-                    <span class="phone"><i class="phone__icon icon icon-vel"><i class="path1"></i><i class="path2"></i><i class="path3"></i></i>{{ service.phone_velcom }}</span>
+                        {% else %}
+                            нет оценок данного сервиса
+                        {% endif %}
+
+
+                    </li>
+                    <li>
+                        <span>Адрес:</span> {{ service.address }}
+                    </li>
+                    {% if service.siteUrl %}
+                        <li><span>Сайт:</span> {{ service.siteUrl }}</li>
                     {% endif %}
-                    {% if service.phone_velcom2 %}
-                    <span class="phone"><i class="phone__icon icon icon-city"></i>{{ service.phone_velcom2 }}</span>
-                {% endif %}
-                    {% if service.phone_mts %}
-                    <span class="phone"><i class="phone__icon icon icon-mts"></i>{{ service.phone_mts }}</span>
-                {% endif %}
-                    {% if service.phone_mts2 %}
-                    <span class="phone"><i class="phone__icon icon icon-mts"></i>{{ service.phone_mts2 }}</span>
-                {% endif %}
-                    {% if service.phone_life %}
-                    <span class="phone"><i class="phone__icon icon icon-life"></i>{{ service.phone_life }}</span>
-                {% endif %}
-                    {% if service.phone_life2 %}
-                    <span class="phone"><i class="phone__icon icon icon-life"></i>{{ service.phone_life2 }}</span>
-                {% endif %}
-                    {% if service.phone_city %}
-                    <span class="phone"><i class="phone__icon icon icon-city"></i>{{ service.phone_city }}</span>
-                {% endif %}
-                    {% if service.phone_city2 %}
-                    <span class="phone"><i class="phone__icon icon icon-city"></i>{{ service.phone_city2 }}</span>
-                {% endif %}
-                </li>
-                <li><span>Рабочие дни:</span>
+                    {% if service.email %}
+                        <li><span>E-mail:</span> {{ service.email }}</li>
+                    {% endif %}
+                    <li>
+                        <span>Телефоны:</span>
+                        {% if service.phone_velcom %}
+                            <span class="phone"><i class="phone__icon icon icon-vel"><i class="path1"></i><i
+                                    class="path2"></i><i class="path3"></i></i>{{ service.phone_velcom }}</span>
+                        {% endif %}
+                        {% if service.phone_velcom2 %}
+                            <span class="phone"><i
+                                    class="phone__icon icon icon-city"></i>{{ service.phone_velcom2 }}</span>
+                        {% endif %}
+                        {% if service.phone_mts %}
+                            <span class="phone"><i class="phone__icon icon icon-mts"></i>{{ service.phone_mts }}</span>
+                        {% endif %}
+                        {% if service.phone_mts2 %}
+                            <span class="phone"><i class="phone__icon icon icon-mts"></i>{{ service.phone_mts2 }}</span>
+                        {% endif %}
+                        {% if service.phone_life %}
+                            <span class="phone"><i
+                                    class="phone__icon icon icon-life"></i>{{ service.phone_life }}</span>
+                        {% endif %}
+                        {% if service.phone_life2 %}
+                            <span class="phone"><i
+                                    class="phone__icon icon icon-life"></i>{{ service.phone_life2 }}</span>
+                        {% endif %}
+                        {% if service.phone_city %}
+                            <span class="phone"><i
+                                    class="phone__icon icon icon-city"></i>{{ service.phone_city }}</span>
+                        {% endif %}
+                        {% if service.phone_city2 %}
+                            <span class="phone"><i
+                                    class="phone__icon icon icon-city"></i>{{ service.phone_city2 }}</span>
+                        {% endif %}
+                    </li>
+                    <li><span>Рабочие дни:</span>
                 <span class="workday">
                     {% for day in service.get_workday_list %}
                         {% if day.0 %}
                             <span class="workday__icon workday__icon--blue">{{ day.1 }}</span>
-                            {% else %}
+                        {% else %}
                             <span class="workday__icon workday__icon--red">{{ day.1 }}</span>
                         {% endif %}
                     {% endfor %}
                 </span>
-                </li>
-                <li><span>Время работы:</span> c {{ service.work_start }} до {{ service.work_end }}</li>
-            </ul>
-            <!-- Manufacturer Ends -->
-            <hr/>
-            <section class="map map_main">
-                            <div class="map__wrap" ng-init="coords=[55.21, 34.30];center=[{{ service.longitude }}, {{ service.latitude }}]; zoom='15'">
-                                <yandex-map center="center" zoom="zoom" class="map__container map__container--single">
-                                    <ymap-marker
-                                                 coordinates="[{{ service.longitude }} ,{{ service.latitude }}]"
-                                                 options="{
+                    </li>
+                    <li><span>Время работы:</span> c {{ service.work_start }} до {{ service.work_end }}</li>
+                </ul>
+                <!-- Manufacturer Ends -->
+                <hr/>
+                <section class="map map_main">
+                    <div class="map__wrap"
+                         ng-init="coords=[55.21, 34.30];center=[{{ service.longitude }}, {{ service.latitude }}]; zoom='15'">
+                        <yandex-map center="center" zoom="zoom" class="map__container map__container--single">
+                            <ymap-marker
+                                    coordinates="[{{ service.longitude }} ,{{ service.latitude }}]"
+                                    options="{
                         iconLayout: 'default#image',
                         iconImageHref: '/static/img/map/as-ico.png',
                         iconImageSize: [30, 48],
@@ -116,253 +131,253 @@
                         },
                      }">
 
-                                    </ymap-marker>
-                                </yandex-map>
-                            </div>
-                        </section>
+                            </ymap-marker>
+                        </yandex-map>
+                    </div>
+                </section>
 
+            </div>
         </div>
-    </div>
-    <!-- Right Ends -->
+        <!-- Right Ends -->
     </div>
     <!-- Product Info Ends -->
     <!-- Tabs Starts -->
     <div class="tabs-panel panel-smart">
-        <!-- Nav Tabs Starts -->
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-description">Описание</a></li>
-            <li><a href="#tab-work">Виды работ</a></li>
-            <li><a href="#tab-ainfo">Отзывы</a></li>
-            <li><a href="#tab-review">Оставить отзыв</a></li>
-        </ul>
-        <!-- Nav Tabs Ends -->
-        <!-- Tab Content Starts -->
-        <div class="tab-content clearfix">
-            <!-- Description Starts -->
-            <div class="tab-pane active" id="tab-description"> {{ service.full_desc|safe }}</div>
-            <div class="tab-pane" id="tab-work">
-                <!-- Available Options Starts -->
+    <!-- Nav Tabs Starts -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-description">Описание</a></li>
+        <li><a href="#tab-work">Виды работ</a></li>
+        <li><a href="#tab-ainfo">Отзывы</a></li>
+        <li><a href="#tab-review">Оставить отзыв</a></li>
+    </ul>
+    <!-- Nav Tabs Ends -->
+    <!-- Tab Content Starts -->
+    <div class="tab-content clearfix">
+    <!-- Description Starts -->
+    <div class="tab-pane active" id="tab-description"> {{ service.full_desc|safe }}</div>
+    <div class="tab-pane" id="tab-work">
+        <!-- Available Options Starts -->
 
-                <div class="row">
-                    {#Виды работ #}
-                    {% if service.electrician_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.electrician_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.electrician_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.body_repair_work.all %}
-                        <div class="col-md-3  work">
-                            <h5 class="work__title">{{ service.body_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.body_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.engine_repair_work.all %}
-                        <div class="col-md-3  work">
-                            <h5 class="work__title">{{ service.engine_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.engine_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.fuel_system_repair_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.fuel_system_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.fuel_system_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.suspension_repair_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.suspension_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.suspension_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.break_system_repair_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.break_system_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.break_system_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.auto_diag_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.auto_diag_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.auto_diag_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.kpp_repair_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.kpp_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.kpp_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.air_condition_repair_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.air_condition_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.air_condition_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.autoglasses_repair_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.autoglasses_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.autoglasses_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.gas_applianses_repair_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.gas_applianses_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.gas_applianses_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.oil_replace_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.oil_replace_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.oil_replace_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.audio_alarm_repair_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.audio_alarm_repair_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.audio_alarm_repair_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.tuning_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.tuning_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.tuning_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                    {% if service.other_auto_work.all %}
-                        <div class="col-md-3 work">
-                            <h5 class="work__title">{{ service.other_auto_work.first.get_model_name }}</h5>
-                            <ul class="work__list">
-                                {% for work in service.other_auto_work.all %}
-                                    <li class="work__item">{{ work }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-
-
+        <div class="row">
+            {#Виды работ #}
+            {% if service.electrician_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.electrician_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.electrician_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
                 </div>
-            <!-- Available Options Ends -->
-            </div>
-            <!-- Description Ends -->
-            <!-- Additional Information Starts -->
-            <div class="tab-pane" id="tab-ainfo">
-                <p>
-                    {% for review in service.reviews.all %}
-                        {{ review.author }}<br/>
-                        {{ review.pub_date }}<br/>
-                        {{ review.review }}<br/>
-                        {{ review.rate }}
-                    {% endfor %}
-                </p>
-            </div>
-            <!-- Additional Information Ends -->
-            <!-- Review Starts -->
-            <div class="tab-pane" id="tab-review">
-                <form class="form-horizontal">
-                    <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-name">Name</label>
+            {% endif %}
+            {% if service.body_repair_work.all %}
+                <div class="col-md-3  work">
+                    <h5 class="work__title">{{ service.body_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.body_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.engine_repair_work.all %}
+                <div class="col-md-3  work">
+                    <h5 class="work__title">{{ service.engine_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.engine_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.fuel_system_repair_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.fuel_system_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.fuel_system_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.suspension_repair_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.suspension_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.suspension_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.break_system_repair_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.break_system_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.break_system_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.auto_diag_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.auto_diag_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.auto_diag_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.kpp_repair_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.kpp_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.kpp_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.air_condition_repair_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.air_condition_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.air_condition_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.autoglasses_repair_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.autoglasses_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.autoglasses_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.gas_applianses_repair_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.gas_applianses_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.gas_applianses_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.oil_replace_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.oil_replace_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.oil_replace_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.audio_alarm_repair_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.audio_alarm_repair_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.audio_alarm_repair_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.tuning_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.tuning_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.tuning_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if service.other_auto_work.all %}
+                <div class="col-md-3 work">
+                    <h5 class="work__title">{{ service.other_auto_work.first.get_model_name }}</h5>
+                    <ul class="work__list">
+                        {% for work in service.other_auto_work.all %}
+                            <li class="work__item">{{ work }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
 
-                        <div class="col-sm-10">
-                            <input type="text" name="name" value="" id="input-name" class="form-control"/>
-                        </div>
-                    </div>
-                    <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-review">Review</label>
 
-                        <div class="col-sm-10">
-                            <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-
-                            <div class="help-block">
-                                Some note goes here..
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group required">
-                        <label class="col-sm-2 control-label ratings">Ratings</label>
-
-                        <div class="col-sm-10">
-                            Bad&nbsp;
-                            <input type="radio" name="rating" value="1"/>
-                            &nbsp;
-                            <input type="radio" name="rating" value="2"/>
-                            &nbsp;
-                            <input type="radio" name="rating" value="3"/>
-                            &nbsp;
-                            <input type="radio" name="rating" value="4"/>
-                            &nbsp;
-                            <input type="radio" name="rating" value="5"/>
-                            &nbsp;Good
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" id="button-review" class="btn btn-warning">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- Review Ends -->
         </div>
-        <!-- Tab Content Ends -->
+        <!-- Available Options Ends -->
+    </div>
+    <!-- Description Ends -->
+    <!-- Additional Information Starts -->
+    <div class="tab-pane" id="tab-ainfo">
+        <p>
+            {% for review in service.reviews.all %}
+                {{ review.author }}<br/>
+                {{ review.pub_date }}<br/>
+                {{ review.review }}<br/>
+                {{ review.rate }}
+            {% endfor %}
+        </p>
+    </div>
+    <!-- Additional Information Ends -->
+    <!-- Review Starts -->
+    <div class="tab-pane" id="tab-review">
+        {% if user.is_authenticated %}
+        <form class="form-horizontal">
+            <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-review">Ваш отзыв</label>
+
+                <div class="col-sm-10">
+                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+
+                    <div class="help-block">
+                        Ваше непредвзятое мнение...
+                    </div>
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-sm-2 control-label ratings">Ваша оценка</label>
+
+                <div class="col-sm-10">
+                    Очень плохо&nbsp;
+                    <input type="radio" name="rating" value="1"/>
+                    &nbsp;
+                    <input type="radio" name="rating" value="2"/>
+                    &nbsp;
+                    <input type="radio" name="rating" value="3"/>
+                    &nbsp;
+                    <input type="radio" name="rating" value="4"/>
+                    &nbsp;
+                    <input type="radio" name="rating" value="5"/>
+                    &nbsp;Отлично
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" id="button-review" class="btn btn-warning">
+                        Оставить отзыв
+                    </button>
+                </div>
+            </div>
+        </form>
+        {% else %}
+
+            <span>Чтобы оставлять отзывы вы должный сначало <a href="/auth/login">войти на сайт</a> Если же вы не имеете аккаунта на нашем сайте, вы можете пройти <a
+                    href="/auth/registration">процедуру регистрации</a></span>
+        {% endif %}
+    {{ user.username }}
+    </div>
+    <!-- Review Ends -->
+    </div>
+    <!-- Tab Content Ends -->
     </div>
     <!-- Tabs Ends -->
 
