@@ -9,6 +9,7 @@ class Review(models.Model):
     pub_date = models.DateField('Дата публикации')
     review = models.TextField('Отзыв')
     rate = models.PositiveIntegerField('Рейтинг')
+    is_moderate = models.NullBooleanField("Прошел модерацию?", default=None)
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')

@@ -11,7 +11,8 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', 'services', function ($scope, 
 
         services.list(apiUrl, data, function (services) {
                 //alert(true)
-                $scope.services = services;
+                $scope.services = services.info;
+                $scope.meta = services.meta
                 console.log($scope.services)
                 $scope.filteredService = $scope.services
                 $scope.preloader = true
