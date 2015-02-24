@@ -108,6 +108,7 @@ input:-ms-input-placeholder:focus:-ms-input-placeholder {
 }
 .icon-mts:before {
   content: "\e602";
+  color: #ef4135;
 }
 .icon-vel .path1:before {
   content: "\e603";

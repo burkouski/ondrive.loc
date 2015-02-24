@@ -30,14 +30,14 @@
         <!-- Left Ends -->
         <!-- Right Starts -->
         <div class="col-sm-8 product-details">
-            <div class="panel-smart">
+            <div class="panel-smart info">
                 <!-- Product Name Starts -->
-                <h2>{{ service.name }}</h2>
+                <h2 class="info__title">{{ service.name }}</h2>
                 <!-- Product Name Ends -->
                 <hr/>
                 <!-- Manufacturer Starts -->
-                <ul class="list-unstyled manufacturer">
-                    <li>
+                <ul class="list-unstyled manufacturer info__list">
+                    <li class="info__item">
                         <span>Рейтинг:{{ rating.rate__avg|stringformat:"f" }}</span>
                         {% if rating.rate__avg %}
                         <span>
@@ -158,10 +158,10 @@
     <div class="tab-pane" id="tab-work">
         <!-- Available Options Starts -->
 
-        <div class="row">
+        <div class="work">
             {#Виды работ #}
             {% if service.electrician_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.electrician_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.electrician_work.all %}
@@ -171,7 +171,7 @@
                 </div>
             {% endif %}
             {% if service.body_repair_work.all %}
-                <div class="col-md-3  work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.body_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.body_repair_work.all %}
@@ -181,7 +181,7 @@
                 </div>
             {% endif %}
             {% if service.engine_repair_work.all %}
-                <div class="col-md-3  work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.engine_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.engine_repair_work.all %}
@@ -191,7 +191,7 @@
                 </div>
             {% endif %}
             {% if service.fuel_system_repair_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.fuel_system_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.fuel_system_repair_work.all %}
@@ -201,7 +201,7 @@
                 </div>
             {% endif %}
             {% if service.suspension_repair_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.suspension_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.suspension_repair_work.all %}
@@ -211,7 +211,7 @@
                 </div>
             {% endif %}
             {% if service.break_system_repair_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.break_system_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.break_system_repair_work.all %}
@@ -221,7 +221,7 @@
                 </div>
             {% endif %}
             {% if service.auto_diag_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.auto_diag_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.auto_diag_work.all %}
@@ -231,7 +231,7 @@
                 </div>
             {% endif %}
             {% if service.kpp_repair_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.kpp_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.kpp_repair_work.all %}
@@ -241,7 +241,7 @@
                 </div>
             {% endif %}
             {% if service.air_condition_repair_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.air_condition_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.air_condition_repair_work.all %}
@@ -251,7 +251,7 @@
                 </div>
             {% endif %}
             {% if service.autoglasses_repair_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.autoglasses_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.autoglasses_repair_work.all %}
@@ -261,7 +261,7 @@
                 </div>
             {% endif %}
             {% if service.gas_applianses_repair_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.gas_applianses_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.gas_applianses_repair_work.all %}
@@ -271,7 +271,7 @@
                 </div>
             {% endif %}
             {% if service.oil_replace_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.oil_replace_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.oil_replace_work.all %}
@@ -281,7 +281,7 @@
                 </div>
             {% endif %}
             {% if service.audio_alarm_repair_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.audio_alarm_repair_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.audio_alarm_repair_work.all %}
@@ -291,7 +291,7 @@
                 </div>
             {% endif %}
             {% if service.tuning_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.tuning_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.tuning_work.all %}
@@ -301,7 +301,7 @@
                 </div>
             {% endif %}
             {% if service.other_auto_work.all %}
-                <div class="col-md-3 work">
+                <div class="work__type">
                     <h5 class="work__title">{{ service.other_auto_work.first.get_model_name }}</h5>
                     <ul class="work__list">
                         {% for work in service.other_auto_work.all %}

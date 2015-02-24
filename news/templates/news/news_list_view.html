@@ -9,7 +9,7 @@
 
         <div class="masonry">
             {% for post in posts %}
-                <article class="post-preview  post-preview_big">
+                <article class="post-preview  post-preview_full">
                     <figure class="post-preview__figure">
                         <a class="post-preview__link" href="{{ post.get_absolute_url }}">
                             <img class="post-preview__img img-responsive" src="{{ post.preview_img.url }}"
@@ -17,8 +17,7 @@
 
                             <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
                         </a>
-                    </figure>
-                    <section class="post-preview__content">
+                         <section class="post-preview__content post-preview__content--inline">
                         <h2 class="post-preview__title"><a class="post-preview__link"
                                                            href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
 
@@ -33,6 +32,8 @@
                             <span class="meta__like">{{ post.views }} <i class="fa fa-eye"></i></span><a href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">1 <i class="fa fa-comments-o"></i></a>
                         </div>
                     </section>
+                    </figure>
+
                 </article>
             {% endfor %}
 
