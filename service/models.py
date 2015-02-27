@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from ckeditor.fields import RichTextField
 from reviews.models import Review
 from django.contrib.contenttypes.fields import GenericRelation
+from django.contrib.contenttypes.models import ContentType
 import json
 
 
@@ -88,6 +89,8 @@ class Service(models.Model):
 
         super(Service, self).save()
 
+    def get_content_type(self):
+        return ContentType.objects.get_for_model(self).id
     # Преобразуем поле address в координаты для полей latitude и longitude
     def geocode(self, location):
         format = "json"
@@ -99,6 +102,7 @@ class Service(models.Model):
 
     def __str__(self):
         return self.name
+
 
 
 class AutoserviceWork(models.Model):

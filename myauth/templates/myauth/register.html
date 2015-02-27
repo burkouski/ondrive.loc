@@ -1,12 +1,19 @@
 {% extends 'layout.html' %}
+{% load sitetree %}
 
+    {% block meta %}
+        <meta name="description" content="{% sitetree_page_description from 'main' %}">
+    {% endblock %}
+
+    {% block title %}
+        <title>{% sitetree_page_title from "main" %}</title>
+    {% endblock %}
 {% block page %}
     <div id="main-container">
 		<!-- Breadcrumb Starts -->
-			<ol class="breadcrumb">
-				<li><a href="index.html">Home</a></li>
-				<li class="active">Register</li>
-			</ol>
+			{% block breadcrumbs %}
+                {% sitetree_breadcrumbs from "main" %}
+            {% endblock %}
 		<!-- Breadcrumb Ends -->
 		<!-- Main Heading Starts -->
         {% if registered %}

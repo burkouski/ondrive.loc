@@ -89,9 +89,13 @@
                     <div class="header-links">
                         <ul class="list-unstyled list-inline pull-left">
                             <li><a href="./">Главная</a></li>
+                            <li><a href="#">О проекте</a></li>
+                            <li><a href="#">Правила портала</a></li>
+                            <li><a href="#">Сотрудничество</a></li>
+                            <li><a href="#">Контакты</a></li>
                             <!--li><a href="#">Мой блог</a></li-->
                             <!--li><a href="#">Мой профиль</a></li-->
-                            <!--li><a href="cart.html">Пользовательское соглашение</a></li-->
+                            <!--li><a href="cart.html"></a></li-->
                             {% if user.is_authenticated %}
                                 <li><a href="#">Мой профиль</a></li>
                                 <li><a href="/auth/logout">Выйти</a></li>
@@ -169,6 +173,8 @@
                         <li><a tabindex="-1" href="#">Шиномонтажи</a></li>
                     </ul>
                 </li>
+                <li><a class="disabled" href="#">Блоги</a></li>
+                <li><a href="#">Машины</a></li>
                 <!--li><a href="category-list.html">О проекте</a></li>
                 <li><a href="category-list.html">Контакты</a></li-->
             </ul>

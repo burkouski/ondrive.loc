@@ -22,8 +22,8 @@ def autoservice_list(request):
 
     for key, val in obj.items():
         for x in val:
-            services = services.filter(**{ key: x })
-    services = services.annotate(sort = Avg('reviews__rate')).order_by('-sort')
+            services = services.filter(**{key: x})
+    services = services.annotate(sort=Avg('reviews__rate')).order_by('-sort')
     services = json.dumps(
         {
         'info': [{

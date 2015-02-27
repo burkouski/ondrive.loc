@@ -113,7 +113,7 @@
 
 
                     <div ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}"
-                         ng-repeat="service in filteredService | paginate:rowPerPage" ng-cloak>
+                         ng-repeat="service in services | paginate:rowPerPage" ng-cloak>
                         <div class="product-col list clearfix">
                             <div class="row">
                                 <div class="image" ng-class="{'col-xs-4': !gridView, 'col-xs-12': gridView}">

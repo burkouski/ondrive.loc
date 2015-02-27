@@ -11,7 +11,7 @@
 {% block page %}
 
     <!-- Main Container Starts -->
-    <div id="main-container">
+    <div id="main-container" ng-app="ymapsApp" ng-controller="serviceCtrl">
     <!-- Breadcrumb Starts -->
     {% block breadcrumbs %}
         {% load sitetree %}
@@ -19,7 +19,7 @@
     {% endblock %}
     <!-- Breadcrumb Ends -->
     <!-- Product Info Starts -->
-    <div ng-app="ymapsApp" ng-controller="serviceCtrl" class="row product-info full">
+    <div class="row product-info full">
         <!-- Left Starts -->
         <div class="col-sm-4 images-block">
             <a href="images/product-images/big-pimg1.jpg">
@@ -331,12 +331,18 @@
     <!-- Review Starts -->
     <div class="tab-pane" id="tab-review">
         {% if user.is_authenticated %}
-            <form class="form-horizontal">
+            {{ service.CONTENT_OBJECT.name }}
+            <form ng-submit="reviewSubmit()" class="form-horizontal">
+                <input ng-model="review.relate" class="hidden" type="text" ng-init="review.relate = '{{ service.get_content_type }}'"/>
+                <input ng-model="review.username" class="hidden" type="text" ng-init="review.username = '{{ user.username }}'"/>
+                <input ng-model="review.obj_id" class="hidden" type="text" ng-init="review.obj_id = '{{ service.id }}'"/>
                 <div class="form-group required">
+                    <div class="text-danger error col-sm-10 col-sm-offset-2">{$ error.textError $}</div>
                     <label class="col-sm-2 control-label" for="input-review">Ваш отзыв</label>
 
                     <div class="col-sm-10">
-                        <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+
+                        <textarea ng-model="review.text" name="text" rows="5" id="input-review" class="form-control"></textarea>
 
                         <div class="help-block">
                             Ваше непредвзятое мнение...
@@ -344,27 +350,26 @@
                     </div>
                 </div>
                 <div class="form-group required">
+                    <div class="text-danger col-sm-10 col-sm-offset-2">{$ error.rateError $}</div>
                     <label class="col-sm-2 control-label ratings">Ваша оценка</label>
 
                     <div class="col-sm-10">
                         Очень плохо&nbsp;
-                        <input type="radio" name="rating" value="1"/>
+                        <input ng-model="review.rate" type="radio" name="rating" value="1"/>
                         &nbsp;
-                        <input type="radio" name="rating" value="2"/>
+                        <input ng-model="review.rate" type="radio" name="rating" value="2"/>
                         &nbsp;
-                        <input type="radio" name="rating" value="3"/>
+                        <input ng-model="review.rate" type="radio" name="rating" value="3"/>
                         &nbsp;
-                        <input type="radio" name="rating" value="4"/>
+                        <input ng-model="review.rate" type="radio" name="rating" value="4"/>
                         &nbsp;
-                        <input type="radio" name="rating" value="5"/>
-                        &nbsp;Отлично
+                        <input ng-model="review.rate" type="radio" name="rating" value="5"/>
+                        &nbsp;Отлично {$review$}
                     </div>
                 </div>
                 <div class="buttons">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="button" id="button-review" class="btn btn-warning">
-                            Оставить отзыв
-                        </button>
+                        <input class="btn btn-warning" type="submit" id="submit" value="Оставить отзыв" />
                     </div>
                 </div>
             </form>

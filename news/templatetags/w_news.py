@@ -44,7 +44,17 @@ def disqus_sso(context, callback_func="null"):
     DISQUS_PUBLIC_KEY = bytes(DISQUS_PUBLIC_KEY, 'ascii')
     user = context['user']
     if user.is_anonymous():
-        return ""
+        return """function disqus_config() {
+this.sso = {
+            name: "ondrive.by",
+            button: "https://a.disquscdn.com/dotcom/d-221b350/img/logos/logo-navbar-blue.png",
+            icon: "https://a.disquscdn.com/dotcom/d-221b350/img/logos/logo-navbar-blue.png",
+            url: "http:/localhost:8000/auth/login/",
+            logout: "http:/localhost:8000/auth/logout/",
+            width: "800",
+            height: "400"
+        };
+}"""
     # create a JSON packet of our data attributes
     data = json.dumps({
         'id': user.id,
@@ -63,7 +73,17 @@ def disqus_sso(context, callback_func="null"):
     return """function disqus_config() {
 this.page.remote_auth_s3 = "%(message)s %(sig)s %(timestamp)s";
 this.page.api_key = "%(pub_key)s";
+this.sso = {
+            name: "ondrive.by",
+            button: "https://a.disquscdn.com/dotcom/d-221b350/img/logos/logo-navbar-blue.png",
+            icon: "https://a.disquscdn.com/dotcom/d-221b350/img/logos/logo-navbar-blue.png",
+            url: "http:/localhost:8000/auth/login/",
+            logout: "http:/localhost:8000/auth/logout/",
+            width: "800",
+            height: "400"
+        };
 this.callbacks.onNewComment = [%(callback_func)s];
+
 }""" % dict(
         message=message.decode(),
         timestamp=timestamp,

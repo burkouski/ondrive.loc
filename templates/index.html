@@ -34,10 +34,10 @@
             <!-- Wrapper For Slides Ends -->
             <!-- Controls Starts -->
             <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="glyphicon glyphicon-chevron-left fa fa-chevron-left"></span>
             </a>
             <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right fa fa-chevron-right"></span>
             </a>
             <!-- Controls Ends -->
         </div>
@@ -45,6 +45,7 @@
     <!-- Slider Section Ends -->
     {% show_latest_news %}
     <section ng-app="ymapsApp" class="map map_main" ng-controller="mainmapCtrl">
+    {% csrf_token %}
         <h2 class="product-head">Все сервисы для вашего автомобиля на карте минска</h2>
 
         <div class="map__wrap" ng-init="center=[53.889592, 27.562298];zoom=11">
