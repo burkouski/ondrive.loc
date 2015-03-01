@@ -73,6 +73,9 @@ input:-ms-input-placeholder:focus:-ms-input-placeholder {
   padding: 20px;
   background-color: #fff;
 }
+#wrapper {
+  min-width: 1400px;
+}
 .footer-push {
   height: 80px;
 }

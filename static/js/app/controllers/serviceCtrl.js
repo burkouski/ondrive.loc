@@ -1,4 +1,4 @@
-ymapsApp.controller('serviceCtrl', ['$scope', function ($scope) {
+ymapsApp.controller('serviceCtrl', ['$scope','services', function ($scope, services) {
 
 
     $scope.starsInit = function (rating) {
@@ -28,10 +28,14 @@ ymapsApp.controller('serviceCtrl', ['$scope', function ($scope) {
     _getArray = function (n) {
         return new Array(n);
     };
+
+    var apiUrl = '/reviews/api/createreview/'
     $scope.error = {
         textError: '',
         rateerror: ''
     }
+
+
     $scope.reviewSubmit = function () {
         if (!$scope.review.text) {
 
@@ -48,6 +52,19 @@ ymapsApp.controller('serviceCtrl', ['$scope', function ($scope) {
         }
         else {
             $scope.error.rateError = '';
+        }
+        if ($scope.review.text && $scope.review.text) {
+            services.list(apiUrl, $scope.review, function (result) {
+                //alert(true)
+                $scope.result = 'Спасибо за ваше мнение! Отзыв будет опубликован после модерации.';
+
+
+                console.log($scope.result)
+
+            },
+            function () {
+                $scope.result = 'Что-то пошло не так. Мы исправим это в ближайшее время';
+            });
         }
     };
 
