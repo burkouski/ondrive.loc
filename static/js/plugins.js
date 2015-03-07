@@ -1,11 +1,11 @@
 $(function () {
-//var $container = $('.masonry').masonry();
-//    $container.imagesLoaded(function () {
-//        $container.masonry({
-//            itemSelector: '.post-preview',
-//            isResizable: false,
-//            gutter: 0
-//        });
-//    });
+var $container = $('.masonry').masonry();
+
+        $container.masonry({
+            itemSelector: '.work__type',
+            isResizable: false,
+            gutter: 0
+        });
+
 
 })

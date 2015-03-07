@@ -158,7 +158,7 @@
     <div class="tab-pane" id="tab-work">
         <!-- Available Options Starts -->
 
-        <div class="work">
+        <div class="work masonry">
             {#Виды работ #}
             {% if service.electrician_work.all %}
                 <div class="work__type">
@@ -310,35 +310,30 @@
                     </ul>
                 </div>
             {% endif %}
-
-
         </div>
         <!-- Available Options Ends -->
     </div>
     <!-- Description Ends -->
     <!-- Additional Information Starts -->
     <div class="tab-pane" id="tab-ainfo">
-        {% if False %}
-            {% for review in service.reviews.all %}
-                {% if review.is_moderate %}
-                    <div class="review">
-                        <div class="review__date">{{ review.pub_date }} <i
-                                ng-repeat="star in starsInit('{{ review.rate }}').positiveStar track by $index"
-                                style="color: red" class="fa fa-star"></i><i
-                                ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').halfStar track by $index"
-                                style="color: red" class="fa fa-star-half-o"></i><i
-                                ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').negativeStar track by $index"
-                                style="color: red" class="fa fa-star-o"></i>
-                        </div>
-                        <div class="review__text">{{ review.review }}</div>
-                        <div class="review__author">{{ review.author }}</div>
-                    </div>
-                {% endif %}
 
-            {% endfor %}
-        {% else %}
+        {% for review in reviews %}
+            <div class="review">
+                <div class="review__date">{{ review.pub_date }} <i
+                        ng-repeat="star in starsInit('{{ review.rate }}').positiveStar track by $index"
+                        style="color: red" class="fa fa-star"></i><i
+                        ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').halfStar track by $index"
+                        style="color: red" class="fa fa-star-half-o"></i><i
+                        ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').negativeStar track by $index"
+                        style="color: red" class="fa fa-star-o"></i>
+                </div>
+                <div class="review__text">{{ review.review }}</div>
+                <div class="review__author">{{ review.author }}</div>
+            </div>
+        {% empty %}
             Нет отзывов
-        {% endif %}
+        {% endfor %}
+
 
     </div>
     <!-- Additional Information Ends -->

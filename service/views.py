@@ -8,9 +8,9 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 def autoservice_detail(request, service_alias):
     service = get_object_or_404(AutoService, alias=service_alias)
     rel = AutoService._meta.get_m2m_with_model()
-    reviews = service.reviews.all()
+    reviews = service.reviews.filter(is_moderate=True)
     rating = reviews.aggregate(Avg('rate'))
-    args = {'service': service, 'rel': rel, 'rating': rating}
+    args = {'service': service, 'rel': rel, 'rating': rating, 'reviews': reviews}
     return render(request, 'service/detail_view.html', args)
 
 @ensure_csrf_cookie
