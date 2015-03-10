@@ -1,15 +1,18 @@
 <div class="filter">
     {% for key, val in res.items %}
-        <div class="filter__title" ng-class="{active: isOpenTab('tab{{ forloop.counter }}')}"  ng-click="openTab('tab{{ forloop.counter }}')" style="cursor: pointer">
-            {{ key }}<i class="fa" ng-class="{'fa-arrow-circle-down': isOpenTab('tab{{ forloop.counter }}'), 'fa-arrow-circle-right': !isOpenTab('tab{{ forloop.counter }}')}"></i>
+        <div class="filter__title" ng-class="{active: isOpenTab('tab{{ forloop.counter }}')}"
+             ng-click="openTab('tab{{ forloop.counter }}')" style="cursor: pointer">
+            {{ key }}<i class="fa"
+                        ng-class="{'fa-arrow-circle-down': isOpenTab('tab{{ forloop.counter }}'), 'fa-arrow-circle-right': !isOpenTab('tab{{ forloop.counter }}')}"></i>
         </div>
 
         <div class="list-group-item filter__options" ng-show="isOpenTab('tab{{ forloop.counter }}')" ng-cloak>
             <div class="filter-group">
                 {% for item in val %}
                     <label class="checkbox filter__option-label">
-                        <input class="filter__option" type="checkbox" checklist-model="filter.{{ item.work_field_name }}"
-                               checklist-value="{{ item.id }}" ng-click="loadRemoteData(apiUrl, filter)">
+                        <input class="filter__option" type="checkbox"
+                               checklist-model="{{ filter_name }}.{{ item.work_field_name }}"
+                               checklist-value="{{ item.id }}" ng-click="loadRemoteData(apiUrl, {{ filter_name }})">
                         {{ item }}
                     </label>
                 {% endfor %}
@@ -17,8 +20,8 @@
         </div>
 
     {% endfor %}
-    {{ nj.name }}
+    <div class="list-group-item">
+        <button type="button" class="btn btn-danger" ng-click="{{ filter_name }} = false; loadRemoteData(apiUrl, {{ filter_name }})">Сбросить фильтр</button>
+    </div>
 
-
-    !!!!{$ filter | json $}
 </div>

@@ -30,7 +30,7 @@ ymapsApp.factory('services', ['$http', function ($http) {
                 },
                 //dataType: 'json',
                 url: url,
-                cache: true,
+                cache: false,
                 responseType: 'json'
             }).success(callback).error(error);
         }

@@ -1,29 +1,30 @@
-ymapsApp.controller('autoserviceCtrl', ['$scope', 'services', function ($scope, services) {
+ymapsApp.controller('autoserviceCtrl', ['$scope','$cookies', 'services', function ($scope, $cookies, services) {
 
-    $scope.apiUrl = "/autoservices/";
+    //$scope.apiUrl = "/autoservices/";
     $scope.preloader = false;
-    $scope.filter = {};
-    $scope.gridView = false
+    $scope.asfilter = {};
+    $scope.gridView = false;
 
 
     //$scope.isLoading = true;
     $scope.loadRemoteData = function (apiUrl, data) {
-
+        $scope.preloader = false
         services.list(apiUrl, data, function (services) {
                 //alert(true)
                 $scope.services = services.info;
                 $scope.meta = services.meta
-                console.log($scope.services)
+                //console.log($scope.services)
                 $scope.preloader = true
             },
             function () {
                 alert('wrong')
             });
-
-
     };
 
-    $scope.loadRemoteData($scope.apiUrl, $scope.filter);
+    $scope.init = function(url) {
+        $scope.apiUrl = url;
+        $scope.loadRemoteData($scope.apiUrl, $scope.filter);
+    }
 
 
     //initiate an array to hold all active tabs
