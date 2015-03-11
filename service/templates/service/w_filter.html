@@ -21,7 +21,7 @@
 
     {% endfor %}
     <div class="list-group-item">
-        <button type="button" class="btn btn-danger" ng-click="{{ filter_name }} = false; loadRemoteData(apiUrl, {{ filter_name }})">Сбросить фильтр</button>
+        <button type="button" class="btn btn-danger" ng-click="{{ filter_name }} = {}; loadRemoteData(apiUrl, {{ filter_name }})">Сбросить фильтр</button>
     </div>
 
 </div>

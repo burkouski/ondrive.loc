@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c15395e8-eb0c-4315-9347-36f8ad6acd7f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/be3ae8f111216e4599f2a21a30137e80.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/slider-imgs/slide13.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/slider-imgs/slide2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/slider-imgs/slide3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/migrations/0003_auto_20150307_1446.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reviews/migrations/0007_auto_20150307_1446.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/templates/service/autoservice_list_view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/templates/service/carwash_list_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/img/slider-imgs/slide6-img.jpg" afterPath="$PROJECT_DIR$/static/img/slider-imgs/slide6-img.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/img/slider-imgs/slide7-img.jpg" afterPath="$PROJECT_DIR$/static/img/slider-imgs/slide7-img.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/admin.py" afterPath="$PROJECT_DIR$/service/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/vendor/angular-animate.js" afterPath="$PROJECT_DIR$/static/js/app/vendor/angular-animate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/vendor/angular-cookies.js" afterPath="$PROJECT_DIR$/static/js/app/vendor/angular-cookies.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/vendor/angular-mocks.js" afterPath="$PROJECT_DIR$/static/js/app/vendor/angular-mocks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/vendor/angular-resource.js" afterPath="$PROJECT_DIR$/static/js/app/vendor/angular-resource.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/vendor/angular-route.js" afterPath="$PROJECT_DIR$/static/js/app/vendor/angular-route.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/vendor/angular-sanitize.js" afterPath="$PROJECT_DIR$/static/js/app/vendor/angular-sanitize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/vendor/angular.js" afterPath="$PROJECT_DIR$/static/js/app/vendor/angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" afterPath="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/services/getJsonService.js" afterPath="$PROJECT_DIR$/static/js/app/services/getJsonService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/layout.html" afterPath="$PROJECT_DIR$/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/templates/service/list_view.html" afterPath="$PROJECT_DIR$/service/templates/service/list_view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js" afterPath="$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/models.py" afterPath="$PROJECT_DIR$/service/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/urls.py" afterPath="$PROJECT_DIR$/service/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/views.py" afterPath="$PROJECT_DIR$/service/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/templatetags/w_autoservice.py" afterPath="$PROJECT_DIR$/service/templatetags/w_autoservice.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/templates/service/w_filter.html" afterPath="$PROJECT_DIR$/service/templates/service/w_filter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news/templates/news/w_latest_news.html" afterPath="$PROJECT_DIR$/news/templates/news/w_latest_news.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ondrive.loc.iws" />
@@ -120,10 +91,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="w_filter.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="w_filter.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/templates/service/w_filter.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="33" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.66785717" vertical-offset="0" max-vertical-offset="560">
+            <state line="23" column="85" selection-start="1255" selection-end="1255" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="544">
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -140,16 +111,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainmapCtrl.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="mainmapCtrl.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="33" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0" vertical-offset="472" max-vertical-offset="1275">
+            <state line="35" column="43" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.3472454" vertical-offset="387" max-vertical-offset="1258">
               <folding>
-                <element signature="e#2023#2290#0" expanded="false" />
-                <element signature="e#2366#2705#0" expanded="false" />
-                <element signature="e#2793#2882#0" expanded="false" />
-                <element signature="e#2964#3581#0" expanded="false" />
-                <element signature="e#3626#3662#0" expanded="false" />
+                <element signature="e#1968#2235#0" expanded="false" />
+                <element signature="e#2311#2650#0" expanded="false" />
+                <element signature="e#2738#2827#0" expanded="false" />
+                <element signature="e#2909#3526#0" expanded="false" />
+                <element signature="e#3571#3607#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -226,8 +197,8 @@
         <option value="$PROJECT_DIR$/static/js/app/app.js" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" />
-        <option value="$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js" />
         <option value="$PROJECT_DIR$/service/templates/service/w_filter.html" />
+        <option value="$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js" />
       </list>
     </option>
   </component>
@@ -1055,19 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="33" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0" vertical-offset="472" max-vertical-offset="1275">
-          <folding>
-            <element signature="e#2023#2290#0" expanded="false" />
-            <element signature="e#2366#2705#0" expanded="false" />
-            <element signature="e#2793#2882#0" expanded="false" />
-            <element signature="e#2964#3581#0" expanded="false" />
-            <element signature="e#3626#3662#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="175" column="53" selection-start="8578" selection-end="8578" vertical-scroll-proportion="-8.961538" vertical-offset="2742" max-vertical-offset="3621">
@@ -1082,9 +1040,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/templates/service/w_filter.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="33" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.66785717" vertical-offset="0" max-vertical-offset="560">
+        <state line="23" column="85" selection-start="1255" selection-end="1255" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="544">
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app/controllers/mainmapCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="43" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.3472454" vertical-offset="387" max-vertical-offset="1258">
+          <folding>
+            <element signature="e#1968#2235#0" expanded="false" />
+            <element signature="e#2311#2650#0" expanded="false" />
+            <element signature="e#2738#2827#0" expanded="false" />
+            <element signature="e#2909#3526#0" expanded="false" />
+            <element signature="e#3571#3607#0" expanded="false" />
           </folding>
         </state>
       </provider>

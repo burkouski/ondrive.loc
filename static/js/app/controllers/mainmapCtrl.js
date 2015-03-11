@@ -32,10 +32,8 @@ ymapsApp.controller('mainmapCtrl', ['$scope','$cookieStore', 'services', functio
         $scope.preloader = false;
         console.log(data);
         services.list(apiUrl, data, function (services) {
-                //alert(true)
                 $scope.services = services.info;
                 $scope.meta = services.meta
-                //console.log($scope.services)
                 $scope.preloader = true
                 setCookie()
             },
@@ -47,6 +45,7 @@ ymapsApp.controller('mainmapCtrl', ['$scope','$cookieStore', 'services', functio
 
     //Функция изменения сервиса (очищает фильтры при переключении)
     $scope.changeService = function(apiUrl, filter) {
+        alert(filter)
         $scope.loadRemoteData(apiUrl, filter);
     }
 
