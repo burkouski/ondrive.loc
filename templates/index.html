@@ -170,15 +170,15 @@
 						<div class="list-group-item">
 							<div class="filter-group">
 								<label class="radio">
-									<input name="service" type="radio" ng-model="apiUrl" value="/autoservices/" ng-change="changeService(apiUrl, asFilter)">
+									<input name="service" type="radio" ng-model="apiUrl" value="/autoservices/" ng-change="changeService(apiUrl, 'asFilter')">
 									Автосервисы
 								</label>
 								<label class="radio">
-									<input name="service" type="radio"  ng-model="apiUrl" ng-change="changeService(apiUrl, cwFilter)" value="/carwash/">
+									<input name="service" type="radio"  ng-model="apiUrl" ng-change="changeService(apiUrl, 'cwFilter')" value="/carwash/">
 									Автомойки
 								</label>
 								<label class="radio">
-									<input name="service" type="radio" value="mr3">
+									<input name="service" type="radio"  ng-model="apiUrl" ng-change="changeService(apiUrl, 'tsFilter')" value="/tireservice/">
 									Шиномонтажи
 								</label>
 							</div>
@@ -186,12 +186,15 @@
 					</div>
                 <h3 class="side-heading">Фильтр</h3>
                 <!-- Shopping Options Ends -->
-                <any ng-show="apiUrl == '/autoservices/'">
+                <div ng-show="apiUrl == '/autoservices/'">
                     {% show_autoservice_filter %}
-                </any>
-                <any ng-show="apiUrl == '/carwash/'">
+                </div>
+                <div ng-show="apiUrl == '/carwash/'">
                 {% show_carwash_filter %}
-                </any>
+                </div>
+                <div ng-show="apiUrl == '/tireservice/'">
+                {% show_tireservice_filter %}
+                </div>
             </div>
 
 

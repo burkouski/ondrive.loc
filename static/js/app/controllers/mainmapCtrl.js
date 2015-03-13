@@ -1,30 +1,33 @@
-ymapsApp.controller('mainmapCtrl', ['$scope','$cookieStore', 'services', function ($scope, $cookieStore, services) {
+ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', function ($scope, $cookieStore, services) {
 
-    init = function(){
+    init = function () {
         $scope.preloader = false;
         $scope.gridView = false;
 
         var apiUrlCook = $cookieStore.get('apiUrl'),
             asFilterCook = $cookieStore.get('asFilter'),
             cwFilterCook = $cookieStore.get('cwFilter'),
+            tsFilterCook = $cookieStore.get('tsFilter'),
             activeTabsCook = $cookieStore.get('activeTabs');
 
-        $scope.apiUrl = (apiUrlCook)? apiUrlCook : "/autoservices/";
-        $scope.asFilter = (asFilterCook)? asFilterCook : {};
-        $scope.cwFilter = (cwFilterCook)? cwFilterCook : {};
-        $scope.activeTabs = (activeTabsCook)? activeTabsCook : [];
+        $scope.apiUrl = (apiUrlCook) ? apiUrlCook : "/autoservices/";
+        $scope.asFilter = (asFilterCook) ? asFilterCook : {};
+        $scope.cwFilter = (cwFilterCook) ? cwFilterCook : {};
+        $scope.tsFilter = (tsFilterCook) ? tsFilterCook : {};
+        $scope.activeTabs = (activeTabsCook) ? activeTabsCook : [];
 
-        var curFilter = ($scope.apiUrl == "/autoservices/")? $scope.asFilter :
-                        ($scope.apiUrl == "/carwash/") ? $scope.cwFilter : {};
+        var curFilter = ($scope.apiUrl == "/autoservices/") ? $scope.asFilter :
+            ($scope.apiUrl == "/carwash/") ? $scope.cwFilter : {};
 
         $scope.loadRemoteData($scope.apiUrl, curFilter);
     }
 
-    setCookie = function() {
-         $cookieStore.put('apiUrl', $scope.apiUrl),
-         $cookieStore.put('asFilter', $scope.asFilter),
-         $cookieStore.put('cwFilter', $scope.cwFilter),
-         $cookieStore.put('activeTabs', $scope.activeTabs);
+    setCookie = function () {
+        $cookieStore.put('apiUrl', $scope.apiUrl),
+            $cookieStore.put('asFilter', $scope.asFilter),
+            $cookieStore.put('cwFilter', $scope.cwFilter),
+            $cookieStore.put('tsFilter', $scope.cwFilter),
+            $cookieStore.put('activeTabs', $scope.activeTabs);
     }
 
     //Функция загрузки данных
@@ -38,15 +41,13 @@ ymapsApp.controller('mainmapCtrl', ['$scope','$cookieStore', 'services', functio
                 setCookie()
             },
             function () {
-                //console.log($scope.filter)
                 alert('wrong')
             });
     };
 
     //Функция изменения сервиса (очищает фильтры при переключении)
-    $scope.changeService = function(apiUrl, filter) {
-        alert(filter)
-        $scope.loadRemoteData(apiUrl, filter);
+    $scope.changeService = function (apiUrl, filterName) {
+        $scope.loadRemoteData(apiUrl, $scope[filterName]);
     }
 
     //Функция проверки открытого таба в фильтре
@@ -104,6 +105,14 @@ ymapsApp.controller('mainmapCtrl', ['$scope','$cookieStore', 'services', functio
             negativeStar: _getArray(negativeStar)
         }
     };
+
+    $scope.clearFilter = function (filterName) {
+        angular.forEach($scope[filterName], function (value, key) {
+            $scope[filterName][key] = []
+        });
+        $scope.loadRemoteData($scope.apiUrl, $scope[filterName]);
+
+    }
 
     init();
 

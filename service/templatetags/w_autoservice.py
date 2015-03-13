@@ -1,5 +1,5 @@
 from django import template
-from service.models import AutoService, CarWash
+from service.models import AutoService, CarWash, TireService
 from django.template import RequestContext
 register = template.Library()
 
@@ -26,3 +26,12 @@ def show_carwash_filter():
     for y in json:
         res[y._meta.verbose_name_plural.title()] = y.objects.all()
     return {'res': res, 'nj': njson, 'filter_name': 'cwFilter'}
+
+@register.inclusion_tag("service/w_filter.html")
+def show_tireservice_filter():
+    res = {}
+    njson = TireService._meta.get_m2m_with_model()
+    json = [x[0].rel.to for x in njson]
+    for y in json:
+        res[y._meta.verbose_name_plural.title()] = y.objects.all()
+    return {'res': res, 'nj': njson, 'filter_name': 'tsFilter'}

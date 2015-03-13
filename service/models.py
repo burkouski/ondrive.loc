@@ -255,14 +255,6 @@ class OtherAutogWork(Work):
         verbose_name_plural = u"Прочее"
 
 
-# class TireServiceWork(models.Model):
-#     pass
-#
-#
-# class CarWashWork(models.Model):
-#     pass
-
-
 class AutoService(Service):
     # Виды работ
     electrician_work = models.ManyToManyField(ElectricianWork, related_name='electrician_work',
@@ -314,6 +306,7 @@ class AutoService(Service):
 #         verbose_name = u"Шиномонтаж"
 #         verbose_name_plural = u"Шиномонтажи"
 #
+
 #################### АВТОМОЙКИ ####################
 class TypeCarWash(Work):
     work_field_name = 'type_carwash'
@@ -365,3 +358,37 @@ class CarWash(Service):
     def get_absolute_url(self):
         return reverse('service:carwash_detail', kwargs={'service_alias': self.alias})
 
+
+#################### ШИНОМОНТАЖИ ####################
+
+class TireWork(Work):
+    work_field_name = 'tire_work'
+
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Шины"
+
+
+class DiscWork(Work):
+    work_field_name = 'disc_work'
+
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Диски"
+
+
+class TireService(Service):
+    tire_work = models.ManyToManyField(TireWork, related_name='tire_work',
+                                              verbose_name='Шины', blank=True)
+    disc_work = models.ManyToManyField(DiscWork, related_name='disc_work',
+                                              verbose_name='Диски', blank=True)
+    add_services = models.ManyToManyField(AddServices, related_name='tire_add_services',
+                                                     verbose_name='Дополнительные услуги', blank=True)
+    reviews = GenericRelation(Review)
+
+    class Meta:
+        verbose_name = u"Шиномонтаж"
+        verbose_name_plural = u"Шиномонтажи"
+
+    def get_absolute_url(self):
+        return reverse('service:tireservice_detail', kwargs={'service_alias': self.alias})
