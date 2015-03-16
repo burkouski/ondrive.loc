@@ -27,7 +27,7 @@
 
 {% block catalog_map %}
     <!-- урл для подгрузки сервисов -->
-    <div ng-init="init('/autoservices/')"></div>
+    <div ng-init="init('asFilter', '/autoservices/')"></div>
 
     <section class="map map_main col-md-12">
         <div class="map__wrap" ng-init="center=[53.889592, 27.562298];zoom=16">

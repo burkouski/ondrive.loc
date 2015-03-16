@@ -52,6 +52,7 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
 
     //Функция проверки открытого таба в фильтре
     $scope.isOpenTab = function (tab) {
+        //console.log(true)
         //check if this tab is already in the activeTabs array
         if ($scope.activeTabs.indexOf(tab) > -1) {
             //if so, return true

@@ -1,36 +1,42 @@
-ymapsApp.controller('autoserviceCtrl', ['$scope','$cookies', 'services', function ($scope, $cookies, services) {
+ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', function ($scope, $cookieStore, services) {
 
-    //$scope.apiUrl = "/autoservices/";
-    $scope.preloader = false;
-    $scope.asfilter = {};
-    $scope.gridView = false;
+    $scope.init = function (filterName, apiUrl) {
+        $scope.preloader = false;
+        $scope.gridView = false;
+        $scope.filterName = filterName;
+        $scope.apiUrl = apiUrl;
+        var filterCook = $cookieStore.get($scope.filterName),
+            activeTabsCook = $cookieStore.get('activeTabs');
+        console.log($cookieStore.get($scope.filterName));
 
+        $scope[$scope.filterName] = (filterCook) ? filterCook : {};
+        $scope.activeTabs = (activeTabsCook) ? activeTabsCook : [];
 
-    //$scope.isLoading = true;
+        $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
+    }
+
+    setCookie = function () {
+            $cookieStore.put($scope.filterName, $scope[$scope.filterName]);
+            $cookieStore.put('activeTabs', $scope.activeTabs);
+
+    }
+
+    //Функция загрузки данных
     $scope.loadRemoteData = function (apiUrl, data) {
-        $scope.preloader = false
+        $scope.preloader = false;
+        console.log(data);
         services.list(apiUrl, data, function (services) {
-                //alert(true)
                 $scope.services = services.info;
                 $scope.meta = services.meta
-                //console.log($scope.services)
                 $scope.preloader = true
+                setCookie()
             },
             function () {
                 alert('wrong')
             });
     };
 
-    $scope.init = function(url) {
-        $scope.apiUrl = url;
-        $scope.loadRemoteData($scope.apiUrl, $scope.filter);
-    }
-
-
-    //initiate an array to hold all active tabs
-    $scope.activeTabs = [];
-
-    //check if the tab is active
+    //Функция проверки открытого таба в фильтре
     $scope.isOpenTab = function (tab) {
         //check if this tab is already in the activeTabs array
         if ($scope.activeTabs.indexOf(tab) > -1) {
@@ -42,7 +48,7 @@ ymapsApp.controller('autoserviceCtrl', ['$scope','$cookies', 'services', functio
         }
     }
 
-    //function to 'open' a tab
+    //Функция открытия таба в фильтре
     $scope.openTab = function (tab) {
         //check if tab is already open
         if ($scope.isOpenTab(tab)) {
@@ -52,15 +58,16 @@ ymapsApp.controller('autoserviceCtrl', ['$scope','$cookies', 'services', functio
             //if it's not, add it!
             $scope.activeTabs.push(tab);
         }
+        setCookie()
     }
 
-    // function to change service view
+    // Функция изменения отображения сервисов
     $scope.changeView = function (view) {
         $scope.gridView = view; // path not hash
         console.log($scope.view)
     }
 
-    // function to convert into star
+    //Преобразования рейтинга в звёзды
     $scope.starsInit = function (rating) {
         var rating = rating,
             positiveStar = ~~rating,
@@ -85,7 +92,16 @@ ymapsApp.controller('autoserviceCtrl', ['$scope','$cookies', 'services', functio
         }
     };
 
+    $scope.clearFilter = function (filterName) {
+        angular.forEach($scope[filterName], function (value, key) {
+            $scope[filterName][key] = []
+        });
+        $scope.loadRemoteData($scope.apiUrl, $scope[filterName]);
+
+    }
+
     _getArray = function (n) {
         return new Array(n);
     };
+
 }]);
