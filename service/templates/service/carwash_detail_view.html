@@ -1,0 +1,36 @@
+{% extends "service/detail_view.html" %}
+
+{% block work %}
+    {#Виды работ #}
+    {% if service.type_carwash.all %}
+        <div class="work__type">
+            <h5 class="work__title">{{ service.type_carwash.first.get_model_name }}</h5>
+            <ul class="work__list">
+                {% for work in service.type_carwash.all %}
+                    <li class="work__item">{{ work }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if service.type_vehicle.all %}
+        <div class="work__type">
+            <h5 class="work__title">{{ service.type_vehicle.first.get_model_name }}</h5>
+            <ul class="work__list">
+                {% for work in service.type_vehicle.all %}
+                    <li class="work__item">{{ work }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if service.car_wash_services.all %}
+        <div class="work__type">
+            <h5 class="work__title">{{ service.car_wash_services.first.get_model_name }}</h5>
+            <ul class="work__list">
+                {% for work in service.car_wash_services.all %}
+                    <li class="work__item">{{ work }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+{% endblock %}

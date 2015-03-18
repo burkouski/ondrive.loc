@@ -46,8 +46,9 @@ INSTALLED_APPS = (
     #'registration',
     'myauth',
     'autofixture',
-    'reviews'
-    #'visits',
+    'reviews',
+    'contacts',
+    'columns',
 )
 COMMENTS_APP = "django_comments_xtd"
 MIDDLEWARE_CLASSES = (
@@ -121,6 +122,12 @@ CKEDITOR_UPLOAD_PATH = "upload/"
 
 DISQUS_SECRET_KEY = 'gUE2zeP5jaMXf1D4YnaoiKRMyrLMf7oImKuNDh78QYafULtC2CMvM6pCe4mflJoc'
 DISQUS_PUBLIC_KEY = 'oCdxoSVB6daOfXK5oQWT2RBsbXnM1fd37nZkmBdq8WJiMPiafJ2i6n5fERvg7ESO'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ondrive.by@gmail.com'
+EMAIL_HOST_PASSWORD = '27b02v89s'
+EMAIL_PORT = 587
 
 
 

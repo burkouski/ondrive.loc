@@ -11,7 +11,7 @@ def autoservice_detail(request, service_alias):
     reviews = service.reviews.filter(is_moderate=True)
     rating = reviews.aggregate(Avg('rate'))
     args = {'service': service, 'rel': rel, 'rating': rating, 'reviews': reviews}
-    return render(request, 'service/detail_view.html', args)
+    return render(request, 'service/autoservice_detail_view.html', args)
 
 @ensure_csrf_cookie
 def autoservice_list(request):
@@ -44,23 +44,6 @@ def autoservice_list(request):
 
     return render(request, 'service/autoservice_list_view.html')
 
-
-
-@ensure_csrf_cookie
-def autoservice_top(request):
-    services = AutoService.objects.filter(is_top=True)[:5]
-    services = json.dumps([{
-                            'name': o.name,
-                            'longitude': o.longitude,
-                            'latitude': o.latitude,
-                            'logo': o.logo.url,
-                            'teaser': o.teaser,
-                            'address': o.address,
-                            'url': o.get_absolute_url()} for o in services])
-    if request.method == 'POST':
-        return HttpResponse(services)
-
-
 #################### АВТОМОЙКИ ####################
 
 def carwash_detail(request, service_alias):
@@ -69,7 +52,7 @@ def carwash_detail(request, service_alias):
     reviews = service.reviews.filter(is_moderate=True)
     rating = reviews.aggregate(Avg('rate'))
     args = {'service': service, 'rel': rel, 'rating': rating, 'reviews': reviews}
-    return render(request, 'service/detail_view.html', args)
+    return render(request, 'service/carwash_detail_view.html', args)
 
 @ensure_csrf_cookie
 def carwash_list(request):
@@ -111,7 +94,7 @@ def tireservice_detail(request, service_alias):
     reviews = service.reviews.filter(is_moderate=True)
     rating = reviews.aggregate(Avg('rate'))
     args = {'service': service, 'rel': rel, 'rating': rating, 'reviews': reviews}
-    return render(request, 'service/detail_view.html', args)
+    return render(request, 'service/tireservice_detail_view.html', args)
 
 @ensure_csrf_cookie
 def tireservice_list(request):

@@ -4,6 +4,7 @@
 /*main menu*/
 .latest-posts
   margin 0 0 20px 0
+
 .masonry
   clearfix()
   position relative
@@ -11,16 +12,10 @@
 
   /*блок post-preview*/
 .post-preview
-  display inline-block
   vertical-align top
-  width 275px
   margin-bottom 10px
   box-shadow: 0 0 1px rgba(0,0,0,0.5);
-.post-preview_medium
-  width 560px
-  margin: 0 6px 10px;
-.post-preview_full
-  width 100%
+
 .post-preview__figure
   position relative
 
@@ -79,7 +74,8 @@
   width 50%
   height 30%
   margin auto
-
+.post-preview__img
+  width 100%
 /*блок post*/
 .post__img-wrap
   width 100%
@@ -95,38 +91,49 @@
   &:active
     color #ef4135
     text-decoration none
-/* block .form*/
-.form__item
-  margin 5px 0 0 0
-  &:first-child
-    margin 0
-.form__itext
-  display block
+
+/* block .wform*/
+.wform
+  padding: 20px
+  background #fff;
+  border: 1px solid #e8e8e8
+  border-radius 0
+.wform__title
+  margin 0
+  padding 5px 0 15px 0
+  border-bottom 1px solid #929497
+  color #252a2f
+  font-size 24px
+.wform__form-wrap
+  padding 20px 0 0
+.wform__label
+  margin-bottom 0
+  padding-top 7px
+  color rgb(139, 139, 139)
+  font-weight 600
+  text-align right
+.wform__group
+  clearfix()
+  margin 0 -15px 15px -15px
+
+.wform__input
+  display: block
   width 100%
-  height 25px
+  height 34px
   padding 6px 12px
-  font-size 12px
-  line-height: 1.42857143
-  color: #555
+  font-size 14px
+  line-height 1.42857143
+  color #555
   background-color #fff
   background-image none
-  border 1px solid #ccc
-  border-radius 4px
-  box-shadow inset 0 1px 1px rgba(0,0,0,.075)
-  transition border-color ease-in-out .15s,box-shadow ease-in-out .15s
+  border 1px solid #ccc;
+  border-radius 4px;
+  box-shadow inset 0 1px 1px rgba(0, 0, 0, .075)
+  transition border-color ease-in-out .15s, box-shadow ease-in-out .15s
 
-.form__ilogin
-.form__restore-link
-  border none
-  background none
-  color #252424
+.wform__input--textarea
+  height auto
 
-  font-size 12px
-  &:hover
-    color #ef4135
-    text-decoration underline
-
-    /*block .map*/
 .map
   margin 0 0 20px 0
 .map__wrap
@@ -195,7 +202,9 @@
 .work
   position relative
 .work__type
-  min-width 250px
+  display inline-block
+  vertical-align top
+  width 24%
   margin 0 0 20px 0
   padding 0 10px
   vertical-align top

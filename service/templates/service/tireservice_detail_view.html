@@ -1,0 +1,26 @@
+{% extends "service/detail_view.html" %}
+
+{% block work %}
+    {#Виды работ #}
+    {% if service.tire_work.all %}
+        <div class="work__type">
+            <h5 class="work__title">{{ service.tire_work.first.get_model_name }}</h5>
+            <ul class="work__list">
+                {% for work in service.tire_work.all %}
+                    <li class="work__item">{{ work }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if service.disc_work.all %}
+        <div class="work__type">
+            <h5 class="work__title">{{ service.disc_work.first.get_model_name }}</h5>
+            <ul class="work__list">
+                {% for work in service.disc_work.all %}
+                    <li class="work__item">{{ work }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+{% endblock %}
