@@ -11,12 +11,7 @@ def user_register(request):
         user_form = UserForm(request.POST, error_class=DivErrorList)
 
         if user_form.is_valid():
-            username = user_form.cleaned_data['username']
-            password = user_form.cleaned_data['password']
-            email = user_form.cleaned_data['email']
-            user = User.objects.create_user(username, email, password)
-            user.is_active = True
-            user.save()
+            user_form.save()
             registered = True
             login_form = LoginForm()
             return render(request, 'myauth/register.html', {'login_form': login_form, 'registered': registered}, context_instance=RequestContext(request) )

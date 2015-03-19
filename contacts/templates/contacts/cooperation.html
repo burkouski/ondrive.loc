@@ -1,0 +1,139 @@
+{% extends 'layout.html' %}
+{% load sitetree %}
+
+{% block meta %}
+    <meta name="description" content="{% sitetree_page_description from 'main' %}">
+{% endblock %}
+
+{% block title %}
+    <title>{% sitetree_page_title from "main" %}</title>
+{% endblock %}
+
+{% block page %}
+    <div id="main-container" ng-app="ymapsApp" ng-controller="contactsCtrl">
+        {% block breadcrumbs %}
+            {% sitetree_breadcrumbs from "main" %}
+        {% endblock %}
+        <h2 class="main-heading text-center">
+            Контакты
+        </h2>
+        <!-- Main Heading Ends -->
+        <!-- Google Map Starts -->
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <p class="text-center">Атомное время, в первом приближении, постоянно. Комета, это удалось установить по
+                    характеру спектра,
+                    возможна. Межзвездная матеpия вызывает центральный Млечный Путь. Движение оценивает эллиптический
+                    маятник Фуко, хотя галактику в созвездии Дракона можно назвать карликовой.</p>
+            </div>
+
+        </div>
+        <!-- Google Map Ends -->
+        <!-- Starts -->
+        <div class="row">
+            <!-- Contact Details Starts -->
+            <div class="col-sm-4">
+                <div class="panel panel-smart">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Как с нами связаться</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled contact-details">
+                            <li class="clearfix">
+                                <i class="fa fa-skype pull-left"></i>
+									<span class="pull-left">
+										ondrive.by
+									</span>
+                            </li>
+
+                            <li class="clearfix">
+                                <i class="fa fa-envelope-o pull-left"></i>
+									<span class="pull-left">
+										<a href="mailto:info@ondrive.by">info@ondrive.by</a> <br/>
+										ondrive.by@gmail.com
+									</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact Details Ends -->
+            <!-- Contact Form Starts -->
+            <div class="col-sm-8">
+                <div class="wform">
+                    <h3 class="wform__title wform__title--center"><span
+                            ng-class="{'text-success': success == true, 'text-danger': success == false}">{$ resultMess $}</span>
+                    </h3>
+
+                    <div class="wform__form-wrap">
+                        <form ng-submit="contactsSubmit(wform)" class="wform__form" role="form" name="wform" novalidate>
+                            {% csrf_token %}
+                            <div class="wform__group">
+                                <label for="name" class="col-sm-3 wform__label">
+                                    Ваше имя
+                                </label>
+
+                                <div class="col-sm-9">
+                                    <input ng-model="contacts.name" type="text" class="wform__input" name="name"
+                                           id="name" placeholder="Как к вам обращаться?">
+                                </div>
+                            </div>
+                            <div class="wform__group">
+                                <label for="email" class="col-sm-3 wform__label">
+                                    Ваш Email
+                                </label>
+
+                                <div class="col-sm-9">
+                                    <input ng-model="contacts.email" type="email" class="wform__input" name="email"
+                                           id="email" placeholder="Как с вами связаться?">
+                                    <div ng-show="wform.$submitted">
+                                        <span class="text-danger" ng-show="wform.email.$error.email">Введите email в правильном формате</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wform__group">
+                                <label for="subject" class="col-sm-3 wform__label">
+                                    Тема
+                                </label>
+
+                                <div class="col-sm-9">
+                                    <input ng-model="contacts.subject" type="text" class="wform__input" name="subject"
+                                           id="subject"
+                                           placeholder="Тема сообщения">
+                                </div>
+                            </div>
+                            <div class="wform__group">
+                                <label for="message" class="col-sm-3 wform__label">
+                                    Сообщение <span class="warning">*</span>
+                                </label>
+
+                                <div class="col-sm-9">
+                                    <textarea ng-model="contacts.message" name="message" id="message"
+                                              class="wform__input wform__input--textarea" rows="5"
+                                              placeholder="Сообщение" required=""></textarea>
+                                    <div ng-show="wform.$submitted">
+                                        <span class="text-danger" ng-show="wform.message.$error.required">Пожалуйста оставьте сообщение</span>
+                                    </div>
+
+                                    <!--span class="text-danger">{$ error.messageError $}</span-->
+                                </div>
+                            </div>
+                            <div class="wform__group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-warning text-uppercase"> <span ng-show="!ajaxLoader">Отправить</span>
+                                        <img ng-show="ajaxLoader" src="/static/img/ajax-loader2.gif" alt=""/>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact Form Ends -->
+        </div>
+        <!-- Ends -->
+    </div>
+    <!-- Main Heading Starts -->
+
+{% endblock %}

@@ -3,10 +3,13 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.shortcuts import render, HttpResponse
 from django.core.mail import send_mail
 
+
 def contacts_view(request):
     return render(request,'contacts/contacts.html')
 
 
+def cooperation_view(request):
+    return render(request,'contacts/cooperation.html')
 
 
 @ensure_csrf_cookie

@@ -1,49 +1,49 @@
 {% extends 'layout.html' %}
 {% load sitetree %}
 
-    {% block meta %}
-        <meta name="description" content="{% sitetree_page_description from 'main' %}">
-    {% endblock %}
+{% block meta %}
+    <meta name="description" content="{% sitetree_page_description from 'main' %}">
+{% endblock %}
 
-    {% block title %}
-        <title>{% sitetree_page_title from "main" %}</title>
-    {% endblock %}
+{% block title %}
+    <title>{% sitetree_page_title from "main" %}</title>
+{% endblock %}
 {% block page %}
     <div id="main-container">
-		<!-- Breadcrumb Starts -->
-			{% block breadcrumbs %}
-                {% sitetree_breadcrumbs from "main" %}
-            {% endblock %}
-		<!-- Breadcrumb Ends -->
-		<!-- Main Heading Starts -->
+        <!-- Breadcrumb Starts -->
+        {% block breadcrumbs %}
+            {% sitetree_breadcrumbs from "main" %}
+        {% endblock %}
+        <!-- Breadcrumb Ends -->
+        <!-- Main Heading Starts -->
         {% if registered %}
-			<h2 class="main-heading text-center">
-				Регистрация прошла успешно <br>
-				<span>Войдите под своим новым аккаунтом</span>
-			</h2>
+            <h2 class="main-heading text-center">
+                Регистрация прошла успешно <br>
+                <span>Войдите под своим новым аккаунтом</span>
+            </h2>
         {% else %}
             <h2 class="main-heading text-center">
-				Регистрация <br>
-				<span>Создайте нового пользователя</span>
-			</h2>
+                Регистрация <br>
+                <span>Создайте нового пользователя</span>
+            </h2>
         {% endif %}
-		<!-- Main Heading Ends -->
+        <!-- Main Heading Ends -->
         {% if registered %}
-		    <!-- Registration Section Starts -->
-			<section class="registration-area">
-				<div class="row">
-					<div class="col-sm-offset-3 col-sm-6">
-                        <div class="panel panel-smart">
-                            <form class="form-inline" method="post" action="." role="form">
+            <!-- Registration Section Starts -->
+            <section class="registration">
+                <div class="row">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <div class="wform">
+                            <form class="wform__form" method="post" action="." role="form" novalidate="">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <label class="sr-only" for="id_username">Имя пользователя:</label>
-                                   {{ login_form.username }}
+                                    <label class="sr-only wform__label" for="id_username">Имя пользователя:</label>
+                                    {{ login_form.username }}
                                     <span>{{ login_form.username.errors| safe }}</span>
                                 </div>
                                 <div class="form-group">
-                                     <label class="sr-only" for="id_password">Пароль:</label>
-                                     {{ login_form.password }}
+                                    <label class="sr-only wform__label" for="id_password">Пароль:</label>
+                                    {{ login_form.password }}
                                     <span>{{ login_form.username.errors| safe }}</span>
                                 </div>
 
@@ -53,57 +53,74 @@
                             </form>
                         </div>
 
-					</div>
+                    </div>
 
-				</div>
-			</section>
-		<!-- Registration Section Ends -->
+                </div>
+            </section>
+            <!-- Registration Section Ends -->
         {% else %}
             <!-- Registration Section Starts -->
-			<section class="registration-area">
-				<div class="row">
-					<div class="col-sm-offset-3 col-sm-6">
-                        <div class="panel panel-smart">
-                            <form method="post" action="." autocomplete="off" class="form-horizontal" role="form">
+            <section class="registration">
+                <div class="row">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <div class="wform">
+                            <form method="post" action="." autocomplete="off" class="wform__form" role="form"
+                                  novalidate="">
                                 {% csrf_token %}
-								<!-- Personal Information Starts -->
-									<div class="form-group">
-										<label for="inputFname" class="col-sm-5 control-label">Имя пользователя:</label>
-										<div class="col-sm-7">
-											{{ user_form.username }}
-                                            <span>{{ user_form.username.errors| safe }}</span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="inputLname" class="col-sm-5 control-label">Ваш email:</label>
-										<div class="col-sm-7">
-											{{ user_form.email }}
-                                            <span>{{ user_form.email.errors| safe }}</span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="inputLname" class="col-sm-5 control-label">Пароль:</label>
-										<div class="col-sm-7">
-											{{ user_form.password }}
-                                            <span>{{ user_form.password.errors | safe }}</span>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-sm-offset-3 col-sm-9">
-											<button type="submit" class="btn btn-danger">
-												Регистрация
-											</button>
-										</div>
-									</div>
-								<!-- Password Area Ends -->
-								</form>
+                                <!-- Personal Information Starts -->
+                                <div class="wform__group text-center">
+                                    {{ user_form.non_field_errors|safe  }}
+                                </div>
+
+
+                                <div class="wform__group">
+                                    <label for="inputFname" class="col-sm-5 wform__label">Имя пользователя:</label>
+
+                                    <div class="col-sm-7">
+                                        {{ user_form.username }}
+                                        <span>{{ user_form.username.errors| safe }}</span>
+                                    </div>
+                                </div>
+                                <div class="wform__group">
+                                    <label for="inputLname" class="col-sm-5 wform__label">Ваш email:</label>
+
+                                    <div class="col-sm-7">
+                                        {{ user_form.email }}
+                                        <span>{{ user_form.email.errors| safe }}</span>
+                                    </div>
+                                </div>
+                                <div class="wform__group">
+                                    <label for="inputLname" class="col-sm-5 wform__label">Пароль:</label>
+
+                                    <div class="col-sm-7">
+                                        {{ user_form.password }}
+                                        <span>{{ user_form.password.errors | safe }}</span>
+                                    </div>
+                                </div>
+                                <div class="wform__group">
+                                    <label for="inputLname" class="col-sm-5 wform__label">Повторите пароль:</label>
+
+                                    <div class="col-sm-7">
+                                        {{ user_form.password2 }}
+                                        <span>{{ user_form.password2.errors | safe }}</span>
+                                    </div>
+                                </div>
+                                <div class="wform__group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button type="submit" class="btn btn-danger">
+                                            Регистрация
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Password Area Ends -->
+                            </form>
                         </div>
 
-					</div>
+                    </div>
 
-				</div>
-			</section>
-		<!-- Registration Section Ends -->
+                </div>
+            </section>
+            <!-- Registration Section Ends -->
         {% endif %}
-		</div>
+    </div>
 {% endblock %}
