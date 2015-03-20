@@ -16,50 +16,21 @@
         {% endblock %}
         <!-- Breadcrumb Ends -->
         <!-- Main Heading Starts -->
+
+        <!-- Main Heading Ends -->
         {% if registered %}
             <h2 class="main-heading text-center">
                 Регистрация прошла успешно <br>
-                <span>Войдите под своим новым аккаунтом</span>
+                <span>Подтверждение регистрации</span>
             </h2>
+
         {% else %}
+            <!-- Registration Section Starts -->
+
             <h2 class="main-heading text-center">
                 Регистрация <br>
                 <span>Создайте нового пользователя</span>
             </h2>
-        {% endif %}
-        <!-- Main Heading Ends -->
-        {% if registered %}
-            <!-- Registration Section Starts -->
-            <section class="registration">
-                <div class="row">
-                    <div class="col-sm-offset-3 col-sm-6">
-                        <div class="wform">
-                            <form class="wform__form" method="post" action="." role="form" novalidate="">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label class="sr-only wform__label" for="id_username">Имя пользователя:</label>
-                                    {{ login_form.username }}
-                                    <span>{{ login_form.username.errors| safe }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only wform__label" for="id_password">Пароль:</label>
-                                    {{ login_form.password }}
-                                    <span>{{ login_form.username.errors| safe }}</span>
-                                </div>
-
-
-                                <input type="submit" value="Войти" class="btn btn-danger"/>
-                                <input type="hidden" name="next" value="{{ next }}"/>
-                            </form>
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
-            <!-- Registration Section Ends -->
-        {% else %}
-            <!-- Registration Section Starts -->
             <section class="registration">
                 <div class="row">
                     <div class="col-sm-offset-3 col-sm-6">
@@ -69,7 +40,7 @@
                                 {% csrf_token %}
                                 <!-- Personal Information Starts -->
                                 <div class="wform__group text-center">
-                                    {{ user_form.non_field_errors|safe  }}
+                                    {{ form.non_field_errors|safe  }}
                                 </div>
 
 
@@ -77,32 +48,32 @@
                                     <label for="inputFname" class="col-sm-5 wform__label">Имя пользователя:</label>
 
                                     <div class="col-sm-7">
-                                        {{ user_form.username }}
-                                        <span>{{ user_form.username.errors| safe }}</span>
+                                        {{ form.username }}
+                                        <span>{{ form.username.errors| safe }}</span>
                                     </div>
                                 </div>
                                 <div class="wform__group">
                                     <label for="inputLname" class="col-sm-5 wform__label">Ваш email:</label>
 
                                     <div class="col-sm-7">
-                                        {{ user_form.email }}
-                                        <span>{{ user_form.email.errors| safe }}</span>
+                                        {{ form.email }}
+                                        <span>{{ form.email.errors| safe }}</span>
                                     </div>
                                 </div>
                                 <div class="wform__group">
                                     <label for="inputLname" class="col-sm-5 wform__label">Пароль:</label>
 
                                     <div class="col-sm-7">
-                                        {{ user_form.password }}
-                                        <span>{{ user_form.password.errors | safe }}</span>
+                                        {{ form.password }}
+                                        <span>{{ form.password.errors | safe }}</span>
                                     </div>
                                 </div>
                                 <div class="wform__group">
                                     <label for="inputLname" class="col-sm-5 wform__label">Повторите пароль:</label>
 
                                     <div class="col-sm-7">
-                                        {{ user_form.password2 }}
-                                        <span>{{ user_form.password2.errors | safe }}</span>
+                                        {{ form.password2 }}
+                                        <span>{{ form.password2.errors | safe }}</span>
                                     </div>
                                 </div>
                                 <div class="wform__group">

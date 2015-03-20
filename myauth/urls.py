@@ -1,11 +1,14 @@
 from django.conf.urls import patterns, include, url
 from myauth.views import user_register, user_login, user_logout
+from django.views.generic import TemplateView
+
 urlpatterns = patterns('news.views',
     # Examples:
     # url(r'^$', 'djangonotes.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^registration/$', user_register, name='user_register'),
+    url(r'^registration/success/$', TemplateView.as_view(template_name='myauth/success.html')),
     url(r'^login/$', user_login, name='user_login'),
     url(r'^logout/$', user_logout, name='user_logout'),
     #url(r'^(?P<category_alias>\w+)/$', get_category_posts, name='category_post_list'),

@@ -4,15 +4,18 @@ from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
 
 
-class UserForm(forms.ModelForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'wform__input', 'placeholder': 'Имя пользователя'}))
-    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'wform__input', 'placeholder': 'Ваш email'}), error_messages={'invalid': 'Введите корректный email'})
+class RegistrationForm(forms.ModelForm):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'wform__input', 'placeholder': 'Имя пользователя'}))
+    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'wform__input', 'placeholder': 'Ваш email'}),
+                            error_messages={'invalid': 'Введите корректный email'})
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'wform__input', 'placeholder': 'Ваш пароль'}))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'wform__input', 'name':'password2', 'placeholder': 'Повторите пароль'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(
+        attrs={'class': 'wform__input', 'name': 'password2', 'placeholder': 'Повторите пароль'}))
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password','password2')
+        fields = ('username', 'email', 'password')
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -28,11 +31,21 @@ class UserForm(forms.ModelForm):
         else:
             raise forms.ValidationError("Пароли не совпадают")
 
+    def save(self, commit=True):
+        user = super(RegistrationForm, self).save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        if commit:
+            user.is_active = False
+            user.save()
+
+        return user
 
 
 class LoginForm(forms.ModelForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Имя пользователя'}))
-    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ваш email'}), error_messages={'invalid': 'Введите корректный email'})
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Имя пользователя'}))
+    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ваш email'}),
+                            error_messages={'invalid': 'Введите корректный email'})
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Ваш пароль'}))
 
     class Meta:
