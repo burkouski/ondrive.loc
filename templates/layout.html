@@ -68,7 +68,7 @@
     </script>
 </head>
 
-<body>
+<body ng-app="ymapsApp">
 <div id="wrapper" class="container">
     <header id="header-area">
         <!-- Nested Row Starts -->
@@ -206,11 +206,14 @@
 <script src="{% static 'js/app/vendor/angular-ymaps.js' %}"></script>
 <script src="{% static 'js/app/app.js' %}"></script>
 <script src="{% static 'js/app/directives/checklist-model.js' %}"></script>
+<script src="{% static 'js/app/directives/compareValue.js' %}"></script>
 <script src="{% static 'js/app/services/getJsonService.js' %}"></script>
 <script src="{% static 'js/app/controllers/mainmapCtrl.js' %}"></script>
 <script src="{% static 'js/app/controllers/autoserviceCtrl.js' %}"></script>
 <script src="{% static 'js/app/controllers/serviceCtrl.js' %}"></script>
 <script src="{% static 'js/app/controllers/contactsCtrl.js' %}"></script>
+<script src="{% static 'js/app/controllers/registrationCtrl.js' %}"></script>
+
 <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/vendor/bootstrap-hover-dropdown.min.js' %}"></script>
 <script src="{% static 'js/vendor/jquery.magnific-popup.min.js' %}"></script>

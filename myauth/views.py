@@ -17,7 +17,7 @@ def user_register(request):
     args.update(csrf(request))
     registered = False
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = RegistrationForm(request.POST,  error_class=DivErrorList)
         args['form'] = form
         if form.is_valid():
             form.save()  # save user to database if form is valid

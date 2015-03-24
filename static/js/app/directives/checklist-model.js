@@ -72,7 +72,6 @@ angular.module('checklist-model', [])
       scope.checked = contains(newArr, value);
     }, true);
   }
-
   return {
     restrict: 'A',
     priority: 1000,

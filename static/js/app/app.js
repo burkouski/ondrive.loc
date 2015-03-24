@@ -1,4 +1,4 @@
-ymapsApp = angular.module('ymapsApp', ['ymaps', 'ngResource', 'caco.ClientPaginate', 'ngCookies', 'checklist-model'])
+ymapsApp = angular.module('ymapsApp', ['ymaps', 'ngResource', 'ngCookies', 'checklist-model'])
     .config(function ($interpolateProvider) {
         $interpolateProvider.startSymbol('{$');
         $interpolateProvider.endSymbol('$}');

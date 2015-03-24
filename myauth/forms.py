@@ -6,12 +6,12 @@ from django.forms.utils import ErrorList
 
 class RegistrationForm(forms.ModelForm):
     username = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'wform__input', 'placeholder': 'Имя пользователя'}))
-    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'wform__input', 'placeholder': 'Ваш email'}),
-                            error_messages={'invalid': 'Введите корректный email'})
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'wform__input', 'placeholder': 'Ваш пароль'}))
+        widget=forms.TextInput(attrs={'class': 'wform__input', 'placeholder': 'Имя пользователя', 'required': 'required','ng-model':'username'}))
+    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'wform__input', 'placeholder': 'Ваш email', 'required': 'required'}),
+                            error_messages={'invalid': 'Введите корректный email', 'required': 'true'})
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'wform__input', 'placeholder': 'Ваш пароль', 'required': 'required'}))
     password2 = forms.CharField(widget=forms.PasswordInput(
-        attrs={'class': 'wform__input', 'name': 'password2', 'placeholder': 'Повторите пароль'}))
+        attrs={'class': 'wform__input', 'name': 'password2', 'placeholder': 'Повторите пароль', 'required': 'required'}))
 
     class Meta:
         model = User
@@ -42,7 +42,7 @@ class RegistrationForm(forms.ModelForm):
 
 
 class LoginForm(forms.ModelForm):
-    username = forms.CharField(
+    username = forms.CharField(required=True,
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Имя пользователя'}))
     email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ваш email'}),
                             error_messages={'invalid': 'Введите корректный email'})
