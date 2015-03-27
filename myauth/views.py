@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
@@ -10,64 +11,54 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 import hashlib, datetime, random
 from django.utils import timezone
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 
+@ensure_csrf_cookie
 def user_register(request):
     args = {}
-    args.update(csrf(request))
-    registered = False
+    args['success'] = True
+    #args.update(csrf(request))
     if request.method == 'POST':
-        form = RegistrationForm(request.POST,  error_class=DivErrorList)
-        args['form'] = form
-        if form.is_valid():
-            form.save()  # save user to database if form is valid
+        username = request.POST.get('username', '')
+        email = request.POST.get('email', '')
+        password = request.POST.get('password', '')
 
-            username = form.cleaned_data['username']
-            email = form.cleaned_data['email']
+        if User.objects.filter(username=username).count():
+            args['success'] = False
+            args['usernameErr'] = 'Пользователь с таким именем уже существует'
+
+        if User.objects.filter(email=email).count():
+            args['success'] = False
+            args['emailErr'] = 'Данный email уже занят'
+
+        if args['success']:
+            user = User.objects.create_user(username, email, password);
+            user.is_active = False
+            user.save();
             email_hash = hashlib.sha1(email.encode()).hexdigest()[:5]
             salt = hashlib.sha1(str(random.random()).encode()).hexdigest()[:5]
-            activation_key = hashlib.sha1(bytes(salt+email_hash, 'ascii')).hexdigest()
+            activation_key = hashlib.sha1(bytes(salt + email_hash, 'ascii')).hexdigest()
             key_expires = datetime.datetime.today() + datetime.timedelta(2)
-
-            #Get user by username
-            user=User.objects.get(username=username)
-
-            # Create and save user profile
-            new_profile = UserProfile(user=user, activation_key=activation_key,
-                key_expires=key_expires)
+            new_profile = UserProfile(user=user, activation_key=activation_key, key_expires=key_expires)
             new_profile.save()
 
-            # Send email with activation key
             email_subject = 'Account confirmation'
-            email_body = "Hey %s, thanks for signing up. To activate your account, click this link within \
-            48hours http://127.0.0.1:8000/accounts/confirm/%s" % (username, activation_key)
+            email_body = "<h2>Здравствуйте %s</h2>" \
+                         "<h3>Вы зарегистрировались на портале <a href='http://ondrive.by'>ondrive.by</a></h3> " \
+                         "<p>для подтверждения регистрации перейдите по  <a href='http://localhost:8000/auth/registration/%s'>ссылке</a></p>" \
+                         "<p>Если вы не имеете понятия о чем идет речь, просто проигнорируйте это письмо!</p>" % (username, activation_key)
 
-            send_mail(email_subject, email_body, 'myemail@example.com',
-                ['ondrive.by@gmail.com'], fail_silently=False)
-
-            return HttpResponseRedirect('/auth/registration/success')
-    else:
-        args['form'] = RegistrationForm()
-
-    return render_to_response('myauth/register.html', args, context_instance=RequestContext(request))
-    # registered = False
-    # if request.method == 'POST':
-    #     user_form = UserForm(request.POST, error_class=DivErrorList)
-    #
-    #     if user_form.is_valid():
-    #         user_form.save()
-    #         registered = True
-    #         login_form = LoginForm()
-    #         return render(request, 'myauth/register.html', {'login_form': login_form, 'registered': registered}, context_instance=RequestContext(request) )
-    #
-    # # Not a HTTP POST, so we render our form using two ModelForm instances.
-    # # These forms will be blank, ready for user input.
-    # else:
-    #     user_form = UserForm(error_class=DivErrorList)
-    #
-    # # Render the template depending on the context.
-    # return render(request,
-    #         'myauth/register.html', {'user_form': user_form, 'registered': registered}, context_instance=RequestContext(request) )
+            send_mail(email_subject, email_body, 'burkouski.vs@gmail.com',
+                      ['burkouski.vs@gmail.com'], fail_silently=False, html_message=email_body)
+            args['resultMess'] = 'Регистрация прошла успешно'
+            args['resultSubMess'] = 'инструкция по активации аккаунта выслава на email указанный при регистрации (%s)' % email
+            args = json.dumps(args)
+            return HttpResponse(args)
+        else:
+            args = json.dumps(args)
+            return HttpResponse(args)
+    return render_to_response('myauth/register.html', context_instance=RequestContext(request))
 
 
 def user_login(request):
@@ -90,7 +81,9 @@ def user_login(request):
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
-    return render(request,'myauth/login.html', {'login_form': login_form, 'mess': mess}, context_instance=RequestContext(request) )
+    return render(request, 'myauth/login.html', {'login_form': login_form, 'mess': mess},
+                  context_instance=RequestContext(request))
+
 
 @login_required
 def user_logout(request):

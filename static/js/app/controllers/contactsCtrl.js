@@ -1,8 +1,8 @@
 ymapsApp.controller('contactsCtrl', ['$scope', 'services', function ($scope, services) {
 
-    var apiUrl = '/api/sendmessage/'
+    var apiUrl = '/api/sendmessage/';
     $scope.ajaxLoader = false;
-    $scope.resultMess = 'Отправьте сообщение'
+    $scope.resultMess = 'Отправьте сообщение';
 
 
     $scope.contactsSubmit = function (form) {

@@ -8,7 +8,13 @@ ymapsApp.directive("compareTo", function() {
         link: function(scope, element, attributes, ngModel) {
 
             ngModel.$validators.compare = function(modelValue) {
-                return modelValue == scope.otherModelValue;
+                if (!modelValue || !scope.otherModelValue) {
+                    return true
+                }
+                else {
+                    return modelValue == scope.otherModelValue;
+                }
+
                 //console.log()
             };
 

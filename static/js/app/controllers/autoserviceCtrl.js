@@ -16,8 +16,8 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
     }
 
     setCookie = function () {
-            $cookieStore.put($scope.filterName, $scope[$scope.filterName]);
-            $cookieStore.put('activeTabs', $scope.activeTabs);
+        $cookieStore.put($scope.filterName, $scope[$scope.filterName]);
+        $cookieStore.put('activeTabs', $scope.activeTabs);
 
     }
 
