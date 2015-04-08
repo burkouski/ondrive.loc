@@ -20,15 +20,11 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="post__img-wrap">
-                    <img class="post__img img-responsive" src="{{ post.preview_img.url }}" alt="{{ post.title }}"
-                         class="img-responsive"/>
+                    <img class="post__img img-responsive" src="{{ post.preview_img.url }}" alt="{{ post.title }}" class="img-responsive"/>
+                    <a href="{{ post.category.get_absolute_url }}" class="post__category">{{ post.category }}</a>
+                    <span class="post__pub-date">{{ post.pub_date }} </span>
                 </div>
                 <h3 class="post__title">{{ post.title }}</h3>
-
-                <div class="post__meta">
-                    <a href="{{ post.category.get_absolute_url }}" class="meta__category">{{ post.category }}</a><span
-                        class="meta__date">{{ post.pub_date }} </span>
-                </div>
                 {{ post.text|safe }}
             </div>
 

@@ -1,54 +1,90 @@
 {% extends "news/layout.html" %}
-{% load columns %}
 
 {% block content %}
     <!-- Main Heading Starts -->
-    <h2 class="main-heading2">
-        Новости
-    </h2>
+
     <!-- Main Heading Ends -->
     <section class="latest-posts">
 
         <div class="row">
-        {% for col in posts|columns:2 %}
-            <div class="col-sm-6">
-                {% for post in col %}
-                    <article class="post-preview">
-                        <figure class="post-preview__figure">
-                            <a class="post-preview__link" href="{{ post.get_absolute_url }}">
-                                <img class="post-preview__img img-responsive" src="{{ post.preview_img.url }}"
-                                     alt="" height="188"/>
-
-                                <div class="post-preview__hover"><i class="post-preview__icon fa fa-eye"></i></div>
-                            </a>
-
-                        </figure>
-                        <section class="post-preview__content">
-                            <h2 class="post-preview__title"><a class="post-preview__link"
-                                                               href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                            </h2>
-
-                            <div class="post-preview__meta">
+            <div class="latest-post__heading col-sm-12">
+                <div class="col-sm-6 no-padding">
+                    {% for post in posts %}
+                        {% if forloop.counter == 1 %}
+                            <article class="post-preview post-preview--2x2">
+                                <a class="post-preview__link" href="{{ post.get_absolute_url }}">
+                                    <h2 class="post-preview__title">{{ post.title }}</h2>
+                                    <i class="post-preview__hover-bg"></i>
+                                </a>
                                 <a href="{{ post.category.get_absolute_url }}"
-                                   class="meta__category">{{ post.category }}</a><span
-                                    class="meta__date">{{ post.pub_date }}</span>
-                            </div>
+                                   class="post-preview__category">{{ post.category }}</a>
+
+                                <div class="post-preview__meta">
+                                    <a href="{{ post.category.get_absolute_url }}"
+                                       class="meta__category">{{ post.category }}</a>
+                                    <span class="meta__like">{{ post.views }} <i class="fa fa-eye"></i></span>
+                                    <a href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">0 <i
+                                            class="fa fa-comments-o"></i></a>
+                                </div>
+                                <i class="post-preview__bg"
+                                   style="background-image: url('{{ post.preview_img.url }}')"></i>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-sm-6 no-padding">
+                    {% for post in posts %}
+                        {% if forloop.counter > 1 and forloop.counter < 6 %}
+                            <article class="post-preview post-preview--1x2">
+                                <a class="post-preview__link" href="{{ post.get_absolute_url }}">
+                                    <h2 class="post-preview__title">{{ post.title }}</h2>
+                                    <i class="post-preview__hover-bg"></i>
+                                </a>
+                                <a href="{{ post.category.get_absolute_url }}"
+                                   class="post-preview__category">{{ post.category }}</a>
+
+                                <div class="post-preview__meta">
+                                    <a href="{{ post.category.get_absolute_url }}"
+                                       class="meta__category">{{ post.category }}</a>
+                                    <span class="meta__like">{{ post.views }} <i class="fa fa-eye"></i></span>
+                                    <a href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">0 <i
+                                            class="fa fa-comments-o"></i></a>
+                                </div>
+                                <i class="post-preview__bg"
+                                   style="background-image: url('{{ post.preview_img.url }}')"></i>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="latest-post__other col-sm-12">
+                {% for post in posts %}
+                    {% if forloop.counter > 5 %}
+                        <article class="post-preview post-preview--full">
+                            <a class="post-preview__link post-preview__link--static" href="{{ post.get_absolute_url }}">
+                                <h2 class="post-preview__title post-preview__title--static">{{ post.title }}</h2>
+                                <div class="post-preview__img-wrap">
+                                    <img class="img-responsive" src="{{ post.preview_img.url }}" alt=""/>
+                                    <i class="post-preview__hover-bg" ></i>
+                                    <a href="{{ post.category.get_absolute_url }}" class="post-preview__category">{{ post.category }}</a>
+                                    <a href="{{ post.get_absolute_url }}#disqus_thread" class="post-preview__comments">0 <i class="fa fa-comments-o"></i></a>
+                                </div>
+
+                            </a>
                             <div class="post-preview__text">
-                                <p> {{ post.preview }}</p>
+                                {{ post.preview }}
                             </div>
                             <div class="post-preview__meta">
-                                <span class="meta__like">{{ post.views }} <i class="fa fa-eye"></i></span><a
-                                    href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">1 <i
-                                    class="fa fa-comments-o"></i></a>
-                            </div>
-                        </section>
-                    </article>
+                                    <span class="meta__like">просмотров:  {{ post.views }}</span>
+                                    <span style="float: right" class="meta__date">{{ post.pub_date }}</span>
+                                </div>
+                        </article>
+                    {% endif %}
                 {% endfor %}
             </div>
-        {% endfor %}
-
-
-
         </div>
 
     </section>

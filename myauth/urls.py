@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from myauth.views import user_register, user_login, user_logout
+from myauth.views import user_register, user_login, user_logout, user_confirm
 from django.views.generic import TemplateView
 
 urlpatterns = patterns('news.views',
@@ -9,6 +9,7 @@ urlpatterns = patterns('news.views',
 
     url(r'^registration/$', user_register, name='user_register'),
     url(r'^registration/success/$', TemplateView.as_view(template_name='myauth/success.html')),
+    url(r'^registration/(?P<activation_key>\w+)/', user_confirm, name='user_confirm'),
     url(r'^login/$', user_login, name='user_login'),
     url(r'^logout/$', user_logout, name='user_logout'),
     #url(r'^(?P<category_alias>\w+)/$', get_category_posts, name='category_post_list'),

@@ -43,7 +43,7 @@ def user_register(request):
             new_profile = UserProfile(user=user, activation_key=activation_key, key_expires=key_expires)
             new_profile.save()
 
-            email_subject = 'Account confirmation'
+            email_subject = 'Подтверждение регистрации'
             email_body = "<h2>Здравствуйте %s</h2>" \
                          "<h3>Вы зарегистрировались на портале <a href='http://ondrive.by'>ondrive.by</a></h3> " \
                          "<p>для подтверждения регистрации перейдите по  <a href='http://localhost:8000/auth/registration/%s'>ссылке</a></p>" \
@@ -59,6 +59,32 @@ def user_register(request):
             args = json.dumps(args)
             return HttpResponse(args)
     return render_to_response('myauth/register.html', context_instance=RequestContext(request))
+
+
+def user_confirm(request, activation_key):
+    args = {}
+    args['success'] = True
+
+    if request.user.is_authenticated():
+        args['success'] = False
+        args['message'] = 'вы уже авторизованы'
+        args['subMessage'] = 'Выйдите из своего аккаунта и попробуйте снова'
+        return render_to_response('myauth/confirm.html', args)
+
+    user_profile = get_object_or_404(UserProfile, activation_key=activation_key)
+
+    if user_profile.key_expires < timezone.now():
+        args['success'] = False
+        args['message'] = 'Невозможно подтвердить аккаунт'
+        args['subMessage'] = 'время действия ссылки истекло'
+        return render_to_response('myauth/confirm.html', args)
+
+    user = user_profile.user
+    user.is_active = True
+    user.save()
+    args['message'] = 'Ваш аккаунт подтвержден'
+    args['subMessage'] = 'время действия ссылки истекло'
+    return render_to_response('myauth/confirm.html')
 
 
 def user_login(request):

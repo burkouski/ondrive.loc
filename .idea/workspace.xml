@@ -3,13 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="c15395e8-eb0c-4315-9347-36f8ad6acd7f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" afterPath="$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/directives/compareValue.js" afterPath="$PROJECT_DIR$/static/js/app/directives/compareValue.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/controllers/contactsCtrl.js" afterPath="$PROJECT_DIR$/static/js/app/controllers/contactsCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myauth/models.py" afterPath="$PROJECT_DIR$/myauth/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myauth/templates/myauth/register.html" afterPath="$PROJECT_DIR$/myauth/templates/myauth/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/controllers/registrationCtrl.js" afterPath="$PROJECT_DIR$/static/js/app/controllers/registrationCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/blocks.css" afterPath="$PROJECT_DIR$/static/css/blocks.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stylus/blocks.styl" afterPath="$PROJECT_DIR$/stylus/blocks.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news/templates/news/news_detail_view.html" afterPath="$PROJECT_DIR$/news/templates/news/news_detail_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news/templates/news/news_list_view.html" afterPath="$PROJECT_DIR$/news/templates/news/news_list_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myauth/templates/myauth/success.html" afterPath="$PROJECT_DIR$/myauth/templates/myauth/success.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myauth/urls.py" afterPath="$PROJECT_DIR$/myauth/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myauth/views.py" afterPath="$PROJECT_DIR$/myauth/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news/templates/news/w_latest_news.html" afterPath="$PROJECT_DIR$/news/templates/news/w_latest_news.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news/templatetags/w_news.py" afterPath="$PROJECT_DIR$/news/templatetags/w_news.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ondrive.loc.iws" />
@@ -39,72 +41,61 @@
       <file leaf-file-name="register.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myauth/templates/myauth/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="85" selection-start="5301" selection-end="5301" vertical-scroll-proportion="-14.384615" vertical-offset="1071" max-vertical-offset="1836">
+            <state line="85" column="85" selection-start="5301" selection-end="5301" vertical-scroll-proportion="-43.807693" vertical-offset="306" max-vertical-offset="1836">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myauth/urls.py">
+      <file leaf-file-name="w_latest_news.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/news/templates/news/w_latest_news.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="24" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="493">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myauth/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="13" selection-start="3072" selection-end="3072" vertical-scroll-proportion="0.85141903" vertical-offset="357" max-vertical-offset="1479">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myauth/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="49" selection-start="419" selection-end="419" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registrationCtrl.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/controllers/registrationCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="26" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="629">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="autoserviceCtrl.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/app/controllers/autoserviceCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="58" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1921">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/contacts/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="132" selection-start="1100" selection-end="1125" vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="731">
+            <state line="39" column="32" selection-start="2615" selection-end="2615" vertical-scroll-proportion="-15.0" vertical-offset="273" max-vertical-offset="1224">
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#article#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#article#0;n#div#1;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#article#1;n#div#1;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#article#0;n#div#2;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contacts.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/contacts/templates/contacts/contacts.html">
+      <file leaf-file-name="news_detail_view.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/news/templates/news/news_detail_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="0" selection-start="5197" selection-end="5197" vertical-scroll-proportion="-17.653847" vertical-offset="1224" max-vertical-offset="1989">
+            <state line="26" column="61" selection-start="927" selection-end="927" vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="1088">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="news_list_view.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/news/templates/news/news_list_view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="77" column="50" selection-start="4634" selection-end="4634" vertical-scroll-proportion="-25.461538" vertical-offset="647" max-vertical-offset="1632">
+              <folding>
+                <element signature="e#1606#1665#0" expanded="true" />
+                <element signature="e#3193#3252#0" expanded="true" />
+                <element signature="e#4871#4891#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blocks.styl" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stylus/blocks.styl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="147" column="10" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.4363002" vertical-offset="2249" max-vertical-offset="4828">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="w_news.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/news/templatetags/w_news.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="34" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
               <folding />
             </state>
           </provider>
@@ -123,9 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/news/templates/news/news_detail_view.html" />
-        <option value="$PROJECT_DIR$/news/templatetags/w_news.py" />
-        <option value="$PROJECT_DIR$/myauth/templates/myauth/login.html" />
         <option value="$PROJECT_DIR$/reviews/models.py" />
         <option value="$PROJECT_DIR$/reviews/views.py" />
         <option value="$PROJECT_DIR$/static/js/app/services/getJsonService.js" />
@@ -142,8 +130,6 @@
         <option value="$PROJECT_DIR$/reviews/urls.py" />
         <option value="$PROJECT_DIR$/project/settings.py" />
         <option value="$PROJECT_DIR$/static/css/global.css" />
-        <option value="$PROJECT_DIR$/news/templates/news/w_latest_news.html" />
-        <option value="$PROJECT_DIR$/news/templates/news/news_list_view.html" />
         <option value="$PROJECT_DIR$/static/js/vendor/masonry.js" />
         <option value="$PROJECT_DIR$/static/js/plugins.js" />
         <option value="$PROJECT_DIR$/service/templates/service/autoservice_detail_view.html" />
@@ -152,14 +138,11 @@
         <option value="$PROJECT_DIR$/service/templates/service/tireservice_detail_view.html" />
         <option value="$PROJECT_DIR$/static/css/blocks.css" />
         <option value="$PROJECT_DIR$/stylus/global.styl" />
-        <option value="$PROJECT_DIR$/stylus/blocks.styl" />
         <option value="$PROJECT_DIR$/static/js/app/controllers/serviceCtrl.js" />
         <option value="$PROJECT_DIR$/service/templates/service/detail_view.html" />
         <option value="$PROJECT_DIR$/contacts/views.py" />
         <option value="$PROJECT_DIR$/contacts/templates/contacts/cooperation.html" />
         <option value="$PROJECT_DIR$/contacts/urls.py" />
-        <option value="$PROJECT_DIR$/myauth/urls.py" />
-        <option value="$PROJECT_DIR$/myauth/templates/myauth/success.html" />
         <option value="$PROJECT_DIR$/myauth/forms.py" />
         <option value="$PROJECT_DIR$/static/js/app/app.js" />
         <option value="$PROJECT_DIR$/templates/index.html" />
@@ -173,7 +156,15 @@
         <option value="$PROJECT_DIR$/static/js/app/controllers/registrationCtrl.js" />
         <option value="$PROJECT_DIR$/myauth/templates/myauth/register.html" />
         <option value="$PROJECT_DIR$/contacts/templates/contacts/contacts.html" />
+        <option value="$PROJECT_DIR$/myauth/urls.py" />
+        <option value="$PROJECT_DIR$/myauth/templates/myauth/confirm.html" />
+        <option value="$PROJECT_DIR$/myauth/templates/myauth/success.html" />
         <option value="$PROJECT_DIR$/myauth/views.py" />
+        <option value="$PROJECT_DIR$/news/templatetags/w_news.py" />
+        <option value="$PROJECT_DIR$/news/templates/news/news_list_view.html" />
+        <option value="$PROJECT_DIR$/news/templates/news/w_latest_news.html" />
+        <option value="$PROJECT_DIR$/news/templates/news/news_detail_view.html" />
+        <option value="$PROJECT_DIR$/stylus/blocks.styl" />
       </list>
     </option>
   </component>
@@ -251,59 +242,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ondrive.loc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ondrive.loc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ondrive.loc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ondrive.loc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="stylus" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -331,7 +270,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -345,7 +288,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myauth" />
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bg" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -359,25 +310,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myauth" />
+              <option name="myItemId" value="news" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templatetags" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ondrive.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ondrive.loc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ondrive.loc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="contacts" />
+              <option name="myItemId" value="news" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -388,14 +361,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ondrive.loc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="contacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -704,7 +669,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38367128" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39220917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -756,11 +721,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/service/templates/service/carwash_list_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="39" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1139" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service/templates/service/autoservice_list_view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="60" selection-start="1179" selection-end="1179" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1139" />
@@ -769,11 +729,6 @@
     <entry file="file://$PROJECT_DIR$/service/templates/service/tireservice_list_view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="59" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0" vertical-offset="281" max-vertical-offset="1139" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/templates/service/list_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="62" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="2448" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/admin.py">
@@ -821,16 +776,6 @@
         <state line="133" column="0" selection-start="2906" selection-end="2906" vertical-scroll-proportion="0.8495575" vertical-offset="1781" max-vertical-offset="2397" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news/templates/news/w_latest_news.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="57" selection-start="484" selection-end="501" vertical-scroll-proportion="-6.5" vertical-offset="1" max-vertical-offset="986" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news/templates/news/news_list_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="37" selection-start="369" selection-end="369" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="527" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/vendor/masonry.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="673" column="0" selection-start="31385" selection-end="31385" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="11543" />
@@ -854,11 +799,6 @@
     <entry file="file://$PROJECT_DIR$/static/css/blocks.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="168" column="6" selection-start="3024" selection-end="3024" vertical-scroll-proportion="0.60267115" vertical-offset="2495" max-vertical-offset="4488" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stylus/blocks.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="0" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.0" vertical-offset="1836" max-vertical-offset="3740" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/templates/service/tireservice_detail_view.html">
@@ -915,23 +855,6 @@
         <state line="19" column="51" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myauth/templates/myauth/success.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="17" selection-start="631" selection-end="631" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="612">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news/templatetags/w_news.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="22" selection-start="2212" selection-end="2217" vertical-scroll-proportion="0.96494156" vertical-offset="425" max-vertical-offset="1530" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news/templates/news/news_detail_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="21" selection-start="1881" selection-end="1891" vertical-scroll-proportion="0.94066316" vertical-offset="379" max-vertical-offset="1156" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="0" selection-start="528" selection-end="528" vertical-scroll-proportion="0.29411766" vertical-offset="0" max-vertical-offset="578" />
@@ -976,13 +899,6 @@
         <state line="8" column="60" selection-start="284" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myauth/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="24" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/contacts/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="72" selection-start="242" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
@@ -1016,7 +932,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/contacts/templates/contacts/contacts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="0" selection-start="5197" selection-end="5197" vertical-scroll-proportion="-17.653847" vertical-offset="1224" max-vertical-offset="1989">
+        <state line="99" column="0" selection-start="5197" selection-end="5197" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="1989">
           <folding />
         </state>
       </provider>
@@ -1028,25 +944,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myauth/templates/myauth/register.html">
+    <entry file="file://$PROJECT_DIR$/contacts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="85" selection-start="5301" selection-end="5301" vertical-scroll-proportion="-14.384615" vertical-offset="1071" max-vertical-offset="1836">
+        <state line="32" column="132" selection-start="1100" selection-end="1125" vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="731">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contacts/views.py">
+    <entry file="file://$PROJECT_DIR$/myauth/templates/myauth/success.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="132" selection-start="1100" selection-end="1125" vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="731">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state line="23" column="35" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myauth/templates/myauth/confirm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="14" selection-start="834" selection-end="834" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="612">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myauth/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="13" selection-start="3072" selection-end="3072" vertical-scroll-proportion="0.85141903" vertical-offset="357" max-vertical-offset="1479">
+        <state line="84" column="46" selection-start="3850" selection-end="3850" vertical-scroll-proportion="0.79465777" vertical-offset="0" max-vertical-offset="1190">
+          <folding>
+            <element signature="e#724#3036#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myauth/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="56" selection-start="286" selection-end="286" vertical-scroll-proportion="0.11352254" vertical-offset="0" max-vertical-offset="599">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news/templatetags/w_news.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="34" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/templates/service/list_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="62" selection-start="2250" selection-end="2250" vertical-scroll-proportion="1.3350785" vertical-offset="102" max-vertical-offset="2448">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myauth/templates/myauth/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="85" selection-start="5301" selection-end="5301" vertical-scroll-proportion="-43.807693" vertical-offset="306" max-vertical-offset="1836">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news/templates/news/news_list_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="50" selection-start="4634" selection-end="4634" vertical-scroll-proportion="-25.461538" vertical-offset="647" max-vertical-offset="1632">
+          <folding>
+            <element signature="e#1606#1665#0" expanded="true" />
+            <element signature="e#3193#3252#0" expanded="true" />
+            <element signature="e#4871#4891#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news/templates/news/w_latest_news.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="32" selection-start="2615" selection-end="2615" vertical-scroll-proportion="-15.0" vertical-offset="273" max-vertical-offset="1224">
+          <folding>
+            <element signature="n#style#0;n#i#0;n#article#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#article#0;n#div#1;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#article#1;n#div#1;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#article#0;n#div#2;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news/templates/news/news_detail_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="61" selection-start="927" selection-end="927" vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylus/blocks.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="10" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.4363002" vertical-offset="2249" max-vertical-offset="4828">
           <folding />
         </state>
       </provider>

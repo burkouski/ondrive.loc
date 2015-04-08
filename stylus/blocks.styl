@@ -4,7 +4,9 @@
 /*main menu*/
 .latest-posts
   margin 0 0 20px 0
-
+.latest-post__heading
+  clearfix()
+  margin-bottom 50px
 .masonry
   clearfix()
   position relative
@@ -12,86 +14,148 @@
 
   /*блок post-preview*/
 .post-preview
-  vertical-align top
-  margin-bottom 10px
-  box-shadow: 0 0 1px rgba(0,0,0,0.5);
-
-.post-preview__figure
   position relative
-
-.post-preview__content
-  margin 0px 10px
-.post-preview__content--inline
-  position absolute
-  bottom 0
-  left 0
-  width 100%
-  margin 0
+  border 1px solid #ffffff
+.post-preview--full
+  margin-bottom 30px
+.post-preview--1x1
+  height 150px
   padding 10px
-  background rgba(0,0,0, 0.5)
-  color white
-  a
-    color white
-    &:hover
-      color #ef4135
-.post-preview__title
-.post-preview__link
-  position relative
-  display block
-  font-size 20px
-  text-decoration none
-  &:hover
-    .post-preview__hover
-      opacity 1
-
-.post-preview__title
-  margin 0 0 3px 0
-
-.post-preview__meta
-  clearfix()
-  margin 0 0 5px 0
-  font-size 13px
-
-.post-preview__hover
+.post-preview--1x2
+  float left
+  width 50%
+  height 150px
+  padding 10px
+.post-preview--2x2
+  height 300px
+.post-preview__bg
   position absolute
   top 0
+  right 0
+  bottom 0
+  left 0
+  background no-repeat 50% 50%
+  background-size cover
+.post-preview__hover-bg
+  position absolute
+  top 0
+  right 0
+  bottom 0
   left 0
   opacity 0
-  width 100%
-  height 100%
-  background url("../img/bg/transparent-black-bg.png")
-  color #C2C2C2
-  font-size 40px
-  text-align center
-  transition all 0.5s linear
-
-.post-preview__icon
-  position: absolute;
+  background-image url("../img/bg/dark-hover-bg.png")
+  transition opacity 0.2s ease-in-out
+  &:hover
+    opacity 1
+    transition opacity 0.2s ease-in-out
+.post-preview__link
+  position absolute
   top 0
+  right 0
   bottom 0
   left 0
-  right 0
-  width 50%
-  height 30%
-  margin auto
-.post-preview__img
+  z-index 2
+  display block
+  transition: background-image 0.2s ease-in-out;
+.post-preview__link--static
+  position static
+  margin 0 0 10px 0
+.post-preview__text
+  text-align justify
+.post-preview__title
+  position absolute
+  bottom 0
+  z-index 2
+  margin 0
   width 100%
-/*блок post*/
-.post__img-wrap
-  width 100%
-.post__meta
-  margin 0 0 20px 0
-.meta__comments
-.meta__date
-  float right
-.meta__comments
+  padding 10px
+  background rgba(0, 0, 0, 0.6)
+  color #ffffff
+  font-size 17px
+.post-preview__title--big
+  font-size 24px
+.post-preview__title--static
+  position static
+  padding 10px 0
+  background none
   color #000000
+  font-size 24px
+.post-preview__category
+  position absolute
+  top 10px
+  left 10px
+  z-index 2
+  display block
+  padding 4px 10px
+  border-radius 1px
+  background red
+  color white
+  font-size 9px
+  font-weight bold
+  line-height 10px
+  text-transform uppercase
   text-decoration none
   &:hover
-  &:active
-    color #ef4135
+    background green
+    color white
     text-decoration none
+.post-preview__comments
+  position absolute
+  top 10px
+  right 10px
+  z-index 2
+  display block
+  padding 4px 10px
+  background rgba(0,0,0,0.4)
+  color white
+  font-size 12px
+  font-weight bold
+  line-height 13px
+  &:hover
+    background rgba(59, 199, 82, 0.4)
+    color white
+    text-decoration none
+.post-preview__img-wrap
+  position relative
+.post-preview__meta
+  clearfix()
+  padding 5px 0
+  font-size 13px
+  font-style italic
 
+.post__img-wrap
+  position relative
+.post__category
+  position absolute
+  top 10px
+  left 10px
+  display block
+  padding 4px 10px
+  border-radius 1px
+  background red
+  color white
+  font-size 9px
+  font-weight bold
+  line-height 10px
+  text-transform uppercase
+  text-decoration none
+  &:hover
+    background green
+    color white
+    text-decoration none
+.post__pub-date
+  position absolute
+  top 10px
+  right 10px
+  display block
+  padding 4px 10px
+  background rgba(0,0,0,0.4)
+  color white
+  font-size 12px
+  font-weight bold
+  line-height 13px
+.meta__date
+  float right
 /* block .wform*/
 .wform
   padding: 20px
