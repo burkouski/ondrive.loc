@@ -1,91 +1,90 @@
 {% extends 'layout.html' %}
-{% load i18n %}
-{% load sitetree %}
+{% load staticfiles %}
 
-{% block meta %}
-        <meta name="description" content="{% sitetree_page_description from 'main' %}">
-    {% endblock %}
+{% block body %}
+    <body style="padding: 0" ng-app="ymapsApp">
+    <div ng-controller="loginCtrl">
 
-    {% block title %}
-        <title>{% sitetree_page_title from "main" %}</title>
-    {% endblock %}
-{% block page %}
-    <div id="main-container">
-        <!-- Breadcrumb Starts -->
-        {% block breadcrumbs %}
-            {% sitetree_breadcrumbs from "main" %}
-        {% endblock %}
-        <!-- Breadcrumb Ends -->
-        <!-- Main Heading Starts -->
-        <h2 class="main-heading text-center">
-            Войдите или зарегистрируйтесь
-        </h2>
-        <!-- Main Heading Ends -->
         <!-- Login Form Section Starts -->
-        <section class="login-area">
-            <div class="row">
-                <div class="col-sm-6">
+        <section>
                     <!-- Login Panel Starts -->
-                    <div class="panel panel-smart">
+                    <div id="login-form" class="panel-smart">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Авторизация</h3>
+                            <h3 class="panel-title">{$result.mess$}</h3>
                         </div>
-                        <div class="panel-body">
-                            <p>
-                                {% if mess %}
-                                    {{ mess }}
-                                {% else %}
-                                    Войдите под свои аккаунтом
-                                {% endif %}
-                            </p>
+                        <div class="wform">
                             <!-- Login Form Starts -->
-                            <form class="form-inline" method="post" action="." role="form">
+                            <form ng-submit="loginSubmit(wform)" method="post" autocomplete="off" class="wform__form"
+                                  role="form" name="wform" novalidate>
                                 {% csrf_token %}
-                                <div class="form-group">
-                                    <label class="sr-only" for="id_username">Имя пользователя:</label>
-                                   {{ login_form.username }}
-                                    <span>{{ login_form.username.errors| safe }}</span>
+                                <div class="wform__group">
+                                    <label for="userUsername" class="col-sm-12 wform__label">Имя пользователя:</label>
+
+                                    <div class="col-sm-12">
+                                        <input type="text" class="wform__input" name="username" ng-model="user.username"
+                                               required/>
+                                        <span class="text-danger">{$ result.usernameErr $}</span>
+
+                                        <div ng-show="wform.$submitted">
+                                            <span class="text-danger" ng-show="wform.username.$error.required">Заполните 'Имя пользователя'</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                     <label class="sr-only" for="id_password">Пароль:</label>
-                                     {{ login_form.password }}
-                                    <span>{{ login_form.username.errors| safe }}</span>
+                                <div class="wform__group">
+                                    <label class="wform__label col-sm-12" for="id_password">Пароль:</label>
+
+                                    <div class="col-sm-12">
+                                        <input id="id_password" type="password" class="wform__input" name="password"
+                                               ng-model="user.password"
+                                               required/>
+                                        <div ng-show="wform.$submitted">
+                                            <span class="text-danger" ng-show="wform.password.$error.required">Введите пароль</span>
+                                        </div>
+                                    </div>
                                 </div>
 
 
-                                <input type="submit" value="{% trans 'Log in' %}" class="btn btn-danger"/>
-                                <input type="hidden" name="next" value="{{ next }}"/>
+                                <button type="submit" class="btn btn-danger">
+                                        <span ng-show="!ajaxLoader">Войти</span>
+                                        <span ng-show="ajaxLoader"><img src="/static/img/ajax-loader2.gif" alt=""/> Отправка</span>
+                                    </button>
                             </form>
-
+                            {$ user $}
                             <!-- Login Form Ends -->
                         </div>
                     </div>
                     <!-- Login Panel Ends -->
-                </div>
-                <div class="col-sm-6">
-                    <!-- Account Panel Starts -->
-                    <div class="panel panel-smart">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                                Создать нового пользователя
-                            </h3>
-                        </div>
-                        <div class="panel-body">
-                            <p>
-                                Регистрация на сайте позволяет вам оставлять комментарии и отзывы, а также дает возможность ввести свой личный блог
-                            </p>
-                            <a href="/auth/registration" class="btn btn-danger">
-                                Зарегистрироватся
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Account Panel Ends -->
-
-                </div>
-            </div>
         </section>
         <!-- Login Form Section Ends -->
     </div>
+    <script src="{% static 'js/vendor/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular-pagination.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular-resource.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular-cookies.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular-route.js' %}"></script>
+<script src="{% static 'js/app/vendor/angular-ymaps.js' %}"></script>
+<script src="{% static 'js/app/app.js' %}"></script>
+<script src="{% static 'js/app/directives/checklist-model.js' %}"></script>
+<script src="{% static 'js/app/directives/compareValue.js' %}"></script>
+<script src="{% static 'js/app/services/getJsonService.js' %}"></script>
+<script src="{% static 'js/app/controllers/mainmapCtrl.js' %}"></script>
+<script src="{% static 'js/app/controllers/autoserviceCtrl.js' %}"></script>
+<script src="{% static 'js/app/controllers/serviceCtrl.js' %}"></script>
+<script src="{% static 'js/app/controllers/contactsCtrl.js' %}"></script>
+<script src="{% static 'js/app/controllers/loginCtrl.js' %}"></script>
+<script src="{% static 'js/app/controllers/registrationCtrl.js' %}"></script>
 
-
+<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/vendor/bootstrap-hover-dropdown.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/vendor/masonry.js' %}"></script>
+<script src="{% static 'js/vendor/imagesLoaded.js' %}"></script>
+<script src="{% static 'js/vendor/custom.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.fancybox.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+    </body>
 {% endblock %}
+

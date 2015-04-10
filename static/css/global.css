@@ -61,7 +61,7 @@ input:-ms-input-placeholder:focus:-ms-input-placeholder {
   background: url("../img/bg/sprite.png") no-repeat;
 }
 /*Футер к низу страницы*/
-body {
+.with-bg {
   background: url("../img/bg/main-bg.jpg") repeat-x;
   background-size: cover;
   background-attachment: fixed;
@@ -133,4 +133,13 @@ body {
 }
 .no-padding {
   padding: 0 !important;
+}
+.wrap {
+  padding: 0 20px;
+}
+.wrap--padleft {
+  padding-left: 20px;
+}
+.wrap--padright {
+  padding-right: 20px;
 }

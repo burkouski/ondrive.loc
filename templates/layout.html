@@ -33,6 +33,7 @@
     <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap-template/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap-template/responsive.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/jquery.fancybox.css' %}">
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/blocks.css' %}">
 
@@ -67,10 +68,11 @@
         }());
     </script>
 </head>
-
-<body ng-app="ymapsApp">
+{% block body %}
+<body ng-app="ymapsApp" class="with-bg">
 <div id="wrapper" class="container">
-    <header id="header-area">
+    {% block header %}
+    <header id="header-area" class="wrap">
         <!-- Nested Row Starts -->
         <div class="row">
             <!-- Logo Starts -->
@@ -89,19 +91,20 @@
                     <div class="header-links">
                         <ul class="list-unstyled list-inline pull-left">
                             <li><a href="./">Главная</a></li>
-                            <!--li><a href="#">О проекте</a></li-->
+                            <li><a href="#">О проекте</a></li>
                             <!--li><a href="#">Правила портала</a></li-->
                             <li><a href="/cooperate">Сотрудничество</a></li>
                             <li><a href="/contacts">Контакты</a></li>
+
                             <!--li><a href="#">Мой блог</a></li-->
                             <!--li><a href="#">Мой профиль</a></li-->
                             <!--li><a href="cart.html"></a></li-->
                             {% if user.is_authenticated %}
-                                <li><a href="#">Мой профиль</a></li>
+                                <!--li><a href="#">Мой профиль</a></li-->
                                 <li><a href="/auth/logout">Выйти</a></li>
                             {% else %}
                                 <li><a href="/auth/registration">Регистрация</a></li>
-                                <li><a href="/auth/login">Войти</a></li>
+                                <li><a class="popup fancybox.iframe" href="/auth/login#login-form">Войти</a></li>
                             {% endif %}
 
                             <!--li><a href="login.html">Книга жалоб и предложений</a></li-->
@@ -117,7 +120,7 @@
                 {% if user.is_authenticated %}
                     Вы вошли как: {{ user.username }}
                 {% else %}
-
+                    <a class="btn btn-danger popup fancybox.iframe" href="/auth/login#login-form">Войти</a>
                 {% endif %}
 
                 <!-- Login Panel Starts -->
@@ -172,16 +175,21 @@
                     </ul>
                 </li>
                 <li><a href="/news">Новости</a></li>
+                <li><a href="#">Машины</a></li>
+                <li><a href="#">Обзоры</a></li>
+                <li><a href="#">Тюнинг</a></li>
                 <!--li><a href="/blogs">Блоги</a></li-->
                 <!--li><a href="/cars">Машины</a></li-->
             </ul>
         </div>
         <!-- Navbar Cat collapse Ends -->
     </nav>
+{% endblock %}
     <!-- Main Menu Ends -->
     {% block page %}
     {% endblock %}
 </div>
+{% block footer %}
 <div class="copyright container">
     <div class="clearfix">
         <!-- Starts -->
@@ -192,6 +200,7 @@
 
     </div>
 </div>
+{% endblock %}
 <!-- Copyright Area Ends -->
 
 
@@ -212,6 +221,7 @@
 <script src="{% static 'js/app/controllers/autoserviceCtrl.js' %}"></script>
 <script src="{% static 'js/app/controllers/serviceCtrl.js' %}"></script>
 <script src="{% static 'js/app/controllers/contactsCtrl.js' %}"></script>
+<script src="{% static 'js/app/controllers/loginCtrl.js' %}"></script>
 <script src="{% static 'js/app/controllers/registrationCtrl.js' %}"></script>
 
 <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
@@ -220,10 +230,12 @@
 <script src="{% static 'js/vendor/masonry.js' %}"></script>
 <script src="{% static 'js/vendor/imagesLoaded.js' %}"></script>
 <script src="{% static 'js/vendor/custom.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.fancybox.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/plugins.js' %}"></script>
 
 </body>
+{% endblock %}
 </html>
 
 

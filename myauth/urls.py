@@ -8,7 +8,7 @@ urlpatterns = patterns('news.views',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^registration/$', user_register, name='user_register'),
-    url(r'^registration/success/$', TemplateView.as_view(template_name='myauth/success.html')),
+    #url(r'^registration/success/$', TemplateView.as_view(template_name='myauth/success.html')),
     url(r'^registration/(?P<activation_key>\w+)/', user_confirm, name='user_confirm'),
     url(r'^login/$', user_login, name='user_login'),
     url(r'^logout/$', user_logout, name='user_logout'),

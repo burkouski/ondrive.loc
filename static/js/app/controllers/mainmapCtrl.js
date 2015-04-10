@@ -8,9 +8,11 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
             asFilterCook = $cookieStore.get('asFilter'),
             cwFilterCook = $cookieStore.get('cwFilter'),
             tsFilterCook = $cookieStore.get('tsFilter'),
+            mapIconCook = $cookieStore.get('mapIcon'),
             activeTabsCook = $cookieStore.get('activeTabs');
 
         $scope.apiUrl = (apiUrlCook) ? apiUrlCook : "/autoservices/";
+        $scope.mapIcon = (mapIconCook) ? mapIconCook : "as-ico.png";
         $scope.asFilter = (asFilterCook) ? asFilterCook : {};
         $scope.cwFilter = (cwFilterCook) ? cwFilterCook : {};
         $scope.tsFilter = (tsFilterCook) ? tsFilterCook : {};
@@ -46,7 +48,8 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
     };
 
     //Функция изменения сервиса (очищает фильтры при переключении)
-    $scope.changeService = function (apiUrl, filterName) {
+    $scope.changeService = function (apiUrl, filterName, mapIcon) {
+        $scope.mapIcon = mapIcon
         $scope.loadRemoteData(apiUrl, $scope[filterName]);
     }
 
@@ -78,7 +81,8 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
 
     // Функция изменения отображения сервисов
     $scope.changeView = function (view) {
-        $scope.gridView = view; // path not hash
+        $scope.gridView = view;
+        
         console.log($scope.view)
     }
 

@@ -47,7 +47,7 @@
                              properties="{balloonContent: '<strong style='+'color:red'+'>'+service.name+'</strong><br>'+service.teaser+'<br>'+service.address}"
                              options="{
                         iconLayout: 'default#image',
-                        iconImageHref: '/static/img/map/as-ico.png',
+                        iconImageHref: '/static/img/map/'+mapIcon,
                         iconImageSize: [30, 48],
                         iconImageOffset: [-20, -20],
 
@@ -64,7 +64,7 @@
 
     </section>
     <!-- Featured Products Starts -->
-    <section class="products-list">
+    <section class="products-list wrap">
         <!-- Products Row Starts -->
         <div class="row">
             <!-- Primary Content Starts -->
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         <div class="col-md-4"><span class="control-label">Найдено сервисов - {$ meta $} </span></div>
-                        <div class="col-md-3 text-right">
+                        <!--div class="col-md-3 text-right">
                             <label class="control-label">Показывать:</label>
                         </div>
                         <div class="col-md-2 text-right">
@@ -94,7 +94,7 @@
                                 <option value="24">24</option>
                                 <option value="36" selected="selected">36</option>
                             </select>
-                        </div>
+                        </div-->
                     </div>
                 </div>
                 <!-- Product Filter Ends -->
@@ -170,15 +170,15 @@
 						<div class="list-group-item">
 							<div class="filter-group">
 								<label class="radio">
-									<input name="service" type="radio" ng-model="apiUrl" value="/autoservices/" ng-change="changeService(apiUrl, 'asFilter')">
+									<input name="service" type="radio" ng-model="apiUrl" value="/autoservices/" ng-change="changeService(apiUrl, 'asFilter','as-ico.png')">
 									Автосервисы
 								</label>
 								<label class="radio">
-									<input name="service" type="radio"  ng-model="apiUrl" ng-change="changeService(apiUrl, 'cwFilter')" value="/carwash/">
+									<input name="service" type="radio"  ng-model="apiUrl" ng-change="changeService(apiUrl, 'cwFilter','cw-ico.png')" value="/carwash/">
 									Автомойки
 								</label>
 								<label class="radio">
-									<input name="service" type="radio"  ng-model="apiUrl" ng-change="changeService(apiUrl, 'tsFilter')" value="/tireservice/">
+									<input name="service" type="radio"  ng-model="apiUrl" ng-change="changeService(apiUrl, 'tsFilter','ts-ico.png')" value="/tireservice/">
 									Шиномонтажи
 								</label>
 							</div>

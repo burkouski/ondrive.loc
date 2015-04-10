@@ -8,6 +8,30 @@
 
         <div class="row">
             <div class="latest-post__heading col-sm-12">
+             <div class="col-sm-3 no-padding">
+                    {% for post in posts %}
+                        {% if forloop.counter > 1 and forloop.counter < 4 %}
+                            <article class="post-preview post-preview--1x1">
+                                <a class="post-preview__link" href="{{ post.get_absolute_url }}">
+                                    <h2 class="post-preview__title">{{ post.title }}</h2>
+                                    <i class="post-preview__hover-bg"></i>
+                                </a>
+                                <a href="{{ post.category.get_absolute_url }}"
+                                   class="post-preview__category">{{ post.category }}</a>
+
+                                <div class="post-preview__meta">
+                                    <a href="{{ post.category.get_absolute_url }}"
+                                       class="meta__category">{{ post.category }}</a>
+                                    <span class="meta__like">{{ post.views }} <i class="fa fa-eye"></i></span>
+                                    <a href="{{ post.get_absolute_url }}#disqus_thread" class="meta__comments">0 <i
+                                            class="fa fa-comments-o"></i></a>
+                                </div>
+                                <i class="post-preview__bg"
+                                   style="background-image: url('{{ post.preview_img.url }}')"></i>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
                 <div class="col-sm-6 no-padding">
                     {% for post in posts %}
                         {% if forloop.counter == 1 %}
@@ -32,10 +56,10 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="col-sm-6 no-padding">
+                <div class="col-sm-3 no-padding">
                     {% for post in posts %}
-                        {% if forloop.counter > 1 and forloop.counter < 6 %}
-                            <article class="post-preview post-preview--1x2">
+                        {% if forloop.counter > 3 and forloop.counter < 6 %}
+                            <article class="post-preview post-preview--1x1">
                                 <a class="post-preview__link" href="{{ post.get_absolute_url }}">
                                     <h2 class="post-preview__title">{{ post.title }}</h2>
                                     <i class="post-preview__hover-bg"></i>
@@ -56,7 +80,6 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-
             </div>
         </div>
         <div class="row">

@@ -85,7 +85,7 @@ hr{
 
 #wrapper {
 	margin-top:40px;
-	padding:20px;
+	padding:20px 0;
 	background-color:#fff;
 }
 
@@ -93,7 +93,7 @@ hr{
 
 #header-area{
 	margin-bottom:20px;
-	padding-bottom:5px;
+	padding-bottom: 5px;
 }
 	.header-top{
 		margin-bottom: 20px;
@@ -643,7 +643,7 @@ hr{
 
 	.product-filter{
 		margin:0px 0 30px 0;
-		padding:8px 0;
+		padding:8px 20px;
 		border:solid #d0d0d0;
 		border-width:1px 0;
 	}

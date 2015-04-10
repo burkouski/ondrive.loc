@@ -18,86 +18,91 @@
         <!-- Main Heading Starts -->
 
         <!-- Main Heading Ends -->
-        {% if registered %}
-            <h2 class="main-heading text-center">
-                Регистрация прошла успешно <br>
-                <span>Подтверждение регистрации</span>
-            </h2>
+        <!-- Registration Section Starts -->
 
-        {% else %}
-            <!-- Registration Section Starts -->
+        <h2 ng-class="{'text-success': success == true, 'text-danger': success == false}"
+            class="main-heading text-center">
+            {$ result.resultMess$} <br>
+            <span>{$ result.resultSubMess$}</span>
+        </h2>
+        <section ng-hide="result.success" class="registration">
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-6">
+                    <div class="wform">
+                        <form ng-submit="registerSubmit(wform)" method="post" autocomplete="off" class="wform__form"
+                              role="form" name="wform" novalidate>
+                            {% csrf_token %}
+                            <!-- Personal Information Starts -->
 
-            <h2 ng-class="{'text-success': success == true, 'text-danger': success == false}" class="main-heading text-center">
-                {$ result.resultMess$} <br>
-                <span>{$ result.resultSubMess$}</span>
-            </h2>
-            <section ng-hide="result.success" class="registration">
-                <div class="row">
-                    <div class="col-sm-offset-3 col-sm-6">
-                        <div class="wform">
-                            <form ng-submit="registerSubmit(wform)"  method="post" autocomplete="off" class="wform__form" role="form" name="wform" novalidate>
-                                {% csrf_token %}
-                                <!-- Personal Information Starts -->
+                            <div class="wform__group">
+                                <label for="userUsername" class="col-sm-5 wform__label">Имя пользователя:</label>
 
-                                <div class="wform__group">
-                                    <label for="userUsername" class="col-sm-5 wform__label">Имя пользователя:</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="wform__input" name="username" ng-model="user.username" required/>
-                                        <span class="text-danger">{$ result.usernameErr $}</span>
-                                        <div ng-show="wform.$submitted">
-                                            <span class="text-danger" ng-show="wform.username.$error.required">Заполните 'Имя пользователя'</span>
-                                        </div>
+                                <div class="col-sm-7">
+                                    <input type="text" class="wform__input" name="username" ng-model="user.username"
+                                           required/>
+                                    <span class="text-danger">{$ result.usernameErr $}</span>
+
+                                    <div ng-show="wform.$submitted">
+                                        <span class="text-danger" ng-show="wform.username.$error.required">Заполните 'Имя пользователя'</span>
                                     </div>
                                 </div>
-                                <div class="wform__group">
-                                    <label for="userEmail" class="col-sm-5 wform__label">Ваш email:</label>
-                                    <div class="col-sm-7">
-                                        <input type="email" class="wform__input" name="email" ng-model="user.email" required/>
-                                        <span class="text-danger">{$ result.emailErr $}</span>
-                                        <div ng-show="wform.$submitted">
-                                            <span class="text-danger" ng-show="wform.email.$error.required">Заполните 'Ваш email'</span>
-                                            <span class="text-danger" ng-show="wform.email.$error.email">Неверный адрес элекронной почты</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="wform__group">
-                                    <label for="userPassword" class="col-sm-5 wform__label">Пароль:</label>
-                                    <div class="col-sm-7">
-                                    <input type="password" class="wform__input" name="password" ng-model="user.password" required/>
-                                        <div ng-show="wform.$submitted">
-                                            <span class="text-danger" ng-show="wform.confirmPassword.$error.compare">Пароли не совпадают</span>
-                                            <span class="text-danger" ng-show="wform.password.$error.required">Придумайте пароль</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="wform__group">
-                                    <label for="userPassword2" class="col-sm-5 wform__label">Повторите пароль:</label>
-                                    <div class="col-sm-7">
-                                        <input class="wform__input" type="password" name="confirmPassword" ng-model="user.confirmPassword" required compare-to="user.password" />
+                            </div>
+                            <div class="wform__group">
+                                <label for="userEmail" class="col-sm-5 wform__label">Ваш email:</label>
 
-                                        <div ng-show="wform.$submitted">
-                                            <span class="text-danger" ng-show="wform.confirmPassword.$error.required">Повторите придуманный пароль</span>
-                                            <span class="text-danger" ng-show="wform.confirmPassword.$error.compare">Пароли не совпадают</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="wform__group">
-                                    <div class="col-sm-offset-3 col-sm-9">
-                                        <button type="submit" class="btn btn-danger">
-                                            <span ng-show="!ajaxLoader">Регистрация</span>
-                                            <span ng-show="ajaxLoader"><img  src="/static/img/ajax-loader2.gif" alt=""/> Отправка</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- Password Area Ends -->
-                            </form>
-                        </div>
+                                <div class="col-sm-7">
+                                    <input type="email" class="wform__input" name="email" ng-model="user.email"
+                                           required/>
+                                    <span class="text-danger">{$ result.emailErr $}</span>
 
+                                    <div ng-show="wform.$submitted">
+                                        <span class="text-danger" ng-show="wform.email.$error.required">Заполните 'Ваш email'</span>
+                                        <span class="text-danger" ng-show="wform.email.$error.email">Неверный адрес элекронной почты</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wform__group">
+                                <label for="userPassword" class="col-sm-5 wform__label">Пароль:</label>
+
+                                <div class="col-sm-7">
+                                    <input type="password" class="wform__input" name="password" ng-model="user.password"
+                                           required/>
+
+                                    <div ng-show="wform.$submitted">
+                                        <span class="text-danger" ng-show="wform.confirmPassword.$error.compare">Пароли не совпадают</span>
+                                        <span class="text-danger" ng-show="wform.password.$error.required">Придумайте пароль</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wform__group">
+                                <label for="userPassword2" class="col-sm-5 wform__label">Повторите пароль:</label>
+
+                                <div class="col-sm-7">
+                                    <input class="wform__input" type="password" name="confirmPassword"
+                                           ng-model="user.confirmPassword" required compare-to="user.password"/>
+
+                                    <div ng-show="wform.$submitted">
+                                        <span class="text-danger" ng-show="wform.confirmPassword.$error.required">Повторите придуманный пароль</span>
+                                        <span class="text-danger" ng-show="wform.confirmPassword.$error.compare">Пароли не совпадают</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wform__group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-danger">
+                                        <span ng-show="!ajaxLoader">Регистрация</span>
+                                        <span ng-show="ajaxLoader"><img src="/static/img/ajax-loader2.gif" alt=""/> Отправка</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Password Area Ends -->
+                        </form>
                     </div>
 
                 </div>
-            </section>
-            <!-- Registration Section Ends -->
-        {% endif %}
+
+            </div>
+        </section>
+        <!-- Registration Section Ends -->
     </div>
 {% endblock %}

@@ -69,7 +69,7 @@ def user_confirm(request, activation_key):
         args['success'] = False
         args['message'] = 'вы уже авторизованы'
         args['subMessage'] = 'Выйдите из своего аккаунта и попробуйте снова'
-        return render_to_response('myauth/confirm.html', args)
+        return render_to_response('myauth/success.html', args)
 
     user_profile = get_object_or_404(UserProfile, activation_key=activation_key)
 
@@ -77,37 +77,36 @@ def user_confirm(request, activation_key):
         args['success'] = False
         args['message'] = 'Невозможно подтвердить аккаунт'
         args['subMessage'] = 'время действия ссылки истекло'
-        return render_to_response('myauth/confirm.html', args)
+        return render_to_response('myauth/success.html', args)
 
     user = user_profile.user
     user.is_active = True
     user.save()
-    args['message'] = 'Ваш аккаунт подтвержден'
-    args['subMessage'] = 'время действия ссылки истекло'
-    return render_to_response('myauth/confirm.html')
+    args['message'] = 'Спасибо за регистрацию'
+    args['subMessage'] = 'ваш аккаунт подтвержден'
+    return render_to_response('myauth/success.html', args)
 
 
 def user_login(request):
-    mess = ''
-    login_form = LoginForm()
+    args = {}
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(username=username, password=password)
-
-        if user:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect('/')
+        if User.objects.filter(username=username).count() or User.objects.filter(email=username).count():
+            user = authenticate(username=username, password=password)
+            if user:
+                if user.is_active:
+                    login(request, user)
+                    args['mess'] = "Вы авторизованы"
+                else:
+                    args['mess'] = 'Аккаунт заблокирован. Обратитесь к администрации'
             else:
-                mess = 'Аккаун заблокирован. Обратитесь к администрации'
+                args['mess'] = 'Имя пользователя или пароль неверны'
         else:
-            # Bad login details were provided. So we can't log the user in.
-            mess = 'Имя пользователя или пароль неверны'
+            args['mess'] = 'Имя пользователя или пароль неверны'
+        return HttpResponse(json.dumps(args))
 
-    # The request is not a HTTP POST, so display the login form.
-    # This scenario would most likely be a HTTP GET.
-    return render(request, 'myauth/login.html', {'login_form': login_form, 'mess': mess},
+    return render(request, 'myauth/login.html',
                   context_instance=RequestContext(request))
 
 

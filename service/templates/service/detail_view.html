@@ -18,6 +18,9 @@
         {% sitetree_breadcrumbs from "for_post" %}
     {% endblock %}
     <!-- Breadcrumb Ends -->
+    <div class="wrap">
+
+
     <!-- Product Info Starts -->
     <div class="row product-info full">
         <!-- Left Starts -->
@@ -391,7 +394,7 @@
             </form>
         {% else %}
 
-            <span>Чтобы оставлять отзывы вы должный сначало <a href="/auth/login">войти на сайт</a> Если же вы не имеете аккаунта на нашем сайте, вы можете пройти <a
+            <span>Чтобы оставлять отзывы вы должный сначало <a class="popup fancybox.iframe" href="/auth/login#login-form">авторизоваться</a> Если же вы не имеете аккаунта на нашем сайте, вы можете пройти <a
                     href="/auth/registration">процедуру регистрации</a></span>
         {% endif %}
 
@@ -401,7 +404,7 @@
     <!-- Tab Content Ends -->
     </div>
     <!-- Tabs Ends -->
-
+    </div>
     </div>
     <!-- Main Container Ends -->
 {% endblock %}
