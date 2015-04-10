@@ -22,7 +22,7 @@ SECRET_KEY = '8y_gdfj^aaqgwwi6n8g#w42pfdqa*6p7u%q(252b@j_0o7cv9c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+SITE_ID = 1
 TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
@@ -37,20 +37,19 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.sites',
+    'django.contrib.sites',
     'news',
     'service',
-    #'tastypie',
     'ckeditor',
     'sitetree',
-    #'registration',
     'myauth',
     'autofixture',
     'reviews',
     'contacts',
-    'columns',
+    'threadedcomments',
+    'django.contrib.comments',
 )
-COMMENTS_APP = "django_comments_xtd"
+COMMENTS_APP = 'threadedcomments'
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

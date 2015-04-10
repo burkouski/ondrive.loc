@@ -69,7 +69,7 @@ def user_confirm(request, activation_key):
         args['success'] = False
         args['message'] = 'вы уже авторизованы'
         args['subMessage'] = 'Выйдите из своего аккаунта и попробуйте снова'
-        return render_to_response('myauth/confirm.html', args)
+        return render_to_response('myauth/success.html', args)
 
     user_profile = get_object_or_404(UserProfile, activation_key=activation_key)
 
@@ -77,14 +77,14 @@ def user_confirm(request, activation_key):
         args['success'] = False
         args['message'] = 'Невозможно подтвердить аккаунт'
         args['subMessage'] = 'время действия ссылки истекло'
-        return render_to_response('myauth/confirm.html', args)
+        return render_to_response('myauth/success.html', args)
 
     user = user_profile.user
     user.is_active = True
     user.save()
-    args['message'] = 'Ваш аккаунт подтвержден'
-    args['subMessage'] = 'время действия ссылки истекло'
-    return render_to_response('myauth/confirm.html')
+    args['message'] = 'Спасибо за регистрацию'
+    args['subMessage'] = 'ваш аккаунт подтвержден'
+    return render_to_response('myauth/success.html', args)
 
 
 def user_login(request):

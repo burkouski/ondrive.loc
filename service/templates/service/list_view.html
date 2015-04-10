@@ -12,9 +12,11 @@
                 {% endblock %}
                 <!-- Breadcrumb Ends -->
                 <!-- Main Heading Starts -->
-                {% block catalog_heading %}
+                <div class="wrap">
+                    {% block catalog_heading %}
+                    {% endblock %}
+                </div>
 
-                 {% endblock %}
                 <!-- Category Intro Content Starts -->
                 <div class="row cat-intro">
                     {% block catalog_map %}
@@ -25,115 +27,118 @@
                 <!-- Category Intro Content Ends -->
             </div>
         </div>
-        <div class="row">
-            <!-- Primary Content Starts -->
+        <section class="products-list wrap">
+            <div class="row">
+                <!-- Primary Content Starts -->
 
-            <div class="col-md-9">
+                <div class="col-md-9">
 
-                <!-- Product Filter Starts -->
-                <div class="product-filter">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="display">
+                    <!-- Product Filter Starts -->
+                    <div class="product-filter">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="display">
                                     <span ng-class="{active: !gridView}" ng-click="changeView(false)">
                                         <i class="fa fa-th-list" title="Отображать списком"></i>
                                     </span>
                                     <span ng-class="{active: gridView}" ng-click="changeView(true)">
                                         <i class="fa fa-th" title="Отображать сеткой"></i>
                                     </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4"><span class="control-label">Найдено сервисов - {$ meta $} </span></div>
-                        <div class="col-md-3 text-right">
-                            <label class="control-label">Показывать:</label>
-                        </div>
-                        <div class="col-md-2 text-right">
-                            <select class="form-control">
-                                <option value="12">12</option>
-                                <option value="24">24</option>
-                                <option value="36" selected="selected">36</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product Filter Ends -->
-                <!-- Product List Display Starts -->
-
-                <div style="text-align: center" ng-show="!preloader"><img src="/static/img/ajax-loader.gif"
-                                                                          alt="preloader"/></div>
-                <div class="row" ng-show="preloader">
-
-                    <!-- Product #1 Starts -->
-
-
-                    <div ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}"
-                         ng-repeat="service in services | paginate:rowPerPage" ng-cloak>
-                        <div class="product-col list clearfix">
-                            <div class="row">
-                                <div class="image" ng-class="{'col-xs-4': !gridView, 'col-xs-12': gridView}">
-                                    <a href="{$ service.url $}"><img src="{$ service.logo $}" alt=""
-                                                                     class="img-responsive"/></a>
-                                </div>
-                                <div class="caption" ng-class="{'col-xs-8': !gridView, 'col-xs-12': gridView}">
-                                    <h4><a href="{$ service.url $}">{$ service.name $}</a></h4>
-
-                                    <div ng-show="service.rating">
-                                        <i ng-repeat="star in starsInit(service.rating).positiveStar track by $index"
-                                           style="color: red" class="fa fa-star"></i><i
-                                            ng-repeat="star in starsInit(service.rating).halfStar track by $index"
-                                            style="color: red" class="fa fa-star-half-o"></i><i
-                                            ng-repeat="star in starsInit(service.rating).negativeStar track by $index"
-                                            style="color: red" class="fa fa-star-o"></i>
-                                    </div>
-                                    <div ng-show="!service.rating">нет оценок</div>
-                                    <div class="description">
-                                        {$ service.teaser $}
-                                    </div>
-                                    <div class="price">
-                                        <p class="price-tax">Адрес: {$ service.address $}</p>
-
-                                    </div>
-                                    <div class="cart-button button-group">
-
-                                        <a href="{$ service.url $}" class="btn btn-cart">
-                                            Подробнее
-                                            <i class="fa fa-angle-double-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="col-md-4"><span class="control-label">Найдено сервисов - {$ meta $} </span>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <label class="control-label">Показывать:</label>
+                            </div>
+                            <div class="col-md-2 text-right">
+                                <select class="form-control">
+                                    <option value="12">12</option>
+                                    <option value="24">24</option>
+                                    <option value="36" selected="selected">36</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+                    <!-- Product Filter Ends -->
+                    <!-- Product List Display Starts -->
 
-                    <!-- Product #1 Ends -->
+                    <div style="text-align: center" ng-show="!preloader"><img src="/static/img/ajax-loader.gif"
+                                                                              alt="preloader"/></div>
+                    <div class="row" ng-show="preloader">
 
-                </div>
-                <!-- Product List Display Ends -->
-                <!-- Pagination & Results Starts -->
-                <div class="row">
-                    <!-- Pagination Starts -->
-                    <div class="col-sm-6 pagination-block">
-                        <paginator></paginator>
+                        <!-- Product #1 Starts -->
+
+
+                        <div ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}"
+                             ng-repeat="service in services | paginate:rowPerPage" ng-cloak>
+                            <div class="product-col list clearfix">
+                                <div class="row">
+                                    <div class="image" ng-class="{'col-xs-4': !gridView, 'col-xs-12': gridView}">
+                                        <a href="{$ service.url $}"><img src="{$ service.logo $}" alt=""
+                                                                         class="img-responsive"/></a>
+                                    </div>
+                                    <div class="caption" ng-class="{'col-xs-8': !gridView, 'col-xs-12': gridView}">
+                                        <h4><a href="{$ service.url $}">{$ service.name $}</a></h4>
+
+                                        <div ng-show="service.rating">
+                                            <i ng-repeat="star in starsInit(service.rating).positiveStar track by $index"
+                                               style="color: red" class="fa fa-star"></i><i
+                                                ng-repeat="star in starsInit(service.rating).halfStar track by $index"
+                                                style="color: red" class="fa fa-star-half-o"></i><i
+                                                ng-repeat="star in starsInit(service.rating).negativeStar track by $index"
+                                                style="color: red" class="fa fa-star-o"></i>
+                                        </div>
+                                        <div ng-show="!service.rating">нет оценок</div>
+                                        <div class="description">
+                                            {$ service.teaser $}
+                                        </div>
+                                        <div class="price">
+                                            <p class="price-tax">Адрес: {$ service.address $}</p>
+
+                                        </div>
+                                        <div class="cart-button button-group">
+
+                                            <a href="{$ service.url $}" class="btn btn-cart">
+                                                Подробнее
+                                                <i class="fa fa-angle-double-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product #1 Ends -->
+
                     </div>
-                    <!-- Pagination Ends -->
+                    <!-- Product List Display Ends -->
+                    <!-- Pagination & Results Starts -->
+                    <div class="row">
+                        <!-- Pagination Starts -->
+                        <div class="col-sm-6 pagination-block">
+                            <paginator></paginator>
+                        </div>
+                        <!-- Pagination Ends -->
+                    </div>
+                    <!-- Pagination & Results Ends -->
                 </div>
-                <!-- Pagination & Results Ends -->
+                <!-- Primary Content Ends -->
+                <!-- Sidebar Starts -->
+                <div class="col-md-3">
+
+                    <!-- Shopping Options Starts -->
+                    {% block catalog_filter %}
+
+                    {% endblock %}
+                    <!-- Shopping Options Ends -->
+
+                </div>
+
+
+                <!-- Sidebar Ends -->
             </div>
-            <!-- Primary Content Ends -->
-            <!-- Sidebar Starts -->
-            <div class="col-md-3">
-
-                <!-- Shopping Options Starts -->
-                {% block catalog_filter %}
-
-                {% endblock %}
-                <!-- Shopping Options Ends -->
-
-            </div>
-
-
-            <!-- Sidebar Ends -->
-        </div>
+        </section>
     </div>
     <!-- Main Container Ends -->
 {% endblock %}

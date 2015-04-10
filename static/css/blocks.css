@@ -84,9 +84,9 @@
 }
 .post-preview__link--static {
   position: static;
-  margin: 0 0 10px 0;
 }
 .post-preview__text {
+  padding: 10px;
   text-align: justify;
 }
 .post-preview__title {
@@ -105,7 +105,7 @@
 }
 .post-preview__title--static {
   position: static;
-  padding: 10px 0;
+  padding: 10px;
   background: none;
   color: #000;
   font-size: 24px;
@@ -153,7 +153,7 @@
   position: relative;
 }
 .post-preview__meta {
-  padding: 5px 0;
+  padding: 5px 10px;
   font-size: 13px;
   font-style: italic;
 }
@@ -164,6 +164,12 @@
 }
 .post-preview__meta:after {
   clear: both;
+}
+.post p {
+  padding: 5px 20px;
+}
+.post__title {
+  padding: 0 20px;
 }
 .post__img-wrap {
   position: relative;
