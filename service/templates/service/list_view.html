@@ -36,7 +36,7 @@
                     <!-- Product Filter Starts -->
                     <div class="product-filter">
                         <div class="row">
-                            <div class="col-md-3">
+                            <!--div class="col-md-3">
                                 <div class="display">
                                     <span ng-class="{active: !gridView}" ng-click="changeView(false)">
                                         <i class="fa fa-th-list" title="Отображать списком"></i>
@@ -45,10 +45,10 @@
                                         <i class="fa fa-th" title="Отображать сеткой"></i>
                                     </span>
                                 </div>
-                            </div>
+                            </div-->
                             <div class="col-md-4"><span class="control-label">Найдено сервисов - {$ meta $} </span>
                             </div>
-                            <div class="col-md-3 text-right">
+                            <!--div class="col-md-3 text-right">
                                 <label class="control-label">Показывать:</label>
                             </div>
                             <div class="col-md-2 text-right">
@@ -57,7 +57,7 @@
                                     <option value="24">24</option>
                                     <option value="36" selected="selected">36</option>
                                 </select>
-                            </div>
+                            </div-->
                         </div>
                     </div>
                     <!-- Product Filter Ends -->
@@ -71,7 +71,7 @@
 
 
                         <div ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}"
-                             ng-repeat="service in services | paginate:rowPerPage" ng-cloak>
+                             ng-repeat="service in services" ng-cloak>
                             <div class="product-col list clearfix">
                                 <div class="row">
                                     <div class="image" ng-class="{'col-xs-4': !gridView, 'col-xs-12': gridView}">
@@ -117,7 +117,7 @@
                     <div class="row">
                         <!-- Pagination Starts -->
                         <div class="col-sm-6 pagination-block">
-                            <paginator></paginator>
+
                         </div>
                         <!-- Pagination Ends -->
                     </div>

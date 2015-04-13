@@ -80,11 +80,21 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
     }
 
     // Функция изменения отображения сервисов
-    $scope.changeView = function (view) {
-        $scope.gridView = view;
-        
-        console.log($scope.view)
+    $scope.changeView = function (boll) {
+        $scope.gridView = boll;
+//        if ($scope.gridView) {
+//            var heights = $(".product").map(function () {
+//                    console.log($(this).outerHeight());
+//                    return $(this).outerHeight();
+//
+//                }).get(),
+//
+//                maxHeight = Math.max.apply(null, heights);
+//            $(".product-col").height(maxHeight)
+//        }
+//        console.log($scope.view)
     }
+
 
     //Преобразования рейтинга в звёзды
     $scope.starsInit = function (rating) {

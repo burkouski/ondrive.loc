@@ -74,7 +74,7 @@
                 <!-- Product Filter Starts -->
                 <div class="product-filter">
                     <div class="row">
-                        <div class="col-md-3">
+                        <!--div class="col-md-3">
                             <div class="display">
                                     <span ng-class="{active: !gridView}" ng-click="changeView(false)">
                                         <i class="fa fa-th-list" title="Отображать списком"></i>
@@ -83,7 +83,7 @@
                                         <i class="fa fa-th" title="Отображать сеткой"></i>
                                     </span>
                             </div>
-                        </div>
+                        </div-->
                         <div class="col-md-4"><span class="control-label">Найдено сервисов - {$ meta $} </span></div>
                         <!--div class="col-md-3 text-right">
                             <label class="control-label">Показывать:</label>
@@ -107,7 +107,7 @@
                     <!-- Product #1 Starts -->
 
 
-                    <div ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}"
+                    <div class="product" ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}"
                          ng-repeat="service in services" ng-cloak>
                         <div class="product-col list clearfix">
                             <div class="row">

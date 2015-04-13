@@ -1,13 +1,16 @@
 $(function () {
 
 $(".popup").fancybox({
-		maxWidth	: 600,
-        padding:   0,
-		openEffect	: 'none',
-		closeEffect	: 'none',
-        afterClose: function () {
-                parent.location.reload(true);
-            }
+		helpers:  {
+            overlay : {
+                locked : false
+            },
+            title : {
+                type : 'float'
+            },
+            openEffect	: 'none',
+            closeEffect	: 'none'
+        }
 	});
 
 })

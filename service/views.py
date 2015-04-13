@@ -33,7 +33,7 @@ def autoservice_list(request):
                             'logo': o.logo.url,
                             'teaser': o.teaser,
                             'address': o.address,
-                            'rating': o.reviews.all().aggregate(Avg('rate'))['rate__avg'],
+                            'rating': o.reviews.filter(is_moderate=True).aggregate(Avg('rate'))['rate__avg'],
                             'sort': o.sort,
                             'url': o.get_absolute_url()} for o in services],
         'meta': services.count()
@@ -74,7 +74,7 @@ def carwash_list(request):
                             'logo': o.logo.url,
                             'teaser': o.teaser,
                             'address': o.address,
-                            'rating': o.reviews.all().aggregate(Avg('rate'))['rate__avg'],
+                            'rating': o.reviews.filter(is_moderate=True).aggregate(Avg('rate'))['rate__avg'],
                             'sort': o.sort,
                             'url': o.get_absolute_url()} for o in services],
         'meta': services.count()
@@ -116,7 +116,7 @@ def tireservice_list(request):
                             'logo': o.logo.url,
                             'teaser': o.teaser,
                             'address': o.address,
-                            'rating': o.reviews.all().aggregate(Avg('rate'))['rate__avg'],
+                            'rating': o.reviews.filter(is_moderate=True).aggregate(Avg('rate'))['rate__avg'],
                             'sort': o.sort,
                             'url': o.get_absolute_url()} for o in services],
         'meta': services.count()
