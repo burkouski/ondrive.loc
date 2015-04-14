@@ -65,7 +65,7 @@ angular.module('ymaps', [])
 }])
 .constant('ymapsConfig', {
     apiUrl: '//api-maps.yandex.ru/2.1/?load=package.standard,package.clusters&mode=release&lang=ru-RU&ns=ymaps',
-    mapBehaviors: ['default'],
+    mapBehaviors: ['default',"scrollZoom"],
     markerOptions: {
         preset: 'islands#darkgreenIcon'
     },
@@ -122,6 +122,8 @@ angular.module('ymaps', [])
             zoom     : $scope.zoom || 0,
             behaviors: config.mapBehaviors
         });
+        self.map.behaviors.disable('scrollZoom');
+
         $scope.markers = new ymaps.GeoObjectCollection({}, config.markerOptions);
         self.map.geoObjects.add($scope.markers);
         if(config.fitMarkers) {

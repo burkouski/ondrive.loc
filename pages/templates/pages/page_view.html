@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+    <meta name="description" content="{{ page.description }}">
+{% endblock %}
+
+{% block title %}
+    <title>{{ page.title }}</title>
+{% endblock %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+
+{% block page %}
+   <div class="col-sm-12">
+					<h1 class="text-uppercase">{{ page.name }}</h1>
+					{{ page.text|safe }}
+				</div>
+
+{% endblock %}

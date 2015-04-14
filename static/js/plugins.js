@@ -1,16 +1,20 @@
 $(function () {
 
-$(".popup").fancybox({
-		helpers:  {
-            overlay : {
-                locked : false
+    $(".popup").fancybox({
+        helpers: {
+            overlay: {
+                locked: false
             },
-            title : {
-                type : 'float'
+            title: {
+                type: 'float'
             },
-            openEffect	: 'none',
-            closeEffect	: 'none'
-        }
-	});
+            openEffect: 'none',
+            closeEffect: 'none'
+
+        },
+        afterClose: function () {
+                window.location.reload();
+            }
+    });
 
 })

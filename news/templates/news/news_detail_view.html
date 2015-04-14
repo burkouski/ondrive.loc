@@ -6,6 +6,12 @@
 
 {% block title %}
     <title>{{ post.title }}</title>
+    <script data-cfasync="false">
+  (function(a,b,c,d,e){var f=a+"Q";b[a]=b[a]||{};b[a][d]=b[a][d]||function(){
+  (b[f]=b[f]||[]).push(arguments)};a=c.getElementsByTagName(e)[0];c=c.createElement(e);c.async=1;
+  c.src="//static.reembed.com/data/scripts/g_6095_1366326963c993619affd88ab1856b66.js";
+  a.parentNode.insertBefore(c,a)})("reEmbed",window,document,"setupPlaylist","script");
+</script>
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -25,6 +31,7 @@
                 </div>
                 <h3 class="post__title">{{ post.title }}</h3>
                 {{ post.text|safe }}
+                <iframe width="1020" height="510" src="https://www.youtube.com/embed/hLmE6_aHrpw" frameborder="0" allowfullscreen></iframe>
             </div>
 
         </div>

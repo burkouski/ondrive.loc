@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'autofixture',
     'reviews',
     'contacts',
+    'pages'
 )
 COMMENTS_APP = 'threadedcomments'
 MIDDLEWARE_CLASSES = (

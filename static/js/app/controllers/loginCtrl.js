@@ -1,4 +1,4 @@
-ymapsApp.controller('loginCtrl', ['$scope','services', function ($scope, services) {
+ymapsApp.controller('loginCtrl', ['$scope','services','$timeout', function ($scope, services, $timeout) {
 
     var apiUrl = '/auth/login/';
     $scope.ajaxLoader = false;
@@ -15,6 +15,10 @@ ymapsApp.controller('loginCtrl', ['$scope','services', function ($scope, service
                     $scope.result = result
                     console.log($scope.result)
                     $scope.ajaxLoader = false;
+                    $timeout(function(){
+                        parent.$.fancybox.close();
+                    }, 1000)
+
                 },
                 function () {
                     $scope.resultMess = 'Что-то пошло не так. Мы исправим это в ближайшее время';

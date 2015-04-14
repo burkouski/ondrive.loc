@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from django.contrib import admin
 from django.conf import settings
+from pages import views
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html')),
@@ -15,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     url(r'^news/', include('django.contrib.comments.urls')),
+    url(r'^(?P<page_alias>.*)/$', views.get_page, name='page_view')
 )

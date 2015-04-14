@@ -86,7 +86,7 @@ def user_confirm(request, activation_key):
     args['subMessage'] = 'ваш аккаунт подтвержден'
     return render_to_response('myauth/success.html', args)
 
-
+@ensure_csrf_cookie
 def user_login(request):
     args = {}
     if request.method == 'POST':
