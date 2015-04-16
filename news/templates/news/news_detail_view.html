@@ -29,9 +29,8 @@
                     <a href="{{ post.category.get_absolute_url }}" class="post__category">{{ post.category }}</a>
                     <span class="post__pub-date">{{ post.pub_date }} </span>
                 </div>
-                <h3 class="post__title">{{ post.title }}</h3>
+                <h3 class="post__title">{{ post.name }}</h3>
                 {{ post.text|safe }}
-                <iframe width="1020" height="510" src="https://www.youtube.com/embed/hLmE6_aHrpw" frameborder="0" allowfullscreen></iframe>
             </div>
 
         </div>

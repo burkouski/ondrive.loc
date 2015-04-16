@@ -15,9 +15,10 @@ def get_post_list(request):
 
 
 def get_category_posts(request, category_alias):
-    category_id = get_object_or_404(Category, alias=category_alias).id
+    category = get_object_or_404(Category, alias=category_alias)
+    category_id = category.id
     posts = get_list_or_404(Post, category=category_id)
-    args = {'posts': posts}
+    args = {'posts': posts, 'category': category}
     return render(request, 'news/news_list_view.html', args)
 
 

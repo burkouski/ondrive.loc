@@ -90,8 +90,8 @@
 
                     <div class="header-links">
                         <ul class="list-unstyled list-inline pull-left">
-                            <li><a href="./">Главная</a></li>
-                            <li><a href="#">О проекте</a></li>
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="/o-proekte">О проекте</a></li>
                             <!--li><a href="#">Правила портала</a></li-->
                             <li><a href="/cooperate">Сотрудничество</a></li>
                             <li><a href="/contacts">Контакты</a></li>
@@ -99,10 +99,9 @@
                             <!--li><a href="#">Мой блог</a></li-->
                             <!--li><a href="#">Мой профиль</a></li-->
                             <!--li><a href="cart.html"></a></li-->
-                            {% if user.is_authenticated %}
+                            {% if  not user.is_authenticated %}
                                 <!--li><a href="#">Мой профиль</a></li-->
-                                <li><a href="/auth/logout">Выйти</a></li>
-                            {% else %}
+
                                 <li><a href="/auth/registration">Регистрация</a></li>
                                 <li><a class="popup fancybox.iframe" href="/auth/login#login-form">Войти</a></li>
                             {% endif %}
@@ -118,32 +117,11 @@
             <!-- Header Right Ends -->
             <div class="col-md-2 col-xs-12">
                 {% if user.is_authenticated %}
-                    Вы вошли как: {{ user.username }}
+                    <span>Вы вошли как: {{ user.username }} <a href="/auth/logout">Выйти</a></span>
                 {% else %}
                     <a class="btn btn-danger popup fancybox.iframe" href="/auth/login#login-form">Войти</a>
                 {% endif %}
 
-                <!-- Login Panel Starts -->
-                <!-- Login Form Starts -->
-                <!--form class="form form_login" role="form" autocomplete="off">
-                    <div class="form__item">
-                        <label class="sr-only" for="username">Username</label>
-                        <input class="form__itext" type="text" id="username" placeholder="Логин">
-                    </div>
-                    <div class="form__item">
-                        <label class="sr-only" for="exampleInputPassword2">Password</label>
-                        <input class="form__itext" type="password" id="exampleInputPassword2" placeholder="Password">
-                    </div>
-                    <div class="form__item">
-                        <input class="form__ilogin" type="submit" value="Войти"/>
-                        <a class="form__restore-link" href="/">Забыли пароль?</a>
-                    </div>
-                </form-->
-
-                <!-- Login Form Ends -->
-
-
-                <!-- Login Panel Ends -->
             </div>
         </div>
         <!-- Nested Row Ends -->
@@ -175,9 +153,9 @@
                     </ul>
                 </li>
                 <li><a href="/news">Новости</a></li>
-                <li><a href="#">Машины</a></li>
-                <li><a href="#">Обзоры</a></li>
-                <li><a href="#">Тюнинг</a></li>
+                <!--li><a href="#">Машины</a></li-->
+                <!--li><a href="#">Обзоры</a></li-->
+                <!--li><a href="#">Тюнинг</a></li-->
                 <!--li><a href="/blogs">Блоги</a></li-->
                 <!--li><a href="/cars">Машины</a></li-->
             </ul>
@@ -223,7 +201,6 @@
 <script src="{% static 'js/app/controllers/contactsCtrl.js' %}"></script>
 <script src="{% static 'js/app/controllers/loginCtrl.js' %}"></script>
 <script src="{% static 'js/app/controllers/registrationCtrl.js' %}"></script>
-
 <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/vendor/bootstrap-hover-dropdown.min.js' %}"></script>
 <script src="{% static 'js/vendor/jquery.magnific-popup.min.js' %}"></script>
