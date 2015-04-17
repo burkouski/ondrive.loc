@@ -16,7 +16,7 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.title:
-            self.title = self.name
+            self.title = self.category
         if not self.alias:
             self.alias = translit.slugify(self.category)
         super(Category, self).save(*args, **kwargs)
@@ -38,6 +38,7 @@ class Post(models.Model):
     preview_img = models.ImageField('Превью изображение')
     preview = models.TextField('Вступительный текст')
     text = RichTextField('Полный текст')
+    video = models.CharField('Ссылка на видео', max_length=1000)
     category = models.ForeignKey(Category)
     views = models.IntegerField('Количество просмотров')
     title = models.CharField('title страницы', max_length=200, blank=True)
