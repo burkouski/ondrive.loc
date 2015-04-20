@@ -7,7 +7,7 @@ ymapsApp.controller('loginCtrl', ['$scope','services','$timeout', function ($sco
     }
 
     $scope.loginSubmit = function (form) {
-
+        parent.$.fancybox.update()
         if (form.$valid) {
             $scope.ajaxLoader = true;
             services.list(apiUrl, $scope.user, function (result) {

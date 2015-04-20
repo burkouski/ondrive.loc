@@ -1,6 +1,9 @@
 $(function () {
 
     $(".popup").fancybox({
+        maxWidth	: 500,
+        maxHeight: 500,
+		fitToView: false,
         helpers: {
             overlay: {
                 locked: false
