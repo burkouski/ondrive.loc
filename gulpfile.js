@@ -6,8 +6,10 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     spritesmith  = require('gulp.spritesmith'),
     minifyCSS = require('gulp-minify-css'),
+    gulpif = require('gulp-if'),
     autoprefixer = require('gulp-autoprefixer'),
     watch = require('gulp-watch'),
+    useref = require('gulp-useref'),
     jsArr = [
         './static/js/vendor/jquery-1.11.1.min.js',
         './static/js/vendor/jquery-migrate-1.2.1.min.js',
@@ -121,6 +123,19 @@ gulp.task('img-min', function () {
         .pipe(gulp.dest('./static/img'))
 });
 
+
+gulp.task('test', function () {
+    //gulp.start('copy-source');
+    var assets = useref.assets({searchPath: ''});
+    console.log(assets);
+    return gulp.src('*.html')
+        .pipe(assets)
+        .pipe(gulpif('*.js', uglify()))
+        .pipe(gulpif('*.css', minifyCSS()))
+        .pipe(assets.restore())
+        .pipe(useref())
+        .pipe(gulp.dest('./dist'))
+});
 
 
 

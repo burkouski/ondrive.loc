@@ -1,6 +1,7 @@
 <div class="w-archive">
     {% for post in posts %}
         <h4>{{ post.name }}</h4>
+        <img class="img-responsive" src="{{ post.preview_img.url }}" alt=""/>
         <div>{{ post.preview | truncatewords:15 }}</div>
 {% endfor %}
 </div>
