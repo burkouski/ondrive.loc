@@ -19,6 +19,13 @@ def show_latest_news():
     return args
 
 
+@register.inclusion_tag("news/w_news_archive.html")
+def show_archive_news(start=1):
+    posts = Post.objects.all()[start:(start+5)]
+    args = {'posts': posts}
+    return args
+
+
 @register.inclusion_tag("news/w_categories.html")
 def show_categories():
     categories = Category.objects.all()

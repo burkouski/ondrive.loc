@@ -1,0 +1,58 @@
+{% extends "tuning/layout.html" %}
+{% load sitetree %}
+{% block meta %}
+    {% if category.meta_description %}
+        <meta name="description" content="{{ category.description }}">
+    {% else %}
+         <meta name="description" content="{% sitetree_page_description from 'main' %}">
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {% if category.title %}
+            <title>{{ category.title }}</title>
+    {% else %}
+            <title>{% sitetree_page_title from "main" %}</title>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <!-- Main Heading Starts -->
+
+    <!-- Main Heading Ends -->
+    <section class="latest-posts">
+        <div class="row">
+            <div class="latest-post__other col-sm-12">
+                {% for post in posts %}
+
+                        <article class="post-preview post-preview--full">
+                            <a class="post-preview__link post-preview__link--static" href="{{ post.get_absolute_url }}">
+                                <h2 class="post-preview__title post-preview__title--static">{{ post.name }}</h2>
+
+                                <div class="post-preview__img-wrap">
+                                    <img class="img-responsive" src="{{ post.preview_img.url }}" alt=""/>
+                                    <i class="post-preview__hover-bg"></i>
+                                    {% if post.video %}
+                                    <a href="{{ post.get_absolute_url }}#video"
+                                       class="post-preview__category">Видео</a>
+                                    {% endif %}
+                                    <a href="{{ post.get_absolute_url }}#disqus_thread" class="post-preview__comments">0
+                                        <i class="fa fa-comments-o"></i></a>
+                                </div>
+
+                            </a>
+
+                            <div class="post-preview__text">
+                                {{ post.preview }}
+                            </div>
+                            <div class="post-preview__meta">
+                                <span class="meta__like">просмотров: {{ post.views }}</span>
+                                <span style="float: right" class="meta__date">{{ post.pub_date }}</span>
+                            </div>
+                        </article>
+                {% endfor %}
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

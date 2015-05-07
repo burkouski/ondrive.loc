@@ -26,19 +26,13 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    POST_CLASS_CHOICE = (
-        ('', '1 колонка'),
-        ('post-preview_medium', '2 колонки'),
-        ('post-preview_huge', '3 колонки'),
-
-    )
     name = models.CharField('Заголовок статьи', max_length=200)
     alias = models.SlugField(max_length=100, blank=True)
     pub_date = models.DateField('Дата публикации')
     preview_img = models.ImageField('Превью изображение')
     preview = models.TextField('Вступительный текст')
     text = RichTextField('Полный текст')
-    video = models.CharField('Ссылка на видео', max_length=1000)
+    video = models.CharField('Ссылка на видео', max_length=1000, null=True, blank=True)
     category = models.ForeignKey(Category)
     views = models.IntegerField('Количество просмотров')
     title = models.CharField('title страницы', max_length=200, blank=True)

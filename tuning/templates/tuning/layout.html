@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% load w_videos %}
+{% load w_news %}
+{% block page %}
+    <script data-cfasync="false">
+        (function (a, b, c, d, e) {
+            var f = a + "Q";
+            b[a] = b[a] || {};
+            b[a][d] = b[a][d] || function () {
+                (b[f] = b[f] || []).push(arguments)
+            };
+            a = c.getElementsByTagName(e)[0];
+            c = c.createElement(e);
+            c.async = 1;
+            c.src = "//static.reembed.com/data/scripts/g_6095_1366326963c993619affd88ab1856b66.js";
+            a.parentNode.insertBefore(c, a)
+        })("reEmbed", window, document, "setupPlaylist", "script");
+    </script>
+    <!-- Main Container Starts -->
+    <div id="main-container">
+        <div class="row">
+            <!-- Primary Content Starts -->
+            <div class="col-md-9">
+                <!-- Breadcrumb Starts -->
+                {% block breadcrumbs %}
+                    {% load sitetree %}
+                    {% sitetree_breadcrumbs from "main" %}
+                {% endblock %}
+                <!-- Breadcrumb Ends -->
+                {% block content %}
+
+                {% endblock %}
+            </div>
+            <!-- Primary Content Ends -->
+            <!-- Sidebar Starts -->
+            <div class="col-md-3">
+                <div class="wrap--padright">
+                    <h3 class="side-heading">Видео</h3>
+                    {% show_videos %}
+                    {% show_archive_news %}
+                </div>
+            </div>
+            <!-- Sidebar Ends -->
+        </div>
+    </div>
+    <!-- Main Container Ends -->
+{% endblock %}
