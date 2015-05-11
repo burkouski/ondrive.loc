@@ -45,12 +45,11 @@ INSTALLED_APPS = (
     'ckeditor',
     'sitetree',
     'myauth',
-    'autofixture',
     'reviews',
     'contacts',
-    'pages'
+    'pages',
+    'htmlblock'
 )
-COMMENTS_APP = 'threadedcomments'
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

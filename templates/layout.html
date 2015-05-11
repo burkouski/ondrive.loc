@@ -29,14 +29,15 @@
           rel='stylesheet' type='text/css'>
 
     <!-- CSS Files -->
-    <link href="{% static 'css/bootstrap-template/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap-template/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap-template/responsive.css' %}" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'css/jquery.fancybox.css' %}">
-    <link rel="stylesheet" href="{% static 'css/global.css' %}">
-    <link rel="stylesheet" href="{% static 'css/blocks.css' %}">
-
+    <!-- build:css /static/css/compress.css -->
+    <link href="/static/css/bootstrap-template/bootstrap.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-template/style.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-template/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/blocks.css">
+    <!-- endbuild -->
     <!--[if lt IE 9]>
 		<script src="js/ie8-responsive-file-warning.js"></script>
 	<![endif]-->
@@ -181,34 +182,35 @@
 
 
 <!-- JavaScript Files -->
-<script src="{% static 'js/vendor/jquery-1.11.1.min.js' %}"></script>
-<script src="{% static 'js/vendor/jquery-migrate-1.2.1.min.js' %}"></script>
-<script src="{% static 'js/app/vendor/angular.js' %}"></script>
-<script src="{% static 'js/app/vendor/angular-pagination.js' %}"></script>
-<script src="{% static 'js/app/vendor/angular-resource.js' %}"></script>
-<script src="{% static 'js/app/vendor/angular-cookies.js' %}"></script>
-<script src="{% static 'js/app/vendor/angular-route.js' %}"></script>
-<script src="{% static 'js/app/vendor/angular-ymaps.js' %}"></script>
-<script src="{% static 'js/app/app.js' %}"></script>
-<script src="{% static 'js/app/directives/checklist-model.js' %}"></script>
-<script src="{% static 'js/app/directives/compareValue.js' %}"></script>
-<script src="{% static 'js/app/services/getJsonService.js' %}"></script>
-<script src="{% static 'js/app/controllers/mainmapCtrl.js' %}"></script>
-<script src="{% static 'js/app/controllers/autoserviceCtrl.js' %}"></script>
-<script src="{% static 'js/app/controllers/serviceCtrl.js' %}"></script>
-<script src="{% static 'js/app/controllers/contactsCtrl.js' %}"></script>
-<script src="{% static 'js/app/controllers/loginCtrl.js' %}"></script>
-<script src="{% static 'js/app/controllers/registrationCtrl.js' %}"></script>
-<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/vendor/bootstrap-hover-dropdown.min.js' %}"></script>
-<script src="{% static 'js/vendor/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static 'js/vendor/masonry.js' %}"></script>
-<script src="{% static 'js/vendor/imagesLoaded.js' %}"></script>
-<script src="{% static 'js/vendor/custom.js' %}"></script>
-<script src="{% static 'js/vendor/jquery.fancybox.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
-<script src="{% static 'js/plugins.js' %}"></script>
-
+<!-- build:js ./dist/vendor.js -->
+<script src="/static/js/vendor/jquery-1.11.1.min.js"></script>
+<script src="/static/js/vendor/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/app/vendor/angular.js"></script>
+<script src="/static/js/app/vendor/angular-pagination.js"></script>
+<script src="/static/js/app/vendor/angular-resource.js"></script>
+<script src="/static/js/app/vendor/angular-cookies.js"></script>
+<script src="/static/js/app/vendor/angular-route.js"></script>
+<script src="/static/js/app/vendor/angular-ymaps.js"></script>
+<script src="/static/js/app/app.js"></script>
+<script src="/static/js/app/directives/checklist-model.js"></script>
+<script src="/static/js/app/directives/compareValue.js"></script>
+<script src="/static/js/app/services/getJsonService.js"></script>
+<script src="/static/js/app/controllers/mainmapCtrl.js"></script>
+<script src="/static/js/app/controllers/autoserviceCtrl.js"></script>
+<script src="/static/js/app/controllers/serviceCtrl.js"></script>
+<script src="/static/js/app/controllers/contactsCtrl.js"></script>
+<script src="/static/js/app/controllers/loginCtrl.js"></script>
+<script src="/static/js/app/controllers/registrationCtrl.js"></script>
+<script src="/static/js/vendor/bootstrap.min.js"></script>
+<script src="/static/js/vendor/bootstrap-hover-dropdown.min.js"></script>
+<script src="/static/js/vendor/jquery.magnific-popup.min.js"></script>
+<script src="/static/js/vendor/masonry.js"></script>
+<script src="/static/js/vendor/imagesLoaded.js"></script>
+<script src="/static/js/vendor/custom.js"></script>
+<script src="/static/js/vendor/jquery.fancybox.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/plugins.js"></script>
+<!-- endbuild -->
 </body>
 {% endblock %}
 </html>

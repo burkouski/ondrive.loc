@@ -14,6 +14,6 @@ register = template.Library()
 
 @register.inclusion_tag("tuning/w_videos.html")
 def show_videos():
-    objects = Post.objects.exclude(video__isnull=True)[:5]
+    objects = Post.objects.exclude(video='')[:5]
     args = {'objects': objects}
     return args

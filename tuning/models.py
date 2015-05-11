@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from pytils import translit
 from ckeditor.fields import RichTextField
@@ -20,7 +21,7 @@ class Post(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
     def save(self, *args, **kwargs):

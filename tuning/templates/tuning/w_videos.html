@@ -1,11 +1,12 @@
 <div class="w-video">
     {% for object in objects %}
         <div class="w-video__item">
-            <h3 class="w-video__title"><a href="{{ object.get_absolute_url}}" class="w-video__link">{{ object.name |truncatewords:5 }}</a></h3>
+
 
             <div class="w-video__video">
                 {{ object.video|safe }}
             </div>
+        <h3 class="w-video__title"><a href="{{ object.get_absolute_url}}" class="w-video__link">{{ object.name  }}</a></h3>
         </div>
     {% endfor %}
 </div>

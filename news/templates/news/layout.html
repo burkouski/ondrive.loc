@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% load w_news %}
-
+{% load w_news %}
 {% block page %}
     <!-- Main Container Starts -->
     <div id="main-container">
@@ -22,6 +22,9 @@
             <div class="col-md-3">
                 <div class="wrap--padright">
                     {% show_categories %}
+                </div>
+                <div class="wrap--padright">
+                   {% show_archive_news start=10 %}
                 </div>
             </div>
             <!-- Sidebar Ends -->

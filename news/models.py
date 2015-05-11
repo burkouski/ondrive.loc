@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from pytils import translit
 from ckeditor.fields import RichTextField
@@ -11,7 +12,7 @@ class Category(models.Model):
     title = models.CharField('title страницы', max_length=200, blank=True)
     meta_keywords = models.TextField('meta keywords', blank=True)
     meta_description = models.TextField('meta description', blank=True)
-    def __str__(self):
+    def __unicode__(self):
         return self.category
 
     def save(self, *args, **kwargs):
@@ -42,7 +43,7 @@ class Post(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
     def save(self, *args, **kwargs):
