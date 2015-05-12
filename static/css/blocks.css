@@ -398,3 +398,6 @@
   font-size: 14px;
   text-transform: uppercase;
 }
+.w-archive__item {
+  margin-bottom: 20px;
+}

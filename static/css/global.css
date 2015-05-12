@@ -136,6 +136,7 @@ input:-ms-input-placeholder:focus:-ms-input-placeholder {
 }
 .wrap {
   padding: 0 20px;
+  margin: 0 0 20px 0;
 }
 .wrap--padleft {
   padding-left: 20px;

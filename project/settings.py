@@ -1,3 +1,4 @@
+# -- coding: utf-8 --"
 """
 Django settings for project project.
 
@@ -46,7 +47,8 @@ INSTALLED_APPS = (
     'myauth',
     'reviews',
     'contacts',
-    'pages'
+    'pages',
+    'htmlblock'
 )
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

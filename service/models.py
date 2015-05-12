@@ -94,13 +94,19 @@ class Service(models.Model):
     # Преобразуем поле address в координаты для полей latitude и longitude
     def geocode(self, location):
         format = "json"
-        location = urllib.parse.quote_plus(location)
+        # для python 3
+        #location = urllib.parse.quote_plus(location)
+        location = urllib.quote_plus(location)
         request = "http://geocode-maps.yandex.ru/1.x/?&geocode=%s&format=%s" % (location, format)
-        data = urllib.request.urlopen(request).read()
-        data = json.loads(data.decode())
+        # для python 3
+        #data = urllib.request.urlopen(request).read()
+        data = urllib.urlopen(request).read()
+        # для python 3
+        # data = json.loads(data.decode())
+        data = json.loads(data)
         return data["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["Point"]["pos"]
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -110,7 +116,7 @@ class Work(models.Model):
     class Meta:
         abstract = True
 
-    def __str__(self):
+    def __unicode__(self):
         return self.work_name
 
     def get_model_name(self):

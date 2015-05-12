@@ -9,7 +9,7 @@ def count_post_views(request, post):
 
 
 def get_post_list(request):
-    posts = get_list_or_404(Post)
+    posts = get_list_or_404(Post.objects.order_by('-pub_date'))[:10]
     args = {'posts': posts}
     return render(request, 'news/news_list_view.html', args)
 
@@ -17,7 +17,7 @@ def get_post_list(request):
 def get_category_posts(request, category_alias):
     category = get_object_or_404(Category, alias=category_alias)
     category_id = category.id
-    posts = get_list_or_404(Post, category=category_id)
+    posts = get_list_or_404(Post.objects.order_by('-pub_date'), category=category_id)
     args = {'posts': posts, 'category': category}
     return render(request, 'news/news_list_view.html', args)
 
