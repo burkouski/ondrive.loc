@@ -124,176 +124,42 @@ class Work(models.Model):
         return model_name
 
 
+class AddServices(Work):
+    work_field_name = 'add_services'
+
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Дополнительные услуги"
+
 #################### АВТОСЕРВИСЫ ####################
 
-# АВТОЭЛЕКТРИКА
-class ElectricianWork(Work):
-    work_field_name = 'electrician_work'
+# специализация авто
+class SpecializationWork(Work):
+    work_field_name = 'specialization_work'
+    logo = models.ImageField("Логотип марки", blank=True)
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Специализируются на марках"
+
+
+class AutoserviceWork(Work):
+    work_field_name = 'autoservice_work'
 
     class Meta:
         verbose_name = u""
-        verbose_name_plural = u"Автоэлектрика"
+        verbose_name_plural = u"Виды работ"
 
-
-# КУЗОВНОЙ РЕМОНТ
-class BodyRepairWork(Work):
-    work_field_name = 'body_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Кузовной ремонт"
-
-
-#РЕМОНТ ДВИГАТЕЛЯ
-class EngineRepairWork(Work):
-    work_field_name = 'engine_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Ремонт двигателя"
-
-
-#Ремонт топливной системы
-class FuelSystemRepairWork(Work):
-    work_field_name = 'fuel_system_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Ремонт топливной системы"
-
-
-#Ремонт подвески, трансмиссии
-class SuspensionRepairWork(Work):
-    work_field_name = 'suspension_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Ремонт подвески"
-
-
-#Тормозная система
-class BreakSystemRepairWork(Work):
-    work_field_name = 'break_system_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Тормозная система"
-
-
-#Диагностика автомобилей
-class AutoDiagWork(Work):
-    work_field_name = 'auto_diag_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Диагностика автомобилей"
-
-
-#Ремонт КПП
-class KppRepairWork(Work):
-    work_field_name = 'kpp_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Ремонт КПП"
-
-
-#Кондиционер, радиаторы
-class AirConditionRepairWork(Work):
-    work_field_name = 'air_condition_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Кондиционер, радиаторы"
-
-
-#Автостекла
-class AutoglassesRepairWork(Work):
-    work_field_name = 'autoglasses_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Автостекла"
-
-
-#Газовое оборудование
-class GasAppliancesRepairWork(Work):
-    work_field_name = 'gas_applianses_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Газовое оборудование"
-
-
-#Замена масла, ремней
-class OilReplaceWork(Work):
-    work_field_name = 'oil_replace_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Замена масла"
-
-
-#Аудио, Сигнализации
-class AudioAlarmRepairWork(Work):
-    work_field_name = 'audio_alarm_repair_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Аудио, Сигнализации"
-
-
-#Тюнинг
-class TuningWork(Work):
-    work_field_name = 'tuning_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Тюнинг"
-
-
-#Прочее
-class OtherAutogWork(Work):
-    work_field_name = 'other_auto_work'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Прочее"
 
 
 class AutoService(Service):
     # Виды работ
-    electrician_work = models.ManyToManyField(ElectricianWork, related_name='electrician_work',
-                                              verbose_name='Автоэлектрика', blank=True)
-    body_repair_work = models.ManyToManyField(BodyRepairWork, related_name='body_repair_work',
-                                              verbose_name='Кузовной ремонт', blank=True)
-    engine_repair_work = models.ManyToManyField(EngineRepairWork, related_name='body_repair_work',
-                                                verbose_name='Ремонт двигателя', blank=True)
-    fuel_system_repair_work = models.ManyToManyField(FuelSystemRepairWork, related_name='fuel_system_repair_work',
-                                                     verbose_name='Ремонт топливной системы', blank=True)
-    suspension_repair_work = models.ManyToManyField(SuspensionRepairWork, related_name='suspension_repair_work',
-                                                    verbose_name='Ремонт подвески', blank=True)
-    break_system_repair_work = models.ManyToManyField(BreakSystemRepairWork, related_name='break_system_repair_work',
-                                                      verbose_name='Ремонт тормозной системы', blank=True)
-    auto_diag_work = models.ManyToManyField(AutoDiagWork, related_name='auto_diag_work',
-                                            verbose_name='Диагностика автомобилей', blank=True)
-    kpp_repair_work = models.ManyToManyField(KppRepairWork, related_name='kpp_repair_work',
-                                             verbose_name='Ремонт КПП', blank=True)
-    air_condition_repair_work = models.ManyToManyField(AirConditionRepairWork, related_name='air_condition_repair_work',
-                                                       verbose_name='Кондиционер, радиаторы', blank=True)
-    autoglasses_repair_work = models.ManyToManyField(AutoglassesRepairWork, related_name='autoglasses_repair_work',
-                                                     verbose_name='Автостекла', blank=True)
-    gas_applianses_repair_work = models.ManyToManyField(GasAppliancesRepairWork,
-                                                        related_name='gas_applianses_repair_work',
-                                                        verbose_name='Газовое оборудование', blank=True)
-    oil_replace_work = models.ManyToManyField(OilReplaceWork, related_name='oil_replace_work',
-                                              verbose_name='Замена масла', blank=True)
-    audio_alarm_repair_work = models.ManyToManyField(AudioAlarmRepairWork, related_name='audio_alarm_repair_work',
-                                                     verbose_name='Аудио, Сигнализации', blank=True)
-    tuning_work = models.ManyToManyField(TuningWork, related_name='tuning_work',
-                                         verbose_name='Тюнинг', blank=True)
-    other_auto_work = models.ManyToManyField(OtherAutogWork, related_name='other_auto_work',
-                                             verbose_name='Прочее', blank=True)
+    specialization_work = models.ManyToManyField(SpecializationWork, related_name='specialization_work',
+                                              verbose_name='Специализирующиеся на марке', blank=True)
+    autoservice_work = models.ManyToManyField(AutoserviceWork, related_name='autoservice_work',
+                                              verbose_name='Виды работ', blank=True)
+    add_services = models.ManyToManyField(AddServices, related_name='autoservice_add_services',
+                                                     verbose_name='Дополнительные услуги', blank=True)
+
     reviews = GenericRelation(Review)
 
     class Meta:
@@ -338,13 +204,6 @@ class CarWashServices(Work):
         verbose_name_plural = u"Услуги"
 
 
-class AddServices(Work):
-    work_field_name = 'add_services'
-
-    class Meta:
-        verbose_name = u""
-        verbose_name_plural = u"Дополнительные услуги"
-
 
 class CarWash(Service):
     type_carwash = models.ManyToManyField(TypeCarWash, related_name='type_carwash',
@@ -353,7 +212,7 @@ class CarWash(Service):
                                               verbose_name='Вид транспорта', blank=True)
     car_wash_services = models.ManyToManyField(CarWashServices, related_name='car_wash_services',
                                                 verbose_name='Услуги', blank=True)
-    add_services = models.ManyToManyField(AddServices, related_name='add_services',
+    add_services = models.ManyToManyField(AddServices, related_name='carwash_add_services',
                                                      verbose_name='Дополнительные услуги', blank=True)
     reviews = GenericRelation(Review)
 

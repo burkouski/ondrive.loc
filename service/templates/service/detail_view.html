@@ -12,116 +12,138 @@
 
     <!-- Main Container Starts -->
     <div id="main-container" ng-app="ymapsApp" ng-controller="serviceCtrl">
-    <!-- Breadcrumb Starts -->
-    {% block breadcrumbs %}
-        {% load sitetree %}
-        {% sitetree_breadcrumbs from "for_post" %}
-    {% endblock %}
-    <!-- Breadcrumb Ends -->
-    <div class="wrap">
+        <!-- Breadcrumb Starts -->
+        {% block breadcrumbs %}
+            {% load sitetree %}
+            {% sitetree_breadcrumbs from "for_post" %}
+        {% endblock %}
+        <!-- Breadcrumb Ends -->
+        <div class="wrap">
 
 
-    <!-- Product Info Starts -->
-    <div class="row product-info full">
-        <!-- Left Starts -->
-        <div class="col-sm-4 images-block">
-            <a href="images/product-images/big-pimg1.jpg">
-                <img src="{{ service.logo.url }}" alt="{{ service.name }}" class="img-responsive thumbnail"/>
-            </a>
+            <!-- Product Info Starts -->
+            <div class="row service">
+                <!-- Left Starts -->
+                <div class="col-sm-4 service__images">
+                    <a href="/">
+                        <img src="{{ service.logo.url }}" alt="{{ service.name }}"
+                             class="img-responsive thumbnail service__img"/>
+                    </a>
 
-        </div>
-        <!-- Left Ends -->
-        <!-- Right Starts -->
-        <div class="col-sm-8 product-details">
-            <div class="panel-smart info">
-                <!-- Product Name Starts -->
-                <h2 class="info__title">{{ service.name }}</h2>
-                <!-- Product Name Ends -->
-                <hr/>
-                <!-- Manufacturer Starts -->
-                <ul class="list-unstyled manufacturer info__list">
-                    <li class="info__item">
-                        <span>Рейтинг:</span>
-                        {% if rating.rate__avg %}
-                            <span>
+                    <div class="service__desc">{{ service.full_desc|safe }}</div>
+                </div>
+                <!-- Left Ends -->
+                <!-- Right Starts -->
+                <div class="col-sm-8  service__details">
+                    <div class="service__panel">
+                        <div class="service__item">
+                            <!-- Product Name Starts -->
+                            <h2 class="service__title">{{ service.name }}</h2>
+                            <!-- Product Name Ends -->
+                            <hr/>
+                            <!-- Manufacturer Starts -->
+                            <ul class="list-unstyled service__list">
+                                <li class="service__list-item">
+                                    <span class="service__param-name">Рейтинг:</span>
+                                    {% if rating.rate__avg %}
+                                        <span class="service__rating">
 
                             <i ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').positiveStar track by $index"
                                style="color: red" class="fa fa-star"></i><i
-                                    ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').halfStar track by $index"
-                                    style="color: red" class="fa fa-star-half-o"></i><i
-                                    ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').negativeStar track by $index"
-                                    style="color: red" class="fa fa-star-o"></i>
+                                                ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').halfStar track by $index"
+                                                style="color: red" class="fa fa-star-half-o"></i><i
+                                                ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').negativeStar track by $index"
+                                                style="color: red" class="fa fa-star-o"></i>
                         </span>
-                        {% else %}
-                            нет оценок данного сервиса
-                        {% endif %}
+                                    {% else %}
+                                        <span class="service__param">нет оценок данного сервиса</span>
+                                    {% endif %}
 
 
-                    </li>
-                    <li>
-                        <span>Адрес:</span> {{ service.address }}
-                    </li>
-                    {% if service.siteUrl %}
-                        <li><span>Сайт:</span> {{ service.siteUrl }}</li>
-                    {% endif %}
-                    {% if service.email %}
-                        <li><span>E-mail:</span> {{ service.email }}</li>
-                    {% endif %}
-                    <li>
-                        <span>Телефоны:</span>
-                        {% if service.phone_velcom %}
-                            <span class="phone"><i class="phone__icon icon icon-vel"><i class="path1"></i><i
-                                    class="path2"></i><i class="path3"></i></i>{{ service.phone_velcom }}</span>
-                        {% endif %}
-                        {% if service.phone_velcom2 %}
-                            <span class="phone"><i
-                                    class="phone__icon icon icon-city"></i>{{ service.phone_velcom2 }}</span>
-                        {% endif %}
-                        {% if service.phone_mts %}
-                            <span class="phone"><i class="phone__icon icon icon-mts"></i>{{ service.phone_mts }}</span>
-                        {% endif %}
-                        {% if service.phone_mts2 %}
-                            <span class="phone"><i class="phone__icon icon icon-mts"></i>{{ service.phone_mts2 }}</span>
-                        {% endif %}
-                        {% if service.phone_life %}
-                            <span class="phone"><i
-                                    class="phone__icon icon icon-life"></i>{{ service.phone_life }}</span>
-                        {% endif %}
-                        {% if service.phone_life2 %}
-                            <span class="phone"><i
-                                    class="phone__icon icon icon-life"></i>{{ service.phone_life2 }}</span>
-                        {% endif %}
-                        {% if service.phone_city %}
-                            <span class="phone"><i
-                                    class="phone__icon icon icon-city"></i>{{ service.phone_city }}</span>
-                        {% endif %}
-                        {% if service.phone_city2 %}
-                            <span class="phone"><i
-                                    class="phone__icon icon icon-city"></i>{{ service.phone_city2 }}</span>
-                        {% endif %}
-                    </li>
-                    <li><span>Рабочие дни:</span>
-                <span class="workday">
+                                </li>
+                                <li class="service__list-item">
+                                    <span class="service__param-name">Адрес:</span> {{ service.address }}
+                                </li>
+                                {% if service.siteUrl %}
+                                    <li class="service__list-item"><span
+                                            class="service__param-name">Сайт:</span> {{ service.siteUrl }}</li>
+                                {% endif %}
+                                {% if service.email %}
+                                    <li class="service__list-item"><span
+                                            class="service__param-name">E-mail:</span> {{ service.email }}</li>
+                                {% endif %}
+                                <li class="service__list-item">
+                                    <span class="service__param-name">Телефоны:</span>
+                                    {% if service.phone_velcom %}
+                                        <span class="phone"><i class="phone__icon icon icon-vel"><i class="path1"></i><i
+                                                class="path2"></i><i class="path3"></i></i><span
+                                                class="service__param">{{ service.phone_velcom }}</span></span>
+                                    {% endif %}
+                                    {% if service.phone_velcom2 %}
+                                        <span class="phone"><i
+                                                class="phone__icon icon icon-city"></i><span
+                                                class="service__param">{{ service.phone_velcom2 }}</span></span>
+                                    {% endif %}
+                                    {% if service.phone_mts %}
+                                        <span class="phone"><i class="phone__icon icon icon-mts"></i><span
+                                                class="service__param">{{ service.phone_mts }}</span></span>
+                                    {% endif %}
+                                    {% if service.phone_mts2 %}
+                                        <span class="phone"><i class="phone__icon icon icon-mts"></i><span
+                                                class="service__param">{{ service.phone_mts2 }}</span></span>
+                                    {% endif %}
+                                    {% if service.phone_life %}
+                                        <span class="phone"><i
+                                                class="phone__icon icon icon-life"></i><span
+                                                class="service__param">{{ service.phone_life }}</span></span>
+                                    {% endif %}
+                                    {% if service.phone_life2 %}
+                                        <span class="phone"><i
+                                                class="phone__icon icon icon-life"></i><span
+                                                class="service__param">{{ service.phone_life2 }}</span></span>
+                                    {% endif %}
+                                    {% if service.phone_city %}
+                                        <span class="phone"><i
+                                                class="phone__icon icon icon-city"></i><span
+                                                class="service__param">{{ service.phone_city }}</span></span>
+                                    {% endif %}
+                                    {% if service.phone_city2 %}
+                                        <span class="phone"><i
+                                                class="phone__icon icon icon-city"></i><span
+                                                class="service__param">{{ service.phone_city2 }}</span></span>
+                                    {% endif %}
+                                </li>
+                                <li class="service__list-item"><span class="service__param-name">Рабочие дни:</span>
+                <span class="service__workday">
                     {% for day in service.get_workday_list %}
                         {% if day.0 %}
-                            <span class="workday__icon workday__icon--blue">{{ day.1 }}</span>
+                            <span class="service__workday-icon service__workday-icon--blue">{{ day.1 }}</span>
                         {% else %}
-                            <span class="workday__icon workday__icon--red">{{ day.1 }}</span>
+                            <span class="service__workday-icon service__workday-icon--red">{{ day.1 }}</span>
                         {% endif %}
                     {% endfor %}
                 </span>
-                    </li>
-                    <li><span>Время работы:</span> c {{ service.work_start }} до {{ service.work_end }}</li>
-                </ul>
-                <!-- Manufacturer Ends -->
-                <hr/>
-                <section class="map map_main">
-                    <div class="map__wrap"
-                         ng-init="coords=[55.21, 34.30];center=[{{ service.longitude }}, {{ service.latitude }}]; zoom='15'">
-                        <yandex-map center="center" zoom="zoom" class="map__container map__container--single">
-                            <ymap-marker
-                                    coordinates="[{{ service.longitude }} ,{{ service.latitude }}]"
-                                    options="{
+                                </li>
+                                <li class="service__list-item"><span class="service__param-name">Время работы:</span>
+                                    <span class="service__param">c {{ service.work_start }} до {{ service.work_end }}</span>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        {% block work %}
+
+                        {% endblock %}
+
+                        <!-- Manufacturer Ends -->
+                        <hr/>
+                        <section class="map map_main">
+                            <div class="map__wrap"
+                                 ng-init="coords=[55.21, 34.30];center=[{{ service.longitude }}, {{ service.latitude }}]; zoom='15'">
+                                <yandex-map center="center" zoom="zoom" class="map__container map__container--single">
+                                    <ymap-marker
+                                            coordinates="[{{ service.longitude }} ,{{ service.latitude }}]"
+                                            options="{
                         iconLayout: 'default#image',
                         iconImageHref: '/static/img/map/as-ico.png',
                         iconImageSize: [30, 48],
@@ -134,277 +156,116 @@
                         },
                      }">
 
-                            </ymap-marker>
-                        </yandex-map>
-                    </div>
-                </section>
+                                    </ymap-marker>
+                                </yandex-map>
+                            </div>
+                        </section>
 
-            </div>
-        </div>
-        <!-- Right Ends -->
-    </div>
-    <!-- Product Info Ends -->
-    <!-- Tabs Starts -->
-    <div class="tabs-panel panel-smart">
-    <!-- Nav Tabs Starts -->
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab-description">Описание</a></li>
-        <li><a href="#tab-work">Виды работ</a></li>
-        <li><a href="#tab-ainfo">Отзывы</a></li>
-        <li><a href="#tab-review">Оставить отзыв</a></li>
-    </ul>
-    <!-- Nav Tabs Ends -->
-    <!-- Tab Content Starts -->
-    <div class="tab-content clearfix">
-    <!-- Description Starts -->
-    <div class="tab-pane active" id="tab-description"> {{ service.full_desc|safe }}</div>
-    <div class="tab-pane" id="tab-work">
-        <!-- Available Options Starts -->
-
-        <div class="work">
-            {% block work %}
-                {#Виды работ #}
-                {% if service.electrician_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.electrician_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.electrician_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
                     </div>
-                {% endif %}
-                {% if service.body_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.body_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.body_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.engine_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.engine_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.engine_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.fuel_system_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.fuel_system_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.fuel_system_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.suspension_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.suspension_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.suspension_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.break_system_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.break_system_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.break_system_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.auto_diag_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.auto_diag_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.auto_diag_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.kpp_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.kpp_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.kpp_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.air_condition_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.air_condition_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.air_condition_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.autoglasses_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.autoglasses_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.autoglasses_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.gas_applianses_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.gas_applianses_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.gas_applianses_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.oil_replace_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.oil_replace_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.oil_replace_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.audio_alarm_repair_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.audio_alarm_repair_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.audio_alarm_repair_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.tuning_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.tuning_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.tuning_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if service.other_auto_work.all %}
-                    <div class="work__type">
-                        <h5 class="work__title">{{ service.other_auto_work.first.get_model_name }}</h5>
-                        <ul class="work__list">
-                            {% for work in service.other_auto_work.all %}
-                                <li class="work__item">{{ work }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-            {% endblock %}
-        </div>
-        <!-- Available Options Ends -->
-    </div>
-    <!-- Description Ends -->
-    <!-- Additional Information Starts -->
-    <div class="tab-pane" id="tab-ainfo">
-
-        {% for review in reviews %}
-            <div class="review">
-                <div class="review__date">{{ review.pub_date }} <i
-                        ng-repeat="star in starsInit('{{ review.rate }}').positiveStar track by $index"
-                        style="color: red" class="fa fa-star"></i><i
-                        ng-repeat="star in starsInit('{{ review.rate__avg|stringformat:"f" }}').halfStar track by $index"
-                        style="color: red" class="fa fa-star-half-o"></i><i
-                        ng-repeat="star in starsInit('{{ review.rate }}').negativeStar track by $index"
-                        style="color: red" class="fa fa-star-o"></i>
                 </div>
-                <div class="review__text">{{ review.review }}</div>
-                <div class="review__author">{{ review.author }}</div>
+                <!-- Right Ends -->
             </div>
-        {% empty %}
-            Нет отзывов
-        {% endfor %}
+            <!-- Product Info Ends -->
+            <!-- Tabs Starts -->
+            <div class="tabs-panel panel-smart">
+                <!-- Nav Tabs Starts -->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-ainfo">Отзывы</a></li>
+                    <li><a href="#tab-review">Оставить отзыв</a></li>
+                </ul>
+                <!-- Nav Tabs Ends -->
+                <!-- Tab Content Starts -->
+                <div class="tab-content clearfix">
+
+                    <!-- Additional Information Starts -->
+                    <div class="tab-pane active" id="tab-ainfo">
+
+                        {% for review in reviews %}
+                            <div class="review">
+                                <div class="review__date">{{ review.pub_date }} <i
+                                        ng-repeat="star in starsInit('{{ review.rate }}').positiveStar track by $index"
+                                        style="color: red" class="fa fa-star"></i><i
+                                        ng-repeat="star in starsInit('{{ review.rate__avg|stringformat:"f" }}').halfStar track by $index"
+                                        style="color: red" class="fa fa-star-half-o"></i><i
+                                        ng-repeat="star in starsInit('{{ review.rate }}').negativeStar track by $index"
+                                        style="color: red" class="fa fa-star-o"></i>
+                                </div>
+                                <div class="review__text">{{ review.review }}</div>
+                                <div class="review__author">{{ review.author }}</div>
+                            </div>
+                        {% empty %}
+                            Нет отзывов
+                        {% endfor %}
 
 
-    </div>
-    <!-- Additional Information Ends -->
-    <!-- Review Starts -->
-    <div class="tab-pane" id="tab-review">
-        {% if user.is_authenticated %}
-            <div class="text-danger col-sm-10 col-sm-offset-2">{$ result $}</div>
-            <form ng-submit="reviewSubmit()" class="form-horizontal">
-                <input ng-model="review.relate" class="hidden" type="text"
-                       ng-init="review.relate = '{{ service.get_content_type }}'"/>
-                <input ng-model="review.username" class="hidden" type="text"
-                       ng-init="review.username = '{{ user.username }}'"/>
-                <input ng-model="review.obj_id" class="hidden" type="text"
-                       ng-init="review.obj_id = '{{ service.id }}'"/>
+                    </div>
+                    <!-- Additional Information Ends -->
+                    <!-- Review Starts -->
+                    <div class="tab-pane" id="tab-review">
+                        {% if user.is_authenticated %}
+                            <div class="text-danger col-sm-10 col-sm-offset-2">{$ result $}</div>
+                            <form ng-submit="reviewSubmit()" class="form-horizontal">
+                                <input ng-model="review.relate" class="hidden" type="text"
+                                       ng-init="review.relate = '{{ service.get_content_type }}'"/>
+                                <input ng-model="review.username" class="hidden" type="text"
+                                       ng-init="review.username = '{{ user.username }}'"/>
+                                <input ng-model="review.obj_id" class="hidden" type="text"
+                                       ng-init="review.obj_id = '{{ service.id }}'"/>
 
-                <div class="form-group required">
-                    <div class="text-danger error col-sm-10 col-sm-offset-2">{$ error.textError $}</div>
-                    <label class="col-sm-2 control-label" for="input-review">Ваш отзыв</label>
+                                <div class="form-group required">
+                                    <div class="text-danger error col-sm-10 col-sm-offset-2">{$ error.textError $}</div>
+                                    <label class="col-sm-2 control-label" for="input-review">Ваш отзыв</label>
 
-                    <div class="col-sm-10">
+                                    <div class="col-sm-10">
 
                         <textarea ng-model="review.text" name="text" rows="5" id="input-review"
                                   class="form-control"></textarea>
 
-                        <div class="help-block">
-                            Ваше непредвзятое мнение...
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group required">
-                    <div class="text-danger col-sm-10 col-sm-offset-2">{$ error.rateError $}</div>
-                    <label class="col-sm-2 control-label ratings">Ваша оценка</label>
+                                        <div class="help-block">
+                                            Ваше непредвзятое мнение...
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <div class="text-danger col-sm-10 col-sm-offset-2">{$ error.rateError $}</div>
+                                    <label class="col-sm-2 control-label ratings">Ваша оценка</label>
 
-                    <div class="col-sm-10">
-                        Очень плохо&nbsp;
-                        <input ng-model="review.rate" type="radio" name="rating" value="1"/>
-                        &nbsp;
-                        <input ng-model="review.rate" type="radio" name="rating" value="2"/>
-                        &nbsp;
-                        <input ng-model="review.rate" type="radio" name="rating" value="3"/>
-                        &nbsp;
-                        <input ng-model="review.rate" type="radio" name="rating" value="4"/>
-                        &nbsp;
-                        <input ng-model="review.rate" type="radio" name="rating" value="5"/>
-                        &nbsp;Отлично
-                    </div>
-                </div>
-                <div class="buttons">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <input class="btn btn-warning" type="submit" id="submit" value="Оставить отзыв"/>
-                    </div>
-                </div>
-            </form>
-        {% else %}
+                                    <div class="col-sm-10">
+                                        Очень плохо&nbsp;
+                                        <input ng-model="review.rate" type="radio" name="rating" value="1"/>
+                                        &nbsp;
+                                        <input ng-model="review.rate" type="radio" name="rating" value="2"/>
+                                        &nbsp;
+                                        <input ng-model="review.rate" type="radio" name="rating" value="3"/>
+                                        &nbsp;
+                                        <input ng-model="review.rate" type="radio" name="rating" value="4"/>
+                                        &nbsp;
+                                        <input ng-model="review.rate" type="radio" name="rating" value="5"/>
+                                        &nbsp;Отлично
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <input class="btn btn-warning" type="submit" id="submit"
+                                               value="Оставить отзыв"/>
+                                    </div>
+                                </div>
+                            </form>
+                        {% else %}
 
-            <span>Чтобы оставлять отзывы вы должный сначало <a class="popup fancybox.iframe" href="/auth/login#login-form">авторизоваться</a> Если же вы не имеете аккаунта на нашем сайте, вы можете пройти <a
-                    href="/auth/registration">процедуру регистрации</a></span>
-        {% endif %}
+                            <span>Чтобы оставлять отзывы вы должный сначало <a class="popup fancybox.iframe"
+                                                                               href="/auth/login#login-form">авторизоваться</a> Если же вы не имеете аккаунта на нашем сайте, вы можете пройти <a
+                                    href="/auth/registration">процедуру регистрации</a></span>
+                        {% endif %}
 
-    </div>
-    <!-- Review Ends -->
-    </div>
-    <!-- Tab Content Ends -->
-    </div>
-    <!-- Tabs Ends -->
-    </div>
+                    </div>
+                    <!-- Review Ends -->
+                </div>
+                <!-- Tab Content Ends -->
+            </div>
+            <!-- Tabs Ends -->
+        </div>
+
     </div>
     <!-- Main Container Ends -->
 {% endblock %}

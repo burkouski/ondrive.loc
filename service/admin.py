@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from service.models import AutoService,  \
-    ElectricianWork, BodyRepairWork, \
-    EngineRepairWork, FuelSystemRepairWork, \
-    SuspensionRepairWork, BreakSystemRepairWork, \
-    AutoDiagWork, KppRepairWork, AirConditionRepairWork, \
-    AutoglassesRepairWork, GasAppliancesRepairWork, OilReplaceWork, \
-    AudioAlarmRepairWork, TuningWork, OtherAutogWork
+from service.models import AutoService,AutoserviceWork, SpecializationWork
 from service.models import CarWash, TypeCarWash, TypeVehicle, CarWashServices, AddServices
 from service.models import TireService, TireWork, DiscWork
 from reviews.models import Review
@@ -18,11 +12,7 @@ class ReviewsInline(GenericTabularInline):
 
 
 class AutoServiceAdmin(admin.ModelAdmin):
-    filter_horizontal = (
-    'electrician_work', 'body_repair_work', 'engine_repair_work', 'fuel_system_repair_work', 'suspension_repair_work',
-    'break_system_repair_work', 'auto_diag_work',
-    'kpp_repair_work', 'air_condition_repair_work', 'autoglasses_repair_work', 'gas_applianses_repair_work',
-    'oil_replace_work', 'audio_alarm_repair_work', 'tuning_work', 'other_auto_work')
+    #filter_horizontal = ('autoservice_work', 'specialization_work', 'add_services')
     fieldsets = (
         ('Контактные данные', {
             'fields': (
@@ -44,11 +34,7 @@ class AutoServiceAdmin(admin.ModelAdmin):
             'fields': ('latitude', 'longitude')
         }),
         ('Виды работ', {
-            'fields': ('electrician_work', 'body_repair_work', 'engine_repair_work', 'fuel_system_repair_work',
-                       'suspension_repair_work', 'break_system_repair_work', 'auto_diag_work',
-                       'kpp_repair_work', 'air_condition_repair_work', 'autoglasses_repair_work',
-                       'gas_applianses_repair_work', 'oil_replace_work', 'audio_alarm_repair_work', 'tuning_work',
-                       'other_auto_work')
+            'fields': ('autoservice_work', 'specialization_work', 'add_services')
         }),
         ('Мета данные', {
             'fields': ('title', 'meta_keywords', 'meta_description')
@@ -60,7 +46,7 @@ class AutoServiceAdmin(admin.ModelAdmin):
 
 
 class CarWashAdmin(admin.ModelAdmin):
-    filter_horizontal = ('type_carwash', 'type_vehicle', 'car_wash_services', 'add_services')
+    #filter_horizontal = ('type_carwash', 'type_vehicle', 'car_wash_services', 'add_services')
     fieldsets = (
         ('Контактные данные', {
             'fields': (
@@ -94,7 +80,6 @@ class CarWashAdmin(admin.ModelAdmin):
 
 
 class TireServiceAdmin(admin.ModelAdmin):
-    filter_horizontal = ('tire_work', 'disc_work', 'add_services')
     fieldsets = (
         ('Контактные данные', {
             'fields': (
@@ -123,26 +108,13 @@ class TireServiceAdmin(admin.ModelAdmin):
         }),
 
     )
+    #filter_horizontal = ('tire_work', 'disc_work', 'add_services')
     inlines = [ReviewsInline]
     readonly_fields = ('get_logo_img',)
 
 admin.site.register(AutoService, AutoServiceAdmin)
-# admin.site.register(ElectricianWork)
-# admin.site.register(BodyRepairWork)
-# admin.site.register(EngineRepairWork)
-# admin.site.register(FuelSystemRepairWork)
-# admin.site.register(SuspensionRepairWork)
-# admin.site.register(BreakSystemRepairWork)
-# admin.site.register(AutoDiagWork)
-# admin.site.register(KppRepairWork)
-# admin.site.register(AirConditionRepairWork)
-# admin.site.register(AutoglassesRepairWork)
-# admin.site.register(GasAppliancesRepairWork)
-# admin.site.register(OilReplaceWork)
-# admin.site.register(AudioAlarmRepairWork)
-# admin.site.register(TuningWork)
-# admin.site.register(OtherAutogWork)
-# admin.site.register(TireService, TireServiceAdmin)
+admin.site.register(AutoserviceWork)
+admin.site.register(SpecializationWork)
 admin.site.register(CarWash, CarWashAdmin)
 admin.site.register(TypeCarWash)
 admin.site.register(TypeVehicle)
