@@ -11,53 +11,26 @@
 {% endblock %}
 
 {% block page %}
-    <div id="main-container" ng-app="ymapsApp" ng-controller="contactsCtrl">
+    <div id="main-container"  ng-controller="contactsCtrl">
         {% block breadcrumbs %}
             {% sitetree_breadcrumbs from "main" %}
         {% endblock %}
         <div class="wrap">
-            {% show_htmlblock 'contacts' %}
+            {% show_htmlblock 'cooperate' %}
         </div>
 
         <!-- Google Map Ends -->
         <!-- Starts -->
         <div class="row">
-            <!-- Contact Details Starts -->
-            <div class="col-sm-4">
-                <div class="panel panel-smart">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Как с нами связаться</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-unstyled contact-details">
-                            <li class="clearfix">
-                                <i class="fa fa-skype pull-left"></i>
-									<span class="pull-left">
-										ondrive.by
-									</span>
-                            </li>
-
-                            <li class="clearfix">
-                                <i class="fa fa-envelope-o pull-left"></i>
-									<span class="pull-left">
-										<a href="mailto:info@ondrive.by">info@ondrive.by</a> <br/>
-										ondrive.by@gmail.com
-									</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Contact Details Ends -->
             <!-- Contact Form Starts -->
-            <div class="col-sm-8">
+            <div class="col-sm-8 col-sm-offset-2">
                 <div class="wform">
                     <h3 class="wform__title wform__title--center"><span
                             ng-class="{'text-success': success == true, 'text-danger': success == false}">{$ resultMess $}</span>
                     </h3>
 
                     <div class="wform__form-wrap">
-                        <form ng-submit="contactsSubmit(wform)" class="wform__form" role="form" name="wform" novalidate>
+                        <form ng-submit="contactsSubmit(wform)" method="post" class="wform__form" role="form" name="wform" novalidate>
                             {% csrf_token %}
                             <div class="wform__group">
                                 <label for="name" class="col-sm-3 wform__label">
@@ -112,7 +85,7 @@
                             <div class="wform__group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-warning text-uppercase"> <span ng-show="!ajaxLoader">Отправить</span>
-                                        <img ng-show="ajaxLoader" src="/static/img/ajax-loader2.gif" alt=""/>
+                                        <span ng-show="ajaxLoader"><img  src="/static/img/ajax-loader2.gif" alt=""/> Отправка</span>
                                     </button>
                                 </div>
 

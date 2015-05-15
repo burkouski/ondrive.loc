@@ -50,6 +50,7 @@
                 </div>
                 <div class="col-sm-6 no-padding">
                     {% for post in posts %}
+
                         {% if forloop.counter == 1 %}
                             <article class="post-preview post-preview--2x2">
                                 <a class="post-preview__link" href="{{ post.get_absolute_url }}">

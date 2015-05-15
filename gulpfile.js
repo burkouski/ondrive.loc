@@ -118,23 +118,25 @@ gulp.task('build-css', function() {
 
 // оптимизация изображений
 gulp.task('img-min', function () {
-    gulp.src('./static/img/**/*.{png,jpg,gif}')
+    gulp.src('./media/**/*.{png,jpg,gif}')
         .pipe(imagemin())
-        .pipe(gulp.dest('./static/img'))
+        .pipe(gulp.dest('./dist/media/img'))
 });
 
 
 gulp.task('test', function () {
     //gulp.start('copy-source');
     var assets = useref.assets({searchPath: ''});
-    console.log(assets);
-    return gulp.src('*.html')
+    //console.log(assets);
+    return gulp.src('layout-min.html')
         .pipe(assets)
-        .pipe(gulpif('*.js', uglify()))
+        .pipe(gulpif('*.js', uglify({
+            mangle: false
+        })))
         .pipe(gulpif('*.css', minifyCSS()))
         .pipe(assets.restore())
         .pipe(useref())
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('dist'))
 });
 
 
