@@ -30,7 +30,7 @@
                                 <h2 class="post-preview__title post-preview__title--static">{{ post.name }}</h2>
 
                                 <div class="post-preview__img-wrap">
-                                    <img class="img-responsive" src="{{ post.preview_img.url }}" alt=""/>
+                                    <i class="post-preview__bg" style="background-image: url('{{ post.preview_img.url }}')"></i>
                                     <i class="post-preview__hover-bg"></i>
                                     {% if post.video %}
                                     <a href="{{ post.get_absolute_url }}#video"
