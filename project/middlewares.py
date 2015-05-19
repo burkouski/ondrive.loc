@@ -6,7 +6,7 @@ class HtmlSnapshotMiddleware(object):
 
     def process_request(self, request):
         escaped_fragment = request.GET.get('_escaped_fragment_', None)
-        if not escaped_fragment:
+        if not escaped_fragment == '':
             return None
         view, args, kwargs = resolve(escaped_fragment, urlconf=settings.AJAX_CRAWLING_URLCONF)
         if view:
