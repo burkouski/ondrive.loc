@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+{% load w_news %}
+{% load w_service %}
+{% block page %}
+<div id="main-container" >
+    <!-- Slider Section Starts -->
+    <div class="slider">
+        <div id="main-carousel" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper For Slides Starts -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <a href="/autoservices"><img src="{% static 'img/slider-imgs/sl1.jpg' %}" alt="Надёжные автосервисы" class="img-responsive"/></a>
+                </div>
+                <div class="item">
+                    <a href="/carwash"><img src="{% static 'img/slider-imgs/sl2.jpg' %}" alt="Бережные автомойки" class="img-responsive"/></a>
+                </div>
+                <div class="item">
+                    <a href="/tireservice"><img src="{% static 'img/slider-imgs/sl3.jpg' %}" alt="Быстрые шиномонтажи" class="img-responsive"/></a>
+                </div>
+
+            </div>
+            <!-- Wrapper For Slides Ends -->
+            <!-- Controls Starts -->
+            <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left fa fa-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right fa fa-chevron-right"></span>
+            </a>
+            <!-- Controls Ends -->
+        </div>
+    </div>
+    <!-- Slider Section Ends -->
+
+    {% show_latest_news %}
+
+    <section  class="map map_main">
+        {% csrf_token %}
+        <h2 class="product-head">Все сервисы для вашего автомобиля на карте минска</h2>
+
+        <div class="map__wrap" ng-init="center=[53.889592, 27.562298];zoom=11">
+            <yandex-map center="center" zoom="zoom" class="map__container">
+                <ymap-marker ng-repeat="service in services"
+                             index="$index+1"
+                             coordinates="[service.longitude ,service.latitude]"
+                             properties="{balloonContent: '<strong style='+'color:red'+'>'+service.name+'</strong><br>'+service.teaser+'<br>'+service.address}"
+                             options="{
+                        iconLayout: 'default#image',
+                        iconImageHref: '/static/img/map/'+mapIcon,
+                        iconImageSize: [30, 48],
+                        iconImageOffset: [-20, -20],
+
+                        iconShape: {
+                            type: 'Circle',
+                            coordinates: [0, 0],
+                            radius: 20
+                        },
+                     }">
+
+                </ymap-marker>
+            </yandex-map>
+        </div>
+
+    </section>
+    <!-- Featured Products Starts -->
+    <section class="products-list wrap">
+        <!-- Products Row Starts -->
+        <div class="row">
+            <!-- Primary Content Starts -->
+
+            <div class="col-md-9">
+
+                <!-- Product Filter Starts -->
+                <div class="product-filter">
+                    <div class="row">
+                        <!--div class="col-md-3">
+                            <div class="display">
+                                    <span ng-class="{active: !gridView}" ng-click="changeView(false)">
+                                        <i class="fa fa-th-list" title="Отображать списком"></i>
+                                    </span>
+                                    <span ng-class="{active: gridView}" ng-click="changeView(true)">
+                                        <i class="fa fa-th" title="Отображать сеткой"></i>
+                                    </span>
+                            </div>
+                        </div-->
+                        <div class="col-md-4"><span class="control-label">Найдено сервисов - !!!!!!!!{$ meta $} </span></div>
+                        <!--div class="col-md-3 text-right">
+                            <label class="control-label">Показывать:</label>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <select class="form-control" ng-model="rowPerPage">
+                                <option value="12">12</option>
+                                <option value="24">24</option>
+                                <option value="36" selected="selected">36</option>
+                            </select>
+                        </div-->
+                    </div>
+                </div>
+                <!-- Product Filter Ends -->
+                <!-- Product List Display Starts -->
+
+
+                <div class="row" ng-show="preloader">
+
+                    <!-- Product #1 Starts -->
+
+
+                    <div class="product-preview">
+                        <a href="{$ service.url $}" class="product-preview__link list clearfix">
+                            <div class="row">
+                                <div class="product-preview__img" >
+                                    <img src="{$ service.logo $}" alt=""
+                                                                     class="img-responsive"/>
+                                </div>
+                                <div ng-class="{'col-xs-8': !gridView, 'col-xs-12': gridView}">
+                                    <h4 class="product-preview__title">{$ service.name $}</h4>
+
+                                    <div ng-show="service.rating">
+                                        <i ng-repeat="star in starsInit(service.rating).positiveStar track by $index"
+                                           style="color: red" class="fa fa-star"></i><i
+                                            ng-repeat="star in starsInit(service.rating).halfStar track by $index"
+                                            style="color: red" class="fa fa-star-half-o"></i><i
+                                            ng-repeat="star in starsInit(service.rating).negativeStar track by $index"
+                                            style="color: red" class="fa fa-star-o"></i>
+                                    </div>
+                                    <div ng-show="!service.rating">нет оценок</div>
+                                    <div class="product-preview__desc">
+                                        {$ service.teaser $}
+                                    </div>
+                                    <div class="product-preview__address">
+                                        <p class="price-tax">Адрес: {$ service.address $}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product #1 Ends -->
+
+                </div>
+                <!-- Product List Display Ends -->
+                <!-- Pagination & Results Starts -->
+                <div class="row">
+                    <!-- Pagination Starts -->
+                    <div class="col-sm-6 pagination-block">
+
+                    </div>
+                    <!-- Pagination Ends -->
+                </div>
+                <!-- Pagination & Results Ends -->
+            </div>
+            <!-- Primary Content Ends -->
+            <!-- Sidebar Starts -->
+            <div class="col-md-3">
+
+                <!-- Shopping Options Starts -->
+                <h3 class="side-heading">Выберите сервис</h3>
+                <div class="list-group">
+						<div class="list-group-item">
+							<div class="filter-group">
+								<label class="radio">
+									<input name="service" type="radio">
+									Автосервисы
+								</label>
+								<label class="radio">
+									<input name="service" type="radio">
+									Автомойки
+								</label>
+								<label class="radio">
+									<input name="service" type="radio">
+									Шиномонтажи
+								</label>
+							</div>
+						</div>
+					</div>
+                <h3 class="side-heading">Фильтр</h3>
+                <!-- Shopping Options Ends -->
+                <div ng-show="apiUrl == '/autoservices/'">
+                    {% show_autoservice_filter %}
+                </div>
+                <div ng-show="apiUrl == '/carwash/'">
+                {% show_carwash_filter %}
+                </div>
+                <div ng-show="apiUrl == '/tireservice/'">
+                {% show_tireservice_filter %}
+                </div>
+            </div>
+
+
+            <!-- Sidebar Ends -->
+        </div>
+        <!-- Products Row Ends -->
+    </section>
+    <!-- Latest Products Ends -->
+    <!-- Footer Section Starts -->
+
+    <!-- Footer Section Ends -->
+    </div>
+{% endblock %}

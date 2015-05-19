@@ -16,7 +16,8 @@ def autoservice_detail(request, service_alias):
 def autoservice_list(request):
     services = AutoService.objects.all()
     services = filtering(request.POST, services)
-
+    if request.GET.get('_escaped_fragment_') == '':
+        return render(request, 'service/autoservice_lis2t_view.html')
     if request.method == 'POST':
         return HttpResponse(services)
 
