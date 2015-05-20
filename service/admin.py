@@ -12,7 +12,7 @@ class ReviewsInline(GenericTabularInline):
 
 
 class AutoServiceAdmin(admin.ModelAdmin):
-    #filter_horizontal = ('autoservice_work', 'specialization_work', 'add_services')
+
     fieldsets = (
         ('Контактные данные', {
             'fields': (
@@ -43,6 +43,7 @@ class AutoServiceAdmin(admin.ModelAdmin):
     )
     inlines = [ReviewsInline]
     readonly_fields = ('get_logo_img',)
+    filter_horizontal = ('autoservice_work', 'specialization_work', 'add_services')
 
 
 class CarWashAdmin(admin.ModelAdmin):

@@ -300,7 +300,8 @@ hr{
 		#main-menu .navbar-nav > li.open a,
         #main-menu .navbar-nav > li > span:hover,
 		#main-menu .navbar-nav > li > span:focus,
-		#main-menu .navbar-nav > li.open span{
+		#main-menu .navbar-nav > li.open span,
+        #main-menu .navbar-nav > li.active a{
 			background:#464545;
 			color:#fff;
 		}		

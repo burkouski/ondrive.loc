@@ -2,6 +2,9 @@
 {% load w_service %}
 {% load htmlblock_tags %}
 {% load sitetree %}
+{% block ajax_meta %}
+    <meta name="fragment" content="!">
+{% endblock %}
 {% block page %}
     <!-- Main Container Starts -->
     <div id="main-container" ng-app="ymapsApp" ng-controller="mainmapCtrl">

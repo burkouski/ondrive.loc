@@ -12,6 +12,8 @@
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    {% block ajax_meta %}
+    {% endblock %}
     {% block meta %}
         <meta name="description" content="{% sitetree_page_description from 'main' %}">
     {% endblock %}
@@ -92,10 +94,10 @@
                     <div class="header-links">
                         <ul class="list-unstyled list-inline pull-left">
                             <li><a href="/">Главная</a></li>
-                            <li><a href="/o-proekte">О проекте</a></li>
+                            <li><a href="/o-proekte/">О проекте</a></li>
                             <!--li><a href="#">Правила портала</a></li-->
-                            <li><a href="/cooperate">Сотрудничество</a></li>
-                            <li><a href="/contacts">Контакты</a></li>
+                            <li><a href="/cooperate/">Сотрудничество</a></li>
+                            <li><a href="/contacts/">Контакты</a></li>
 
                             <!--li><a href="#">Мой блог</a></li-->
                             <!--li><a href="#">Мой профиль</a></li-->
@@ -141,20 +143,20 @@
         <div class="collapse navbar-collapse navbar-cat-collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="/services" class="dropdown-toggle" data-hover="dropdown"
+                    <a href="/services/" class="dropdown-toggle" data-hover="dropdown"
                           data-delay="10">
                         Сервисы
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a tabindex="-1" href="/autoservices">Автосервисы</a></li>
-                        <li><a tabindex="-1" href="/carwash">Автомойки</a></li>
-                        <li><a tabindex="-1" href="/tireservice">Шиномонтажи</a></li>
+                        <li><a tabindex="-1" href="/autoservices/">Автосервисы</a></li>
+                        <li><a tabindex="-1" href="/carwash/">Автомойки</a></li>
+                        <li><a tabindex="-1" href="/tireservice/">Шиномонтажи</a></li>
                     </ul>
                 </li>
-                <li><a href="/news">Новости</a></li>
+                <li><a href="/news/">Новости</a></li>
                 <!--li><a href="#">Машины</a></li-->
                 <!--li><a href="#">Обзоры</a></li-->
-                <li><a href="/tuning">Тюнинг</a></li>
+                <li><a href="/tuning/">Тюнинг</a></li>
                 <!--li><a href="/blogs">Блоги</a></li-->
                 <!--li><a href="/cars">Машины</a></li-->
             </ul>
@@ -211,6 +213,33 @@
 <script src="/static/js/main.js"></script>
 <script src="/static/js/plugins.js"></script>
 <!-- endbuild -->
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter30408477 = new Ya.Metrika({id:30408477,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/30408477" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 {% endblock %}
 </html>

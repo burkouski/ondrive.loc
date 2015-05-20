@@ -9,6 +9,7 @@ from reviews.models import Review
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 import json
+from django.db.models import Avg
 
 
 # Абстрактная модель для сервисов
@@ -62,6 +63,10 @@ class Service(models.Model):
     def get_logo_img(self):
         return u'<img src="%s" />' % self.logo.url
 
+    def get_rating(self):
+        rating = self.reviews.filter(is_moderate=True).aggregate(Avg('rate'))['rate__avg']
+        return rating
+
     def save(self):
         address = re.sub(' +', '+', self.address)
         location = "%s" % address
@@ -91,6 +96,7 @@ class Service(models.Model):
 
     def get_content_type(self):
         return ContentType.objects.get_for_model(self).id
+
     # Преобразуем поле address в координаты для полей latitude и longitude
     def geocode(self, location):
         format = "json"
