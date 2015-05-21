@@ -148,23 +148,48 @@ class SpecializationWork(Work):
         verbose_name_plural = u"Специализируются на марках"
 
 
-class AutoserviceWork(Work):
-    work_field_name = 'autoservice_work'
+class RepairWork(Work):
+    work_field_name = 'repair_work'
 
     class Meta:
         verbose_name = u""
-        verbose_name_plural = u"Виды работ"
+        verbose_name_plural = u"Ремонт"
+class DiagWork(Work):
+    work_field_name = 'diag_work'
+
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Диагностика"
+
+class ServWork(Work):
+    work_field_name = 'serv_work'
+
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Обслуживание"
+class AddWork(Work):
+    work_field_name = 'add_work'
+
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Дополнительные работы"
 
 
 
 class AutoService(Service):
     # Виды работ
     specialization_work = models.ManyToManyField(SpecializationWork, related_name='specialization_work',
-                                              verbose_name='Специализирующиеся на марке', blank=True)
-    autoservice_work = models.ManyToManyField(AutoserviceWork, related_name='autoservice_work',
-                                              verbose_name='Виды работ', blank=True)
+                                              verbose_name=u'Специализирующиеся на марке', blank=True)
+    repair_work = models.ManyToManyField(RepairWork, related_name='repair_work',
+                                              verbose_name=u'Ремонт', blank=True)
+    diag_work = models.ManyToManyField(DiagWork, related_name='diag_work',
+                                              verbose_name=u'Диагностика', blank=True)
+    serv_work = models.ManyToManyField(ServWork, related_name='serv_work',
+                                              verbose_name=u'Обслуживание', blank=True)
+    add_work = models.ManyToManyField(AddWork, related_name='add_work',
+                                              verbose_name=u'Дополнительные работы', blank=True)
     add_services = models.ManyToManyField(AddServices, related_name='autoservice_add_services',
-                                                     verbose_name='Дополнительные услуги', blank=True)
+                                                     verbose_name=u'Дополнительные услуги', blank=True)
 
     reviews = GenericRelation(Review)
 
