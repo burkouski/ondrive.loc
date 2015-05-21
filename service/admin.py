@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from service.models import AutoService,AutoserviceWork, SpecializationWork
+from service.models import AutoService,RepairWork, SpecializationWork, ServWork, AddWork, DiagWork
 from service.models import CarWash, TypeCarWash, TypeVehicle, CarWashServices, AddServices
 from service.models import TireService, TireWork, DiscWork
 from reviews.models import Review
@@ -12,7 +12,7 @@ class ReviewsInline(GenericTabularInline):
 
 
 class AutoServiceAdmin(admin.ModelAdmin):
-    #filter_horizontal = ('autoservice_work', 'specialization_work', 'add_services')
+    filter_horizontal = ('repair_work','diag_work','add_work', 'serv_work', 'specialization_work', 'add_services')
     fieldsets = (
         ('Контактные данные', {
             'fields': (
@@ -34,7 +34,7 @@ class AutoServiceAdmin(admin.ModelAdmin):
             'fields': ('latitude', 'longitude')
         }),
         ('Виды работ', {
-            'fields': ('autoservice_work', 'specialization_work', 'add_services')
+            'fields': ('repair_work','diag_work','add_work', 'serv_work', 'specialization_work', 'add_services')
         }),
         ('Мета данные', {
             'fields': ('title', 'meta_keywords', 'meta_description')
@@ -43,6 +43,7 @@ class AutoServiceAdmin(admin.ModelAdmin):
     )
     inlines = [ReviewsInline]
     readonly_fields = ('get_logo_img',)
+
 
 
 class CarWashAdmin(admin.ModelAdmin):
@@ -113,7 +114,10 @@ class TireServiceAdmin(admin.ModelAdmin):
     readonly_fields = ('get_logo_img',)
 
 admin.site.register(AutoService, AutoServiceAdmin)
-admin.site.register(AutoserviceWork)
+admin.site.register(RepairWork)
+admin.site.register(DiagWork)
+admin.site.register(ServWork)
+admin.site.register(AddWork)
 admin.site.register(SpecializationWork)
 admin.site.register(CarWash, CarWashAdmin)
 admin.site.register(TypeCarWash)

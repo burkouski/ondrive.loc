@@ -21,39 +21,44 @@ def user_register(request):
     args['success'] = True
     #args.update(csrf(request))
     if request.method == 'POST':
-        username = request.POST.get('username', '')
-        email = request.POST.get('email', '')
-        password = request.POST.get('password', '')
-
+        # username = request.POST.get('username', '')
+        # email = request.POST.get('email', '')
+        # password = request.POST.get('password', '')
+        username = request.POST.get('username', False)
+        email = request.POST.get('email', False)
+        password = request.POST.get('password', False)
         if User.objects.filter(username=username).count():
             args['success'] = False
-            args['usernameErr'] = 'Пользователь с таким именем уже существует'
+            args['usernameErr'] = u'Пользователь с таким именем уже существует'
 
         if User.objects.filter(email=email).count():
             args['success'] = False
-            args['emailErr'] = 'Данный email уже занят'
+            args['emailErr'] = u'Данный email уже занят'
 
         if args['success']:
             user = User.objects.create_user(username, email, password);
             user.is_active = False
             user.save();
-            email_hash = hashlib.sha1(email.encode()).hexdigest()[:5]
-            salt = hashlib.sha1(str(random.random()).encode()).hexdigest()[:5]
-            activation_key = hashlib.sha1(bytes(salt + email_hash, 'ascii')).hexdigest()
+            # для python 3
+            # email_hash = hashlib.sha1(email.encode()).hexdigest()[:5]
+            # salt = hashlib.sha1(str(random.random()).encode()).hexdigest()[:5]
+            # activation_key = hashlib.sha1(bytes(salt + email_hash, 'ascii')).hexdigest()
+            salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
+            activation_key = hashlib.sha1(salt+email).hexdigest()
             key_expires = datetime.datetime.today() + datetime.timedelta(2)
             new_profile = UserProfile(user=user, activation_key=activation_key, key_expires=key_expires)
             new_profile.save()
 
-            email_subject = 'Подтверждение регистрации'
-            email_body = "<h2>Здравствуйте %s</h2>" \
-                         "<h3>Вы зарегистрировались на портале <a href='http://ondrive.by'>ondrive.by</a></h3> " \
-                         "<p>для подтверждения регистрации перейдите по  <a href='http://localhost:8000/auth/registration/%s'>ссылке</a></p>" \
-                         "<p>Если вы не имеете понятия о чем идет речь, просто проигнорируйте это письмо!</p>" % (username, activation_key)
+            email_subject = u'Подтверждение регистрации'
+            email_body = u"<h2>Здравствуйте %s</h2>" \
+                         u"<h3>Вы зарегистрировались на портале <a href='http://ondrive.by'>ondrive.by</a></h3> " \
+                         u"<p>для подтверждения регистрации перейдите по  <a href='http://localhost:8000/auth/registration/%s'>ссылке</a></p>" \
+                         u"<p>Если вы не имеете понятия о чем идет речь, просто проигнорируйте это письмо!</p>" % (username, activation_key)
 
-            send_mail(email_subject, email_body, 'burkouski.vs@gmail.com',
-                      ['burkouski.vs@gmail.com'], fail_silently=False, html_message=email_body)
-            args['resultMess'] = 'Регистрация прошла успешно'
-            args['resultSubMess'] = 'инструкция по активации аккаунта выслава на email указанный при регистрации (%s)' % email
+            send_mail(email_subject, email_body, 'ondrive.by@gmail.com',
+                      [email], fail_silently=False, html_message=email_body)
+            args['resultMess'] = u'Регистрация прошла успешно'
+            args['resultSubMess'] = u'инструкция по активации аккаунта выслава на email указанный при регистрации (%s)' % (email)
             args = json.dumps(args)
             return HttpResponse(args)
         else:

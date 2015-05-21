@@ -2,14 +2,42 @@
 
 {% block work %}
     <div class="service__item">
-    {% if service.autoservice_work.all %}
-        <h2 class="service__title service__title--small">{{ service.autoservice_work.first.get_model_name }}:</h2>
+    {% if service.repair_work.all %}
+        <h2 class="service__title service__title--small">{{ service.repair_work.first.get_model_name }}:</h2>
 
         <!-- Product Name Ends -->
 
         <ul class="list-unstyled service__list">
 
-            {% for work in service.autoservice_work.all %}
+            {% for work in service.repair_work.all %}
+                <li class="service__work-item">{{ work }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <div class="service__item">
+    {% if service.diag_work.all %}
+        <h2 class="service__title service__title--small">{{ service.diag_work.first.get_model_name }}:</h2>
+
+        <!-- Product Name Ends -->
+
+        <ul class="list-unstyled service__list">
+
+            {% for work in service.diag_work.all %}
+                <li class="service__work-item">{{ work }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <div class="service__item">
+    {% if service.add_work.all %}
+        <h2 class="service__title service__title--small">{{ service.add_work.first.get_model_name }}:</h2>
+
+        <!-- Product Name Ends -->
+
+        <ul class="list-unstyled service__list">
+
+            {% for work in service.add_work.all %}
                 <li class="service__work-item">{{ work }}</li>
             {% endfor %}
         </ul>

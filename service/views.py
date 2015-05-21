@@ -3,7 +3,23 @@ from django.shortcuts import get_object_or_404, get_list_or_404, render, HttpRes
 from service.models import AutoService, CarWash, TireService
 from django.db.models import Avg
 import json
+from itertools import chain
 from django.views.decorators.csrf import ensure_csrf_cookie
+
+@ensure_csrf_cookie
+def service_list(request):
+    if request.GET.get('_escaped_fragment_') == '':
+        autoservice = AutoService.objects.all()
+        carwash = CarWash.objects.all()
+        tireservice = TireService.objects.all()
+        services = list(chain(autoservice, carwash, tireservice))
+        return render(request, 'service/sns-service_list.html', {'services': services})
+    if request.method == 'POST':
+        services = AutoService.objects.all()
+        services = filtering(request.POST, services)
+        return HttpResponse(services)
+
+    return render(request, 'service/service_list.html')
 
 
 def autoservice_detail(request, service_alias):
@@ -14,11 +30,12 @@ def autoservice_detail(request, service_alias):
 
 @ensure_csrf_cookie
 def autoservice_list(request):
-    services = AutoService.objects.all()
-    services = filtering(request.POST, services)
     if request.GET.get('_escaped_fragment_') == '':
-        return render(request, 'service/autoservice_lis2t_view.html')
+        services = AutoService.objects.all()
+        return render(request, 'service/sns_autoservice_list_view.html', {'services': services})
     if request.method == 'POST':
+        services = AutoService.objects.all()
+        services = filtering(request.POST, services)
         return HttpResponse(services)
 
     return render(request, 'service/autoservice_list_view.html')
@@ -33,12 +50,14 @@ def carwash_detail(request, service_alias):
 
 @ensure_csrf_cookie
 def carwash_list(request):
-    services = CarWash.objects.all()
-    services = filtering(request.POST, services)
+    if request.GET.get('_escaped_fragment_') == '':
+        services = CarWash.objects.all()
+        return render(request, 'service/sns_carwash_list_view.html', {'services': services})
 
     if request.method == 'POST':
+        services = CarWash.objects.all()
+        services = filtering(request.POST, services)
         return HttpResponse(services)
-
     return render(request, 'service/carwash_list_view.html')
 
 
@@ -51,12 +70,13 @@ def tireservice_detail(request, service_alias):
 
 @ensure_csrf_cookie
 def tireservice_list(request):
-    services = TireService.objects.all()
-    services = filtering(request.POST, services)
-
+    if request.GET.get('_escaped_fragment_') == '':
+        services = TireService.objects.all()
+        return render(request, 'service/sns_tireservice_list_view.html', {'services': services})
     if request.method == 'POST':
+        services = TireService.objects.all()
+        services = filtering(request.POST, services)
         return HttpResponse(services)
-
     return render(request, 'service/tireservice_list_view.html')
 
 
@@ -79,7 +99,7 @@ def filtering(post_data, objects):
                             'logo': o.logo.url,
                             'teaser': o.teaser,
                             'address': o.address,
-                            'rating': o.reviews.filter(is_moderate=True).aggregate(Avg('rate'))['rate__avg'],
+                            'rating': o.get_rating(),
                             'sort': o.sort,
                             'url': o.get_absolute_url()} for o in objects],
         'meta': objects.count()

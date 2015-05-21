@@ -9,6 +9,7 @@ from reviews.models import Review
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 import json
+from django.db.models import Avg
 
 
 # Абстрактная модель для сервисов
@@ -62,6 +63,10 @@ class Service(models.Model):
     def get_logo_img(self):
         return u'<img src="%s" />' % self.logo.url
 
+    def get_rating(self):
+        rating = self.reviews.filter(is_moderate=True).aggregate(Avg('rate'))['rate__avg']
+        return rating
+
     def save(self):
         address = re.sub(' +', '+', self.address)
         location = "%s" % address
@@ -91,6 +96,7 @@ class Service(models.Model):
 
     def get_content_type(self):
         return ContentType.objects.get_for_model(self).id
+
     # Преобразуем поле address в координаты для полей latitude и longitude
     def geocode(self, location):
         format = "json"
@@ -142,23 +148,48 @@ class SpecializationWork(Work):
         verbose_name_plural = u"Специализируются на марках"
 
 
-class AutoserviceWork(Work):
-    work_field_name = 'autoservice_work'
+class RepairWork(Work):
+    work_field_name = 'repair_work'
 
     class Meta:
         verbose_name = u""
-        verbose_name_plural = u"Виды работ"
+        verbose_name_plural = u"Ремонт"
+class DiagWork(Work):
+    work_field_name = 'diag_work'
+
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Диагностика"
+
+class ServWork(Work):
+    work_field_name = 'serv_work'
+
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Обслуживание"
+class AddWork(Work):
+    work_field_name = 'add_work'
+
+    class Meta:
+        verbose_name = u""
+        verbose_name_plural = u"Дополнительные работы"
 
 
 
 class AutoService(Service):
     # Виды работ
     specialization_work = models.ManyToManyField(SpecializationWork, related_name='specialization_work',
-                                              verbose_name='Специализирующиеся на марке', blank=True)
-    autoservice_work = models.ManyToManyField(AutoserviceWork, related_name='autoservice_work',
-                                              verbose_name='Виды работ', blank=True)
+                                              verbose_name=u'Специализирующиеся на марке', blank=True)
+    repair_work = models.ManyToManyField(RepairWork, related_name='repair_work',
+                                              verbose_name=u'Ремонт', blank=True)
+    diag_work = models.ManyToManyField(DiagWork, related_name='diag_work',
+                                              verbose_name=u'Диагностика', blank=True)
+    serv_work = models.ManyToManyField(ServWork, related_name='serv_work',
+                                              verbose_name=u'Обслуживание', blank=True)
+    add_work = models.ManyToManyField(AddWork, related_name='add_work',
+                                              verbose_name=u'Дополнительные работы', blank=True)
     add_services = models.ManyToManyField(AddServices, related_name='autoservice_add_services',
-                                                     verbose_name='Дополнительные услуги', blank=True)
+                                                     verbose_name=u'Дополнительные услуги', blank=True)
 
     reviews = GenericRelation(Review)
 
