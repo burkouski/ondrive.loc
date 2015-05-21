@@ -25,10 +25,6 @@ SECRET_KEY = '8y_gdfj^aaqgwwi6n8g#w42pfdqa*6p7u%q(252b@j_0o7cv9c'
 DEBUG = True
 SITE_ID = 1
 TEMPLATE_DEBUG = False
-<<<<<<< HEAD
-APPEND_SLASH=False
-=======
->>>>>>> 0fa4d83be5d628df5ebe59c45d460bf115777a28
 ALLOWED_HOSTS = ['localhost']
 
 # Application definition
