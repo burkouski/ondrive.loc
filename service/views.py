@@ -89,7 +89,7 @@ def filtering(post_data, objects):
     for key, val in obj.items():
         for x in val:
             objects = objects.filter(**{key: x})
-    objects = objects.annotate(sort=Avg('reviews__rate')).order_by('-sort')
+    objects = objects.annotate(sort=Avg('reviews__rate')).order_by('-sort')[:5]
     objects = json.dumps(
         {
         'info': [{
@@ -101,7 +101,9 @@ def filtering(post_data, objects):
                             'address': o.address,
                             'rating': o.get_rating(),
                             'sort': o.sort,
+                            'test': post_data,
                             'url': o.get_absolute_url()} for o in objects],
+
         'meta': objects.count()
         })
     return objects

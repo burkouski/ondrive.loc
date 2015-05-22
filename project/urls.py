@@ -18,5 +18,5 @@ urlpatterns = patterns('',
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     url(r'^(?P<page_alias>.*)/$', views.get_page, name='page_view'),
-    url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /",content_type='text/plain'))
+    url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /",content_type='text/plain')),
 )
