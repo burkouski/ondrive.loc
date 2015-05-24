@@ -30,6 +30,7 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
                 $scope.meta = services.meta
                 $scope.preloader = true
                 setCookie()
+                console.log($scope.services)
             },
             function () {
                 alert('wrong')
