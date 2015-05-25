@@ -34,8 +34,10 @@ def autoservice_list(request):
         services = AutoService.objects.all()
         return render(request, 'service/sns_autoservice_list_view.html', {'services': services})
     if request.method == 'POST':
+        a = json.loads(request.body)
+        #print(a[u'options'])
         services = AutoService.objects.all()
-        services = filtering(request.POST, services)
+        services = filtering(a[u'options'], services)
         return HttpResponse(services)
 
     return render(request, 'service/autoservice_list_view.html')
@@ -84,8 +86,9 @@ def tireservice_list(request):
 def filtering(post_data, objects):
     obj = {}
     for key in post_data:
-        obj[key[:-2]] = post_data.getlist(key)
-
+        obj[key] = post_data[key]
+        #print(obj[key])
+    #
     for key, val in obj.items():
         for x in val:
             objects = objects.filter(**{key: x})
@@ -106,6 +109,7 @@ def filtering(post_data, objects):
 
         'meta': objects.count()
         })
+    print(obj)
     return objects
 
 

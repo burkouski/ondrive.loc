@@ -24,7 +24,7 @@ ymapsApp.factory('services', ['$http', function ($http) {
         list: function (url, data, callback, error) {
             $http({
                 method: 'POST',
-                data: $.param(data),
+                data: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                 },
