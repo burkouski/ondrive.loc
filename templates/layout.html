@@ -10,6 +10,8 @@
 	<![endif]-->
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    {% block ajaxmeta %}
+    {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name='yandex-verification' content='5fa3e420478ba010' />
@@ -68,7 +70,7 @@
     </script>
 </head>
 {% block body %}
-<body ng-app="ymapsApp" class="with-bg">
+<body class="with-bg">
 <div id="wrapper" class="container">
     {% block header %}
     <header id="header-area" class="wrap">

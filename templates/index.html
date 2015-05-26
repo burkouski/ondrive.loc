@@ -2,6 +2,11 @@
 {% load staticfiles %}
 {% load w_news %}
 {% load w_service %}
+
+{% block ajaxmeta %}
+    <meta name="fragment" content="!">
+{% endblock %}
+
 {% block page %}
 <div id="main-container" ng-app="ymapsApp" ng-controller="mainmapCtrl">
     <!-- Slider Section Starts -->
