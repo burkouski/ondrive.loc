@@ -5,13 +5,19 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
         $scope.gridView = false;
         $scope.filterName = filterName;
         $scope.apiUrl = apiUrl;
+
         var filterCook = $cookieStore.get($scope.filterName),
             activeTabsCook = $cookieStore.get('activeTabs');
+
         console.log($cookieStore.get($scope.filterName));
 
         $scope[$scope.filterName] = (filterCook) ? filterCook : {};
         $scope.activeTabs = (activeTabsCook) ? activeTabsCook : [];
 
+        $scope.quantity = 6
+        $scope[$scope.filterName].meta = {
+            quantity: $scope.quantity
+        }
         $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
     }
 
@@ -26,11 +32,13 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
         $scope.preloader = false;
         console.log(data);
         services.list(apiUrl, data, function (services) {
-                $scope.services = services.info;
-                $scope.meta = services.meta
+                console.log(services)
+                $scope.services = services.objects.info;
+                $scope.meta = services.objects.meta
+                $scope.mapObjects = services.mapObjects
                 $scope.preloader = true
                 setCookie()
-                console.log($scope.services)
+                console.log($scope.mapObjects)
             },
             function () {
                 alert('wrong')
@@ -99,6 +107,13 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
         });
         $scope.loadRemoteData($scope.apiUrl, $scope[filterName]);
 
+    }
+
+    $scope.changeQuantity = function() {
+        $scope[$scope.filterName].meta = {
+            quantity: $scope.quantity
+        }
+        $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
     }
 
     _getArray = function (n) {

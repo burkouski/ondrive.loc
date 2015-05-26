@@ -6,6 +6,7 @@ import json
 from itertools import chain
 from django.views.decorators.csrf import ensure_csrf_cookie
 
+
 @ensure_csrf_cookie
 def service_list(request):
     if request.GET.get('_escaped_fragment_') == '':
@@ -15,6 +16,7 @@ def service_list(request):
         services = list(chain(autoservice, carwash, tireservice))
         return render(request, 'service/sns-service_list.html', {'services': services})
     if request.method == 'POST':
+        post_data = json.loads(request.body)
         services = AutoService.objects.all()
         services = filtering(request.POST, services)
         return HttpResponse(services)
@@ -34,10 +36,9 @@ def autoservice_list(request):
         services = AutoService.objects.all()
         return render(request, 'service/sns_autoservice_list_view.html', {'services': services})
     if request.method == 'POST':
-        a = json.loads(request.body)
-        #print(a[u'options'])
+        post_data = json.loads(request.body)
         services = AutoService.objects.all()
-        services = filtering(a[u'options'], services)
+        services = filtering(post_data, services)
         return HttpResponse(services)
 
     return render(request, 'service/autoservice_list_view.html')
@@ -50,6 +51,7 @@ def carwash_detail(request, service_alias):
     args = get_service_ctx(CarWash, service)
     return render(request, 'service/carwash_detail_view.html', args)
 
+
 @ensure_csrf_cookie
 def carwash_list(request):
     if request.GET.get('_escaped_fragment_') == '':
@@ -57,8 +59,9 @@ def carwash_list(request):
         return render(request, 'service/sns_carwash_list_view.html', {'services': services})
 
     if request.method == 'POST':
+        post_data = json.loads(request.body)
         services = CarWash.objects.all()
-        services = filtering(request.POST, services)
+        services = filtering(post_data, services)
         return HttpResponse(services)
     return render(request, 'service/carwash_list_view.html')
 
@@ -70,14 +73,16 @@ def tireservice_detail(request, service_alias):
     args = get_service_ctx(TireService, service)
     return render(request, 'service/tireservice_detail_view.html', args)
 
+
 @ensure_csrf_cookie
 def tireservice_list(request):
     if request.GET.get('_escaped_fragment_') == '':
         services = TireService.objects.all()
         return render(request, 'service/sns_tireservice_list_view.html', {'services': services})
     if request.method == 'POST':
+        post_data = json.loads(request.body)
         services = TireService.objects.all()
-        services = filtering(request.POST, services)
+        services = filtering(post_data, services)
         return HttpResponse(services)
     return render(request, 'service/tireservice_list_view.html')
 
@@ -85,32 +90,44 @@ def tireservice_list(request):
 # фильтрация объектов
 def filtering(post_data, objects):
     obj = {}
-    for key in post_data:
-        obj[key] = post_data[key]
-        #print(obj[key])
-    #
-    for key, val in obj.items():
-        for x in val:
-            objects = objects.filter(**{key: x})
-    objects = objects.annotate(sort=Avg('reviews__rate')).order_by('-sort')[:5]
-    objects = json.dumps(
-        {
+    quantity = 6
+    if post_data.get(u'meta'):
+        quantity = post_data[u'meta'][u'quantity']
+        print(quantity)
+    if post_data.get(u'options'):
+        options = post_data[u'options']
+        for key in options:
+            obj[key] = options[key]
+        for key, val in obj.items():
+            for x in val:
+                objects = objects.filter(**{key: x})
+    objects = objects.annotate(sort=Avg('reviews__rate')).order_by('-sort')
+    map_objects = objects
+    objects = {
         'info': [{
-                            'name': o.name,
-                            'longitude': o.longitude,
-                            'latitude': o.latitude,
-                            'logo': o.logo.url,
-                            'teaser': o.teaser,
-                            'address': o.address,
-                            'rating': o.get_rating(),
-                            'sort': o.sort,
-                            'test': post_data,
-                            'url': o.get_absolute_url()} for o in objects],
+                     'name': o.name,
+                     'logo': o.logo.url,
+                     'teaser': o.teaser,
+                     'address': o.address,
+                     'rating': o.get_rating(),
+                     'sort': o.sort,
+                     'url': o.get_absolute_url()} for o in objects[:quantity]],
 
         'meta': objects.count()
-        })
-    print(obj)
-    return objects
+    }
+    map_objects = [{
+                       'name': o.name,
+                       'longitude': o.longitude,
+                       'latitude': o.latitude,
+                       'teaser': o.teaser,
+                       'address': o.address,
+                       'sort': o.sort,
+                       'url': o.get_absolute_url()} for o in map_objects]
+
+    a = json.dumps(
+        {'objects': objects, 'mapObjects': map_objects}
+    )
+    return a
 
 
 # получение контекста для детального описания сервиса

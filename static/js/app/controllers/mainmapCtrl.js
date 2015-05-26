@@ -17,14 +17,20 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
         $scope.cwFilter = (cwFilterCook) ? cwFilterCook : {};
         $scope.tsFilter = (tsFilterCook) ? tsFilterCook : {};
         $scope.activeTabs = (activeTabsCook) ? activeTabsCook : [];
+        $scope.quantity = 6
 
-        var curFilter = ($scope.apiUrl == "/autoservices/") ? $scope.asFilter :
+        $scope.curFilter = ($scope.apiUrl == "/autoservices/") ? $scope.asFilter :
             ($scope.apiUrl == "/carwash/") ? $scope.cwFilter : {};
-
-        $scope.loadRemoteData($scope.apiUrl, curFilter);
+        $scope.curFilter.meta = {
+            quantity: $scope.quantity
+        }
+        $scope.loadRemoteData($scope.apiUrl, $scope.curFilter);
     }
 
     setCookie = function () {
+        now = new Date();
+        now = now.setMinutes(now.getMinutes() + 1)
+        console.log(now);
         $cookieStore.put('apiUrl', $scope.apiUrl),
             $cookieStore.put('asFilter', $scope.asFilter),
             $cookieStore.put('cwFilter', $scope.cwFilter),
@@ -37,8 +43,9 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
         $scope.preloader = false;
         console.log(data);
         services.list(apiUrl, data, function (services) {
-                $scope.services = services.info;
-                $scope.meta = services.meta
+                $scope.services = services.objects.info;
+                $scope.meta = services.objects.meta
+                $scope.mapObjects = services.mapObjects
                 $scope.preloader = true
                 setCookie()
             },
@@ -49,8 +56,12 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
 
     //Функция изменения сервиса (очищает фильтры при переключении)
     $scope.changeService = function (apiUrl, filterName, mapIcon) {
-        $scope.mapIcon = mapIcon
-        $scope.loadRemoteData(apiUrl, $scope[filterName]);
+        $scope.mapIcon = mapIcon;
+        $scope.curFilter = $scope[filterName];
+        $scope.curFilter.meta = {
+            quantity: $scope.quantity
+        }
+        $scope.loadRemoteData(apiUrl, $scope.curFilter);
     }
 
     //Функция проверки открытого таба в фильтре
@@ -127,6 +138,13 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
         });
         $scope.loadRemoteData($scope.apiUrl, $scope[filterName]);
 
+    }
+
+    $scope.changeQuantity = function() {
+        $scope.curFilter.meta = {
+            quantity: $scope.quantity
+        }
+        $scope.loadRemoteData($scope.apiUrl, $scope.curFilter);
     }
 
     init();

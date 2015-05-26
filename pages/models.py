@@ -5,14 +5,14 @@ from ckeditor.fields import RichTextField
 from django.core.urlresolvers import reverse
 
 class Page(models.Model):
-    name = models.CharField('Заголовок страницы', max_length=200)
+    name = models.CharField(u'Заголовок страницы', max_length=200)
     alias = models.SlugField(max_length=100, blank=True)
-    text = RichTextField('Текст страницы')
-    title = models.CharField('title страницы', max_length=200, blank=True)
-    meta_keywords = models.TextField('Keywords', blank=True)
-    meta_description = models.TextField('Description', blank=True)
+    text = RichTextField(u'Текст страницы')
+    title = models.CharField(u'title страницы', max_length=200, blank=True)
+    meta_keywords = models.TextField(u'Keywords', blank=True)
+    meta_description = models.TextField(u'Description', blank=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
     def save(self, *args, **kwargs):

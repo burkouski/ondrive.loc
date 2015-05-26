@@ -51,16 +51,14 @@
                             </div-->
                             <div class="col-md-4"><span class="control-label">Найдено сервисов - {$ meta $} </span>
                             </div>
-                            <!--div class="col-md-3 text-right">
+                            <div class="col-md-3 text-right">
                                 <label class="control-label">Показывать:</label>
                             </div>
                             <div class="col-md-2 text-right">
-                                <select class="form-control">
-                                    <option value="12">12</option>
-                                    <option value="24">24</option>
-                                    <option value="36" selected="selected">36</option>
+                                <select class="form-control" ng-model="quantity" ng-options="number for number in [6,12,24]" ng-change='changeQuantity()'>
+
                                 </select>
-                            </div-->
+                            </div>
                         </div>
                     </div>
                     <!-- Product Filter Ends -->
