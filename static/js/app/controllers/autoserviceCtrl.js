@@ -15,6 +15,7 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
         $scope.activeTabs = (activeTabsCook) ? activeTabsCook : [];
 
         $scope.quantity = 6
+        $scope.curPage = 1
         $scope[$scope.filterName].meta = {
             quantity: $scope.quantity
         }
@@ -38,6 +39,7 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
                 $scope.mapObjects = services.mapObjects
                 $scope.preloader = true
                 setCookie()
+                resetPagination($scope.meta)
                 console.log($scope.mapObjects)
             },
             function () {
@@ -114,6 +116,10 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
             quantity: $scope.quantity
         }
         $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
+    }
+    resetPagination = function(objQuantity) {
+        $scope.pagination = _getArray(objQuantity)
+
     }
 
     _getArray = function (n) {
