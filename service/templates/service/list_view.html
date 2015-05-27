@@ -55,7 +55,8 @@
                                 <label class="control-label">Показывать:</label>
                             </div>
                             <div class="col-md-2 text-right">
-                                <select class="form-control" ng-model="quantity" ng-options="number for number in [6,12,24]" ng-change='changeQuantity()'>
+                                <select class="form-control" ng-model="quantity"
+                                        ng-options="number for number in [6,12,24]" ng-change='changeQuantity()'>
 
                                 </select>
                             </div>
@@ -70,36 +71,37 @@
 
                         <!-- Product #1 Starts -->
                         <div class="product-preview" ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}"
-                         ng-repeat="service in services" ng-cloak>
-                        <a href="{$ service.url $}" class="product-preview__link list clearfix">
-                            <div class="row">
-                                <div class="product-preview__img" ng-class="{'col-xs-4': !gridView, 'col-xs-12': gridView}">
-                                    <img src="{$ service.logo $}" alt=""
-                                                                     class="img-responsive"/>
-                                </div>
-                                <div ng-class="{'col-xs-8': !gridView, 'col-xs-12': gridView}">
-                                    <h4 class="product-preview__title">{$ service.name $}</h4>
+                             ng-repeat="service in services" ng-cloak>
+                            <a href="{$ service.url $}" class="product-preview__link list clearfix">
+                                <div class="row">
+                                    <div class="product-preview__img"
+                                         ng-class="{'col-xs-4': !gridView, 'col-xs-12': gridView}">
+                                        <img src="{$ service.logo $}" alt=""
+                                             class="img-responsive"/>
+                                    </div>
+                                    <div ng-class="{'col-xs-8': !gridView, 'col-xs-12': gridView}">
+                                        <h4 class="product-preview__title">{$ service.name $}</h4>
 
-                                    <div ng-show="service.rating">
-                                        <i ng-repeat="star in starsInit(service.rating).positiveStar track by $index"
-                                           style="color: red" class="fa fa-star"></i><i
-                                            ng-repeat="star in starsInit(service.rating).halfStar track by $index"
-                                            style="color: red" class="fa fa-star-half-o"></i><i
-                                            ng-repeat="star in starsInit(service.rating).negativeStar track by $index"
-                                            style="color: red" class="fa fa-star-o"></i>
-                                    </div>
-                                    <div ng-show="!service.rating">нет оценок</div>
-                                    <div class="product-preview__desc">
-                                        {$ service.teaser $}
-                                    </div>
-                                    <div class="product-preview__address">
-                                        <p class="price-tax">Адрес: {$ service.address $}</p>
+                                        <div ng-show="service.rating">
+                                            <i ng-repeat="star in starsInit(service.rating).positiveStar track by $index"
+                                               style="color: red" class="fa fa-star"></i><i
+                                                ng-repeat="star in starsInit(service.rating).halfStar track by $index"
+                                                style="color: red" class="fa fa-star-half-o"></i><i
+                                                ng-repeat="star in starsInit(service.rating).negativeStar track by $index"
+                                                style="color: red" class="fa fa-star-o"></i>
+                                        </div>
+                                        <div ng-show="!service.rating">нет оценок</div>
+                                        <div class="product-preview__desc">
+                                            {$ service.teaser $}
+                                        </div>
+                                        <div class="product-preview__address">
+                                            <p class="price-tax">Адрес: {$ service.address $}</p>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
 
                         <!-- Product #1 Ends -->
 
@@ -108,8 +110,12 @@
                     <!-- Pagination & Results Starts -->
                     <div class="row">
                         <!-- Pagination Starts -->
-                        <div class="col-sm-6 pagination-block">
-
+                        <div class="col-sm-6">
+                            <ul class="pagination">
+                                <li class="pagination__item" ng-class="{'active': (curPage-1) == $index}" ng-repeat="pagin in pagination track by $index">
+                                    <a class="pagination__link" ng-click="changePage($index)" >{$ $index+1 $}</a>
+                                </li>
+                            </ul>
                         </div>
                         <!-- Pagination Ends -->
                     </div>

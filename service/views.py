@@ -91,8 +91,10 @@ def tireservice_list(request):
 def filtering(post_data, objects):
     obj = {}
     quantity = 6
+    page = 1
     if post_data.get(u'meta'):
         quantity = post_data[u'meta'][u'quantity']
+        page = post_data[u'meta'][u'page']
         print(quantity)
     if post_data.get(u'options'):
         options = post_data[u'options']
@@ -111,7 +113,7 @@ def filtering(post_data, objects):
                      'address': o.address,
                      'rating': o.get_rating(),
                      'sort': o.sort,
-                     'url': o.get_absolute_url()} for o in objects[:quantity]],
+                     'url': o.get_absolute_url()} for o in objects[(quantity*page):(quantity*page+quantity)]],
 
         'meta': objects.count()
     }
