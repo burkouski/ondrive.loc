@@ -19,18 +19,23 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
         $scope.activeTabs = (activeTabsCook) ? activeTabsCook : [];
         $scope.quantity = 6
 
-        $scope.curFilter = ($scope.apiUrl == "/autoservices/") ? $scope.asFilter :
-            ($scope.apiUrl == "/carwash/") ? $scope.cwFilter : {};
-        $scope.curFilter.meta = {
-            quantity: $scope.quantity
-        }
-        $scope.loadRemoteData($scope.apiUrl, $scope.curFilter);
+        $scope.filterName = ($scope.apiUrl == "/autoservices/") ? 'asFilter' :
+            ($scope.apiUrl == "/carwash/") ? 'cwFilter' : ($scope.apiUrl == "/tireservice/") ? 'tsFilter': {};
+
+
+        $scope.quantity = 6;
+        $scope.curPage = 1;
+        $scope[$scope.filterName].meta = {
+            quantity: $scope.quantity,
+            page: $scope.curPage-1
+        };
+        $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
     }
 
     setCookie = function () {
-        now = new Date();
-        now = now.setMinutes(now.getMinutes() + 1)
-        console.log(now);
+//        now = new Date();
+//        now = now.setMinutes(now.getMinutes() + 1)
+//        console.log(now);
         $cookieStore.put('apiUrl', $scope.apiUrl),
             $cookieStore.put('asFilter', $scope.asFilter),
             $cookieStore.put('cwFilter', $scope.cwFilter),
@@ -38,30 +43,29 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
             $cookieStore.put('activeTabs', $scope.activeTabs);
     }
 
-    //Функция загрузки данных
-    $scope.loadRemoteData = function (apiUrl, data) {
+//    //Функция загрузки данных
+   $scope.loadRemoteData = function (apiUrl, data) {
         $scope.preloader = false;
-        console.log(data);
+        console.log(apiUrl);
         services.list(apiUrl, data, function (services) {
+                //console.log(services)
                 $scope.services = services.objects.info;
-                $scope.meta = services.objects.meta
-                $scope.mapObjects = services.mapObjects
-                $scope.preloader = true
-                setCookie()
+                $scope.meta = services.objects.meta;
+                $scope.mapObjects = services.mapObjects;
+                $scope.preloader = true;
+                setCookie();
+                resetPagination($scope.meta, $scope.quantity);
+                console.log($scope.pagination);
             },
             function () {
-                alert('wrong')
+                alert('wrong');
             });
     };
 
     //Функция изменения сервиса (очищает фильтры при переключении)
     $scope.changeService = function (apiUrl, filterName, mapIcon) {
         $scope.mapIcon = mapIcon;
-        $scope.curFilter = $scope[filterName];
-        $scope.curFilter.meta = {
-            quantity: $scope.quantity
-        }
-        $scope.loadRemoteData(apiUrl, $scope.curFilter);
+        resetPage();
     }
 
     //Функция проверки открытого таба в фильтре
@@ -132,25 +136,49 @@ ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', functi
         }
     };
 
+
+    $scope.changeFilter = function() {
+        resetPage()
+    };
+
     $scope.clearFilter = function (filterName) {
         angular.forEach($scope[filterName], function (value, key) {
-            $scope[filterName][key] = []
+            $scope[filterName][key] = [];
         });
         $scope.loadRemoteData($scope.apiUrl, $scope[filterName]);
 
-    }
+    };
 
     $scope.changeQuantity = function() {
-        $scope.curFilter.meta = {
-            quantity: $scope.quantity
-        }
-        $scope.loadRemoteData($scope.apiUrl, $scope.curFilter);
-    }
+        $scope[$scope.filterName].meta.quantity = $scope.quantity;
+        resetPage()
+    };
 
-    init();
+    $scope.changePage = function(curPage) {
+            $scope.curPage = curPage+1;
+            $scope[$scope.filterName].meta.page = curPage;
+            $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
+        };
+
+   init();
+
+    resetPagination = function(objQuantity, displayQuantity) {
+
+        $scope.pagination = _getArray(Math.ceil(objQuantity/displayQuantity))
+        console.log($scope.pagination)
+    };
 
     _getArray = function (n) {
         return new Array(n);
     };
+
+    function resetPage() {
+        $scope.curPage = 1;
+       $scope[$scope.filterName].meta = {
+            quantity: $scope.quantity,
+            page: $scope.curPage-1
+        };
+        $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
+    }
 
 }]);

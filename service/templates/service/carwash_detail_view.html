@@ -1,36 +1,75 @@
 {% extends "service/detail_view.html" %}
 
-{% block work %}
-    {#Виды работ #}
-    {% if service.type_carwash.all %}
-        <div class="work__type">
-            <h5 class="work__title">{{ service.type_carwash.first.get_model_name }}</h5>
-            <ul class="work__list">
-                {% for work in service.type_carwash.all %}
-                    <li class="work__item">{{ work }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-    {% if service.type_vehicle.all %}
-        <div class="work__type">
-            <h5 class="work__title">{{ service.type_vehicle.first.get_model_name }}</h5>
-            <ul class="work__list">
-                {% for work in service.type_vehicle.all %}
-                    <li class="work__item">{{ work }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-    {% if service.car_wash_services.all %}
-        <div class="work__type">
-            <h5 class="work__title">{{ service.car_wash_services.first.get_model_name }}</h5>
-            <ul class="work__list">
-                {% for work in service.car_wash_services.all %}
-                    <li class="work__item">{{ work }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
 
+{% block work %}
+    <div class="service__item">
+    {% if service.type_carwash.all %}
+        <h2 class="service__title service__title--small">{{ service.type_carwash.first.get_model_name }}:</h2>
+
+        <!-- Product Name Ends -->
+
+        <ul class="list-unstyled service__list">
+
+            {% for work in service.type_carwash.all %}
+                <li class="service__work-item">{{ work }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <div class="service__item">
+    {% if service.type_vehicle.all %}
+        <h2 class="service__title service__title--small">{{ service.type_vehicle.first.get_model_name }}:</h2>
+
+        <!-- Product Name Ends -->
+
+        <ul class="list-unstyled service__list">
+
+            {% for work in service.type_vehicle.all %}
+                <li class="service__work-item">{{ work }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <div class="service__item">
+    {% if service.car_wash_services.all %}
+        <h2 class="service__title service__title--small">{{ service.car_wash_services.first.get_model_name }}:</h2>
+
+        <!-- Product Name Ends -->
+
+        <ul class="list-unstyled service__list">
+
+            {% for work in service.car_wash_services.all %}
+                <li class="service__work-item">{{ work }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <div class="service__item">
+        {% if service.car_wash_services.all %}
+        <h2 class="service__title service__title--small">{{ service.car_wash_services.first.get_model_name }}:</h2>
+
+        <!-- Product Name Ends -->
+
+        <ul class="list-unstyled service__list">
+
+            {% for work in service.car_wash_services.all %}
+                <li class="service__work-item"><img src="{% if work.logo %}{{ work.logo.url }}{% endif %}" alt="{{ work }}"/></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <div class="service__item">
+        {% if service.add_services.all %}
+        <h2 class="service__title service__title--small">{{ service.add_services.first.get_model_name }}:</h2>
+
+        <!-- Product Name Ends -->
+        <hr/>
+        <ul class="list-unstyled service__list">
+
+            {% for work in service.add_services.all %}
+                <li class="service__work-item">{{ work.work_name }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
 {% endblock %}

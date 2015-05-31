@@ -29,7 +29,9 @@
                         <img src="{{ service.logo.url }}" alt="{{ service.name }}"
                              class="img-responsive thumbnail service__img"/>
                     </a>
-
+                    <div class="service__desc">
+                        {{ service.teaser }}
+                    </div>
 
                 </div>
                 <!-- Left Ends -->
@@ -164,24 +166,29 @@
                     </div>
                 </div>
                 <!-- Right Ends -->
-                <div class="col-sm-12">
-                    <div class="service__desc">{{ service.full_desc|safe }}</div>
-                </div>
+
             </div>
             <!-- Product Info Ends -->
             <!-- Tabs Starts -->
             <div class="tabs-panel panel-smart">
                 <!-- Nav Tabs Starts -->
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab-ainfo">Отзывы</a></li>
-                    <li><a href="#tab-review">Оставить отзыв</a></li>
+                    {% if service.full_desc %}
+                    <li class="active"><a href="#tab-ainfo">Описание</a></li>
+                    {% endif %}
+                    <li class="{% if not service.full_desc  %}active{% endif %}"><a href="#tab-review">Отзывы</a></li>
+                    <li><a href="#tab-sendreview">Оставить отзыв</a></li>
                 </ul>
                 <!-- Nav Tabs Ends -->
                 <!-- Tab Content Starts -->
                 <div class="tab-content clearfix">
-
+                {% if service.full_desc %}
+                    <div class="tab-pane active" id="tab-desc">
+                        <div class="service__desc">{{ service.full_desc|safe }}</div>
+                    </div>
+                {% endif %}
                     <!-- Additional Information Starts -->
-                    <div class="tab-pane active" id="tab-ainfo">
+                    <div class="tab-pane {% if not service.full_desc  %}active{% endif %}" id="tab-review">
 
                         {% for review in reviews %}
                             <div class="review">
@@ -202,9 +209,10 @@
 
 
                     </div>
+
                     <!-- Additional Information Ends -->
                     <!-- Review Starts -->
-                    <div class="tab-pane" id="tab-review">
+                    <div class="tab-pane" id="tab-sendreview">
                         {% if user.is_authenticated %}
                             <div class="text-danger col-sm-10 col-sm-offset-2">{$ result $}</div>
                             <form ng-submit="reviewSubmit()" class="form-horizontal">

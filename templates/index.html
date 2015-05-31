@@ -155,8 +155,12 @@
                     <!-- Pagination & Results Starts -->
                     <div class="row">
                         <!-- Pagination Starts -->
-                        <div class="col-sm-6 pagination-block">
-
+                        <div class="col-sm-6">
+                            <ul class="pagination" ng-show="meta > quantity">
+                                <li class="pagination__item" ng-class="{'active': (curPage-1) == $index}" ng-repeat="pagin in pagination track by $index">
+                                    <a class="pagination__link" ng-click="changePage($index)" >{$ $index+1 $}</a>
+                                </li>
+                            </ul>
                         </div>
                         <!-- Pagination Ends -->
                     </div>
