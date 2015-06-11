@@ -104,17 +104,28 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
         }
     };
 
+    $scope.changeFilter = function() {
+        resetPage()
+    }
+
     $scope.clearFilter = function (filterName) {
         angular.forEach($scope[filterName], function (value, key) {
             $scope[filterName][key] = [];
         });
-        $scope.loadRemoteData($scope.apiUrl, $scope[filterName]);
+        resetPage()
 
     };
 
+    $scope.changePage = function(curPage) {
+            $scope.curPage = curPage+1;
+            $scope[$scope.filterName].meta.page = curPage;
+            $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
+        };
+
     $scope.changeQuantity = function() {
         $scope[$scope.filterName].meta.quantity = $scope.quantity;
-        $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
+        resetPage()
+        //$scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
     };
 
     resetPagination = function(objQuantity, displayQuantity) {
@@ -122,14 +133,16 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
         $scope.pagination = _getArray(Math.ceil(objQuantity/displayQuantity))
         console.log($scope.pagination)
     };
-    $scope.changePage = function(curPage) {
-        $scope.curPage = curPage+1;
-        $scope[$scope.filterName].meta.page = curPage;
-        $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
-    };
+
 
     _getArray = function (n) {
         return new Array(n);
     };
+
+    function resetPage() {
+        $scope.curPage = 1;
+        $scope[$scope.filterName].meta.page = $scope.curPage-1;
+        $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
+    }
 
 }]);

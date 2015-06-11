@@ -24,7 +24,6 @@
         <div class="row">
             <div class="latest-post__other col-sm-12">
                 {% for post in posts %}
-
                         <article class="post-preview post-preview--full">
                             <a class="post-preview__link post-preview__link--static" href="{{ post.get_absolute_url }}">
                                 <h2 class="post-preview__title post-preview__title--static">{{ post.name }}</h2>
@@ -50,6 +49,8 @@
                                 <span style="float: right" class="meta__date">{{ post.pub_date }}</span>
                             </div>
                         </article>
+
+
                 {% endfor %}
             </div>
         </div>

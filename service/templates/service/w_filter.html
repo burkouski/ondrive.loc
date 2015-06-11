@@ -12,7 +12,7 @@
                     <label class="checkbox filter__option-label">
                         <input class="filter__option" type="checkbox"
                                checklist-model="{{ filter_name }}.options.{{ item.work_field_name }}"
-                               checklist-value="{{ item.id }}" ng-click="loadRemoteData(apiUrl, {{ filter_name }})">
+                               checklist-value="{{ item.id }}" ng-click="changeFilter()">
                         {{ item }}
                     </label>
                 {% endfor %}
