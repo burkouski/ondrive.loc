@@ -51,8 +51,8 @@
 
         <ul class="list-unstyled service__list">
 
-            {% for work1 in service.specialization_work.all %}
-                <li class="service__work-item"><img src="{% if work1.logo %}{{ work1.logo.url }}{% endif %}" alt="{{ work1 }}"/></li>
+            {% for brend in service.specialization_work.all %}
+                <li class="service__work-item"><img src="{% if brend.logo %}{{ brend.logo.url }}{% endif %}" alt="{{ brend }}" title="{{ brend }}"/></li>
             {% endfor %}
         </ul>
     {% endif %}
@@ -65,8 +65,8 @@
         <hr/>
         <ul class="list-unstyled service__list">
 
-            {% for work in service.add_services.all %}
-                <li class="service__work-item">{{ work.work_name }}</li>
+            {% for service in service.add_services.all %}
+                 <li class="service__work-item"><img src="{% if service.logo %}{{ service.logo.url }}{% endif %}" title="{{ service }}" alt="{{ service }}"/></li>
             {% endfor %}
         </ul>
     {% endif %}

@@ -118,10 +118,12 @@
                                 <li class="service__list-item"><span class="service__param-name">Рабочие дни:</span>
                 <span class="service__workday">
                     {% for day in service.get_workday_list %}
-                        {% if day.0 %}
-                            <span class="service__workday-icon service__workday-icon--blue">{{ day.1 }}</span>
+                        {% if day.0 == 'wd' %}
+                            <span class="service__workday-icon service__workday-icon--blue" title="рабочий день">{{ day.1 }}</span>
+                        {% elif day.0 == 'sd'%}
+                            <span class="service__workday-icon service__workday-icon--orange" title="сокращенный день">{{ day.1 }}</span>
                         {% else %}
-                            <span class="service__workday-icon service__workday-icon--red">{{ day.1 }}</span>
+                            <span class="service__workday-icon service__workday-icon--red" title="выходной день">{{ day.1 }}</span>
                         {% endif %}
                     {% endfor %}
                 </span>

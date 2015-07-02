@@ -15,10 +15,11 @@ def cooperation_view(request):
 
 @ensure_csrf_cookie
 def send_message(request):
-    name = request.POST.get('name', False)
-    email = request.POST.get('email', False)
-    subject = request.POST.get('subject', False)
-    message = request.POST.get('message', False)
+    post_data = json.loads(request.body)
+    name = post_data.get(u'name', False)
+    email = post_data.get(u'email', False)
+    subject = post_data.get(u'subject', False)
+    message = post_data.get(u'message', False)
     if not name:
         name = u'Не указано'
     if not email:

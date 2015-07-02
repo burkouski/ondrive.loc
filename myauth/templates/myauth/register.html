@@ -9,7 +9,7 @@
     <title>{% sitetree_page_title from "main" %}</title>
 {% endblock %}
 {% block page %}
-    <div id="main-container" ng-controller="registrationCtrl">
+    <div id="main-container" ng-app="ymapsApp" ng-controller="registrationCtrl">
         <!-- Breadcrumb Starts -->
         {% block breadcrumbs %}
             {% sitetree_breadcrumbs from "main" %}
