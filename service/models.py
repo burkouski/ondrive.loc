@@ -33,13 +33,18 @@ class Service(models.Model):
     holiday = models.CharField("Сокращенные дни", max_length=10, blank=True)
     holiday_time_start = models.TimeField('Время начала сокращенного дня', null=True, blank=True)
     holiday_time_end = models.TimeField('Время завершения сокращенного дня', null=True, blank=True)
-    monday = models.BooleanField('Понедельник',default=None, blank=True)
-    tuesday = models.BooleanField('Вторник',default=None, blank=True)
-    wednesday = models.BooleanField('Среда',default=None, blank=True)
-    thursday = models.BooleanField('Четверг',default=None, blank=True)
-    friday = models.BooleanField('Пятница',default=None, blank=True)
-    saturday = models.BooleanField('Суббота',default=None, blank=True)
-    sunday = models.BooleanField('Воскресенье',default=None, blank=True)
+    WORKDAY_CHOICES = (
+        ('wd', u'Рабочий день'),
+        ('sd', u'Сокращенный день'),
+        ('hd', u'Выходной'),
+    )
+    monday = models.CharField('Понедельник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    tuesday = models.CharField('Вторник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    wednesday = models.CharField('Среда', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    thursday = models.CharField('Четверг', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    friday = models.CharField('Пятница', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    saturday = models.CharField('Суббота', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    sunday = models.CharField('Воскресенье', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
     email = models.EmailField("Email", blank=True)
     site_url = models.URLField('Сайт', blank=True)
     full_desc = RichTextField("Полное описание", blank=True)
@@ -54,10 +59,10 @@ class Service(models.Model):
     class Meta:
         abstract = True
 
-    # Получаем рабочие дни ввиде списка Используеть в tastypie api
     def get_workday_list(self):
-        work_day_list = [[self.monday, 'пн'], [self.tuesday, 'вт'], [self.wednesday, 'ср'], [self.thursday, 'чт'], [self.friday, 'пт'], [self.saturday, 'сб'],
-                        [self.sunday, 'вс']]
+        work_day_list = [[self.monday, 'пн'], [self.tuesday, 'вт'], [self.wednesday, 'ср'], [self.thursday, 'чт'],
+                         [self.friday, 'пт'], [self.saturday, 'сб'],
+                         [self.sunday, 'вс']]
         return work_day_list
 
     def get_logo_img(self):
@@ -101,11 +106,11 @@ class Service(models.Model):
     def geocode(self, location):
         format = "json"
         # для python 3
-        #location = urllib.parse.quote_plus(location)
+        # location = urllib.parse.quote_plus(location)
         location = urllib.quote_plus(location)
         request = "http://geocode-maps.yandex.ru/1.x/?&geocode=%s&format=%s" % (location, format)
         # для python 3
-        #data = urllib.request.urlopen(request).read()
+        # data = urllib.request.urlopen(request).read()
         data = urllib.urlopen(request).read()
         # для python 3
         # data = json.loads(data.decode())
@@ -132,10 +137,12 @@ class Work(models.Model):
 
 class AddServices(Work):
     work_field_name = 'add_services'
+    logo = models.ImageField("иконка услуги", blank=True)
 
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Дополнительные услуги"
+
 
 #################### АВТОСЕРВИСЫ ####################
 
@@ -143,6 +150,7 @@ class AddServices(Work):
 class SpecializationWork(Work):
     work_field_name = 'specialization_work'
     logo = models.ImageField("Логотип марки", blank=True)
+
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Специализируются на марках"
@@ -154,6 +162,8 @@ class RepairWork(Work):
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Ремонт"
+
+
 class DiagWork(Work):
     work_field_name = 'diag_work'
 
@@ -161,12 +171,15 @@ class DiagWork(Work):
         verbose_name = u""
         verbose_name_plural = u"Диагностика"
 
+
 class ServWork(Work):
     work_field_name = 'serv_work'
 
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Обслуживание"
+
+
 class AddWork(Work):
     work_field_name = 'add_work'
 
@@ -175,21 +188,20 @@ class AddWork(Work):
         verbose_name_plural = u"Дополнительные работы"
 
 
-
 class AutoService(Service):
     # Виды работ
     specialization_work = models.ManyToManyField(SpecializationWork, related_name='specialization_work',
-                                              verbose_name=u'Специализирующиеся на марке', blank=True)
+                                                 verbose_name=u'Специализирующиеся на марке', blank=True)
     repair_work = models.ManyToManyField(RepairWork, related_name='repair_work',
-                                              verbose_name=u'Ремонт', blank=True)
+                                         verbose_name=u'Ремонт', blank=True)
     diag_work = models.ManyToManyField(DiagWork, related_name='diag_work',
-                                              verbose_name=u'Диагностика', blank=True)
+                                       verbose_name=u'Диагностика', blank=True)
     serv_work = models.ManyToManyField(ServWork, related_name='serv_work',
-                                              verbose_name=u'Обслуживание', blank=True)
+                                       verbose_name=u'Обслуживание', blank=True)
     add_work = models.ManyToManyField(AddWork, related_name='add_work',
-                                              verbose_name=u'Дополнительные работы', blank=True)
+                                      verbose_name=u'Дополнительные работы', blank=True)
     add_services = models.ManyToManyField(AddServices, related_name='autoservice_add_services',
-                                                     verbose_name=u'Дополнительные услуги', blank=True)
+                                          verbose_name=u'Дополнительные услуги', blank=True)
 
     reviews = GenericRelation(Review)
 
@@ -201,11 +213,10 @@ class AutoService(Service):
         return reverse('service:autoservice_detail', kwargs={'service_alias': self.alias})
 
 
-
 # class TireService(Service):
-#     pass
+# pass
 #
-#     class Meta:
+# class Meta:
 #         verbose_name = u"Шиномонтаж"
 #         verbose_name_plural = u"Шиномонтажи"
 #
@@ -235,16 +246,15 @@ class CarWashServices(Work):
         verbose_name_plural = u"Услуги"
 
 
-
 class CarWash(Service):
     type_carwash = models.ManyToManyField(TypeCarWash, related_name='type_carwash',
-                                              verbose_name='Вид мойки', blank=True)
+                                          verbose_name='Вид мойки', blank=True)
     type_vehicle = models.ManyToManyField(TypeVehicle, related_name='type_vehicle',
-                                              verbose_name='Вид транспорта', blank=True)
+                                          verbose_name='Вид транспорта', blank=True)
     car_wash_services = models.ManyToManyField(CarWashServices, related_name='car_wash_services',
-                                                verbose_name='Услуги', blank=True)
+                                               verbose_name='Услуги', blank=True)
     add_services = models.ManyToManyField(AddServices, related_name='carwash_add_services',
-                                                     verbose_name='Дополнительные услуги', blank=True)
+                                          verbose_name='Дополнительные услуги', blank=True)
     reviews = GenericRelation(Review)
 
     class Meta:
@@ -275,11 +285,11 @@ class DiscWork(Work):
 
 class TireService(Service):
     tire_work = models.ManyToManyField(TireWork, related_name='tire_work',
-                                              verbose_name='Шины', blank=True)
+                                       verbose_name='Шины', blank=True)
     disc_work = models.ManyToManyField(DiscWork, related_name='disc_work',
-                                              verbose_name='Диски', blank=True)
+                                       verbose_name='Диски', blank=True)
     add_services = models.ManyToManyField(AddServices, related_name='tire_add_services',
-                                                     verbose_name='Дополнительные услуги', blank=True)
+                                          verbose_name='Дополнительные услуги', blank=True)
     reviews = GenericRelation(Review)
 
     class Meta:

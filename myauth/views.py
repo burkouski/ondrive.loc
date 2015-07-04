@@ -94,15 +94,20 @@ def user_confirm(request, activation_key):
 
 @ensure_csrf_cookie
 def user_login(request):
-    args = {}
+    args = {'status': False}
+
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        post_data = json.loads(request.body)
+        #username = request.POST['username']
+        #password = request.POST['password']
+        username = post_data.get(u'username')
+        password = post_data.get(u'password')
         if User.objects.filter(username=username).count() or User.objects.filter(email=username).count():
             user = authenticate(username=username, password=password)
             if user:
                 if user.is_active:
                     login(request, user)
+                    args['status'] = True
                     args['mess'] = "Вы авторизованы"
                 else:
                     args['mess'] = 'Аккаунт заблокирован. Обратитесь к администрации'
@@ -118,8 +123,5 @@ def user_login(request):
 
 @login_required
 def user_logout(request):
-    # Since we know the user is logged in, we can now just log them out.
     logout(request)
-
-    # Take the user back to the homepage.
     return HttpResponseRedirect('/')

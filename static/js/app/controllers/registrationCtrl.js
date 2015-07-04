@@ -13,7 +13,7 @@ ymapsApp.controller('registrationCtrl', ['$scope','services', function ($scope, 
         if (form.$valid) {
             $scope.ajaxLoader = true;
             services.list(apiUrl, $scope.user, function (result) {
-                    //alert(true)
+                    alert(true)
                     $scope.result = result
                     console.log($scope.result)
                     $scope.resultMess = 'Ваше сообщение успешно отправлено';
@@ -25,7 +25,7 @@ ymapsApp.controller('registrationCtrl', ['$scope','services', function ($scope, 
                     $scope.success = false;
                     $scope.ajaxLoader = false;
                 });
-        }
+        };
 
-    }
+    };
 }]);
