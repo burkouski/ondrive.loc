@@ -24,9 +24,13 @@ def user_register(request):
         # username = request.POST.get('username', '')
         # email = request.POST.get('email', '')
         # password = request.POST.get('password', '')
-        username = request.POST.get('username', False)
-        email = request.POST.get('email', False)
-        password = request.POST.get('password', False)
+        post_data = json.loads(request.body)
+        username = post_data.get(u'username', False)
+        email = post_data.get(u'email', False)
+        password = post_data.get(u'password', False)
+        # username = request.POST.get('username', False)
+        # email = request.POST.get('email', False)
+        # password = request.POST.get('password', False)
         if User.objects.filter(username=username).count():
             args['success'] = False
             args['usernameErr'] = u'Пользователь с таким именем уже существует'
@@ -120,8 +124,40 @@ def user_login(request):
     return render(request, 'myauth/login.html',
                   context_instance=RequestContext(request))
 
-
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+def user_board(request):
+    args = {}
+    user_id = User.objects.get(username=request.user).id
+    args['user_profile'] = UserProfile.objects.get(user=user_id)
+    args['user'] = request.user
+    article = AutoService.objects.get(name=u'СТО Шанссервис Серова')
+    form = ArticleForm(instance=article)
+    args['form'] = form
+    return render_to_response('myauth/userboard.html', args)
+
+from django import forms
+from service.models import *
+from django.forms import ModelForm
+from django import forms
+class ArticleForm(ModelForm):
+    specialization = forms.ModelMultipleChoiceField(
+        queryset=SpecializationWork.objects.all(),
+        widget=forms.CheckboxSelectMultiple(
+
+
+            )
+        )
+    # first_name = forms.CharField(
+    #     widget=forms.TextInput(attrs={'class': 'wform__input', 'placeholder': 'Имя пользователя', 'required': 'required','ng-model':'username'}))
+    class Meta:
+        model = AutoService
+        fields = ['name','specialization']
+    def __init__(self, *args, **kwargs):
+        super(ArticleForm, self).__init__(*args, **kwargs)
+
+        if self.instance and self.instance.pk:
+          self.fields['specialization'].initial = self.instance.specialization_work.all()

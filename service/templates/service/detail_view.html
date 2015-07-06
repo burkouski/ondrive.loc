@@ -29,6 +29,7 @@
                         <img src="{{ service.logo.url }}" alt="{{ service.name }}"
                              class="img-responsive thumbnail service__img"/>
                     </a>
+
                     <div class="service__desc">
                         {{ service.teaser }}
                     </div>
@@ -119,11 +120,14 @@
                 <span class="service__workday">
                     {% for day in service.get_workday_list %}
                         {% if day.0 == 'wd' %}
-                            <span class="service__workday-icon service__workday-icon--blue" title="рабочий день">{{ day.1 }}</span>
-                        {% elif day.0 == 'sd'%}
-                            <span class="service__workday-icon service__workday-icon--orange" title="сокращенный день">{{ day.1 }}</span>
+                            <span class="service__workday-icon service__workday-icon--blue"
+                                  title="рабочий день">{{ day.1 }}</span>
+                        {% elif day.0 == 'sd' %}
+                            <span class="service__workday-icon service__workday-icon--orange"
+                                  title="сокращенный день">{{ day.1 }}</span>
                         {% else %}
-                            <span class="service__workday-icon service__workday-icon--red" title="выходной день">{{ day.1 }}</span>
+                            <span class="service__workday-icon service__workday-icon--red"
+                                  title="выходной день">{{ day.1 }}</span>
                         {% endif %}
                     {% endfor %}
                 </span>
@@ -176,21 +180,21 @@
                 <!-- Nav Tabs Starts -->
                 <ul class="nav nav-tabs">
                     {% if service.full_desc %}
-                    <li class="active"><a href="#tab-ainfo">Описание</a></li>
+                        <li class="active"><a href="#tab-ainfo">Описание</a></li>
                     {% endif %}
-                    <li class="{% if not service.full_desc  %}active{% endif %}"><a href="#tab-review">Отзывы</a></li>
+                    <li class="{% if not service.full_desc %}active{% endif %}"><a href="#tab-review">Отзывы</a></li>
                     <li><a href="#tab-sendreview">Оставить отзыв</a></li>
                 </ul>
                 <!-- Nav Tabs Ends -->
                 <!-- Tab Content Starts -->
                 <div class="tab-content clearfix">
-                {% if service.full_desc %}
-                    <div class="tab-pane active" id="tab-desc">
-                        <div class="service__desc">{{ service.full_desc|safe }}</div>
-                    </div>
-                {% endif %}
+                    {% if service.full_desc %}
+                        <div class="tab-pane active" id="tab-desc">
+                            <div class="service__desc">{{ service.full_desc|safe }}</div>
+                        </div>
+                    {% endif %}
                     <!-- Additional Information Starts -->
-                    <div class="tab-pane {% if not service.full_desc  %}active{% endif %}" id="tab-review">
+                    <div class="tab-pane {% if not service.full_desc %}active{% endif %}" id="tab-review">
 
                         {% for review in reviews %}
                             <div class="review">
