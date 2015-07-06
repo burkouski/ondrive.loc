@@ -47,7 +47,8 @@ INSTALLED_APPS = (
     'reviews',
     'contacts',
     'pages',
-    'htmlblock'
+    'htmlblock',
+    'ajaximage'
 )
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,7 +61,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'project.urls'
-AJAX_CRAWLING_URLCONF = 'project.urls_ajax_crawling'
+AJAXIMAGE_AUTH_TEST = lambda u: True
 WSGI_APPLICATION = 'project.wsgi.application'
 
 

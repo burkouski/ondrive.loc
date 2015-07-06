@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import json
-from django.shortcuts import render_to_response, get_object_or_404, render
+from django.shortcuts import render_to_response, get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from myauth.models import UserProfile
-from myauth.forms import RegistrationForm, LoginForm, DivErrorList
+from myauth.forms import RegistrationForm, LoginForm, DivErrorList, UserProfileForm
 from django.core.context_processors import csrf
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -130,14 +130,51 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 def user_board(request):
+    context = RequestContext(request)
     args = {}
     user_id = User.objects.get(username=request.user).id
     args['user_profile'] = UserProfile.objects.get(user=user_id)
     args['user'] = request.user
-    article = AutoService.objects.get(name=u'СТО Шанссервис Серова')
+    article = AutoService.objects.get(pk=18)
     form = ArticleForm(instance=article)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance=article)
+
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            return render_to_response('myauth/userboard.html', args, context)
     args['form'] = form
-    return render_to_response('myauth/userboard.html', args)
+    return render_to_response('myauth/userboard.html', args, context)
+
+
+def userprofile_edit(request):
+    print True
+    context = RequestContext(request)
+    args = {}
+    user_id = User.objects.get(username=request.user).id
+    user_profile = UserProfile.objects.get(user=user_id)
+    form = UserProfileForm(instance=user_profile)
+    args['form'] = form
+    args['user_profile'] = user_profile
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=user_profile)
+
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            print True
+            # Save the new category to the database.
+            form.save(commit=True)
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            return redirect('user_board')
+    return render_to_response('myauth/useredit.html', args, context)
+
 
 from django import forms
 from service.models import *
@@ -155,9 +192,20 @@ class ArticleForm(ModelForm):
     #     widget=forms.TextInput(attrs={'class': 'wform__input', 'placeholder': 'Имя пользователя', 'required': 'required','ng-model':'username'}))
     class Meta:
         model = AutoService
-        fields = ['name','specialization']
+        fields = ['name']
     def __init__(self, *args, **kwargs):
         super(ArticleForm, self).__init__(*args, **kwargs)
 
         if self.instance and self.instance.pk:
           self.fields['specialization'].initial = self.instance.specialization_work.all()
+    def save(self, commit=True):
+        topping = super(ArticleForm, self).save(commit=False)
+
+        if commit:
+          topping.save()
+
+        if topping.pk:
+          topping.specialization_work = self.cleaned_data['specialization']
+          self.save_m2m()
+
+        return topping

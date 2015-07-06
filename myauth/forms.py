@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
+from myauth.models import UserProfile
 
 
 class RegistrationForm(forms.ModelForm):
@@ -53,6 +54,18 @@ class LoginForm(forms.ModelForm):
         model = User
         fields = ('username', 'password')
 
+class UserProfileForm(forms.ModelForm):
+    first_name = forms.CharField(required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    nickname = forms.CharField(required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control'}),
+                            error_messages={'invalid': 'Введите корректный email'})
+    class Meta:
+        model = UserProfile
+        fields = ('first_name', 'last_name', 'nickname', 'avatar', 'email')
 
 class DivErrorList(ErrorList):
     def __str__(self):
