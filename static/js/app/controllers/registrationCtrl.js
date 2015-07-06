@@ -13,9 +13,7 @@ ymapsApp.controller('registrationCtrl', ['$scope','services', function ($scope, 
         if (form.$valid) {
             $scope.ajaxLoader = true;
             services.list(apiUrl, $scope.user, function (result) {
-                    alert(true)
-                    $scope.result = result
-                    console.log($scope.result)
+                    $scope.result = result;
                     $scope.resultMess = 'Ваше сообщение успешно отправлено';
                     $scope.success = true;
                     $scope.ajaxLoader = false;

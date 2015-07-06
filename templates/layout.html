@@ -98,11 +98,13 @@
                             <li><a href="/contacts/">Контакты</a></li>
 
                             <!--li><a href="#">Мой блог</a></li-->
-                            <!--li><a href="#">Мой профиль</a></li-->
+
                             <!--li><a href="cart.html"></a></li-->
                             {% if  not user.is_authenticated %}
                                 <!--li><a href="#">Мой профиль</a></li-->
                                 <li><a href="/auth/registration">Регистрация</a></li>
+                            {% else %}  
+                                <li><a href="/auth/user">Мой профиль</a></li>
                             {% endif %}
 
                             <!--li><a href="login.html">Книга жалоб и предложений</a></li-->
