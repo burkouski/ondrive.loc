@@ -20,4 +20,7 @@ $(function () {
             }
     });
 
+    $('input[type=file]').bootstrapFileInput({
+        'title': 'gdsgdsgds'
+    });
 })

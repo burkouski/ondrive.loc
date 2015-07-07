@@ -6,10 +6,12 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from ckeditor.fields import RichTextField
 from reviews.models import Review
+from myauth.models import UserProfile
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 import json
 from django.db.models import Avg
+
 
 
 # Абстрактная модель для сервисов
@@ -20,14 +22,14 @@ class Service(models.Model):
     address = models.CharField('Адрес', max_length=200)
     phone_velcom = models.CharField("Velcom", max_length=20, blank=True)
     phone_velcom2 = models.CharField("второй Velcom", max_length=20, blank=True)
-    phone_mts = models.CharField("МТС", max_length=20, blank=True)
-    phone_mts2 = models.CharField("второй МТС", max_length=10, blank=True)
-    phone_life = models.CharField("Life", max_length=20, blank=True)
-    phone_life2 = models.CharField("второй Life", max_length=20, blank=True)
-    phone_city = models.CharField("Городской", max_length=20, blank=True)
-    phone_city2 = models.CharField("второй Городской", max_length=20, blank=True)
-    work_start = models.TimeField('Время начала работы', null=True, blank=True)
-    work_end = models.TimeField('Время завершения работы', null=True, blank=True)
+    phone_mts = models.CharField(u"МТС", max_length=20, blank=True)
+    phone_mts2 = models.CharField(u"второй МТС", max_length=10, blank=True)
+    phone_life = models.CharField(u"Life", max_length=20, blank=True)
+    phone_life2 = models.CharField(u"второй Life", max_length=20, blank=True)
+    phone_city = models.CharField(u"Городской", max_length=20, blank=True)
+    phone_city2 = models.CharField(u"второй Городской", max_length=20, blank=True)
+    work_start = models.TimeField(u'Время начала работы', null=True, blank=True)
+    work_end = models.TimeField(u'Время завершения работы', null=True, blank=True)
     break_time_start = models.TimeField('Время начала обеда', null=True, blank=True)
     break_time_end = models.TimeField('Время завершения обеда', null=True, blank=True)
     holiday = models.CharField("Сокращенные дни", max_length=10, blank=True)
@@ -54,8 +56,8 @@ class Service(models.Model):
     longitude = models.CharField('Долгота', max_length=200, blank=True)
     title = models.CharField('title страницы', max_length=200, blank=True)
     meta_keywords = models.TextField('Keywords', blank=True)
-    meta_description = models.TextField('Description', blank=True)
-
+    meta_description = models.TextField('Description', blank=True, null=True)
+    owner = models.ForeignKey(UserProfile, default='85')
     class Meta:
         abstract = True
 

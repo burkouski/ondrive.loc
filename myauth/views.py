@@ -137,17 +137,6 @@ def user_board(request):
     args['user'] = request.user
     article = AutoService.objects.get(pk=18)
     form = ArticleForm(instance=article)
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, instance=article)
-
-        # Have we been provided with a valid form?
-        if form.is_valid():
-            # Save the new category to the database.
-            form.save(commit=True)
-
-            # Now call the index() view.
-            # The user will be shown the homepage.
-            return render_to_response('myauth/userboard.html', args, context)
     args['form'] = form
     return render_to_response('myauth/userboard.html', args, context)
 
@@ -162,7 +151,7 @@ def userprofile_edit(request):
     args['form'] = form
     args['user_profile'] = user_profile
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=user_profile)
+        form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
 
         # Have we been provided with a valid form?
         if form.is_valid():
@@ -172,40 +161,9 @@ def userprofile_edit(request):
 
             # Now call the index() view.
             # The user will be shown the homepage.
-            return redirect('user_board')
+            return redirect('/auth/user')
+        else:
+            args['form'] = form
+            return render_to_response('myauth/useredit.html', args, context)
     return render_to_response('myauth/useredit.html', args, context)
 
-
-from django import forms
-from service.models import *
-from django.forms import ModelForm
-from django import forms
-class ArticleForm(ModelForm):
-    specialization = forms.ModelMultipleChoiceField(
-        queryset=SpecializationWork.objects.all(),
-        widget=forms.CheckboxSelectMultiple(
-
-
-            )
-        )
-    # first_name = forms.CharField(
-    #     widget=forms.TextInput(attrs={'class': 'wform__input', 'placeholder': 'Имя пользователя', 'required': 'required','ng-model':'username'}))
-    class Meta:
-        model = AutoService
-        fields = ['name']
-    def __init__(self, *args, **kwargs):
-        super(ArticleForm, self).__init__(*args, **kwargs)
-
-        if self.instance and self.instance.pk:
-          self.fields['specialization'].initial = self.instance.specialization_work.all()
-    def save(self, commit=True):
-        topping = super(ArticleForm, self).save(commit=False)
-
-        if commit:
-          topping.save()
-
-        if topping.pk:
-          topping.specialization_work = self.cleaned_data['specialization']
-          self.save_m2m()
-
-        return topping

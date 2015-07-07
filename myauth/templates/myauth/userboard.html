@@ -31,11 +31,15 @@
                         <h2 class="service__title">Профиль пользователя {{ user }}</h2>
                         <hr/>
                         <ul class="list-unstyled service__list">
+
                             <li class="service__list-item">
-                                <span class="service__param-name">Ваш email:</span> {{ user.email }}
+                                <span class="service__param-name">Имя и Фамилия:</span> {{ user_profile.first_name }} {{ user_profile.sur_name }}
                             </li>
                             <li class="service__list-item">
-                                <span class="service__param-name">Имя:</span> {{ user_profile.first_name }} {{ user_profile.sur_name }}
+                            <span class="service__param-name">Дата регистрации:</span>{{user_profile.date_joined}}
+                            </li>
+                            <li class="service__list-item">
+                                <span class="service__param-name">Ваш email:</span> {{ user.email }}
                             </li>
                             <li class="service__list-item">
                                 <span class="service__param-name">Подпись:</span> {{ user_profile.nickname }}

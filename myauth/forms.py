@@ -61,14 +61,65 @@ class UserProfileForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     nickname = forms.CharField(required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control'}),
+    email = forms.CharField(show_hidden_initial=True, required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}),
                             error_messages={'invalid': 'Введите корректный email'})
+    avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'btn btn-warning text-uppercase', 'title':u'Выберите изображение'}))
+
     class Meta:
         model = UserProfile
         fields = ('first_name', 'last_name', 'nickname', 'avatar', 'email')
 
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        # if User.objects.filter(email=email).exists():
+        #     raise ValidationError("Введенный email уже используется!")
+        return email
+
+    def clean(self):
+        print self.initial['email']
+        if self.initial['email'] != self.cleaned_data.get('email', None):
+            email = self.cleaned_data.get('email', None)
+            if UserProfile.objects.filter(email=email).exists():
+                self._errors["email"] = ErrorList([u"Данный email занят"])
+
+
+class AutoserviceForm(ModelForm):
+    specialization = forms.ModelMultipleChoiceField(
+        queryset=SpecializationWork.objects.all(),
+        widget=forms.CheckboxSelectMultiple(
+
+
+            )
+        )
+    # first_name = forms.CharField(
+    #     widget=forms.TextInput(attrs={'class': 'wform__input', 'placeholder': 'Имя пользователя', 'required': 'required','ng-model':'username'}))
+    class Meta:
+        model = AutoService
+        fields = ['name']
+
+    def __init__(self, *args, **kwargs):
+        super(ArticleForm, self).__init__(*args, **kwargs)
+
+        if self.instance and self.instance.pk:
+          self.fields['specialization'].initial = self.instance.specialization_work.all()
+
+    def save(self, commit=True):
+        topping = super(ArticleForm, self).save(commit=False)
+
+        if commit:
+          topping.save()
+
+        if topping.pk:
+          topping.specialization_work = self.cleaned_data['specialization']
+          self.save_m2m()
+
+        return topping
+
+
 class DivErrorList(ErrorList):
-    def __str__(self):
+    # def __str__(self):
+    #     return self.as_divs()
+    def __unicode__(self):
         return self.as_divs()
 
     def as_divs(self):
