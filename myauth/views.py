@@ -135,9 +135,9 @@ def user_board(request):
     user_id = User.objects.get(username=request.user).id
     args['user_profile'] = UserProfile.objects.get(user=user_id)
     args['user'] = request.user
-    article = AutoService.objects.get(pk=18)
-    form = ArticleForm(instance=article)
-    args['form'] = form
+    #article = AutoService.objects.get(pk=18)
+    #form = ArticleForm(instance=article)
+    #args['form'] = form
     return render_to_response('myauth/userboard.html', args, context)
 
 

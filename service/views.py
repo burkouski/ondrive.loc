@@ -7,7 +7,7 @@ from itertools import chain
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 
-@ensure_csrf_cookie
+#@ensure_csrf_cookie
 def service_list(request):
     if request.GET.get('_escaped_fragment_') == '':
         autoservice = AutoService.objects.all()

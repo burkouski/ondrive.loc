@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
 from myauth.models import UserProfile
-
+from service.models import *
 
 class RegistrationForm(forms.ModelForm):
     username = forms.CharField(
@@ -83,7 +83,7 @@ class UserProfileForm(forms.ModelForm):
                 self._errors["email"] = ErrorList([u"Данный email занят"])
 
 
-class AutoserviceForm(ModelForm):
+class AutoserviceForm(forms.ModelForm):
     specialization = forms.ModelMultipleChoiceField(
         queryset=SpecializationWork.objects.all(),
         widget=forms.CheckboxSelectMultiple(
