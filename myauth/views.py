@@ -167,3 +167,10 @@ def userprofile_edit(request):
             return render_to_response('myauth/useredit.html', args, context)
     return render_to_response('myauth/useredit.html', args, context)
 
+
+def userprofile_service(request):
+    args = {}
+    user_id = User.objects.get(username=request.user).id
+    user_profile = UserProfile.objects.get(user=user_id)
+    args['user_profile'] = user_profile
+    return render_to_response('myauth/user_service.html', args)
