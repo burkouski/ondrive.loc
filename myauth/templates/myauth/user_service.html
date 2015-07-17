@@ -18,22 +18,16 @@
 					<thead>
 						<tr>
 							<td class="text-center">
-								Image
+								Логотип
 							</td>
 							<td class="text-center">
-								Product Details
+								Название
 							</td>
 							<td class="text-center">
-								Quantity
+								Тип
 							</td>
 							<td class="text-center">
-								Price
-							</td>
-							<td class="text-center">
-								Total
-							</td>
-							<td class="text-center">
-								Action
+								Управление
 							</td>
 						</tr>
 					</thead>
@@ -42,25 +36,15 @@
 						<tr>
 							<td class="text-center">
 								<a href="product.html">
-									<img src="images/product-images/cart-thumb-img1.jpg" alt="Product Name" title="Product Name" class="img-thumbnail">
+									<img src="{{ service.logo.url }}" alt="Product Name" title="Product Name" class="img-thumbnail">
 								</a>
 							</td>
 							<td class="text-center">
-								<a href="product-full.html">{{ service }}</a>
+								<a href="{{ service.get_absolute_url }}">{{ service }}</a>
 							</td>
+                            <td>Автосервис</td>
 							<td class="text-center">
-								<div class="input-group btn-block">
-									<input type="text" name="quantity" value="1" size="1" class="form-control">
-								</div>
-							</td>
-							<td class="text-center">
-								$150.00
-							</td>
-							<td class="text-center">
-								$150.00
-							</td>
-							<td class="text-center">
-								<a href="/" type="submit" title="" class="btn btn-default tool-tip" data-original-title="Update">
+								<a href="/auth/user/service/edit_as_{{ service.id }}/" type="submit" title="" class="btn btn-default tool-tip" data-original-title="Update">
 									<i class="fa fa-refresh"></i>
 								</a>
 								<button type="button" title="" class="btn btn-default tool-tip" data-original-title="Remove">

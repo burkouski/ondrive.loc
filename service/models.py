@@ -16,12 +16,12 @@ from django.db.models import Avg
 
 # Абстрактная модель для сервисов
 class Service(models.Model):
-    name = models.CharField("Название сервиса", max_length=200)
+    name = models.CharField(u"Название сервиса", max_length=200)
     alias = models.SlugField(max_length=100, blank=True)
-    teaser = models.TextField('Краткое описание')
-    address = models.CharField('Адрес', max_length=200)
-    phone_velcom = models.CharField("Velcom", max_length=20, blank=True)
-    phone_velcom2 = models.CharField("второй Velcom", max_length=20, blank=True)
+    teaser = models.TextField(u'Краткое описание',blank=True)
+    address = models.CharField(u'Адрес', max_length=200,blank=True)
+    phone_velcom = models.CharField(u"Velcom", max_length=20, blank=True)
+    phone_velcom2 = models.CharField(u"второй Velcom", max_length=20, blank=True)
     phone_mts = models.CharField(u"МТС", max_length=20, blank=True)
     phone_mts2 = models.CharField(u"второй МТС", max_length=10, blank=True)
     phone_life = models.CharField(u"Life", max_length=20, blank=True)
@@ -30,33 +30,33 @@ class Service(models.Model):
     phone_city2 = models.CharField(u"второй Городской", max_length=20, blank=True)
     work_start = models.TimeField(u'Время начала работы', null=True, blank=True)
     work_end = models.TimeField(u'Время завершения работы', null=True, blank=True)
-    break_time_start = models.TimeField('Время начала обеда', null=True, blank=True)
-    break_time_end = models.TimeField('Время завершения обеда', null=True, blank=True)
-    holiday = models.CharField("Сокращенные дни", max_length=10, blank=True)
-    holiday_time_start = models.TimeField('Время начала сокращенного дня', null=True, blank=True)
-    holiday_time_end = models.TimeField('Время завершения сокращенного дня', null=True, blank=True)
+    break_time_start = models.TimeField(u'Время начала обеда', null=True, blank=True)
+    break_time_end = models.TimeField(u'Время завершения обеда', null=True, blank=True)
+    holiday = models.CharField(u"Сокращенные дни", max_length=10, blank=True)
+    holiday_time_start = models.TimeField(u'Время начала сокращенного дня', null=True, blank=True)
+    holiday_time_end = models.TimeField(u'Время завершения сокращенного дня', null=True, blank=True)
     WORKDAY_CHOICES = (
         ('wd', u'Рабочий день'),
         ('sd', u'Сокращенный день'),
         ('hd', u'Выходной'),
     )
-    monday = models.CharField('Понедельник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
-    tuesday = models.CharField('Вторник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
-    wednesday = models.CharField('Среда', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
-    thursday = models.CharField('Четверг', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
-    friday = models.CharField('Пятница', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
-    saturday = models.CharField('Суббота', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
-    sunday = models.CharField('Воскресенье', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
-    email = models.EmailField("Email", blank=True)
-    site_url = models.URLField('Сайт', blank=True)
-    full_desc = RichTextField("Полное описание", blank=True)
-    logo = models.ImageField("Логотип компании", blank=True)
-    is_top = models.BooleanField("Выводить в топ на главной?", default=None, blank=True)
-    latitude = models.CharField('Широта', max_length=200, blank=True)
-    longitude = models.CharField('Долгота', max_length=200, blank=True)
-    title = models.CharField('title страницы', max_length=200, blank=True)
-    meta_keywords = models.TextField('Keywords', blank=True)
-    meta_description = models.TextField('Description', blank=True, null=True)
+    monday = models.CharField(u'Понедельник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    tuesday = models.CharField(u'Вторник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    wednesday = models.CharField(u'Среда', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    thursday = models.CharField(u'Четверг', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    friday = models.CharField(u'Пятница', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    saturday = models.CharField(u'Суббота', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    sunday = models.CharField(u'Воскресенье', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+    email = models.EmailField(u"Email", blank=True)
+    site_url = models.URLField(u'Сайт', blank=True)
+    full_desc = RichTextField(u"Полное описание", blank=True)
+    logo = models.ImageField(u"Логотип компании", blank=True)
+    is_top = models.BooleanField(u"Выводить в топ на главной?", default=None, blank=True)
+    latitude = models.CharField(u'Широта', max_length=200, blank=True)
+    longitude = models.CharField(u'Долгота', max_length=200, blank=True)
+    title = models.CharField(u'title страницы', max_length=200, blank=True)
+    meta_keywords = models.TextField(u'Keywords', blank=True)
+    meta_description = models.TextField(u'Description', blank=True, null=True)
     owner = models.ForeignKey(UserProfile, default='85')
     class Meta:
         abstract = True
@@ -75,18 +75,19 @@ class Service(models.Model):
         return rating
 
     def save(self):
-        address = re.sub(' +', '+', self.address)
-        location = "%s" % address
-        location = location.encode('utf-8')
+        if self.address:
+            address = re.sub(' +', '+', self.address)
+            location = "%s" % address
+            location = location.encode('utf-8')
 
-        if self.pk is not None:
-            origin_address = Service(pk=self.pk)
+            if self.pk is not None:
+                origin_address = Service(pk=self.pk)
 
-        if not self.latitude or not self.longitude or (origin_address.address != self.address):
-            latlng = self.geocode(location)
-            latlng = latlng.split(' ')
-            self.latitude = latlng[0]
-            self.longitude = latlng[1]
+            if not self.latitude or not self.longitude or (origin_address.address != self.address):
+                latlng = self.geocode(location)
+                latlng = latlng.split(' ')
+                self.latitude = latlng[0]
+                self.longitude = latlng[1]
 
         # Если не задано поле alias Получаем его из поля name
         if not self.alias:

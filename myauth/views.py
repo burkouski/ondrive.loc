@@ -6,6 +6,9 @@ from django.template import RequestContext
 from django.contrib.auth.models import User
 from myauth.models import UserProfile
 from myauth.forms import RegistrationForm, LoginForm, DivErrorList, UserProfileForm
+from service.models import AutoService
+# перенести форму
+from myauth.forms import AutoserviceForm
 from django.core.context_processors import csrf
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -155,7 +158,6 @@ def userprofile_edit(request):
 
         # Have we been provided with a valid form?
         if form.is_valid():
-            print True
             # Save the new category to the database.
             form.save(commit=True)
 
@@ -174,3 +176,27 @@ def userprofile_service(request):
     user_profile = UserProfile.objects.get(user=user_id)
     args['user_profile'] = user_profile
     return render_to_response('myauth/user_service.html', args)
+
+def service_edit(request, service_id):
+    context = RequestContext(request)
+    args = {}
+    user_id = UserProfile.objects.get(username=request.user).id
+    service = get_object_or_404(AutoService, pk=service_id, owner=user_id)
+    form = AutoserviceForm(instance=service)
+    args['form'] = form
+    args['service'] = service
+    if request.method == 'POST':
+        form = AutoserviceForm(request.POST, request.FILES, instance=service)
+
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            return redirect('/auth/user')
+        else:
+            args['form'] = form
+            return render_to_response('myauth/autoservice_edit.html', args, context)
+    return render_to_response('myauth/autoservice_edit.html', args, context)
