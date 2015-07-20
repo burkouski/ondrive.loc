@@ -25,10 +25,10 @@ class AutoServiceAdmin(admin.ModelAdmin):
         ('Время работы', {
             'fields': (
                 'work_start', 'work_end', 'break_time_start', 'break_time_end', 'holiday_time_start',
-                'holiday_time_end', 'holiday')
+                'holiday_time_end')
         }),
         ('Описание сервиса', {
-            'fields': ('teaser', 'full_desc', 'is_top')
+            'fields': ('teaser', 'full_desc', 'is_moderate')
         }),
         ('Координаты для карты', {
             'fields': ('latitude', 'longitude')

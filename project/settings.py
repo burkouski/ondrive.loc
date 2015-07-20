@@ -48,7 +48,6 @@ INSTALLED_APPS = (
     'contacts',
     'pages',
     'htmlblock',
-    'ajaximage'
 )
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -32,7 +32,6 @@ class Service(models.Model):
     work_end = models.TimeField(u'Время завершения работы', null=True, blank=True)
     break_time_start = models.TimeField(u'Время начала обеда', null=True, blank=True)
     break_time_end = models.TimeField(u'Время завершения обеда', null=True, blank=True)
-    holiday = models.CharField(u"Сокращенные дни", max_length=10, blank=True)
     holiday_time_start = models.TimeField(u'Время начала сокращенного дня', null=True, blank=True)
     holiday_time_end = models.TimeField(u'Время завершения сокращенного дня', null=True, blank=True)
     WORKDAY_CHOICES = (
@@ -51,7 +50,7 @@ class Service(models.Model):
     site_url = models.URLField(u'Сайт', blank=True)
     full_desc = RichTextField(u"Полное описание", blank=True)
     logo = models.ImageField(u"Логотип компании", blank=True)
-    is_top = models.BooleanField(u"Выводить в топ на главной?", default=None, blank=True)
+    is_moderate = models.BooleanField(u"Выводить в топ на главной?", default=False)
     latitude = models.CharField(u'Широта', max_length=200, blank=True)
     longitude = models.CharField(u'Долгота', max_length=200, blank=True)
     title = models.CharField(u'title страницы', max_length=200, blank=True)

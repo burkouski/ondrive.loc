@@ -96,28 +96,29 @@ class UserProfileForm(forms.ModelForm):
 class AutoserviceForm(forms.ModelForm):
     name = forms.CharField(required=True,
                            widget=forms.TextInput(attrs={'class': 'form-control'}))
-    logo = forms.ImageField(widget=forms.FileInput(attrs={'class': 'btn btn-warning text-uppercase', 'title': u'Выберите изображение'}))
-    address = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_velcom = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_velcom2 = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_mts = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_mts2 = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_life = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_life2 = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_city = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_city2 = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control'}),error_messages={'invalid': 'Введите корректный email'})
-
-    specialization = forms.ModelMultipleChoiceField(
+    logo = forms.ImageField(required=False,widget=forms.FileInput(attrs={'class': 'btn btn-warning text-uppercase', 'title': u'Выберите изображение'}))
+    address = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_velcom = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_velcom2 = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_mts = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_mts2 = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_life = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_life2 = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_city = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_city2 = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.CharField(required=False,widget=forms.EmailInput(attrs={'class': 'form-control'}),error_messages={'invalid': 'Введите корректный email'})
+    site_url = forms.CharField(required=False,widget=forms.URLInput(attrs={'class': 'form-control'}),error_messages={'invalid': 'Введите адрес сайта в формате http://yoursite.com'})
+    specialization = forms.ModelMultipleChoiceField(required=False,
         queryset=SpecializationWork.objects.all(),
         widget=forms.CheckboxSelectMultiple(
+            attrs={'class': 'form-control'}
         )
     )
     # first_name = forms.CharField(
     # widget=forms.TextInput(attrs={'class': 'wform__input', 'placeholder': 'Имя пользователя', 'required': 'required','ng-model':'username'}))
     class Meta:
         model = AutoService
-        fields = ['name','address','email','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2', 'logo','monday','tuesday','wednesday','thursday',
+        fields = ['name','address','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2','email','site_url', 'logo','monday','tuesday','wednesday','thursday',
                   'friday', 'saturday','sunday']
 
     def __init__(self, *args, **kwargs):

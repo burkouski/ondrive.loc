@@ -41,9 +41,7 @@
                                             <li class="service__list-item">
                                                 <span class="service__param-name">Адрес:</span> {{ form.address }}
                                             </li>
-                                            <li class="service__list-item">
-                                                <span class="service__param-name">Email:</span> {{ form.email }}
-                                            </li>
+
                                             <li class="service__list-item">
                                                 <span class="service__param-name">Телефон (velcom):</span> {{ form.phone_velcom }}
                                             </li>
@@ -67,6 +65,12 @@
                                             </li>
                                             <li class="service__list-item">
                                                 <span class="service__param-name">Телефон (городской дополнительный):</span> {{ form.phone_city }}
+                                            </li>
+                                            <li class="service__list-item">
+                                                <span class="service__param-name">Email:</span> {{ form.email }}
+                                            </li>
+                                            <li class="service__list-item">
+                                                <span class="service__param-name">Сайт компании:</span> {{ form.site_url }}
                                             </li>
                                         </ul>
                                     </div>
@@ -95,7 +99,7 @@
                                                 <span class="service__param-name">Воскресенье:</span> {{ form.sunday }}
                                             </li>
                                         </ul>
-
+{{ form.specialization }}
                                     </div>
                                     <div class="center">
                                         <input type="submit" name="submit" value="Create Category"/>
