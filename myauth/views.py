@@ -102,7 +102,7 @@ def user_confirm(request, activation_key):
 @ensure_csrf_cookie
 def user_login(request):
     args = {'status': False}
-
+    args['prev_url'] = request.GET.get('next')
     if request.method == 'POST':
         post_data = json.loads(request.body)
         #username = request.POST['username']
@@ -124,7 +124,7 @@ def user_login(request):
             args['mess'] = 'Имя пользователя или пароль неверны'
         return HttpResponse(json.dumps(args))
 
-    return render(request, 'myauth/login.html',
+    return render(request, 'myauth/login.html',args,
                   context_instance=RequestContext(request))
 
 @login_required

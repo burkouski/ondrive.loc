@@ -1,10 +1,13 @@
 ymapsApp.controller('loginCtrl', ['$scope','services','$timeout', function ($scope, services, $timeout) {
 
     var apiUrl = '/auth/login/';
+    $scope.initPrevPath = function(path) {
+        $scope.user.prevPath = path
+    };
     $scope.ajaxLoader = false;
     $scope.result = {
         mess: 'Авторизация'
-    }
+    };
 
     $scope.loginSubmit = function (form) {
         parent.$.fancybox.update();
