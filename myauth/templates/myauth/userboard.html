@@ -10,29 +10,63 @@
 {% endblock %}
 {% block page %}
     <div id="main-container">
-    <div class="wrap">
-        <div class="row service">
-            <div class="col-md-9">
+        <div class="wrap">
+            <div class="row service">
+                <div class="col-md-9">
+                    <div class="col-sm-4 service__images">
+                        <a href="/">
+                            <img src="{{ user_profile.avatar.url }}" alt="{{ user_profile.nickname }}"
+                                 class="img-responsive thumbnail service__img"/>
+                        </a>
+                        <!--form id="category_form" method="post" action="/auth/user/">
+                        {% csrf_token %}
+                    {{ form }}
+                        {{ form.name }}
+                    <input type="submit" name="submit" value="Create Category" />
+                    </form-->
+                    </div>
+                    <div class="col-sm-8  service__details">
+                        <div class="service__panel">
+                            <div class="service__item">
+                                <h2 class="service__title">Профиль пользователя {{ user }}</h2>
+                                <hr/>
+                                <ul class="list-unstyled service__list">
 
-            </div>
-            </div>
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="/auth/user/edit/" class="list-group-item">
+                                    <li class="service__list-item">
+                                        <span class="service__param-name">Имя и Фамилия:</span> {{ user_profile.first_name }} {{ user_profile.sur_name }}
+                                    </li>
+                                    <li class="service__list-item">
+                                        <span class="service__param-name">Дата регистрации:</span>{{ user_profile.date_joined }}
+                                    </li>
+                                    <li class="service__list-item">
+                                        <span class="service__param-name">Ваш email:</span> {{ user.email }}
+                                    </li>
+                                    <li class="service__list-item">
+                                        <span class="service__param-name">Подпись:</span> {{ user_profile.nickname }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <a href="/auth/user/service" class="list-group-item">
                         <i class="fa fa-chevron-right"></i>
                         Редактировать профиль
                     </a>
+
                     {% if user_profile.autoservice_set.all %}
                         <a href="/auth/user/service" class="list-group-item">
-                        <i class="fa fa-chevron-right"></i>
-                        Мои сервисы
-                    </a>
+                            <i class="fa fa-chevron-right"></i>
+                            Мои сервисы
+                        </a>
                     {% endif %}
+
                 </div>
+
             </div>
+
         </div>
     </div>
-
     </div>
-
 {% endblock %}

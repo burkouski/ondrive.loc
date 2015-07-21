@@ -26,7 +26,7 @@ DEBUG = True
 SITE_ID = 1
 TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = ['localhost']
-
+LOGIN_URL = '/auth/login/'
 # Application definition
 
 INSTALLED_APPS = (
@@ -115,7 +115,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-CKEDITOR_UPLOAD_PATH = "upload/"
+CKEDITOR_UPLOAD_PATH = "upload/content/"
 
 
 DISQUS_SECRET_KEY = 'gUE2zeP5jaMXf1D4YnaoiKRMyrLMf7oImKuNDh78QYafULtC2CMvM6pCe4mflJoc'

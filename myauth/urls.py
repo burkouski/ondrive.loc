@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from myauth.views import user_register, user_login, user_logout, user_confirm, user_board, userprofile_edit,userprofile_service, service_edit
+from myauth.views import user_register, user_login, user_logout, user_confirm, user_board, userprofile_edit,userprofile_service, autoservice_edit, carwash_edit, tireservice_edit
 from django.views.generic import TemplateView
 
 urlpatterns = patterns('news.views',
@@ -15,7 +15,9 @@ urlpatterns = patterns('news.views',
     url(r'^user/$', user_board, name='user_board'),
     url(r'^user/edit/$', userprofile_edit, name='userprofile_edit'),
     url(r'^user/service/$', userprofile_service, name='userprofile_service'),
-    url(r'^user/service/edit_as_(?P<service_id>\w+)/$', service_edit, name='service_edit'),
+    url(r'^user/service/edit_as_(?P<service_id>\w+)/$', autoservice_edit, name='autoservice_edit'),
+    url(r'^user/service/edit_cw_(?P<service_id>\w+)/$', carwash_edit, name='carwash_edit'),
+    url(r'^user/service/edit_ts_(?P<service_id>\w+)/$', tireservice_edit, name='tireservice_edit'),
     #url(r'^(?P<category_alias>\w+)/$', get_category_posts, name='category_post_list'),
     #url(r'^(?P<category_alias>\w+)/(?P<post_alias>[\w-]+)/$', get_post_detail, name='post_detail'),
     #url(r'^tags/(?P<tag_alias>\w+)/$', TagPostListView.as_view(), name='tag_posts_list'),

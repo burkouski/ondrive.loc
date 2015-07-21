@@ -1,0 +1,163 @@
+{% extends 'layout.html' %}
+{% load sitetree %}
+
+{% block meta %}
+    <meta name="description" content="">
+{% endblock %}
+
+{% block title %}
+    <title>Личный кабинет</title>
+{% endblock %}
+{% block page %}
+    <div id="main-container">
+        <div class="wrap">
+            <div class="row service">
+                <div class="col-md-9">
+                    <form method="post" action="{{ path }}"
+                          enctype="multipart/form-data">
+
+                        <div class="col-sm-12  service__details">
+                                {% csrf_token %}
+                                {{ form.errors }}
+                            <div class="service__panel">
+
+                                <div class="service__item">
+                                    <h2 class="service__title">Редактирование {{ service.name }}</h2>
+                                    <hr/>
+                                    <div class="panel panel-smart ">
+                                        <div class="row">
+                                            <div class="col-sm-4 service__images">
+                                                <a href="/">
+                                                    <img src="{{ service.logo.url }}" alt=""
+                                                         class="img-responsive thumbnail service__img"/>
+                                                </a>
+                                                {{ form.logo }}
+
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <h4>Контактные данные</h4>
+                                                <ul class="list-unstyled service__list">
+                                                    <li class="service__list-item">
+
+                                                        <span class="service__param-name">Название:</span> {{ form.name }}
+                                                        <div class="text-danger">{{ form.name.errors.as_text }}</div>
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Адрес:</span> {{ form.address }}
+                                                    </li>
+
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Телефон (velcom):</span> {{ form.phone_velcom }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Телефон (velcom дополнительный):</span> {{ form.phone_velcom2 }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Телефон (mts):</span> {{ form.phone_mts }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Телефон (mts дополнительный):</span> {{ form.phone_mts2 }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Телефон (life):</span> {{ form.phone_life }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Телефон (life дополнительный):</span> {{ form.phone_life2 }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Телефон (городской):</span> {{ form.phone_city }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Телефон (городской дополнительный):</span> {{ form.phone_city }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Email:</span> {{ form.email }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Сайт компании:</span> {{ form.site_url }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="panel panel-smart">
+                                        <h4>Режим работы</h4>
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="list-unstyled service__list">
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Понедельник:</span> {{ form.monday }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Вторник:</span> {{ form.tuesday }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Среда:</span> {{ form.wednesday }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Четверг:</span> {{ form.thursday }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Пятница:</span> {{ form.friday }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Суббота:</span> {{ form.saturday }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Воскресенье:</span> {{ form.sunday }}
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <ul class="list-unstyled service__list">
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Время работы:</span>
+                                                        c {{ form.work_start }} до {{ form.work_end }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Время обеда:</span>
+                                                        с {{ form.break_time_start }} до {{ form.break_time_end }}
+                                                    </li>
+                                                    <li class="service__list-item">
+                                                        <span class="service__param-name">Сокращенный день:</span>
+                                                        с {{ form.holiday_time_start }} до {{ form.holiday_time_end }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    {% block custom_field %}
+
+                                    {% endblock %}
+                                    <div class="center">
+                                        <input type="submit" name="submit" value="Create Category"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <a href="/auth/user/" class="list-group-item">
+                            <i class="fa fa-chevron-right"></i>
+                            Ваш профиль
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block add_script %}
+    {{ form.media }}
+{% endblock %}

@@ -12,14 +12,45 @@ from django.contrib.contenttypes.models import ContentType
 import json
 from django.db.models import Avg
 
+WORKDAY_CHOICES = (
+    ('wd', u'Рабочий день'),
+    ('sd', u'Сокращенный день'),
+    ('hd', u'Выходной'),
+)
+TIME_CHOICES = (
+    ('0', '0:00'),
+    ('1', '1:00'),
+    ('2', '2:00'),
+    ('3', '3:00'),
+    ('4', '4:00'),
+    ('5', '5:00'),
+    ('6', '6:00'),
+    ('7', '7:00'),
+    ('8', '8:00'),
+    ('9', '9:00'),
+    ('10', '10:00'),
+    ('11', '11:00'),
+    ('12', '12:00'),
+    ('13', '13:00'),
+    ('14', '14:00'),
+    ('15', '15:00'),
+    ('16', '16:00'),
+    ('17', '17:00'),
+    ('18', '18:00'),
+    ('19', '19:00'),
+    ('20', '20:00'),
+    ('21', '21:00'),
+    ('22', '22:00'),
+    ('23', '23:00'),
 
+)
 
 # Абстрактная модель для сервисов
 class Service(models.Model):
     name = models.CharField(u"Название сервиса", max_length=200)
     alias = models.SlugField(max_length=100, blank=True)
-    teaser = models.TextField(u'Краткое описание',blank=True)
-    address = models.CharField(u'Адрес', max_length=200,blank=True)
+    teaser = models.TextField(u'Краткое описание', blank=True)
+    address = models.CharField(u'Адрес', max_length=200, blank=True)
     phone_velcom = models.CharField(u"Velcom", max_length=20, blank=True)
     phone_velcom2 = models.CharField(u"второй Velcom", max_length=20, blank=True)
     phone_mts = models.CharField(u"МТС", max_length=20, blank=True)
@@ -28,17 +59,14 @@ class Service(models.Model):
     phone_life2 = models.CharField(u"второй Life", max_length=20, blank=True)
     phone_city = models.CharField(u"Городской", max_length=20, blank=True)
     phone_city2 = models.CharField(u"второй Городской", max_length=20, blank=True)
-    work_start = models.TimeField(u'Время начала работы', null=True, blank=True)
-    work_end = models.TimeField(u'Время завершения работы', null=True, blank=True)
-    break_time_start = models.TimeField(u'Время начала обеда', null=True, blank=True)
-    break_time_end = models.TimeField(u'Время завершения обеда', null=True, blank=True)
-    holiday_time_start = models.TimeField(u'Время начала сокращенного дня', null=True, blank=True)
-    holiday_time_end = models.TimeField(u'Время завершения сокращенного дня', null=True, blank=True)
-    WORKDAY_CHOICES = (
-        ('wd', u'Рабочий день'),
-        ('sd', u'Сокращенный день'),
-        ('hd', u'Выходной'),
-    )
+
+    work_start = models.CharField(u'Время начала работы', max_length=5, choices=TIME_CHOICES, default='8', blank=True)
+    work_end = models.CharField(u'Время завершения работы', max_length=5, choices=TIME_CHOICES, default='18', blank=True)
+    break_time_start = models.CharField(u'Время начала обеда', max_length=5, choices=TIME_CHOICES, blank=True)
+    break_time_end = models.CharField(u'Время завершения обеда', max_length=5, choices=TIME_CHOICES, blank=True)
+    holiday_time_start = models.CharField(u'Время начала сокращенного дня', max_length=5, choices=TIME_CHOICES, default='8', blank=True)
+    holiday_time_end = models.CharField(u'Время завершения сокращенного дня', max_length=5, choices=TIME_CHOICES, default='16', blank=True)
+
     monday = models.CharField(u'Понедельник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
     tuesday = models.CharField(u'Вторник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
     wednesday = models.CharField(u'Среда', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
@@ -57,6 +85,7 @@ class Service(models.Model):
     meta_keywords = models.TextField(u'Keywords', blank=True)
     meta_description = models.TextField(u'Description', blank=True, null=True)
     owner = models.ForeignKey(UserProfile, default='85')
+
     class Meta:
         abstract = True
 
@@ -219,7 +248,7 @@ class AutoService(Service):
 # pass
 #
 # class Meta:
-#         verbose_name = u"Шиномонтаж"
+# verbose_name = u"Шиномонтаж"
 #         verbose_name_plural = u"Шиномонтажи"
 #
 

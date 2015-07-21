@@ -5,10 +5,10 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from myauth.models import UserProfile
-from myauth.forms import RegistrationForm, LoginForm, DivErrorList, UserProfileForm
-from service.models import AutoService
+from myauth.forms import RegistrationForm, LoginForm, UserProfileForm
+from service.models import AutoService, CarWash, TireService
 # перенести форму
-from myauth.forms import AutoserviceForm
+from myauth.forms import AutoserviceForm, CarwashForm
 from django.core.context_processors import csrf
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -16,7 +16,7 @@ from django.core.mail import send_mail
 import hashlib, datetime, random
 from django.utils import timezone
 from django.views.decorators.csrf import ensure_csrf_cookie
-
+from django.contrib.auth.decorators import login_required
 
 @ensure_csrf_cookie
 def user_register(request):
@@ -169,7 +169,7 @@ def userprofile_edit(request):
             return render_to_response('myauth/useredit.html', args, context)
     return render_to_response('myauth/useredit.html', args, context)
 
-
+@login_required
 def userprofile_service(request):
     args = {}
     user_id = User.objects.get(username=request.user).id
@@ -177,7 +177,59 @@ def userprofile_service(request):
     args['user_profile'] = user_profile
     return render_to_response('myauth/user_service.html', args)
 
-def service_edit(request, service_id):
+
+def autoservice_edit(request, service_id):
+    context = RequestContext(request)
+    args = {}
+    user_id = UserProfile.objects.get(username=request.user).id
+    service = get_object_or_404(AutoService, pk=service_id, owner=user_id)
+    form = AutoserviceForm(instance=service)
+    args['form'] = form
+    args['service'] = service
+    args['path'] = request.path
+    if request.method == 'POST':
+        form = AutoserviceForm(request.POST, request.FILES, instance=service)
+
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            return redirect('/auth/user')
+        else:
+            args['form'] = form
+            return render_to_response('myauth/autoservice_edit.html', args, context)
+    return render_to_response('myauth/autoservice_edit.html', args, context)
+
+
+def carwash_edit(request, service_id):
+    context = RequestContext(request)
+    args = {}
+    user_id = UserProfile.objects.get(username=request.user).id
+    service = get_object_or_404(CarWash, pk=service_id, owner=user_id)
+    form = CarwashForm(instance=service)
+    args['form'] = form
+    args['service'] = service
+    if request.method == 'POST':
+        form = CarwashForm(request.POST, request.FILES, instance=service)
+
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            return redirect('/auth/user')
+        else:
+            args['form'] = form
+            return render_to_response('myauth/carwash_edit.html', args, context)
+    return render_to_response('myauth/carwash_edit.html', args, context)
+
+
+def tireservice_edit(request, service_id):
     context = RequestContext(request)
     args = {}
     user_id = UserProfile.objects.get(username=request.user).id

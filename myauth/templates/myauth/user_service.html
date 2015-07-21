@@ -32,19 +32,40 @@
 						</tr>
 					</thead>
 					<tbody>
-                    {% for service in  user_profile.autoservice_set.all %}
+                    {% for autoservice in  user_profile.autoservice_set.all %}
 						<tr>
 							<td class="text-center">
 								<a href="product.html">
-									<img src="{{ service.logo.url }}" alt="Product Name" title="Product Name" class="img-thumbnail">
+									<img src="{{ autoservice.logo.url }}" alt="Product Name" title="Product Name" class="img-thumbnail">
 								</a>
 							</td>
 							<td class="text-center">
-								<a href="{{ service.get_absolute_url }}">{{ service }}</a>
+								<a href="{{ autoservice.get_absolute_url }}">{{ autoservice }}</a>
 							</td>
                             <td>Автосервис</td>
 							<td class="text-center">
-								<a href="/auth/user/service/edit_as_{{ service.id }}/" type="submit" title="" class="btn btn-default tool-tip" data-original-title="Update">
+								<a href="/auth/user/service/edit_as_{{ autoservice.id }}/" type="submit" title="" class="btn btn-default tool-tip" data-original-title="Update">
+									<i class="fa fa-refresh"></i>
+								</a>
+								<button type="button" title="" class="btn btn-default tool-tip" data-original-title="Remove">
+									<i class="fa fa-times-circle"></i>
+								</button>
+							</td>
+						</tr>
+					{% endfor %}
+                    {% for carwash in  user_profile.carwash_set.all %}
+						<tr>
+							<td class="text-center">
+								<a href="product.html">
+									<img src="{{ carwash.logo.url }}" alt="Product Name" title="Product Name" class="img-thumbnail">
+								</a>
+							</td>
+							<td class="text-center">
+								<a href="{{ carwash.get_absolute_url }}">{{ carwash }}</a>
+							</td>
+                            <td>Автосервис</td>
+							<td class="text-center">
+								<a href="/auth/user/service/edit_cw_{{ carwash.id }}/" type="submit" title="" class="btn btn-default tool-tip" data-original-title="Update">
 									<i class="fa fa-refresh"></i>
 								</a>
 								<button type="button" title="" class="btn btn-default tool-tip" data-original-title="Remove">
