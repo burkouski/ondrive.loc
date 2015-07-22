@@ -15,7 +15,7 @@
                         </div>
                         <div class="wform">
                             <!-- Login Form Starts -->
-                            <form ng-submit="loginSubmit(wform)" ng-init="init('{{ prev_url }}') method="post" autocomplete="off" class="wform__form"
+                            <form ng-submit="loginSubmit(wform)" ng-init="initForm('/auth/login/','{{ prev_path }}')" method="post" autocomplete="off" class="wform__form"
                                   role="form" name="wform" novalidate>
                                 {% csrf_token %}
                                 <div class="wform__group">

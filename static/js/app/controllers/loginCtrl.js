@@ -1,8 +1,14 @@
 ymapsApp.controller('loginCtrl', ['$scope','services','$timeout', function ($scope, services, $timeout) {
 
-    var apiUrl = '/auth/login/';
-    $scope.initPrevPath = function(path) {
-        $scope.user.prevPath = path
+
+    $scope.user = {};
+    $scope.initForm = function(loginUrl, path) {
+        if (path) {
+            $scope.user.prevPath = path;
+        }
+        console.log($scope.user.prevPath);
+        $scope.loginUrl = loginUrl;
+
     };
     $scope.ajaxLoader = false;
     $scope.result = {
@@ -10,17 +16,23 @@ ymapsApp.controller('loginCtrl', ['$scope','services','$timeout', function ($sco
     };
 
     $scope.loginSubmit = function (form) {
+        console.log($scope.loginUrl)
         parent.$.fancybox.update();
         if (form.$valid) {
             $scope.ajaxLoader = true;
-            services.list(apiUrl, $scope.user, function (result) {
+            services.list($scope.loginUrl, $scope.user, function (result) {
                     $scope.result = result;
                     $scope.ajaxLoader = false;
+                    console.log(result);
+                    if(result.prevPath) {
+                        location.href = result.prevPath
+                    }
                     if(result.status)  {
                         $timeout(function(){
                         parent.$.fancybox.close();
-                    }, 1000);
+                    }, 22000);
                     }
+
 
 
                 },

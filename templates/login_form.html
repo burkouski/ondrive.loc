@@ -1,0 +1,45 @@
+<div id="login-form" class="panel-smart" ng-controller="loginCtrl">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" ng-class="{'text-success': result.status }">{$result.mess$}</h3>
+                    </div>
+                    <div class="wform">
+                        <!-- Login Form Starts -->
+                        <form ng-submit="loginSubmit(wform)" ng-init="initForm('/auth/login-ajax/','False','False')" method="post" autocomplete="off" class="wform__form"
+                        role="form" name="wform" novalidate>
+                        {% csrf_token %}
+                        <div class="wform__group">
+                            <label for="userUsername" class="col-sm-12 wform__label">Имя пользователя:</label>
+
+                            <div class="col-sm-12">
+                                <input type="text" class="wform__control" name="username" ng-model="user.username"
+                                       required/>
+                                <span class="text-danger">{$ result.usernameErr $}</span>
+
+                                <div ng-show="wform.$submitted">
+                                    <span class="text-danger" ng-show="wform.username.$error.required">Заполните 'Имя пользователя'</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wform__group">
+                            <label class="wform__label col-sm-12" for="id_password">Пароль:</label>
+
+                            <div class="col-sm-12">
+                                <input id="id_password" type="password" class="wform__control" name="password"
+                                       ng-model="user.password"
+                                       required/>
+
+                                <div ng-show="wform.$submitted">
+                                    <span class="text-danger"
+                                          ng-show="wform.password.$error.required">Введите пароль</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger">
+                            <span ng-show="!ajaxLoader">Войти</span>
+                            <span ng-show="ajaxLoader"><img src="/static/img/ajax-loader2.gif" alt=""/> Отправка</span>
+                        </button>
+                        </form>
+                        <!-- Login Form Ends -->
+                    </div>
+                </div>

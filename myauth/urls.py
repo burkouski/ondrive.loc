@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from myauth.views import user_register, user_login, user_logout, user_confirm, user_board, userprofile_edit,userprofile_service, autoservice_edit, carwash_edit, tireservice_edit
+from myauth.views import user_register, user_login,user_login_ajax, user_logout, user_confirm, user_board, userprofile_edit,userprofile_service, autoservice_edit, carwash_edit, tireservice_edit
 from django.views.generic import TemplateView
 
 urlpatterns = patterns('news.views',
@@ -11,6 +11,7 @@ urlpatterns = patterns('news.views',
     #url(r'^registration/success/$', TemplateView.as_view(template_name='myauth/success.html')),
     url(r'^registration/(?P<activation_key>\w+)/', user_confirm, name='user_confirm'),
     url(r'^login/$', user_login, name='user_login'),
+    url(r'^login-ajax/$', user_login_ajax, name='user_login_ajax'),
     url(r'^logout/$', user_logout, name='user_logout'),
     url(r'^user/$', user_board, name='user_board'),
     url(r'^user/edit/$', userprofile_edit, name='userprofile_edit'),

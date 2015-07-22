@@ -100,15 +100,15 @@ def user_confirm(request, activation_key):
     return render_to_response('myauth/success.html', args)
 
 @ensure_csrf_cookie
-def user_login(request):
+def user_login_ajax(request):
     args = {'status': False}
-    args['prev_url'] = request.GET.get('next')
     if request.method == 'POST':
         post_data = json.loads(request.body)
         #username = request.POST['username']
         #password = request.POST['password']
         username = post_data.get(u'username')
         password = post_data.get(u'password')
+
         if User.objects.filter(username=username).count() or User.objects.filter(email=username).count():
             user = authenticate(username=username, password=password)
             if user:
@@ -123,9 +123,42 @@ def user_login(request):
         else:
             args['mess'] = 'Имя пользователя или пароль неверны'
         return HttpResponse(json.dumps(args))
+    else:
+        return HttpResponseRedirect('/auth/login')
 
-    return render(request, 'myauth/login.html',args,
-                  context_instance=RequestContext(request))
+
+@ensure_csrf_cookie
+def user_login(request):
+    args = {}
+    args['prev_path'] = request.GET.get('next')
+
+    if request.method == 'POST':
+        post_data = json.loads(request.body)
+        #username = request.POST['username']
+        #password = request.POST['password']
+        username = post_data.get(u'username')
+        password = post_data.get(u'password')
+
+        if User.objects.filter(username=username).count() or User.objects.filter(email=username).count():
+            user = authenticate(username=username, password=password)
+            if user:
+                if user.is_active:
+                    login(request, user)
+                    args['status'] = True
+                    if post_data.get(u'prevPath', False) != 'None':
+                        args['prevPath'] = post_data.get(u'prevPath', False)
+                    else:
+                        args['prevPath'] = '/'
+                    return HttpResponse(json.dumps(args))
+                else:
+                    args['mess'] = 'Аккаунт заблокирован. Обратитесь к администрации'
+            else:
+                args['mess'] = 'Имя пользователя или пароль неверны'
+        else:
+            args['mess'] = 'Имя пользователя или пароль неверны'
+        return HttpResponse(json.dumps(args))
+    return render(request, 'myauth/login.html',args, context_instance=RequestContext(request))
+
 
 @login_required
 def user_logout(request):

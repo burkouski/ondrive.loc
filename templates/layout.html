@@ -55,22 +55,9 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'ondrive'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script');
-            s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
-    </script>
 </head>
 {% block body %}
-<body class="with-bg">
+<body class="with-bg" ng-app="ymapsApp">
 <div id="wrapper" class="container">
     {% block header %}
     <header id="header-area" class="wrap">
@@ -124,7 +111,7 @@
                 {% if user.is_authenticated %}
                     <span>Вы вошли как: {{ user.username }} <a href="/auth/logout">Выйти</a></span>
                 {% else %}
-                    <a class="btn btn-danger popup fancybox.iframe" href="/auth/login#login-form">Войти</a>
+                    <a class="btn btn-danger popup fancybox" href="#login-form">Войти</a>
                 {% endif %}
 
             </div>
@@ -184,6 +171,7 @@
     </div>
 </div>
 {% endblock %}
+{% include "login_form.html" %}
 <!-- Copyright Area Ends -->
 
 
