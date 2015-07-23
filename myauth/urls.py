@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
-from myauth.views import user_register, user_login,user_login_ajax, user_logout, user_confirm, user_board, userprofile_edit,userprofile_service, autoservice_edit, carwash_edit, tireservice_edit
+from myauth.views import user_register, user_login,user_login_ajax,\
+    user_logout, user_confirm, user_board, userprofile_edit,\
+    userprofile_service, autoservice_edit, carwash_edit, tireservice_edit, request_add_service
 from django.views.generic import TemplateView
 
 urlpatterns = patterns('news.views',
@@ -16,6 +18,7 @@ urlpatterns = patterns('news.views',
     url(r'^user/$', user_board, name='user_board'),
     url(r'^user/edit/$', userprofile_edit, name='userprofile_edit'),
     url(r'^user/service/$', userprofile_service, name='userprofile_service'),
+    url(r'^user/service/add$', request_add_service, name='request_add_service'),
     url(r'^user/service/edit_as_(?P<service_id>\w+)/$', autoservice_edit, name='autoservice_edit'),
     url(r'^user/service/edit_cw_(?P<service_id>\w+)/$', carwash_edit, name='carwash_edit'),
     url(r'^user/service/edit_ts_(?P<service_id>\w+)/$', tireservice_edit, name='tireservice_edit'),

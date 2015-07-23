@@ -20,3 +20,6 @@ urlpatterns = patterns('',
     url(r'^(?P<page_alias>.*)/$', views.get_page, name='page_view'),
     url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /admin/",content_type='text/plain')),
 )
+
+admin.autodiscover()
+#admin.site.unregister(User)

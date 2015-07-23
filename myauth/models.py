@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 import datetime
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, UserManager
 from PIL import Image
 from project import settings
 
 
 class UserProfile(User):
-    user = models.OneToOneField(User)
     sur_name = models.CharField(u'Фамилия', max_length=100, blank=True)
     avatar = models.ImageField(u'Аватар', blank=True)
     nickname = models.CharField(u'Имя отображающееся на сайте', max_length=100, blank=True)
@@ -15,7 +14,7 @@ class UserProfile(User):
     key_expires = models.DateTimeField(default=datetime.date.today)
 
     def __str__(self):
-        return self.user.username
+        return self.username
 
     class Meta:
         verbose_name_plural = u'Профил пользователя'

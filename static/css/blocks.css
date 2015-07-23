@@ -233,18 +233,30 @@
   color: #252a2f;
   font-size: 24px;
 }
+.wform__sub-title {
+  font-size: 18px;
+  margin: 0 0 15px 0;
+}
 .wform__form-wrap {
   padding: 20px 0 0;
+}
+.wform__sub-wrap {
+  margin: 25px 0 0 0;
+}
+.wform__sub-wrap:first-child {
+  margin: 0;
 }
 .wform__label {
   margin-bottom: 0;
   padding-top: 7px;
   color: #8b8b8b;
   font-weight: 600;
+}
+.wform__label--right {
   text-align: right;
 }
 .wform__group {
-  margin: 0 -15px 15px -15px;
+  margin: 0 0 15px 0;
 }
 .wform__group:before,
 .wform__group:after {
@@ -287,6 +299,12 @@
 }
 .wform__control--textarea {
   height: auto;
+}
+.wform__panel {
+  margin: 20px 0 0 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
 }
 .map {
   margin: 0 0 20px 0;
@@ -502,4 +520,16 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.service-table__img {
+  width: 300px;
+}
+.service-table {
+  font-size: 16px;
+}
+.service-table td {
+  vertical-align: middle !important;
+}
+.service-table__icon {
+  font-size: 24px;
 }

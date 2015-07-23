@@ -30,7 +30,7 @@ ymapsApp.controller('loginCtrl', ['$scope','services','$timeout', function ($sco
                     if(result.status)  {
                         $timeout(function(){
                         parent.$.fancybox.close();
-                    }, 22000);
+                    }, 2000);
                     }
 
 

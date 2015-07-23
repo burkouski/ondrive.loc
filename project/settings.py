@@ -28,6 +28,10 @@ TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = ['localhost']
 LOGIN_URL = '/auth/login/'
 # Application definition
+AUTHENTICATION_BACKENDS = (
+    'myauth.auth_backends.CustomUserModelBackend',
+)
+CUSTOM_USER_MODEL = 'myauth.UserProfile'
 
 INSTALLED_APPS = (
     'suit',

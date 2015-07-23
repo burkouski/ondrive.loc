@@ -17,6 +17,7 @@ import hashlib, datetime, random
 from django.utils import timezone
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 @ensure_csrf_cookie
 def user_register(request):
@@ -28,9 +29,9 @@ def user_register(request):
         # email = request.POST.get('email', '')
         # password = request.POST.get('password', '')
         post_data = json.loads(request.body)
-        username = post_data.get(u'username', False)
-        email = post_data.get(u'email', False)
-        password = post_data.get(u'password', False)
+        username = post_data.get('username', False)
+        email = post_data.get('email', False)
+        password = post_data.get('password', False)
         # username = request.POST.get('username', False)
         # email = request.POST.get('email', False)
         # password = request.POST.get('password', False)
@@ -43,9 +44,7 @@ def user_register(request):
             args['emailErr'] = u'Данный email уже занят'
 
         if args['success']:
-            user = User.objects.create_user(username, email, password);
-            user.is_active = False
-            user.save();
+
             # для python 3
             # email_hash = hashlib.sha1(email.encode()).hexdigest()[:5]
             # salt = hashlib.sha1(str(random.random()).encode()).hexdigest()[:5]
@@ -53,8 +52,9 @@ def user_register(request):
             salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
             activation_key = hashlib.sha1(salt+email).hexdigest()
             key_expires = datetime.datetime.today() + datetime.timedelta(2)
-            new_profile = UserProfile(user=user, activation_key=activation_key, key_expires=key_expires)
-            new_profile.save()
+            user = UserProfile.objects.create_user(username, email, password,activation_key=activation_key, key_expires=key_expires);
+            user.is_active = False
+            user.save();
 
             email_subject = u'Подтверждение регистрации'
             email_body = u"<h2>Здравствуйте %s</h2>" \
@@ -92,8 +92,10 @@ def user_confirm(request, activation_key):
         args['subMessage'] = 'время действия ссылки истекло'
         return render_to_response('myauth/success.html', args)
 
-    user = user_profile.user
+    user = user_profile
     user.is_active = True
+    user.is_staff = True
+    user.is_superuser = True
     user.save()
     args['message'] = 'Спасибо за регистрацию'
     args['subMessage'] = 'ваш аккаунт подтвержден'
@@ -168,8 +170,7 @@ def user_logout(request):
 def user_board(request):
     context = RequestContext(request)
     args = {}
-    user_id = User.objects.get(username=request.user).id
-    args['user_profile'] = UserProfile.objects.get(user=user_id)
+    args['user_profile'] = UserProfile.objects.get(username=request.user)
     args['user'] = request.user
     #article = AutoService.objects.get(pk=18)
     #form = ArticleForm(instance=article)
@@ -181,8 +182,7 @@ def userprofile_edit(request):
     print True
     context = RequestContext(request)
     args = {}
-    user_id = User.objects.get(username=request.user).id
-    user_profile = UserProfile.objects.get(user=user_id)
+    user_profile = User.objects.get(username=request.user)
     form = UserProfileForm(instance=user_profile)
     args['form'] = form
     args['user_profile'] = user_profile
@@ -204,10 +204,7 @@ def userprofile_edit(request):
 
 @login_required
 def userprofile_service(request):
-    args = {}
-    user_id = User.objects.get(username=request.user).id
-    user_profile = UserProfile.objects.get(user=user_id)
-    args['user_profile'] = user_profile
+    args = RequestContext(request)
     return render_to_response('myauth/user_service.html', args)
 
 
@@ -285,3 +282,24 @@ def tireservice_edit(request, service_id):
             args['form'] = form
             return render_to_response('myauth/autoservice_edit.html', args, context)
     return render_to_response('myauth/autoservice_edit.html', args, context)
+
+def request_add_service(request):
+    if request.method == 'POST':
+        post_data = json.loads(request.body)
+        username = post_data.get('username', False)
+        email = post_data.get('email', False)
+        password = post_data.get('password', False)
+        email_subject = u'Подтверждение регистрации'
+        email_body = u"<h2>Здравствуйте %s</h2>" \
+                         u"<h3>Вы зарегистрировались на портале <a href='http://ondrive.by'>ondrive.by</a></h3> " \
+                         u"<p>для подтверждения регистрации перейдите по  <a href='http://localhost:8000/auth/registration/%s'>ссылке</a></p>" \
+                         u"<p>Если вы не имеете понятия о чем идет речь, просто проигнорируйте это письмо!</p>" % (username, activation_key)
+
+        send_mail(email_subject, email_body, 'ondrive.by@gmail.com',
+                      [email], fail_silently=False, html_message=email_body)
+        args['resultMess'] = u'Регистрация прошла успешно'
+        args['resultSubMess'] = u'инструкция по активации аккаунта выслава на email указанный при регистрации (%s)' % (email)
+        args = json.dumps(args)
+        return HttpResponse(args)
+    else:
+        raise Http404("Question does not exist")
