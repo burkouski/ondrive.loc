@@ -8,7 +8,7 @@ from myauth.models import UserProfile
 from myauth.forms import RegistrationForm, LoginForm, UserProfileForm
 from service.models import AutoService, CarWash, TireService
 # перенести форму
-from myauth.forms import AutoserviceForm, CarwashForm
+from myauth.forms import AutoserviceForm, CarwashForm, TireServiceForm
 from django.core.context_processors import csrf
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -182,12 +182,12 @@ def userprofile_edit(request):
     print True
     context = RequestContext(request)
     args = {}
-    user_profile = User.objects.get(username=request.user)
-    form = UserProfileForm(instance=user_profile)
+    user = UserProfile.objects.get(username=request.user)
+    form = UserProfileForm(instance=user)
     args['form'] = form
-    args['user_profile'] = user_profile
+    args['user_profile'] = user
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
+        form = UserProfileForm(request.POST, request.FILES, instance=user)
 
         # Have we been provided with a valid form?
         if form.is_valid():
@@ -211,7 +211,7 @@ def userprofile_service(request):
 def autoservice_edit(request, service_id):
     context = RequestContext(request)
     args = {}
-    user_id = UserProfile.objects.get(username=request.user).id
+    user_id = request.user.id
     service = get_object_or_404(AutoService, pk=service_id, owner=user_id)
     form = AutoserviceForm(instance=service)
     args['form'] = form
@@ -237,7 +237,7 @@ def autoservice_edit(request, service_id):
 def carwash_edit(request, service_id):
     context = RequestContext(request)
     args = {}
-    user_id = UserProfile.objects.get(username=request.user).id
+    user_id = request.user.id
     service = get_object_or_404(CarWash, pk=service_id, owner=user_id)
     form = CarwashForm(instance=service)
     args['form'] = form
@@ -262,13 +262,13 @@ def carwash_edit(request, service_id):
 def tireservice_edit(request, service_id):
     context = RequestContext(request)
     args = {}
-    user_id = UserProfile.objects.get(username=request.user).id
-    service = get_object_or_404(AutoService, pk=service_id, owner=user_id)
-    form = AutoserviceForm(instance=service)
+    user_id = request.user.id
+    service = get_object_or_404(TireService, pk=service_id, owner=user_id)
+    form = TireServiceForm(instance=service)
     args['form'] = form
     args['service'] = service
     if request.method == 'POST':
-        form = AutoserviceForm(request.POST, request.FILES, instance=service)
+        form = TireServiceForm(request.POST, request.FILES, instance=service)
 
         # Have we been provided with a valid form?
         if form.is_valid():
@@ -280,26 +280,33 @@ def tireservice_edit(request, service_id):
             return redirect('/auth/user')
         else:
             args['form'] = form
-            return render_to_response('myauth/autoservice_edit.html', args, context)
-    return render_to_response('myauth/autoservice_edit.html', args, context)
+            return render_to_response('myauth/tireservice_edit.html', args, context)
+    return render_to_response('myauth/tireservice_edit.html', args, context)
 
+
+@ensure_csrf_cookie
 def request_add_service(request):
     if request.method == 'POST':
+        args = {}
         post_data = json.loads(request.body)
         username = post_data.get('username', False)
+        service_type = post_data.get('serviceType', False)
+        service_name = post_data.get('serviceName', False)
+        phone = post_data.get('phone', False)
         email = post_data.get('email', False)
-        password = post_data.get('password', False)
-        email_subject = u'Подтверждение регистрации'
-        email_body = u"<h2>Здравствуйте %s</h2>" \
-                         u"<h3>Вы зарегистрировались на портале <a href='http://ondrive.by'>ondrive.by</a></h3> " \
-                         u"<p>для подтверждения регистрации перейдите по  <a href='http://localhost:8000/auth/registration/%s'>ссылке</a></p>" \
-                         u"<p>Если вы не имеете понятия о чем идет речь, просто проигнорируйте это письмо!</p>" % (username, activation_key)
+        email_subject = u'Запрос регистрации сервиса'
+        email_body = u"<h2>%s просит зарегистрировать сервис</h2>" \
+                         u"<p>Название сервиса: %s</p>" \
+                        u"<p>Тип сервиса: %s</p>" \
+                        u"<p>Телефон: %s</p>" \
+                        u"<p>Email: %s</p>" % (username, service_name, service_type, phone, email)
 
-        send_mail(email_subject, email_body, 'ondrive.by@gmail.com',
-                      [email], fail_silently=False, html_message=email_body)
-        args['resultMess'] = u'Регистрация прошла успешно'
-        args['resultSubMess'] = u'инструкция по активации аккаунта выслава на email указанный при регистрации (%s)' % (email)
+        send_mail(email_subject, email_body, 'ondrive2.by@gmail.com',
+                      ['ondrive.by@gmail.com'], fail_silently=False, html_message=email_body)
+        args['status'] = True
+        args['mess'] = u'Заявка принята'
+        args['subMess'] = u'Наш менеджер свяжется с вами в ближайшее время'
         args = json.dumps(args)
         return HttpResponse(args)
     else:
-        raise Http404("Question does not exist")
+        raise Http404("Страница не найдена")

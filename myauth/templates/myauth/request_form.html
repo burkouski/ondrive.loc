@@ -1,87 +1,60 @@
-<div id="request-form" class="panel-smart " style="display: block" ng-controller="requestCtrl">
+<div id="request-form" class="panel-smart " style="display:none" ng-controller="requestCtrl">
     <div class="panel-heading">
         <h3 class="panel-title" ng-class="{'text-success': result.status }">{$result.mess$}</h3>
     </div>
     <div class="wform">
         <!-- Login Form Starts -->
-        <form ng-submit="requestSubmit(wform)" method="post" autocomplete="off" class="wform__form"
+        <form ng-submit="formSubmit(wform)" method="post" autocomplete="off" class="wform__form"
               role="form" name="wform" novalidate>
             {% csrf_token %}
             <div class="wform__group">
-                <label for="userUsername" class="col-sm-12 wform__label">Ваше имя:</label>
-
-                <div class="col-sm-12">
-                    <input type="text" class="wform__control" name="username" ng-model="request.username"
-                           required/>
+                <label for="userUsername" class="wform__label">Ваше имя: *</label>
+                    <input type="text" class="wform__control" name="username" ng-model="form.username" required/>
                     <div ng-show="wform.$submitted">
                         <span class="text-danger"
                               ng-show="wform.username.$error.required">Как к вам обращаться?</span>
                     </div>
-                </div>
             </div>
             <div class="wform__group">
-                <label class="wform__label col-sm-12" for="id_service_type">Вид сервиса:</label>
-
-                <div class="col-sm-12">
-                    <select ng-model="request.serviceType" convert-to-number>
-                        <option value="0">Zero</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
+                <label class="wform__label" for="id_service_type">Вид сервиса:</label>
+                    <select ng-model="form.serviceType" class="wform__control">
+                        <option value="Автосервис">Автосервис</option>
+                        <option value="Автомойка">Автомойка</option>
+                        <option value="Шиномонтаж">Шиномонтаж</option>
                     </select>
-
-
-                </div>
             </div>
             <div class="wform__group">
-                <label class="wform__label col-sm-12" for="id_service_name">Название сервиса:</label>
-
-                <div class="col-sm-12">
-                    <input id="id_service_name" type="text" class="wform__control" name="service_name"
-                           ng-model="request.username"
-                           required/>
-
+                <label class="wform__label" for="id_service_name">Название сервиса *:</label>
+                    <input id="id_service_name" type="text" class="wform__control" name="service_name" ng-model="form.serviceName" required/>
                     <div ng-show="wform.$submitted">
-                                    <span class="text-danger"
-                                          ng-show="wform.name.$error.required">Как будет называться ваш сервис?</span>
+                        <span class="text-danger" ng-show="wform.service_name.$error.required">Как будет называться ваш сервис?</span>
                     </div>
-                </div>
             </div>
             <div class="wform__group">
-                <label class="col-sm-5 wform__label">Ваш телефон *:</label>
-
-                <div class="col-sm-7">
-                    <input type="text" class="wform__input" name="phone" ng-model="request.email"
-                           required/>
-                    <span class="text-danger">{$ result.emailErr $}</span>
-
+                <label class="wform__label">Ваш телефон (только цифры (99) 999-99-99) *:</label>
+                    <input type="text" class="wform__control js-input__number" name="phone" ng-model="form.phone" ng-minlength="14" mask="(99) 9?99-99-99" restrict="reject" required/>
                     <div ng-show="wform.$submitted">
-                        <span class="text-danger" ng-show="wform.email.$error.required">Заполните 'Ваш email'</span>
+                        <span class="text-danger" ng-show="wform.phone.$error.required">Как с вами связаться?</span>
+                        <span class="text-danger" ng-show="wform.phone.$error.minlength">Введите правильный телефон! Формат: (99) 999-99-99</span>
+                    </div>
+            </div>
+            <div class="wform__group">
+                <label for="userEmail" class="wform__label">Ваш email:</label>
+                <input type="email" class="wform__control" name="email" ng-model="form.email"/>
+                <span class="text-danger">{$ result.emailErr $}</span>
+
+                <div ng-show="wform.$submitted">
                         <span class="text-danger"
                               ng-show="wform.email.$error.email">Неверный адрес элекронной почты</span>
-                    </div>
                 </div>
             </div>
+
             <div class="wform__group">
-                <label for="userEmail" class="col-sm-5 wform__label">Ваш email:</label>
-
-                <div class="col-sm-7">
-                    <input type="email" class="wform__input" name="email" ng-model="user.email"
-                           required/>
-                    <span class="text-danger">{$ result.emailErr $}</span>
-
-                    <div ng-show="wform.$submitted">
-                        <span class="text-danger" ng-show="wform.email.$error.required">Заполните 'Ваш email'</span>
-                        <span class="text-danger"
-                              ng-show="wform.email.$error.email">Неверный адрес элекронной почты</span>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-danger">
+                    <span ng-show="!ajaxLoader">Отправить</span>
+                    <span ng-show="ajaxLoader"><img src="/static/img/ajax-loader2.gif" alt=""/> Отправка</span>
+                </button>
             </div>
-
-
-            <button type="submit" class="btn btn-danger">
-                <span ng-show="!ajaxLoader">Войти</span>
-                <span ng-show="ajaxLoader"><img src="/static/img/ajax-loader2.gif" alt=""/> Отправка</span>
-            </button>
         </form>
         <!-- Login Form Ends -->
     </div>

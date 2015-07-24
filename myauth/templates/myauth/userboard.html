@@ -50,17 +50,14 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <a href="/auth/user/service" class="list-group-item">
+                    <a href="/auth/user/edit" class="list-group-item">
                         <i class="fa fa-chevron-right"></i>
                         Редактировать профиль
                     </a>
-
-                    {% if user_profile.autoservice_set.all %}
-                        <a href="/auth/user/service" class="list-group-item">
+                    <a href="/auth/user/service" class="list-group-item">
                             <i class="fa fa-chevron-right"></i>
-                            Мои сервисы
+                            Ваши сервисы
                         </a>
-                    {% endif %}
 
                 </div>
 

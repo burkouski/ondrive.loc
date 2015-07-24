@@ -1,2 +1,29 @@
 {% extends 'myauth/service_edit.html' %}
 {% load sitetree %}
+
+{% block custom_field %}
+    <div class="panel panel-smart">
+        <h4>Вид мойки</h4>
+
+        <div class="service-form__wrap">{{ form.type_carwash }}</div>
+    </div>
+    <div class="panel panel-smart">
+        <h4>Вид транспорта</h4>
+
+        <div class="service-form__wrap">{{ form.type_vehicle }}</div>
+    </div>
+    <div class="panel panel-smart">
+        <h4>Услуги</h4>
+
+        <div class="service-form__wrap">{{ form.car_wash_services }}</div>
+    </div>
+
+    <div class="panel panel-smart">
+        <h4>Дополнительные услуги</h4>
+
+        <div class="service-form__wrap">
+            {{ form.add_services }}
+        </div>
+
+    </div>
+{% endblock %}

@@ -18,7 +18,7 @@
 
                 <div class="col-sm-4 service__images">
                     <a href="/">
-                        <img src="{{ user_profile.avatar.url }}" alt=""
+                        <img src="{{ user.avatar.url }}" alt=""
                              class="img-responsive thumbnail service__img"/>
                     </a>
                     {{ form.avatar }}
@@ -31,10 +31,6 @@
                         <hr/>
                         <ul class="list-unstyled service__list">
                             <li class="service__list-item">
-
-                                <span class="service__param-name">Ваш email:</span> {{ form.email }}<div class="text-danger">{{ form.email.errors.as_text }}</div>
-                            </li>
-                            <li class="service__list-item">
                                 <span class="service__param-name">Имя:</span> {{ form.first_name }}
                             </li>
                             <li class="service__list-item">
@@ -45,7 +41,7 @@
                             </li>
                         </ul>
                         <div class="center">
-                                    <input type="submit" name="submit" value="Create Category" />
+                                    <input class="btn btn-danger" type="submit" name="submit" value="Сохранить" />
                                 </div>
                     </div>
                 </div>
@@ -58,6 +54,10 @@
                         <i class="fa fa-chevron-right"></i>
                         Ваш профиль
                     </a>
+                    <a href="/auth/user/service" class="list-group-item">
+                            <i class="fa fa-chevron-right"></i>
+                            Ваши сервисы
+                        </a>
                 </div>
             </div>
         </div>

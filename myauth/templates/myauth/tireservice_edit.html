@@ -1,0 +1,24 @@
+{% extends 'myauth/service_edit.html' %}
+{% load sitetree %}
+
+{% block custom_field %}
+    <div class="panel panel-smart">
+        <h4>Шины</h4>
+
+        <div class="service-form__wrap">{{ form.tire_work }}</div>
+    </div>
+    <div class="panel panel-smart">
+        <h4>Диски</h4>
+
+        <div class="service-form__wrap">{{ form.disc_work }}</div>
+    </div>
+    <div class="panel panel-smart">
+        <h4>Дополнительные услуги</h4>
+
+        <div class="service-form__wrap">
+            {{ form.add_services }}
+        </div>
+
+    </div>
+
+{% endblock %}

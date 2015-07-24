@@ -1,24 +1,22 @@
 ymapsApp.controller('requestCtrl', ['$scope','services','$timeout', function ($scope, services, $timeout) {
 
-
-    $scope.request = {};
+    $scope.apiUrl = '/auth/user/service/add/';
+    $scope.form = {};
     $scope.ajaxLoader = false;
     $scope.result = {
-        mess: 'Авторизация'
+        mess: 'Запрос на добавление сервиса'
     };
+    $scope.form.serviceType = 'Автосервис';
 
-    $scope.requestSubmit = function (form) {
-        console.log($scope.loginUrl)
+    $scope.formSubmit = function (form) {
+        //console.log($scope.loginUrl)
         parent.$.fancybox.update();
         if (form.$valid) {
             $scope.ajaxLoader = true;
-            services.list($scope.loginUrl, $scope.user, function (result) {
+            services.list($scope.apiUrl, $scope.form, function (result) {
                     $scope.result = result;
                     $scope.ajaxLoader = false;
                     console.log(result);
-                    if(result.prevPath) {
-                        location.href = result.prevPath
-                    }
                     if(result.status)  {
                         $timeout(function(){
                         parent.$.fancybox.close();

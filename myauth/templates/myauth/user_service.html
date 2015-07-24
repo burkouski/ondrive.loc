@@ -14,7 +14,7 @@
         <div class="row service">
             <div class="col-md-9">
             <div class="table-responsive shopping-cart-table">
-            {% if user.autoservice_set.all or  user.carwash_set.all %}
+            {% if user.autoservice_set.all or  user.carwash_set.all or user.tireservice_set.all %}
 				<table class="table table-bordered service-table">
 					<thead>
 						<tr>
@@ -64,14 +64,14 @@
                     {% for carwash in  user.carwash_set.all %}
 						<tr>
 							<td class="text-center">
-								<a href="product.html">
+								<a href="{{ carwash.get_absolute_url }}">
 									<img src="{{ carwash.logo.url }}" alt="Product Name" title="Product Name" class="img-thumbnail service__img">
 								</a>
 							</td>
 							<td class="text-center">
 								<a href="{{ carwash.get_absolute_url }}">{{ carwash }}</a>
 							</td>
-                            <td class="text-center">Автосервис</td>
+                            <td class="text-center">Автомойка</td>
                             <td class="text-center service-table__icon">
 
                                 {% if carwash.is_moderate %}
@@ -88,19 +88,45 @@
 							</td>
 						</tr>
 					{% endfor %}
+                    {% for tireservice in  user.tireservice_set.all %}
+						<tr>
+							<td class="text-center">
+								<a href="{{ tireservice.get_absolute_url }}">
+									<img src="{{ tireservice.logo.url }}" alt="Product Name" title="Product Name" class="img-thumbnail service__img">
+								</a>
+							</td>
+							<td class="text-center">
+								<a href="{{ tireservice.get_absolute_url }}">{{ tireservice }}</a>
+							</td>
+                            <td class="text-center">Шиномонтаж</td>
+                            <td class="text-center service-table__icon">
 
+                                {% if carwash.is_moderate %}
+                                <i class="fa fa-check-circle text-success"></i>
+                                {% else %}
+                                <i class="fa fa-times-circle text-danger"></i></td>
+                                {% endif %}
+                            </td>
+							<td class="text-center">
+								<a href="/auth/user/service/edit_ts_{{ tireservice.id }}/" type="submit" title="" class="btn btn-default tool-tip" data-original-title="Редактировать">
+									<i class="fa fa-pencil-square"></i>
+								</a>
+
+							</td>
+						</tr>
+					{% endfor %}
 
 					</tbody>
 
 				</table>
-                <div class="wform__group text-center"><a class="popup fancybox" href="#request-form">Добавить сервис</a></div>
             {% else %}
                         <h3 class="">Вы еще не зарегистрировали пока не одного сервиса</h3>
-                        <p>Нажмите кнопку 'добавить сервис' для запроса регистрации</p>
-                <div class="wform__group text-center"><a class="popup fancybox" href="#request-form">Добавить сервис</a></div>
+                        <p class="alert alert-warning">Нажмите кнопку 'добавить сервис' для запроса регистрации</p>
+
 
 
                     {% endif %}
+            <div class="wform__group text-center"><a class="btn-lg btn-success popup fancybox" href="#request-form">Добавить сервис</a></div>
 			</div>
 
 
@@ -112,18 +138,17 @@
                         <i class="fa fa-chevron-right"></i>
                         Ваш профиль
                     </a>
-                    {% if user.autoservice_set.all %}
+
                         <a href="/auth/user/service" class="list-group-item">
                         <i class="fa fa-chevron-right"></i>
                         Ваши сервисы
                     </a>
-                    {% endif %}
+
                 </div>
             </div>
         </div>
     </div>
 
     </div>
-    !!!!!!!!!!!!!!!!!!!
 {% include 'myauth/request_form.html' %}
 {% endblock %}

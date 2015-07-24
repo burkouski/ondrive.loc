@@ -65,34 +65,31 @@ class LoginForm(forms.ModelForm):
 
 
 class UserProfileForm(forms.ModelForm):
-    first_name = forms.CharField(required=True,
+    first_name = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'class': 'wform__control'}))
-    last_name = forms.CharField(required=True,
+    last_name = forms.CharField(required=False,
                                 widget=forms.TextInput(attrs={'class': 'wform__control'}))
-    nickname = forms.CharField(required=True,
+    nickname = forms.CharField(required=False,
                                widget=forms.TextInput(attrs={'class': 'wform__control'}))
-    email = forms.CharField(show_hidden_initial=True, required=True,
-                            widget=forms.EmailInput(attrs={'class': 'wform__control'}),
-                            error_messages={'invalid': 'Введите корректный email'})
-    avatar = forms.ImageField(
+    avatar = forms.ImageField(required=False,
         widget=forms.FileInput(attrs={'class': 'btn btn-warning text-uppercase', 'title': u'Выберите изображение'}))
 
     class Meta:
         model = UserProfile
-        fields = ('first_name', 'last_name', 'nickname', 'avatar', 'email')
+        fields = ('first_name', 'last_name', 'nickname', 'avatar', )
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        # if User.objects.filter(email=email).exists():
-        # raise ValidationError("Введенный email уже используется!")
-        return email
+    # def clean_email(self):
+    #     email = self.cleaned_data['email']
+    #     # if User.objects.filter(email=email).exists():
+    #     # raise ValidationError("Введенный email уже используется!")
+    #     return email
 
-    def clean(self):
-        print self.initial['email']
-        if self.initial['email'] != self.cleaned_data.get('email', None):
-            email = self.cleaned_data.get('email', None)
-            if UserProfile.objects.filter(email=email).exists():
-                self._errors["email"] = ErrorList([u"Данный email занят"])
+    # def clean(self):
+    #     print self.initial['email']
+    #     if self.initial['email'] != self.cleaned_data.get('email', None):
+    #         email = self.cleaned_data.get('email', None)
+    #         if UserProfile.objects.filter(email=email).exists():
+    #             self._errors["email"] = ErrorList([u"Данный email занят"])
 
 class ServiceForm(forms.ModelForm):
     name = forms.CharField(required=True,
@@ -201,74 +198,105 @@ class AutoserviceForm(ServiceForm):
 
 
 class CarwashForm(ServiceForm):
-    # specialization_work = forms.ModelMultipleChoiceField(required=False,
-    #     queryset=SpecializationWork.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple(
-    #         attrs={'class': 'wform__checkbox'}
-    #     )
-    # )
-    # repair_work = forms.ModelMultipleChoiceField(required=False,
-    #     queryset=RepairWork.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple(
-    #         attrs={'class': 'wform__checkbox'}
-    #     )
-    # )
-    # diag_work = forms.ModelMultipleChoiceField(required=False,
-    #     queryset=DiagWork.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple(
-    #         attrs={'class': 'wform__checkbox'}
-    #     )
-    # )
-    # serv_work = forms.ModelMultipleChoiceField(required=False,
-    #     queryset=ServWork.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple(
-    #         attrs={'class': 'wform__checkbox'}
-    #     )
-    # )
-    # add_work = forms.ModelMultipleChoiceField(required=False,
-    #     queryset=AddWork.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple(
-    #         attrs={'class': 'wform__checkbox'}
-    #     )
-    # )
-    # add_services = forms.ModelMultipleChoiceField(required=False,
-    #     queryset=AddServices.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple(
-    #         attrs={'class': 'wform__checkbox'}
-    #     )
-    # )
+    type_carwash = forms.ModelMultipleChoiceField(required=False,
+        queryset=TypeCarWash.objects.all(),
+        widget=forms.CheckboxSelectMultiple(
+            attrs={'class': 'wform__checkbox'}
+        )
+    )
+    type_vehicle = forms.ModelMultipleChoiceField(required=False,
+        queryset=TypeVehicle.objects.all(),
+        widget=forms.CheckboxSelectMultiple(
+            attrs={'class': 'wform__checkbox'}
+        )
+    )
+    car_wash_services = forms.ModelMultipleChoiceField(required=False,
+        queryset=CarWashServices.objects.all(),
+        widget=forms.CheckboxSelectMultiple(
+            attrs={'class': 'wform__checkbox'}
+        )
+    )
+    add_services = forms.ModelMultipleChoiceField(required=False,
+        queryset=AddServices.objects.all(),
+        widget=forms.CheckboxSelectMultiple(
+            attrs={'class': 'wform__checkbox'}
+        )
+    )
     class Meta:
         model = CarWash
         fields = ['name','address','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2','email','site_url', 'logo','monday','tuesday','wednesday','thursday',
                   'friday', 'saturday','sunday','work_start','work_end','break_time_start', 'break_time_end','holiday_time_start', 'holiday_time_end','teaser', 'full_desc']
 
-    # def __init__(self, *args, **kwargs):
-    #     super(AutoserviceForm, self).__init__(*args, **kwargs)
-    #
-    #     if self.instance and self.instance.pk:
-    #         self.fields['specialization_work'].initial = self.instance.specialization_work.all()
-    #         self.fields['repair_work'].initial = self.instance.repair_work.all()
-    #         self.fields['diag_work'].initial = self.instance.diag_work.all()
-    #         self.fields['serv_work'].initial = self.instance.serv_work.all()
-    #         self.fields['add_work'].initial = self.instance.add_work.all()
-    #         self.fields['add_services'].initial = self.instance.add_services.all()
-    #         #self.fields['monday'].initial = self.instance.monday
-    #
-    # def save(self, commit=True):
-    #     form = super(AutoserviceForm, self).save(commit=False)
-    #
-    #     if commit:
-    #         form.save()
-    #
-    #     if form.pk:
-    #         form.specialization_work = self.cleaned_data['specialization_work']
-    #         form.repair_work = self.cleaned_data['repair_work']
-    #         form.diag_work = self.cleaned_data['diag_work']
-    #         form.serv_work = self.cleaned_data['serv_work']
-    #         form.add_work = self.cleaned_data['add_work']
-    #         form.add_services = self.cleaned_data['add_services']
-    #         self.save_m2m()
-    #
-    #     return form
+    def __init__(self, *args, **kwargs):
+        super(CarwashForm, self).__init__(*args, **kwargs)
+
+        if self.instance and self.instance.pk:
+            self.fields['type_carwash'].initial = self.instance.type_carwash.all()
+            self.fields['type_vehicle'].initial = self.instance.type_vehicle.all()
+            self.fields['car_wash_services'].initial = self.instance.car_wash_services.all()
+            # self.fields['serv_work'].initial = self.instance.serv_work.all()
+            # self.fields['add_work'].initial = self.instance.add_work.all()
+            self.fields['add_services'].initial = self.instance.add_services.all()
+            #self.fields['monday'].initial = self.instance.monday
+
+    def save(self, commit=True):
+        form = super(CarwashForm, self).save(commit=False)
+
+        if commit:
+            form.save()
+
+        if form.pk:
+            form.type_carwash = self.cleaned_data['type_carwash']
+            form.type_vehicle = self.cleaned_data['type_vehicle']
+            form.car_wash_services = self.cleaned_data['car_wash_services']
+            form.add_services = self.cleaned_data['add_services']
+            self.save_m2m()
+
+        return form
 
 
+class TireServiceForm(ServiceForm):
+    tire_work = forms.ModelMultipleChoiceField(required=False,
+        queryset=TireWork.objects.all(),
+        widget=forms.CheckboxSelectMultiple(
+            attrs={'class': 'wform__checkbox'}
+        )
+    )
+    disc_work = forms.ModelMultipleChoiceField(required=False,
+        queryset=DiscWork.objects.all(),
+        widget=forms.CheckboxSelectMultiple(
+            attrs={'class': 'wform__checkbox'}
+        )
+    )
+    add_services = forms.ModelMultipleChoiceField(required=False,
+        queryset=AddServices.objects.all(),
+        widget=forms.CheckboxSelectMultiple(
+            attrs={'class': 'wform__checkbox'}
+        )
+    )
+    class Meta:
+        model = CarWash
+        fields = ['name','address','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2','email','site_url', 'logo','monday','tuesday','wednesday','thursday',
+                  'friday', 'saturday','sunday','work_start','work_end','break_time_start', 'break_time_end','holiday_time_start', 'holiday_time_end','teaser', 'full_desc']
+
+    def __init__(self, *args, **kwargs):
+        super(TireServiceForm, self).__init__(*args, **kwargs)
+
+        if self.instance and self.instance.pk:
+            self.fields['tire_work'].initial = self.instance.tire_work.all()
+            self.fields['disc_work'].initial = self.instance.disc_work.all()
+            self.fields['add_services'].initial = self.instance.add_services.all()
+
+    def save(self, commit=True):
+        form = super(TireServiceForm, self).save(commit=False)
+
+        if commit:
+            form.save()
+
+        if form.pk:
+            form.tire_work = self.cleaned_data['tire_work']
+            form.disc_work = self.cleaned_data['disc_work']
+            form.add_services = self.cleaned_data['add_services']
+            self.save_m2m()
+
+        return form

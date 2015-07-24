@@ -2,7 +2,7 @@ $(function () {
 
     $(".popup").fancybox({
         maxWidth	: 500,
-        maxHeight: 500,
+        maxHeight: 700,
 		fitToView: false,
         helpers: {
             overlay: {
