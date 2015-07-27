@@ -32,9 +32,6 @@ def user_register(request):
         username = post_data.get('username', False)
         email = post_data.get('email', False)
         password = post_data.get('password', False)
-        # username = request.POST.get('username', False)
-        # email = request.POST.get('email', False)
-        # password = request.POST.get('password', False)
         if User.objects.filter(username=username).count():
             args['success'] = False
             args['usernameErr'] = u'Пользователь с таким именем уже существует'
@@ -62,7 +59,7 @@ def user_register(request):
                          u"<p>для подтверждения регистрации перейдите по  <a href='http://localhost:8000/auth/registration/%s'>ссылке</a></p>" \
                          u"<p>Если вы не имеете понятия о чем идет речь, просто проигнорируйте это письмо!</p>" % (username, activation_key)
 
-            send_mail(email_subject, email_body, 'ondrive.by@gmail.com',
+            send_mail(email_subject, email_body, 'Регистрация на сайте ondrive.by',
                       [email], fail_silently=False, html_message=email_body)
             args['resultMess'] = u'Регистрация прошла успешно'
             args['resultSubMess'] = u'инструкция по активации аккаунта выслава на email указанный при регистрации (%s)' % (email)

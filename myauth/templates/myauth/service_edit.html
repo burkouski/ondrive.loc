@@ -34,40 +34,40 @@
                                             <div class="wform__sub-wrap">
                                                 <h4 class="wform__sub-title">Режим работы</h4>
 
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Понедельник:</span> {{ form.monday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-4">Понедельник:</label> <div class="col-sm-8">{{ form.monday }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Вторник:</span> {{ form.tuesday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-4">Вторник:</label> <div class="col-sm-8">{{ form.tuesday }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Среда:</span> {{ form.wednesday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-4">Среда:</label> {{ form.wednesday }}
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Четверг:</span> {{ form.thursday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-4">Четверг:</label>{{ form.thursday }}
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Пятница:</span> {{ form.friday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-4">Пятница:</label> {{ form.friday }}
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Суббота:</span> {{ form.saturday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-4">Суббота:</label>{{ form.saturday }}
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Воскресенье:</span> {{ form.sunday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-4">Воскресенье:</label> {{ form.sunday }}
                                                 </div>
 
 
                                                 <div class="wform__group">
-                                                    <span class="service__param-name">Время работы:</span>
-                                                    c {{ form.work_start }} до {{ form.work_end }}
+                                                    <label class="wform__label ">Время работы:</label>
+                                                    <div>c {{ form.work_start }} до {{ form.work_end }}</div>
                                                 </div>
                                                 <div class="wform__group">
-                                                    <span class="service__param-name">Время обеда:</span>
-                                                    с {{ form.break_time_start }} до {{ form.break_time_end }}
+                                                    <label class="wform__label">Время обеда:</label>
+                                                    <div>с {{ form.break_time_start }} до {{ form.break_time_end }}</div>
                                                 </div>
                                                 <div class="wform__group">
-                                                    <span class="service__param-name">Сокращенный день:</span>
-                                                    с {{ form.holiday_time_start }} до {{ form.holiday_time_end }}
+                                                    <label class="wform__label">Сокращенный день:</label>
+                                                    <div>с {{ form.holiday_time_start }} до {{ form.holiday_time_end }}</div>
                                                 </div>
                                             </div>
 

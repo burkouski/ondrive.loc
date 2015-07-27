@@ -38,7 +38,7 @@
                                 <label for="userUsername" class="col-sm-5 wform__label">Имя пользователя:</label>
 
                                 <div class="col-sm-7">
-                                    <input type="text" class="wform__input" name="username" ng-model="user.username"
+                                    <input type="text" class="wform__control" name="username" ng-model="user.username"
                                            required/>
                                     <span class="text-danger">{$ result.usernameErr $}</span>
 
@@ -51,7 +51,7 @@
                                 <label for="userEmail" class="col-sm-5 wform__label">Ваш email:</label>
 
                                 <div class="col-sm-7">
-                                    <input type="email" class="wform__input" name="email" ng-model="user.email"
+                                    <input type="email" class="wform__control" name="email" ng-model="user.email"
                                            required/>
                                     <span class="text-danger">{$ result.emailErr $}</span>
 
@@ -65,7 +65,7 @@
                                 <label for="userPassword" class="col-sm-5 wform__label">Пароль:</label>
 
                                 <div class="col-sm-7">
-                                    <input type="password" class="wform__input" name="password" ng-model="user.password"
+                                    <input type="password" class="wform__control" name="password" ng-model="user.password"
                                            required/>
 
                                     <div ng-show="wform.$submitted">
@@ -78,7 +78,7 @@
                                 <label for="userPassword2" class="col-sm-5 wform__label">Повторите пароль:</label>
 
                                 <div class="col-sm-7">
-                                    <input class="wform__input" type="password" name="confirmPassword"
+                                    <input class="wform__control" type="password" name="confirmPassword"
                                            ng-model="user.confirmPassword" required compare-to="user.password"/>
 
                                     <div ng-show="wform.$submitted">

@@ -15,6 +15,7 @@ def cooperation_view(request):
 
 @ensure_csrf_cookie
 def send_message(request):
+    args = {}
     post_data = json.loads(request.body)
     name = post_data.get(u'name', False)
     email = post_data.get(u'email', False)
@@ -36,6 +37,7 @@ def send_message(request):
     #     email = 'Не указан'
     # if not subject:
     #     subject = 'Не указана'
+    args['success'] = True
     html_content = u"<h3 style='color: red'>Сообщение с сайта ondrive.by</h3>" \
                    u"<span>Имя: %s</span><br/>" \
                    u"<span>Email: %s</span><br/>" \
@@ -45,5 +47,5 @@ def send_message(request):
               html_message=html_content)
 
     if request.method == 'POST':
-        return HttpResponse('')
+        return HttpResponse(json.dumps(args))
 

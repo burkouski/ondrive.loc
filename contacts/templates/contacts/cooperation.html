@@ -38,7 +38,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <input ng-model="contacts.name" type="text" class="wform__input" name="name"
+                                    <input ng-model="contacts.name" type="text" class="wform__control" name="name"
                                            id="name" placeholder="Как к вам обращаться?">
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <input ng-model="contacts.email" type="email" class="wform__input" name="email"
+                                    <input ng-model="contacts.email" type="email" class="wform__control" name="email"
                                            id="email" placeholder="Как с вами связаться?">
                                     <div ng-show="wform.$submitted">
                                         <span class="text-danger" ng-show="wform.email.$error.email">Введите email в правильном формате</span>
@@ -61,7 +61,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <input ng-model="contacts.subject" type="text" class="wform__input" name="subject"
+                                    <input ng-model="contacts.subject" type="text" class="wform__control" name="subject"
                                            id="subject"
                                            placeholder="Тема сообщения">
                                 </div>
@@ -73,7 +73,7 @@
 
                                 <div class="col-sm-9">
                                     <textarea ng-model="contacts.message" name="message" id="message"
-                                              class="wform__input wform__input--textarea" rows="5"
+                                              class="wform__control wform__control--textarea" rows="5"
                                               placeholder="Сообщение" required=""></textarea>
                                     <div ng-show="wform.$submitted">
                                         <span class="text-danger" ng-show="wform.message.$error.required">Пожалуйста оставьте сообщение</span>

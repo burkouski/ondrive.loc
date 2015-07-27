@@ -10,7 +10,7 @@ ymapsApp.controller('contactsCtrl', ['$scope', 'services', function ($scope, ser
         if (form.$valid) {
             $scope.ajaxLoader = true;
             services.list(apiUrl, $scope.contacts, function (result) {
-                    //alert(true)
+                    console.log(result);
                     $scope.resultMess = 'Ваше сообщение успешно отправлено';
                     $scope.success = true;
                     $scope.ajaxLoader = false;
