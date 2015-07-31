@@ -11,6 +11,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 import json
 from django.db.models import Avg
+from django.core.cache import cache
 
 WORKDAY_CHOICES = (
     ('wd', u'Рабочий день'),
@@ -18,30 +19,31 @@ WORKDAY_CHOICES = (
     ('hd', u'Выходной'),
 )
 TIME_CHOICES = (
-    ('0', '0:00'),
-    ('1', '1:00'),
-    ('2', '2:00'),
-    ('3', '3:00'),
-    ('4', '4:00'),
-    ('5', '5:00'),
-    ('6', '6:00'),
-    ('7', '7:00'),
-    ('8', '8:00'),
-    ('9', '9:00'),
-    ('10', '10:00'),
-    ('11', '11:00'),
-    ('12', '12:00'),
-    ('13', '13:00'),
-    ('14', '14:00'),
-    ('15', '15:00'),
-    ('16', '16:00'),
-    ('17', '17:00'),
-    ('18', '18:00'),
-    ('19', '19:00'),
-    ('20', '20:00'),
-    ('21', '21:00'),
-    ('22', '22:00'),
-    ('23', '23:00'),
+    ('1', 'Нет'),
+    ('1', '0:00'),
+    ('2', '1:00'),
+    ('3', '2:00'),
+    ('4', '3:00'),
+    ('5', '4:00'),
+    ('6', '5:00'),
+    ('7', '6:00'),
+    ('8', '7:00'),
+    ('9', '8:00'),
+    ('10', '9:00'),
+    ('11', '10:00'),
+    ('12', '11:00'),
+    ('13', '12:00'),
+    ('14', '13:00'),
+    ('15', '14:00'),
+    ('16', '15:00'),
+    ('17', '16:00'),
+    ('18', '17:00'),
+    ('19', '18:00'),
+    ('20', '19:00'),
+    ('21', '20:00'),
+    ('22', '21:00'),
+    ('23', '22:00'),
+    ('24', '23:00'),
 
 )
 
@@ -50,7 +52,9 @@ class Service(models.Model):
     name = models.CharField(u"Название сервиса", max_length=200)
     alias = models.SlugField(max_length=100, blank=True)
     teaser = models.TextField(u'Краткое описание', blank=True)
+    city = models.CharField(u'Город', max_length=200, blank=True)
     address = models.CharField(u'Адрес', max_length=200, blank=True)
+    building = models.CharField(u'Дом', max_length=200, blank=True)
     phone_velcom = models.CharField(u"Velcom", max_length=20, blank=True)
     phone_velcom2 = models.CharField(u"второй Velcom", max_length=20, blank=True)
     phone_mts = models.CharField(u"МТС", max_length=20, blank=True)
@@ -60,12 +64,12 @@ class Service(models.Model):
     phone_city = models.CharField(u"Городской", max_length=20, blank=True)
     phone_city2 = models.CharField(u"второй Городской", max_length=20, blank=True)
 
-    work_start = models.CharField(u'Время начала работы', max_length=5, choices=TIME_CHOICES, default='8', blank=True)
-    work_end = models.CharField(u'Время завершения работы', max_length=5, choices=TIME_CHOICES, default='18', blank=True)
-    break_time_start = models.CharField(u'Время начала обеда', max_length=5, choices=TIME_CHOICES, blank=True)
-    break_time_end = models.CharField(u'Время завершения обеда', max_length=5, choices=TIME_CHOICES, blank=True)
-    holiday_time_start = models.CharField(u'Время начала сокращенного дня', max_length=5, choices=TIME_CHOICES, default='8', blank=True)
-    holiday_time_end = models.CharField(u'Время завершения сокращенного дня', max_length=5, choices=TIME_CHOICES, default='16', blank=True)
+    work_start = models.CharField(u'Время начала работы', max_length=5, choices=TIME_CHOICES, default='9', blank=True)
+    work_end = models.CharField(u'Время завершения работы', max_length=5, choices=TIME_CHOICES, default='19', blank=True)
+    break_time_start = models.CharField(u'Время начала обеда', max_length=5, choices=TIME_CHOICES,default='0', blank=True)
+    break_time_end = models.CharField(u'Время завершения обеда', max_length=5, choices=TIME_CHOICES,default='0', blank=True)
+    holiday_time_start = models.CharField(u'Время начала сокращенного дня', max_length=5, choices=TIME_CHOICES, default='0', blank=True)
+    holiday_time_end = models.CharField(u'Время завершения сокращенного дня', max_length=5, choices=TIME_CHOICES, default='0', blank=True)
 
     monday = models.CharField(u'Понедельник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
     tuesday = models.CharField(u'Вторник', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
@@ -74,6 +78,7 @@ class Service(models.Model):
     friday = models.CharField(u'Пятница', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
     saturday = models.CharField(u'Суббота', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
     sunday = models.CharField(u'Воскресенье', max_length=2, choices=WORKDAY_CHOICES, default='wd', blank=True)
+
     email = models.EmailField(u"Email", blank=True)
     site_url = models.URLField(u'Сайт', blank=True)
     full_desc = RichTextField(u"Полное описание", blank=True)
@@ -103,15 +108,21 @@ class Service(models.Model):
         return rating
 
     def save(self):
-        if self.address:
+        if self.address and self.city and self.building:
+            city = re.sub(' +', '+', self.city)
             address = re.sub(' +', '+', self.address)
-            location = "%s" % address
+            building = re.sub(' +', '+', self.building)
+            location = "%s,%s,%s" %(city,address,building)
             location = location.encode('utf-8')
 
             if self.pk is not None:
-                origin_address = Service(pk=self.pk)
+                service = Service(pk=self.pk)
+                origin_city = re.sub(' +', '+', service.city)
+                origin_address = re.sub(' +', '+', service.address)
+                origin_building = re.sub(' +', '+', service.building)
+                origin_location = "%s,%s,%s" %(origin_city,origin_address,origin_building)
 
-            if not self.latitude or not self.longitude or (origin_address.address != self.address):
+            if not self.latitude or not self.longitude or (origin_location != location):
                 latlng = self.geocode(location)
                 latlng = latlng.split(' ')
                 self.latitude = latlng[0]

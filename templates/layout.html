@@ -91,7 +91,10 @@
                                 <!--li><a href="#">Мой профиль</a></li-->
                                 <li><a href="/auth/registration">Регистрация</a></li>
                             {% else %}  
-                                <li><a href="/auth/user">Мой профиль</a></li>
+                                <li><a href="/auth/user">Ваш профиль</a></li>
+                                {% if user.autoservice_set.all or  user.carwash_set.all or user.tireservice_set.all %}
+                                    <li><a href="/auth/user/service/">Ваши сервисы</a></li>
+                                {% endif %}
                             {% endif %}
 
                             <!--li><a href="login.html">Книга жалоб и предложений</a></li-->

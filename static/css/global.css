@@ -144,3 +144,6 @@ input:-ms-input-placeholder:focus:-ms-input-placeholder {
 .wrap--padright {
   padding-right: 20px;
 }
+.django-ckeditor-widget {
+  width: 100% !important;
+}

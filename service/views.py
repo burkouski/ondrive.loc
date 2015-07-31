@@ -7,7 +7,7 @@ from itertools import chain
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 
-#@ensure_csrf_cookie
+# @ensure_csrf_cookie
 def service_list(request):
     if request.GET.get('_escaped_fragment_') == '':
         autoservice = AutoService.objects.all()
@@ -110,10 +110,12 @@ def filtering(post_data, objects):
                      'name': o.name,
                      'logo': o.logo.url,
                      'teaser': o.teaser,
+                     'city': o.city,
                      'address': o.address,
+                     'building': o.building,
                      'rating': o.get_rating(),
                      'sort': o.sort,
-                     'url': o.get_absolute_url()} for o in objects[(quantity*page):(quantity*page+quantity)]],
+                     'url': o.get_absolute_url()} for o in objects[(quantity * page):(quantity * page + quantity)]],
 
         'meta': objects.count()
     }
@@ -122,7 +124,9 @@ def filtering(post_data, objects):
                        'longitude': o.longitude,
                        'latitude': o.latitude,
                        'teaser': o.teaser,
+                       'city': o.city,
                        'address': o.address,
+                       'building': o.building,
                        'sort': o.sort,
                        'url': o.get_absolute_url()} for o in map_objects]
 

@@ -1,6 +1,7 @@
 <div id="request-form" class="panel-smart " style="display:none" ng-controller="requestCtrl">
     <div class="panel-heading">
         <h3 class="panel-title" ng-class="{'text-success': result.status }">{$result.mess$}</h3>
+        <p>{{ result.subMess }}</p>
     </div>
     <div class="wform">
         <!-- Login Form Starts -->
@@ -38,17 +39,6 @@
                         <span class="text-danger" ng-show="wform.phone.$error.minlength">Введите правильный телефон! Формат: (99) 999-99-99</span>
                     </div>
             </div>
-            <div class="wform__group">
-                <label for="userEmail" class="wform__label">Ваш email:</label>
-                <input type="email" class="wform__control" name="email" ng-model="form.email"/>
-                <span class="text-danger">{$ result.emailErr $}</span>
-
-                <div ng-show="wform.$submitted">
-                        <span class="text-danger"
-                              ng-show="wform.email.$error.email">Неверный адрес элекронной почты</span>
-                </div>
-            </div>
-
             <div class="wform__group">
                 <button type="submit" class="btn btn-danger">
                     <span ng-show="!ajaxLoader">Отправить</span>

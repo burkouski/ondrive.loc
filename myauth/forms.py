@@ -95,7 +95,9 @@ class ServiceForm(forms.ModelForm):
     name = forms.CharField(required=True,
                            widget=forms.TextInput(attrs={'class': 'wform__control'}))
     logo = forms.ImageField(required=False,widget=forms.FileInput(attrs={'class': 'btn btn-warning text-uppercase', 'title': u'Выберите изображение'}))
-    address = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'wform__control'}))
+    city = forms.CharField(required=True,widget=forms.TextInput(attrs={'class': 'wform__control'}))
+    address = forms.CharField(required=True,widget=forms.TextInput(attrs={'class': 'wform__control'}))
+    building = forms.CharField(required=True,widget=forms.TextInput(attrs={'class': 'wform__control'}))
     phone_velcom = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'wform__control'}))
     phone_velcom2 = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'wform__control'}))
     phone_mts = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'wform__control'}))
@@ -164,7 +166,7 @@ class AutoserviceForm(ServiceForm):
     )
     class Meta:
         model = AutoService
-        fields = ['name','address','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2','email','site_url', 'logo','monday','tuesday','wednesday','thursday',
+        fields = ['name','city','address','building','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2','email','site_url', 'logo','monday','tuesday','wednesday','thursday',
                   'friday', 'saturday','sunday','work_start','work_end','break_time_start', 'break_time_end','holiday_time_start', 'holiday_time_end','teaser', 'full_desc']
 
     def __init__(self, *args, **kwargs):
@@ -224,7 +226,7 @@ class CarwashForm(ServiceForm):
     )
     class Meta:
         model = CarWash
-        fields = ['name','address','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2','email','site_url', 'logo','monday','tuesday','wednesday','thursday',
+        fields = ['name','city','address','building','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2','email','site_url', 'logo','monday','tuesday','wednesday','thursday',
                   'friday', 'saturday','sunday','work_start','work_end','break_time_start', 'break_time_end','holiday_time_start', 'holiday_time_end','teaser', 'full_desc']
 
     def __init__(self, *args, **kwargs):
@@ -276,7 +278,7 @@ class TireServiceForm(ServiceForm):
     )
     class Meta:
         model = CarWash
-        fields = ['name','address','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2','email','site_url', 'logo','monday','tuesday','wednesday','thursday',
+        fields = ['name','city','address','building','phone_velcom','phone_velcom2','phone_mts','phone_mts2','phone_life','phone_life2','phone_city','phone_city2','email','site_url', 'logo','monday','tuesday','wednesday','thursday',
                   'friday', 'saturday','sunday','work_start','work_end','break_time_start', 'break_time_end','holiday_time_start', 'holiday_time_end','teaser', 'full_desc']
 
     def __init__(self, *args, **kwargs):

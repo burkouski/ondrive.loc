@@ -43,7 +43,7 @@ def send_message(request):
                    u"<span>Email: %s</span><br/>" \
                    u"<span>Тема: %s</span><br/>" \
                    u"<p>%s</p>" % (name, email, subject, message)
-    send_mail(subject, html_content, 'Cообщение ondrive.by', ['ondrive.by@gmail.com'], fail_silently=False,
+    send_mail(subject, html_content, 'info@ondrive.by', ['ondrive.by@gmail.com'], fail_silently=False,
               html_message=html_content)
 
     if request.method == 'POST':
