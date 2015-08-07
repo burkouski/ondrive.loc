@@ -7,10 +7,10 @@
 
         <!-- Product Name Ends -->
 
-        <ul class="list-unstyled service__list">
+        <ul class="list-unstyled service__list row">
 
             {% for work in service.repair_work.all %}
-                <li class="service__work-item">{{ work }}</li>
+                <li class="service__work-item col-sm-3">{{ work }}</li>
             {% endfor %}
         </ul>
     {% endif %}
