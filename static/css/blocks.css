@@ -522,6 +522,18 @@
   display: inline-block;
   color: #2f353b;
 }
+.service__work-item {
+  position: relative;
+  display: inline-block;
+  padding: 0 10px 10px 20px;
+  text-transform: lowercase;
+}
+.service__work-icon {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  color: #43ca43;
+}
 .service__workday-icon {
   display: inline-block;
   vertical-align: top;
@@ -540,11 +552,6 @@
 }
 .service__workday-icon--red {
   background: #ef4135;
-}
-.service__work-item {
-  display: inline-block;
-  padding: 0 10px 10px 0;
-  font-weight: bold;
 }
 .service__desc {
   font-size: 16px;

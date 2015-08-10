@@ -2,6 +2,8 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, HttpResponse
 from service.models import AutoService, CarWash, TireService
 from django.db.models import Avg
+from django.apps import apps
+from django.contrib.contenttypes.models import ContentType
 import json
 from itertools import chain
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -44,7 +46,16 @@ def autoservice_list(request):
     return render(request, 'service/autoservice_list_view.html')
 
 
+def autoservice_filter(request,filter_name, filter_param):
+
+    z = ContentType.objects.get(model='repairwork')
+    ModelB = apps.get_model(z.app_label, filter_name)
+    service = get_object_or_404(ModelB , id=filter_param)
+    return render(request, 'service/autoservice_filter.html')
+
+
 #################### АВТОМОЙКИ ####################
+
 
 def carwash_detail(request, service_alias):
     service = get_object_or_404(CarWash, alias=service_alias)
@@ -92,6 +103,7 @@ def filtering(post_data, objects):
     obj = {}
     quantity = 6
     page = 1
+    print post_data
     if post_data.get(u'meta'):
         quantity = post_data[u'meta'][u'quantity']
         page = post_data[u'meta'][u'page']

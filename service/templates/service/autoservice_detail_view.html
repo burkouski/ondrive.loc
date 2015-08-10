@@ -7,10 +7,10 @@
 
         <!-- Product Name Ends -->
 
-        <ul class="list-unstyled service__list row">
+        <ul class="list-unstyled service__list">
 
             {% for work in service.repair_work.all %}
-                <li class="service__work-item col-sm-3">{{ work }}</li>
+                <li class="service__work-item"><i class="fa fa-check service__work-icon"></i>{{ work }}</li>
             {% endfor %}
         </ul>
     {% endif %}
@@ -24,7 +24,7 @@
         <ul class="list-unstyled service__list">
 
             {% for work in service.diag_work.all %}
-                <li class="service__work-item">{{ work }}</li>
+                <li class="service__work-item"><i class="fa fa-check service__work-icon"></i>{{ work }}</li>
             {% endfor %}
         </ul>
     {% endif %}
@@ -38,7 +38,7 @@
         <ul class="list-unstyled service__list">
 
             {% for work in service.add_work.all %}
-                <li class="service__work-item">{{ work }}</li>
+                <li class="service__work-item"><i class="fa fa-check service__work-icon"></i>{{ work }}</li>
             {% endfor %}
         </ul>
     {% endif %}
