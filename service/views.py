@@ -7,6 +7,7 @@ from django.contrib.contenttypes.models import ContentType
 import json
 from itertools import chain
 from django.views.decorators.csrf import ensure_csrf_cookie
+import re
 
 
 # @ensure_csrf_cookie
@@ -46,12 +47,14 @@ def autoservice_list(request):
     return render(request, 'service/autoservice_list_view.html')
 
 
-def autoservice_filter(request,filter_name, filter_param):
-
-    z = ContentType.objects.get(model='repairwork')
-    ModelB = apps.get_model(z.app_label, filter_name)
-    service = get_object_or_404(ModelB , id=filter_param)
-    return render(request, 'service/autoservice_filter.html')
+def autoservice_filter(request,filter_name, filter_alias):
+    args = {}
+    model_name = re.sub('[_]', '', filter_name)
+    z = ContentType.objects.get(model=model_name)
+    ModelB = apps.get_model(z.app_label, model_name)
+    filter = get_object_or_404(ModelB , alias=filter_alias)
+    args = {'filter_name': filter_name, 'filter_alias': filter_alias, 'filter': filter}
+    return render(request, 'service/autoservice_list_view.html', args)
 
 
 #################### АВТОМОЙКИ ####################

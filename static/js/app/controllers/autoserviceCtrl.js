@@ -1,19 +1,29 @@
 ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', function ($scope, $cookieStore, services) {
 
-    $scope.init = function (filterName, apiUrl) {
+    $scope.init = function (filterName, apiUrl, filterParam, filterValue) {
         $scope.preloader = false;
         $scope.gridView = false;
         $scope.filterName = filterName;
         $scope.apiUrl = apiUrl;
 
-        var filterCook = $cookieStore.get($scope.filterName),
+        var filterParam = filterParam,
+            filterValue = filterValue,
+            filterCook = $cookieStore.get($scope.filterName),
             activeTabsCook = $cookieStore.get('activeTabs');
+        if (filterParam == undefined) {
+            $scope[$scope.filterName] = (filterCook) ? filterCook : {};
+            $scope.activeTabs = (activeTabsCook) ? activeTabsCook : [];
+        }
+        else {
+           var singleFilter = {};
+                singleFilter['options'] = {};
+                singleFilter['options'][filterParam] = [parseInt(filterValue)];
 
-        //console.log($cookieStore.get($scope.filterName));
-
-        $scope[$scope.filterName] = (filterCook) ? filterCook : {};
-        $scope.activeTabs = (activeTabsCook) ? activeTabsCook : [];
-
+            $scope[$scope.filterName] = singleFilter;
+            $scope.activeTabs = [];
+        }
+        //$scope[$scope.filterName] = (filterCook) ? filterCook : {};
+        //    $scope.activeTabs = (activeTabsCook) ? activeTabsCook : [];
         $scope.quantity = 6;
         $scope.curPage = 1;
         $scope[$scope.filterName].meta = {
@@ -21,27 +31,24 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
             page: $scope.curPage-1
         };
         $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
-    }
+    };
 
     setCookie = function () {
         $cookieStore.put($scope.filterName, $scope[$scope.filterName]);
         $cookieStore.put('activeTabs', $scope.activeTabs);
 
-    }
+    };
 
     //Функция загрузки данных
     $scope.loadRemoteData = function (apiUrl, data) {
         $scope.preloader = false;
-        //console.log(data);
         services.list(apiUrl, data, function (services) {
-                //console.log(services)
                 $scope.services = services.objects.info;
                 $scope.meta = services.objects.meta;
                 $scope.mapObjects = services.mapObjects;
                 $scope.preloader = true;
                 setCookie();
                 resetPagination($scope.meta, $scope.quantity);
-                console.log($scope.pagination);
             },
             function () {
                 alert('wrong')
@@ -58,7 +65,7 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
             //if not, return false
             return false;
         }
-    }
+    };
 
     //Функция открытия таба в фильтре
     $scope.openTab = function (tab) {
@@ -71,13 +78,12 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
             $scope.activeTabs.push(tab);
         }
         setCookie()
-    }
+    };
 
     // Функция изменения отображения сервисов
     $scope.changeView = function (view) {
         $scope.gridView = view; // path not hash
-        //console.log($scope.view)
-    }
+    };
 
     //Преобразования рейтинга в звёзды
     $scope.starsInit = function (rating) {
@@ -106,11 +112,11 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
 
     $scope.changeFilter = function() {
         resetPage()
-    }
+    };
 
     $scope.clearFilter = function (filterName) {
-        angular.forEach($scope[filterName], function (value, key) {
-            $scope[filterName][key] = [];
+        angular.forEach($scope[filterName].options, function (value, key) {
+            $scope[filterName]['options'][key] = [];
         });
         resetPage()
 
@@ -131,7 +137,6 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
     resetPagination = function(objQuantity, displayQuantity) {
 
         $scope.pagination = _getArray(Math.ceil(objQuantity/displayQuantity))
-        console.log($scope.pagination)
     };
 
 
@@ -140,8 +145,10 @@ ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', fu
     };
 
     function resetPage() {
+        console.log('dfndfnfd');
         $scope.curPage = 1;
         $scope[$scope.filterName].meta.page = $scope.curPage-1;
+        console.log($scope[$scope.filterName]);
         $scope.loadRemoteData($scope.apiUrl, $scope[$scope.filterName]);
     }
 

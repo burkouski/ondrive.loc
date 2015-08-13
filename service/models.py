@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import urllib
 import re
+import datetime
 from pytils import translit
 from django.db import models
 from django.core.urlresolvers import reverse
@@ -90,6 +91,7 @@ class Service(models.Model):
     meta_keywords = models.TextField(u'Keywords', blank=True)
     meta_description = models.TextField(u'Description', blank=True, null=True)
     owner = models.ForeignKey(UserProfile, default='85')
+    lastmod = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     class Meta:
         abstract = True
@@ -165,6 +167,9 @@ class Service(models.Model):
 
 class Work(models.Model):
     work_name = models.CharField("Вид работы", max_length=200)
+    alias = models.SlugField(max_length=100, blank=True)
+    description = RichTextField(u'Текст категории фильтра', blank=True)
+    lastmod = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     class Meta:
         abstract = True
@@ -175,6 +180,14 @@ class Work(models.Model):
     def get_model_name(self):
         model_name = self._meta.verbose_name_plural.title()
         return model_name
+
+    def get_absolute_url(self):
+        return reverse('service:autoservice_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
+
+    def save(self):
+        if not self.alias:
+            self.alias = translit.slugify(self.work_name)
+        super(Work, self).save()
 
 
 class AddServices(Work):
@@ -196,6 +209,7 @@ class SpecializationWork(Work):
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Специализируются на марках"
+
 
 
 class RepairWork(Work):
@@ -281,7 +295,7 @@ class TypeVehicle(Work):
 
 
 class CarWashServices(Work):
-    work_field_name = 'car_wash_services'
+    work_field_name = 'carwash_services'
 
     class Meta:
         verbose_name = u""

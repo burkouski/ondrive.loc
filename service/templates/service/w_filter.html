@@ -20,6 +20,7 @@
         </div>
 
     {% endfor %}
+{$ asFilter $}
     <div class="list-group-item">
         <button type="button" class="btn btn-danger" ng-click="clearFilter('{{ filter_name }}')">Сбросить фильтр</button>
     </div>
