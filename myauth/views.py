@@ -62,8 +62,8 @@ def user_register(request):
                          u"<p>для подтверждения регистрации перейдите по  <a href='http://localhost:8000/auth/registration/%s'>ссылке</a></p>" \
                          u"<p>Если вы не имеете понятия о чем идет речь, просто проигнорируйте это письмо!</p>" % (username, activation_key)
 
-            send_mail(email_subject, email_body, 'ondrive.by@gmail.com',
-                      [email], fail_silently=False, html_message=email_body)
+            # send_mail(email_subject, email_body, 'ondrive.by@gmail.com',
+            #           [email], fail_silently=False, html_message=email_body)
             args['resultMess'] = u'Регистрация прошла успешно'
             args['resultSubMess'] = u'инструкция по активации аккаунта выслава на email указанный при регистрации (%s)' % (email)
             args = json.dumps(args)
