@@ -2,38 +2,46 @@
 {% load sitetree %}
 
 {% block custom_field %}
-    <div class="panel panel-smart">
-        <h4>Специализация на марках</h4>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Специализация на марках</h4>
 
-        <div class="service-form__wrap">{{ form.specialization_work }}</div>
-    </div>
-    <div class="panel panel-smart">
-        <h4>Ремонтные работы</h4>
-
-        <div class="service-form__wrap">{{ form.repair_work }}</div>
-    </div>
-    <div class="panel panel-smart">
-        <h4>Диагностика</h4>
-
-        <div class="service-form__wrap">{{ form.diag_work }}</div>
-    </div>
-    <div class="panel panel-smart">
-        <h4>Обслуживание</h4>
-
-        <div class="service-form__wrap">{{ form.serv_work }}</div>
-    </div>
-    <div class="panel panel-smart">
-        <h4>Дополнительные работы</h4>
-
-        <div class="service-form__wrap">
-            {{ form.add_work }}
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.specialization_work }}</div>
         </div>
     </div>
-    <div class="panel panel-smart">
-        <h4>Дополнительные услуги</h4>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Ремонтные работы</h4>
 
-        <div class="service-form__wrap">
-            {{ form.add_services }}
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.repair_work }}</div>
+        </div>
+    </div>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Диагностика</h4>
+
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.diag_work }}</div>
+        </div>
+    </div>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Обслуживание</h4>
+
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.serv_work }}</div>
+        </div>
+    </div>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Дополнительные работы</h4>
+
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.add_work }}</div>
+        </div>
+    </div>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Дополнительные услуги</h4>
+
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12"> {{ form.add_services }}</div>
         </div>
 
     </div>

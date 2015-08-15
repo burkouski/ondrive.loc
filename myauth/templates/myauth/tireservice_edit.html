@@ -2,23 +2,26 @@
 {% load sitetree %}
 
 {% block custom_field %}
-    <div class="panel panel-smart">
-        <h4>Шины</h4>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Шины</h4>
 
-        <div class="service-form__wrap">{{ form.tire_work }}</div>
-    </div>
-    <div class="panel panel-smart">
-        <h4>Диски</h4>
-
-        <div class="service-form__wrap">{{ form.disc_work }}</div>
-    </div>
-    <div class="panel panel-smart">
-        <h4>Дополнительные услуги</h4>
-
-        <div class="service-form__wrap">
-            {{ form.add_services }}
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.tire_work }}</div>
         </div>
+    </div>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Диски</h4>
 
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.disc_work }}</div>
+        </div>
+    </div>
+    <div class="wform__panel">
+    <h4 class="wform__sub-title">Дополнительные услуги</h4>
+
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.add_services }}</div>
+        </div>
     </div>
 
 {% endblock %}

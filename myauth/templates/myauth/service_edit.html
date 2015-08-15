@@ -18,9 +18,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 {% csrf_token %}
-                                {{ form.errors }}
                                 <h2 class="wform__title">Редактирование {{ service.name }}</h2>
-
+                                {{ form.errors }}
                                 <div class="wform__panel">
                                     <div class="row">
                                         <div class="col-sm-5 service__images">
@@ -34,40 +33,60 @@
                                             <div class="wform__sub-wrap">
                                                 <h4 class="wform__sub-title">Режим работы</h4>
 
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Понедельник:</span> {{ form.monday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-5">Понедельник:</label>
+
+                                                    <div class="col-sm-7">{{ form.monday }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Вторник:</span> {{ form.tuesday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-5">Вторник:</label>
+
+                                                    <div class="col-sm-7">{{ form.tuesday }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Среда:</span> {{ form.wednesday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-5">Среда:</label>
+
+                                                    <div class="col-sm-7">{{ form.wednesday }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Четверг:</span> {{ form.thursday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-5">Четверг:</label>
+
+                                                    <div class="col-sm-7">{{ form.thursday }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Пятница:</span> {{ form.friday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-5">Пятница:</label>
+
+                                                    <div class="col-sm-7">{{ form.friday }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Суббота:</span> {{ form.saturday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-5">Суббота:</label>
+
+                                                    <div class="col-sm-7">{{ form.saturday }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Воскресенье:</span> {{ form.sunday }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-5">Воскресенье:</label>
+
+                                                    <div class="col-sm-7">{{ form.sunday }}</div>
                                                 </div>
 
 
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Время работы:</span>
-                                                    c {{ form.work_start }} до {{ form.work_end }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-12">Время работы:</label>
+
+                                                    <div class="col-sm-12">c {{ form.work_start }}
+                                                        до {{ form.work_end }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Время обеда:</span>
-                                                    с {{ form.break_time_start }} до {{ form.break_time_end }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-12">Время обеда:</label>
+
+                                                    <div class="col-sm-12">с {{ form.break_time_start }}
+                                                        до {{ form.break_time_end }}</div>
                                                 </div>
-                                                <div class="wform__group">
-                                                    <span class="service__param-name">Сокращенный день:</span>
-                                                    с {{ form.holiday_time_start }} до {{ form.holiday_time_end }}
+                                                <div class="wform__group row">
+                                                    <label class="wform__label col-sm-12">Сокращенный день:</label>
+
+                                                    <div class="col-sm-12">с {{ form.holiday_time_start }}
+                                                        до {{ form.holiday_time_end }}</div>
                                                 </div>
                                             </div>
 
@@ -75,81 +94,119 @@
                                         <div class="col-sm-7">
                                             <h4 class="wform__sub-title">Контактные данные</h4>
 
-                                            <div class="wform__group">
+                                            <div class="wform__group row">
 
-                                                <span class="service__param-name">Название:</span> {{ form.name }}
-                                                <div class="text-danger">{{ form.name.errors.as_text }}</div>
+                                                <span class="wform__label col-sm-12">Название:</span>
+
+                                                <div class="col-sm-12">{{ form.name }}</div>
+                                                <div class="col-sm-12">
+                                                    {% if form.name.errors %}
+                                                        <p class="bg-danger wform__error col-sm-12">{{ form.name.errors.as_text }}</p>
+                                                    {% endif %}
+                                                </div>
+
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Адрес:</span> {{ form.address }}
+                                            <div class="wform__group row">
+                                                <div class="col-sm-4">
+                                                    <label class="wform__label">Город:</label>
+
+                                                    <div>{{ form.city }}</div>
+                                                    {% if form.city.errors %}
+                                                        <p class="bg-danger wform__error col-sm-12">{{ form.city.errors.as_text }}</p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label class="wform__label">Улица:</label>
+
+                                                    <div>{{ form.address }}</div>
+                                                    {% if form.address.errors %}
+                                                        <p class="bg-danger wform__error col-sm-12">{{ form.address.errors.as_text }}</p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label class="wform__label">Дом:</label>
+
+                                                    <div>{{ form.building }}</div>
+                                                    {% if form.building.errors %}
+                                                        <p class="bg-danger wform__error col-sm-12">{{ form.building.errors.as_text }}</p>
+                                                    {% endif %}
+                                                </div>
                                             </div>
 
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Телефон (velcom):</span> {{ form.phone_velcom }}
+                                            <div class="wform__group row">
+                                                <label class="wform__label col-sm-12">Телефон (velcom):</label>
+
+                                                <div class="col-sm-12">{{ form.phone_velcom }}</div>
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Телефон (velcom дополнительный):</span> {{ form.phone_velcom2 }}
+                                            <div class="wform__group row">
+                                                <label class="wform__label col-sm-12">Телефон (velcom
+                                                    дополнительный):</label>
+
+                                                <div class="col-sm-12">{{ form.phone_velcom2 }}</div>
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Телефон (mts):</span> {{ form.phone_mts }}
+                                            <div class="wform__group row">
+                                                <label class="wform__label col-sm-12">Телефон (mts):</label>
+
+                                                <div class="col-sm-12">{{ form.phone_mts }}</div>
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Телефон (mts дополнительный):</span> {{ form.phone_mts2 }}
+                                            <div class="wform__group roe">
+                                                <label class="wform__label col-sm-12">Телефон (mts
+                                                    дополнительный):</label>
+
+                                                <div class="col-sm-12">{{ form.phone_mts2 }}</div>
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Телефон (life):</span> {{ form.phone_life }}
+                                            <div class="wform__group row">
+                                                <label class="wform__label col-sm-12">Телефон (life):</label>
+
+                                                <div class="col-sm-12">{{ form.phone_life }}</div>
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Телефон (life дополнительный):</span> {{ form.phone_life2 }}
+                                            <div class="wform__group row">
+                                                <label class="wform__label col-sm-12">Телефон (life
+                                                    дополнительный):</label>
+
+                                                <div class="col-sm-12">{{ form.phone_life2 }}</div>
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Телефон (городской):</span> {{ form.phone_city }}
+                                            <div class="wform__group row">
+                                                <label class="wform__label col-sm-12">Телефон (городской):</label>
+
+                                                <div class="col-sm-12">{{ form.phone_city }}</div>
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Телефон (городской дополнительный):</span> {{ form.phone_city }}
+                                            <div class="wform__group row">
+                                                <label class="wform__label col-sm-12">Телефон (городской
+                                                    дополнительный):</label>
+
+                                                <div class="col-sm-12">{{ form.phone_city }}</div>
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Email:</span> {{ form.email }}
+                                            <div class="wform__group row">
+                                                <label class="wform__label col-sm-12">Email:</label>
+
+                                                <div class="col-sm-12">{{ form.email }}</div>
                                             </div>
-                                            <div class="wform__group">
-                                                <span class="service__param-name">Сайт компании:</span> {{ form.site_url }}
+                                            <div class="wform__group row">
+                                                <label class="wform__label col-sm-12">Сайт компании:</label>
+
+                                                <div class="col-sm-12">{{ form.site_url }}</div>
                                             </div>
 
                                         </div>
                                     </div>
-
-
-                                </div>
-                                <div class="wform__panel">
-
-
-                                    <div class="row">
-                                        <div class="col-sm-6">
-
-                                        </div>
-                                        <div class="col-sm-6">
-
-                                        </div>
-                                    </div>
-
-
                                 </div>
                                 {% block custom_field %}
 
                                 {% endblock %}
-                                <div class="panel panel-smart">
-                                    <h4>Описание</h4>
-                                    <ul class="list-unstyled service__list">
-                                        <li class="service__list-item">
-                                            <span class="service__param-name">Краткое описание:</span> {{ form.teaser }}
-                                        </li>
-                                        <li class="service__list-item">
+                                <div class="wform__panel">
+                                    <h4 class="wform__sub-title">Описание</h4>
 
-                                            <span class="service__param-name">Полное описание:</span> {{ form.full_desc }}
-                                        </li>
-                                    </ul>
+                                    <div class="wform__group row">
+                                        <label class="wform__label col-sm-12">Краткое описание:</label>
 
+                                        <div class="col-sm-12">{{ form.teaser }}</div>
+                                    </div>
+                                    <div class="wform__group row">
+                                        <label class="wform__label col-sm-12">Полное описание:</label>
 
+                                        <div class="col-sm-12">{{ form.full_desc }}</div>
+                                    </div>
                                 </div>
                                 <div class="center">
                                     <input type="submit" name="submit" value="Create Category"/>

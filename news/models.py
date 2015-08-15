@@ -3,6 +3,7 @@ from django.db import models
 from pytils import translit
 from ckeditor.fields import RichTextField
 from django.core.urlresolvers import reverse
+import datetime
 
 
 class Category(models.Model):
@@ -12,6 +13,7 @@ class Category(models.Model):
     title = models.CharField('title страницы', max_length=200, blank=True)
     meta_keywords = models.TextField('meta keywords', blank=True)
     meta_description = models.TextField('meta description', blank=True)
+    lastmod = models.DateTimeField(auto_now=True, blank=True, null=True)
     def __unicode__(self):
         return self.category
 
@@ -39,6 +41,7 @@ class Post(models.Model):
     title = models.CharField('title страницы', max_length=200, blank=True)
     meta_keywords = models.TextField('Keywords', blank=True)
     meta_description = models.TextField('Description', blank=True)
+    lastmod = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     class Meta:
         ordering = ['-pub_date']

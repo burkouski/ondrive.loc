@@ -1,9 +1,24 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.sitemaps.views import sitemap
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.contrib import admin
 from django.conf import settings
 from pages import views
+from news.sitemap import NewsPostSitemap, NewsCategorySitemap
+from service.sitemap import *
+
+
+sitemaps = {'news_posts': NewsPostSitemap,
+            'news_category': NewsCategorySitemap,
+            'autoseservice': AutoServicetSitemap,
+            'SpecializationWork': SpecializationWorkSitemap,
+            'RepairWorkSitemap':RepairWorkSitemap,
+            'DiagWorkSitemap': DiagWorkSitemap,
+            'ServWorkSitemap': ServWorkSitemap,
+            'AddWorkSitemap': AddWorkSitemap
+            }
+
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html')),
@@ -19,6 +34,7 @@ urlpatterns = patterns('',
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     url(r'^(?P<page_alias>.*)/$', views.get_page, name='page_view'),
     url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /admin/",content_type='text/plain')),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap')
 )
 
 admin.autodiscover()

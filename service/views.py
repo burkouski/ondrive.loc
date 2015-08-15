@@ -2,12 +2,15 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, HttpResponse
 from service.models import AutoService, CarWash, TireService
 from django.db.models import Avg
+from django.apps import apps
+from django.contrib.contenttypes.models import ContentType
 import json
 from itertools import chain
 from django.views.decorators.csrf import ensure_csrf_cookie
+import re
 
 
-#@ensure_csrf_cookie
+# @ensure_csrf_cookie
 def service_list(request):
     if request.GET.get('_escaped_fragment_') == '':
         autoservice = AutoService.objects.all()
@@ -44,7 +47,18 @@ def autoservice_list(request):
     return render(request, 'service/autoservice_list_view.html')
 
 
+def autoservice_filter(request,filter_name, filter_alias):
+    args = {}
+    model_name = re.sub('[_]', '', filter_name)
+    z = ContentType.objects.get(model=model_name)
+    ModelB = apps.get_model(z.app_label, model_name)
+    filter = get_object_or_404(ModelB , alias=filter_alias)
+    args = {'filter_name': filter_name, 'filter_alias': filter_alias, 'filter': filter}
+    return render(request, 'service/autoservice_list_view.html', args)
+
+
 #################### АВТОМОЙКИ ####################
+
 
 def carwash_detail(request, service_alias):
     service = get_object_or_404(CarWash, alias=service_alias)
@@ -92,6 +106,7 @@ def filtering(post_data, objects):
     obj = {}
     quantity = 6
     page = 1
+    print post_data
     if post_data.get(u'meta'):
         quantity = post_data[u'meta'][u'quantity']
         page = post_data[u'meta'][u'page']
@@ -110,10 +125,12 @@ def filtering(post_data, objects):
                      'name': o.name,
                      'logo': o.logo.url,
                      'teaser': o.teaser,
+                     'city': o.city,
                      'address': o.address,
+                     'building': o.building,
                      'rating': o.get_rating(),
                      'sort': o.sort,
-                     'url': o.get_absolute_url()} for o in objects[(quantity*page):(quantity*page+quantity)]],
+                     'url': o.get_absolute_url()} for o in objects[(quantity * page):(quantity * page + quantity)]],
 
         'meta': objects.count()
     }
@@ -122,7 +139,9 @@ def filtering(post_data, objects):
                        'longitude': o.longitude,
                        'latitude': o.latitude,
                        'teaser': o.teaser,
+                       'city': o.city,
                        'address': o.address,
+                       'building': o.building,
                        'sort': o.sort,
                        'url': o.get_absolute_url()} for o in map_objects]
 

@@ -65,7 +65,7 @@
 
                                 </li>
                                 <li class="service__list-item">
-                                    <span class="service__param-name">Адрес:</span> {{ service.address }}
+                                    <span class="service__param-name">Адрес:</span> {{ service.city }}, {{ service.address }}, {{ service.building }}
                                 </li>
                                 {% if service.siteUrl %}
                                     <li class="service__list-item"><span
@@ -133,9 +133,22 @@
                 </span>
                                 </li>
                                 <li class="service__list-item"><span class="service__param-name">Время работы:</span>
-                                    <span class="service__param">c {{ service.work_start }} до {{ service.work_end }}</span>
+                                    <span class="service__param">c {{ service.get_work_start_display }} до {{ service.get_work_end_display }}</span>
                                 </li>
-
+                            {% if service.break_time_start == 0 or service.break_time_end == 0 %}
+                                <li class="service__list-item"><span class="service__param-name">Время обеда:</span>
+                                    {{ service.break_time_start }}
+                                    <span class="service__param">c {{ service.get_break_time_start_display }} до {{ service.get_break_time_end_display }}</span>
+                                </li>
+                            {% else %}
+                                <li class="service__list-item"><span class="service__param-name">Время обеда:</span><span class="service__param">Без обеда</span>
+                                </li>
+                            {% endif %}
+                            {% if service.holiday_time_start.0 or service.holiday_time_end.0 %}
+                                <li class="service__list-item"><span class="service__param-name">Сокращенный день:</span>
+                                    <span class="service__param">c {{ service.get_holiday_time_start_display }} до {{ service.get_holiday_time_end_display }}</span>
+                                </li>
+                            {% endif %}
 
                             </ul>
                         </div>

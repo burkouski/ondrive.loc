@@ -32,9 +32,6 @@ def user_register(request):
         username = post_data.get('username', False)
         email = post_data.get('email', False)
         password = post_data.get('password', False)
-        # username = request.POST.get('username', False)
-        # email = request.POST.get('email', False)
-        # password = request.POST.get('password', False)
         if User.objects.filter(username=username).count():
             args['success'] = False
             args['usernameErr'] = u'Пользователь с таким именем уже существует'
@@ -59,11 +56,11 @@ def user_register(request):
             email_subject = u'Подтверждение регистрации'
             email_body = u"<h2>Здравствуйте %s</h2>" \
                          u"<h3>Вы зарегистрировались на портале <a href='http://ondrive.by'>ondrive.by</a></h3> " \
-                         u"<p>для подтверждения регистрации перейдите по  <a href='http://localhost:8000/auth/registration/%s'>ссылке</a></p>" \
+                         u"<p>для подтверждения регистрации перейдите по  <a href='http://ondrive.by/auth/registration/%s'>ссылке</a></p>" \
                          u"<p>Если вы не имеете понятия о чем идет речь, просто проигнорируйте это письмо!</p>" % (username, activation_key)
 
-            # send_mail(email_subject, email_body, 'ondrive.by@gmail.com',
-            #           [email], fail_silently=False, html_message=email_body)
+            send_mail(email_subject, email_body, 'info@ondrive.by',
+                      [email], fail_silently=False, html_message=email_body)
             args['resultMess'] = u'Регистрация прошла успешно'
             args['resultSubMess'] = u'инструкция по активации аккаунта выслава на email указанный при регистрации (%s)' % (email)
             args = json.dumps(args)
@@ -167,6 +164,8 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+
+@login_required
 def user_board(request):
     context = RequestContext(request)
     args = {}
@@ -178,6 +177,7 @@ def user_board(request):
     return render_to_response('myauth/userboard.html', args, context)
 
 
+@login_required
 def userprofile_edit(request):
     print True
     context = RequestContext(request)
@@ -207,7 +207,7 @@ def userprofile_service(request):
     args = RequestContext(request)
     return render_to_response('myauth/user_service.html', args)
 
-
+@login_required
 def autoservice_edit(request, service_id):
     context = RequestContext(request)
     args = {}
@@ -227,13 +227,13 @@ def autoservice_edit(request, service_id):
 
             # Now call the index() view.
             # The user will be shown the homepage.
-            return redirect('/auth/user')
+            return redirect('/auth/user/service/')
         else:
             args['form'] = form
             return render_to_response('myauth/autoservice_edit.html', args, context)
     return render_to_response('myauth/autoservice_edit.html', args, context)
 
-
+@login_required
 def carwash_edit(request, service_id):
     context = RequestContext(request)
     args = {}
@@ -252,13 +252,13 @@ def carwash_edit(request, service_id):
 
             # Now call the index() view.
             # The user will be shown the homepage.
-            return redirect('/auth/user')
+            return redirect('/auth/user/service/')
         else:
             args['form'] = form
             return render_to_response('myauth/carwash_edit.html', args, context)
     return render_to_response('myauth/carwash_edit.html', args, context)
 
-
+@login_required
 def tireservice_edit(request, service_id):
     context = RequestContext(request)
     args = {}
@@ -277,7 +277,7 @@ def tireservice_edit(request, service_id):
 
             # Now call the index() view.
             # The user will be shown the homepage.
-            return redirect('/auth/user')
+            return redirect('/auth/user/service/')
         else:
             args['form'] = form
             return render_to_response('myauth/tireservice_edit.html', args, context)
@@ -301,8 +301,8 @@ def request_add_service(request):
                         u"<p>Телефон: %s</p>" \
                         u"<p>Email: %s</p>" % (username, service_name, service_type, phone, email)
 
-        send_mail(email_subject, email_body, 'ondrive2.by@gmail.com',
-                      ['ondrive.by@gmail.com'], fail_silently=False, html_message=email_body)
+        send_mail(email_subject, email_body, 'info@ondrive.by',
+                      ['info@ondrive.by'], fail_silently=False, html_message=email_body)
         args['status'] = True
         args['mess'] = u'Заявка принята'
         args['subMess'] = u'Наш менеджер свяжется с вами в ближайшее время'

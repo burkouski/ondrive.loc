@@ -2,28 +2,29 @@
 {% load sitetree %}
 
 {% block custom_field %}
-    <div class="panel panel-smart">
-        <h4>Вид мойки</h4>
-
-        <div class="service-form__wrap">{{ form.type_carwash }}</div>
-    </div>
-    <div class="panel panel-smart">
-        <h4>Вид транспорта</h4>
-
-        <div class="service-form__wrap">{{ form.type_vehicle }}</div>
-    </div>
-    <div class="panel panel-smart">
-        <h4>Услуги</h4>
-
-        <div class="service-form__wrap">{{ form.car_wash_services }}</div>
-    </div>
-
-    <div class="panel panel-smart">
-        <h4>Дополнительные услуги</h4>
-
-        <div class="service-form__wrap">
-            {{ form.add_services }}
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Вид мойки</h4>
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.type_carwash }}</div>
         </div>
+    </div>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Вид транспорта</h4>
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.type_vehicle }}</div>
+        </div>
+    </div>
+    <div class="wform__panel">
+        <h4 class="wform__sub-title">Услуги</h4>
 
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.car_wash_services }}</div>
+        </div>
+    </div>
+    <div class="wform__panel">
+    <h4 class="wform__sub-title">Дополнительные услуги</h4>
+        <div class="wform__group row wform__inside">
+            <div class="col-sm-12">{{ form.add_services }}</div>
+        </div>
     </div>
 {% endblock %}

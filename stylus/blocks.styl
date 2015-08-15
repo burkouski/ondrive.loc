@@ -181,6 +181,7 @@
 .wform__sub-title
   font-size 18px
   margin 0 0 15px 0
+  padding 0 15px
 .wform__form-wrap
   padding 20px 0 0
 .wform__sub-wrap
@@ -190,6 +191,7 @@
 .wform__label
   margin-bottom 0
   padding-top 7px
+  padding-bottom 7px
   color rgb(139, 139, 139)
   font-weight 600
 .wform__label--right
@@ -231,6 +233,33 @@
   padding 20px
   background #fff
   border 1px solid #e8e8e8
+.wform__error
+  margin 7px 0 0 0
+  padding 7px
+  font-size 12px
+.wform__checkbox
+  position relative
+  top 3px
+  width 15px
+  height 15px
+  margin 0 5px 0 0!important
+.wform__inside
+  ul
+    columns: 3
+    margin 0
+    padding 0
+    list-style none
+  li
+    position relative
+    margin 0 0 10px 0
+    padding 0 0 0 20px
+  .wform__checkbox
+    position absolute
+    top 3px
+    left 0
+    margin 0 0 0 -20px
+  label
+    font-weight normal
 .map
   margin 0 0 20px 0
 .map__wrap
@@ -378,6 +407,16 @@
   min-width 150px
   display inline-block
   color #2f353b
+.service__work-item
+  position relative
+  display inline-block
+  padding 0 10px 10px 20px
+  text-transform lowercase
+.service__work-icon
+  position absolute
+  top 3px
+  left 0
+  color #43CA43
 .service__workday-icon
   display inline-block
   vertical-align top
@@ -395,19 +434,10 @@
   background  darkblue
 .service__workday-icon--red
   background  #ef4135
-.service__work-item
-  display inline-block
-  padding 0 10px 10px 0
-  font-weight bold
 .service__desc
   font-size 16px
 
-.service-form__wrap
-  ul
-    columns: 3
-    margin 0
-    padding 0
-    list-style none
+
 
 
 .service-table__img

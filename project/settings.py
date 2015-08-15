@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'news',
     'tuning',
     'service',
@@ -116,6 +117,7 @@ MEDIA_ROOT = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..','med
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Full',
+        'width': '100%',
     },
 }
 
@@ -125,11 +127,11 @@ CKEDITOR_UPLOAD_PATH = "upload/content/"
 DISQUS_SECRET_KEY = 'gUE2zeP5jaMXf1D4YnaoiKRMyrLMf7oImKuNDh78QYafULtC2CMvM6pCe4mflJoc'
 DISQUS_PUBLIC_KEY = 'oCdxoSVB6daOfXK5oQWT2RBsbXnM1fd37nZkmBdq8WJiMPiafJ2i6n5fERvg7ESO'
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ondrive.by@gmail.com'
-EMAIL_HOST_PASSWORD = '27b02v89s'
-EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.fullspace.ru'
+EMAIL_HOST_USER = 'info@ondrive.by'
+EMAIL_HOST_PASSWORD = 'on89drive'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
 
 
 
