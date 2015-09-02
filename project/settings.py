@@ -27,6 +27,8 @@ SITE_ID = 1
 TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = ['localhost']
 LOGIN_URL = '/auth/login/'
+# DEFAULT_HOST = 'index'
+# ROOT_HOSTCONF = 'project.hosts'
 # Application definition
 AUTHENTICATION_BACKENDS = (
     'myauth.auth_backends.CustomUserModelBackend',
@@ -43,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'django_hosts',
     'news',
     'tuning',
     'service',
@@ -55,6 +58,7 @@ INSTALLED_APPS = (
     'htmlblock',
 )
 MIDDLEWARE_CLASSES = (
+    'django_hosts.middleware.HostsRequestMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -62,6 +66,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware'
 )
 
 ROOT_URLCONF = 'project.urls'

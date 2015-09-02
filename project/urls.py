@@ -16,7 +16,15 @@ sitemaps = {'news_posts': NewsPostSitemap,
             'RepairWorkSitemap':RepairWorkSitemap,
             'DiagWorkSitemap': DiagWorkSitemap,
             'ServWorkSitemap': ServWorkSitemap,
-            'AddWorkSitemap': AddWorkSitemap
+            'AddWorkSitemap': AddWorkSitemap,
+            'carwash': CarWashSitemap,
+            'tireservice': TireServiceSitemap,
+            'typecarwash': TypeCarWashSitemap,
+            'typevehicle': TypeVehicleSitemap,
+            'carwashservice': CarWashServicesSitemap,
+            'tireservice': TireServiceSitemap,
+            'tirework': TireWorkSitemap,
+            'discwork': DiagWorkSitemap
             }
 
 
@@ -34,7 +42,7 @@ urlpatterns = patterns('',
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     url(r'^(?P<page_alias>.*)/$', views.get_page, name='page_view'),
     url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /admin/",content_type='text/plain')),
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap')
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
 )
 
 admin.autodiscover()

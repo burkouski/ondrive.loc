@@ -52,14 +52,14 @@ TIME_CHOICES = (
 class Service(models.Model):
     name = models.CharField(u"Название сервиса", max_length=200)
     alias = models.SlugField(max_length=100, blank=True)
-    teaser = models.TextField(u'Краткое описание', blank=True)
+    teaser = models.TextField(u'Краткое описание', blank=True, max_length=300)
     city = models.CharField(u'Город', max_length=200, blank=True)
     address = models.CharField(u'Адрес', max_length=200, blank=True)
     building = models.CharField(u'Дом', max_length=200, blank=True)
     phone_velcom = models.CharField(u"Velcom", max_length=20, blank=True)
     phone_velcom2 = models.CharField(u"второй Velcom", max_length=20, blank=True)
     phone_mts = models.CharField(u"МТС", max_length=20, blank=True)
-    phone_mts2 = models.CharField(u"второй МТС", max_length=10, blank=True)
+    phone_mts2 = models.CharField(u"второй МТС", max_length=20, blank=True)
     phone_life = models.CharField(u"Life", max_length=20, blank=True)
     phone_life2 = models.CharField(u"второй Life", max_length=20, blank=True)
     phone_city = models.CharField(u"Городской", max_length=20, blank=True)
@@ -181,8 +181,6 @@ class Work(models.Model):
         model_name = self._meta.verbose_name_plural.title()
         return model_name
 
-    def get_absolute_url(self):
-        return reverse('service:autoservice_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
 
     def save(self):
         if not self.alias:
@@ -210,6 +208,9 @@ class SpecializationWork(Work):
         verbose_name = u""
         verbose_name_plural = u"Специализируются на марках"
 
+    def get_absolute_url(self):
+        return reverse('service:autoservice_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
+
 
 
 class RepairWork(Work):
@@ -219,6 +220,9 @@ class RepairWork(Work):
         verbose_name = u""
         verbose_name_plural = u"Ремонт"
 
+    def get_absolute_url(self):
+        return reverse('service:autoservice_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
+
 
 class DiagWork(Work):
     work_field_name = 'diag_work'
@@ -226,6 +230,9 @@ class DiagWork(Work):
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Диагностика"
+
+    def get_absolute_url(self):
+        return reverse('service:autoservice_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
 
 
 class ServWork(Work):
@@ -235,6 +242,9 @@ class ServWork(Work):
         verbose_name = u""
         verbose_name_plural = u"Обслуживание"
 
+    def get_absolute_url(self):
+        return reverse('service:autoservice_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
+
 
 class AddWork(Work):
     work_field_name = 'add_work'
@@ -242,6 +252,9 @@ class AddWork(Work):
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Дополнительные работы"
+
+    def get_absolute_url(self):
+        return reverse('service:autoservice_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
 
 
 class AutoService(Service):
@@ -285,6 +298,9 @@ class TypeCarWash(Work):
         verbose_name = u""
         verbose_name_plural = u"Вид мойки"
 
+    def get_absolute_url(self):
+        return reverse('service:carwash_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
+
 
 class TypeVehicle(Work):
     work_field_name = 'type_vehicle'
@@ -293,6 +309,9 @@ class TypeVehicle(Work):
         verbose_name = u""
         verbose_name_plural = u"Вид транспорта"
 
+    def get_absolute_url(self):
+        return reverse('service:carwash_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
+
 
 class CarWashServices(Work):
     work_field_name = 'carwash_services'
@@ -300,6 +319,9 @@ class CarWashServices(Work):
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Услуги"
+
+    def get_absolute_url(self):
+        return reverse('service:carwash_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
 
 
 class CarWash(Service):
@@ -330,6 +352,9 @@ class TireWork(Work):
         verbose_name = u""
         verbose_name_plural = u"Шины"
 
+    def get_absolute_url(self):
+        return reverse('service:tireservice_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
+
 
 class DiscWork(Work):
     work_field_name = 'disc_work'
@@ -337,6 +362,9 @@ class DiscWork(Work):
     class Meta:
         verbose_name = u""
         verbose_name_plural = u"Диски"
+
+    def get_absolute_url(self):
+        return reverse('service:tireservice_filter', kwargs={'filter_name': self.work_field_name,'filter_alias': self.alias})
 
 
 class TireService(Service):

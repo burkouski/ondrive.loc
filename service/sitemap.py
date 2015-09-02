@@ -14,15 +14,7 @@ class AutoServicetSitemap(Sitemap):
 
     # def location(self, obj):
     #     return "/node/%s/" % obj.id
-class CarWahSitemap(Sitemap):
-    changefreq = 'weekly'
-    priority = 0.5
 
-    def items(self):
-        return CarWah.objects.filter().order_by('pk')
-
-    def lastmod(self, obj):
-        return obj.lastmod
 
 
 class SpecializationWorkSitemap(Sitemap):
@@ -74,6 +66,82 @@ class AddWorkSitemap(Sitemap):
 
     def items(self):
         return AddWork.objects.filter().order_by('pk')
+
+    def lastmod(self, obj):
+        return obj.lastmod
+
+class CarWashSitemap(Sitemap):
+    changefreq = 'weekly'
+    priority = 0.5
+
+    def items(self):
+        return CarWash.objects.filter().order_by('pk')
+
+    def lastmod(self, obj):
+        return obj.lastmod
+
+
+class TypeCarWashSitemap(Sitemap):
+    changefreq = 'weekly'
+    priority = 0.5
+
+    def items(self):
+        return TypeCarWash.objects.filter().order_by('pk')
+
+    def lastmod(self, obj):
+        return obj.lastmod
+
+
+class TypeVehicleSitemap(Sitemap):
+    changefreq = 'weekly'
+    priority = 0.5
+
+    def items(self):
+        return TypeVehicle.objects.filter().order_by('pk')
+
+    def lastmod(self, obj):
+        return obj.lastmod
+
+
+class CarWashServicesSitemap(Sitemap):
+    changefreq = 'weekly'
+    priority = 0.5
+
+    def items(self):
+        return CarWashServices.objects.filter().order_by('pk')
+
+    def lastmod(self, obj):
+        return obj.lastmod
+
+
+
+class TireServiceSitemap(Sitemap):
+    changefreq = 'weekly'
+    priority = 0.5
+
+    def items(self):
+        return TireService.objects.filter().order_by('pk')
+
+    def lastmod(self, obj):
+        return obj.lastmod
+
+class TireWorkSitemap(Sitemap):
+    changefreq = 'weekly'
+    priority = 0.5
+
+    def items(self):
+        return TireWork.objects.filter().order_by('pk')
+
+    def lastmod(self, obj):
+        return obj.lastmod
+
+
+class DiscWorkSitemap(Sitemap):
+    changefreq = 'weekly'
+    priority = 0.5
+
+    def items(self):
+        return DiscWork.objects.filter().order_by('pk')
 
     def lastmod(self, obj):
         return obj.lastmod

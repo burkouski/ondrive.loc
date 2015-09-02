@@ -8,7 +8,7 @@
 
 {% block catalog_map %}
     <!-- урл для подгрузки сервисов -->
-    <div ng-init="init('tsFilter', '/tireservice/')"></div>
+    <div ng-init="init('tsFilter', '/tireservice/'{% if filter_name and filter.id %},'{{ filter_name }}', '{{ filter.id }}'{% endif %})"></div>
 
     <section class="map map_main col-md-12">
         <div class="map__wrap" ng-init="center=[53.889592, 27.562298];zoom=16">

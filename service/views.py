@@ -79,7 +79,14 @@ def carwash_list(request):
         return HttpResponse(services)
     return render(request, 'service/carwash_list_view.html')
 
-
+def carwash_filter(request,filter_name, filter_alias):
+    args = {}
+    model_name = re.sub('[_]', '', filter_name)
+    z = ContentType.objects.get(model=model_name)
+    ModelB = apps.get_model(z.app_label, model_name)
+    filter = get_object_or_404(ModelB , alias=filter_alias)
+    args = {'filter_name': filter_name, 'filter_alias': filter_alias, 'filter': filter}
+    return render(request, 'service/carwash_list_view.html', args)
 #################### ШИНОМОНТАЖИ ####################
 
 def tireservice_detail(request, service_alias):
@@ -99,6 +106,15 @@ def tireservice_list(request):
         services = filtering(post_data, services)
         return HttpResponse(services)
     return render(request, 'service/tireservice_list_view.html')
+
+def tireservice_filter(request,filter_name, filter_alias):
+    args = {}
+    model_name = re.sub('[_]', '', filter_name)
+    z = ContentType.objects.get(model=model_name)
+    ModelB = apps.get_model(z.app_label, model_name)
+    filter = get_object_or_404(ModelB , alias=filter_alias)
+    args = {'filter_name': filter_name, 'filter_alias': filter_alias, 'filter': filter}
+    return render(request, 'service/tireservice_list_view.html', args)
 
 
 # фильтрация объектов
