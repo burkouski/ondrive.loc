@@ -1,9 +1,8 @@
 <div class="filter">
     {% for key, val in res.items %}
-        <div class="filter__title" ng-class="{active: isOpenTab('tab{{ forloop.counter }}')}"
-             ng-click="openTab('tab{{ forloop.counter }}')" style="cursor: pointer">
-            {{ key }}<i class="fa"
-                        ng-class="{'fa-arrow-circle-down': isOpenTab('tab{{ forloop.counter }}'), 'fa-arrow-circle-right': !isOpenTab('tab{{ forloop.counter }}')}"></i>
+        <div class="filter__title" ng-class="{active: isOpenTab('tab{{ forloop.counter }}')}" ng-click="openTab('tab{{ forloop.counter }}')" style="cursor: pointer">
+            {{ key }}
+            <i class="fa" ng-class="{'fa-arrow-circle-down': isOpenTab('tab{{ forloop.counter }}'), 'fa-arrow-circle-right': !isOpenTab('tab{{ forloop.counter }}')}"></i>
         </div>
 
         <div class="list-group-item filter__options" ng-show="isOpenTab('tab{{ forloop.counter }}')" ng-cloak>

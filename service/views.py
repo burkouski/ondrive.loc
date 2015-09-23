@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import get_object_or_404, get_list_or_404, render, HttpResponse
 from service.models import AutoService, CarWash, TireService
+from service.filters import AutoserviceFilter
+from service.serializers import AutoserviceSerializer
 from django.db.models import Avg
 from django.apps import apps
 from django.contrib.contenttypes.models import ContentType
@@ -8,7 +10,17 @@ import json
 from itertools import chain
 from django.views.decorators.csrf import ensure_csrf_cookie
 import re
+from rest_framework import generics, permissions, filters
 
+
+class AutoserviceList(generics.ListCreateAPIView):
+    queryset = AutoService.objects.all()
+    serializer_class = AutoserviceSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = AutoserviceFilter
 
 # @ensure_csrf_cookie
 def service_list(request):

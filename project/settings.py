@@ -45,7 +45,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'django_hosts',
     'news',
     'tuning',
     'service',
@@ -56,9 +55,10 @@ INSTALLED_APPS = (
     'contacts',
     'pages',
     'htmlblock',
+    'rest_framework',
 )
 MIDDLEWARE_CLASSES = (
-    'django_hosts.middleware.HostsRequestMiddleware',
+    #'django_hosts.middleware.HostsRequestMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -66,7 +66,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_hosts.middleware.HostsResponseMiddleware'
+    #'django_hosts.middleware.HostsResponseMiddleware'
 )
 
 ROOT_URLCONF = 'project.urls'
