@@ -1,4 +1,4 @@
-ymapsApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', function ($scope, $cookieStore, services) {
+ondriveApp.controller('autoserviceCtrl', ['$scope', '$cookieStore', 'services', function ($scope, $cookieStore, services) {
 
     $scope.init = function (filterName, apiUrl, filterParam, filterValue) {
         $scope.preloader = false;

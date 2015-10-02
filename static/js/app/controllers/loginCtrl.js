@@ -1,4 +1,4 @@
-ymapsApp.controller('loginCtrl', ['$scope','services','$timeout', function ($scope, services, $timeout) {
+ondriveApp.controller('loginCtrl', ['$scope','services','$timeout', function ($scope, services, $timeout) {
 
 
     $scope.user = {};

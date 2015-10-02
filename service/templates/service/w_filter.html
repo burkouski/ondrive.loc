@@ -10,8 +10,8 @@
                 {% for item in val %}
                     <label class="checkbox filter__option-label">
                         <input class="filter__option" type="checkbox"
-                               checklist-model="{{ filter_name }}.options.{{ item.work_field_name }}"
-                               checklist-value="{{ item.id }}" ng-click="changeFilter()">
+                               checklist-model="{{ filter_name }}.{{ item.work_field_name }}"
+                               checklist-value="{{ item.id }}" ng-click="loadData()">
                         {{ item }}
                     </label>
                 {% endfor %}
@@ -19,6 +19,7 @@
         </div>
 
     {% endfor %}
+    {$ asFilter $}!!!!!!
     <div class="list-group-item">
         <button type="button" class="btn btn-danger" ng-click="clearFilter('{{ filter_name }}')">Сбросить фильтр</button>
     </div>

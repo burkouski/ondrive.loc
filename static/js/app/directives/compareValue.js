@@ -1,4 +1,4 @@
-ymapsApp.directive("compareTo", function() {
+ondriveApp.directive("compareTo", function() {
     return {
         //restrict: 'A',
         require: "ngModel",

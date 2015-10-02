@@ -1,12 +1,86 @@
-ymapsApp.controller('mainmapCtrl', ['$scope', '$cookieStore', '$resource', function ($scope, $cookieStore, $resource) {
- var Regions = $resource('/api/autoservices/');
+ondriveApp.controller('mainmapCtrl', ['$scope', '$cookieStore', 'services', function ($scope, $cookieStore, services) {
+    //var service = services.getServices('/api/autoservice/');
+    //$scope.asFilter = {};
+    //$scope.mapIcon = "as-ico.png";
+    //$scope.services = service.query();
+    //$scope.services.$promise.then(function (result) {
+    //    $scope.services = result.results;
+    //    $scope.mapObjects = result.results
+    //});
+    //
+    //$scope.loadData = function (filter) {
+    //    $scope.services = Regions.query($scope[filter]);
+    //    $scope.services.$promise.then(function (result) {
+    //        $scope.services = result.results
+    //    });
+    //
+    //};
+    $scope.init = function (api) {
+        if (api) {
+            $scope.api = api
 
-$scope.services = Regions.query({specialization_work :[20,14]});
-$scope.services.$promise.then(function (result) {
-    $scope.services = result;
-});
-    console.log($scope.services);
-//    init = function () {
+        }
+        else {
+            $scope.api = 'autoservice'
+        }
+
+        $scope.pageSize = 6;
+        $scope.page = 1;
+        loadData();
+        $scope.mapObjects = {}
+    };
+
+    $scope.$watch("api", function (newValue, oldValue) {
+        loadData();
+    });
+    $scope.$watch("pageSize", function (newValue, oldValue) {
+        loadData();
+    });
+    $scope.loadData = function() {
+        loadData();
+    }
+
+    function loadData() {
+        var apiUrl = getApiUrl($scope.api),
+            filter = getFilter($scope.api),
+            query = {
+                pageSize: $scope.pageSize,
+                page: $scope.page,
+                filter: filter
+            },
+            service = services.getServices(apiUrl);
+        $scope.services = service.query(query);
+        $scope.services.$promise.then(function (result) {
+            $scope.services.objects = result.results;
+            $scope.services.quantity = result.count;
+        });
+    }
+
+    function getApiUrl(api) {
+        if (api === 'autoservice') {
+            return '/api/autoservice'
+        }
+        else if (api === 'carwash') {
+            return '/api/carwash'
+        }
+        else if (api === 'tireservice') {
+            return '/api/tireservice'
+        }
+    };
+    function getFilter(api) {
+        var filter = {};
+        if (api === 'autoservice') {
+            return filter = $scope.asFilter
+        }
+        else if (api === 'carwash') {
+            return filter = $scope.cwFilter
+        }
+        else if (api === 'tireservice') {
+            return filter = $scope.tsFilter
+        }
+    }
+
+//    init = function (serviceName) {
 //        $scope.preloader = false;
 //        $scope.gridView = false;
 //
@@ -75,6 +149,7 @@ $scope.services.$promise.then(function (result) {
 //    }
 //
 //    //Функция проверки открытого таба в фильтре
+    $scope.activeTabs = [];
     $scope.isOpenTab = function (tab) {
         //console.log(true)
         //check if this tab is already in the activeTabs array
@@ -97,7 +172,7 @@ $scope.services.$promise.then(function (result) {
             //if it's not, add it!
             $scope.activeTabs.push(tab);
         }
-        setCookie()
+        //setCookie()
     }
 //
 //    // Функция изменения отображения сервисов

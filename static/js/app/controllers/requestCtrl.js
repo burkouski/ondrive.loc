@@ -1,4 +1,4 @@
-ymapsApp.controller('requestCtrl', ['$scope','services','$timeout', function ($scope, services, $timeout) {
+ondriveApp.controller('requestCtrl', ['$scope','services','$timeout', function ($scope, services, $timeout) {
 
     $scope.apiUrl = '/auth/user/service/add/';
     $scope.form = {};

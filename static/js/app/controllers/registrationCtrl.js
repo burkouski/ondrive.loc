@@ -1,4 +1,4 @@
-ymapsApp.controller('registrationCtrl', ['$scope','services', function ($scope, services) {
+ondriveApp.controller('registrationCtrl', ['$scope','services', function ($scope, services) {
 
     var apiUrl = '/auth/registration/';
     $scope.ajaxLoader = false;

@@ -1,4 +1,4 @@
-ymapsApp.service('getJsonService', ['$http', '$resource', function ($http, $resource) {
+ondriveApp.service('getJsonService', ['$http', '$resource', function ($http, $resource) {
 
     this.square = function (url) {
         return $resource(
@@ -18,20 +18,11 @@ ymapsApp.service('getJsonService', ['$http', '$resource', function ($http, $reso
 
 }])
 
-ymapsApp.factory('services', ['$http', function ($http) {
+ondriveApp.factory('services', ['$resource', function ($resource) {
 
     return {
-        list: function (url, data, callback, error) {
-            $http({
-                method: 'POST',
-                data: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-                },
-                //dataType: 'json',
-                url: url,
-                responseType: 'json'
-            }).success(callback).error(error);
+        getServices: function (apiUrl) {
+            return $resource(apiUrl, {}, {query:{isArray:false}})
         }
     };
 }]);

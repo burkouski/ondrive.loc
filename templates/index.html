@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block page %}
-    <div id="main-container" ng-controller="mainmapCtrl">
+    <div id="main-container" ng-controller="mainmapCtrl" ng-init="init('autoservice')" ng-cloak="">
         <!-- Slider Section Starts -->
         <div class="slider">
             <div id="main-carousel" class="carousel slide" data-ride="carousel">
@@ -92,14 +92,14 @@
                                         </span>
                                 </div>
                             </div-->
-                            <div class="col-md-4"><span class="control-label">Найдено сервисов - {$ meta $} </span>
+                            <div class="col-md-4"><span class="control-label">Найдено сервисов - {$ services.quantity $} </span>
                             </div>
                             <div class="col-md-3 text-right">
                                 <label class="control-label">Показывать:</label>
                             </div>
                             <div class="col-md-2 text-right">
-                                <select class="form-control" ng-model="quantity"
-                                        ng-options="number for number in [6,12,24]" ng-change='changeQuantity()'>
+                                <select class="form-control" ng-model="pageSize"
+                                        ng-options="number for number in [6,12,24]">
 
                                 </select>
                             </div>
@@ -114,9 +114,9 @@
 
                         <!-- Product #1 Starts -->
 
-
+                        !!! {$asFilter$}
                         <div class="product-preview" ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}"
-                             ng-repeat="service in services" ng-cloak>
+                             ng-repeat="service in services.objects" ng-cloak>
                             <a href="{$ service.url $}" class="product-preview__link list clearfix">
                                 <div class="row">
                                     <div class="product-preview__img"
@@ -177,33 +177,30 @@
                         <div class="list-group-item">
                             <div class="filter-group">
                                 <label class="radio">
-                                    <input name="service" type="radio" ng-model="apiUrl" value="/autoservices/"
-                                           ng-change="changeService(apiUrl, 'asFilter','as-ico.png')">
+                                    <input type="radio" ng-model="api" value="autoservice">
                                     Автосервисы
                                 </label>
                                 <label class="radio">
-                                    <input name="service" type="radio" ng-model="apiUrl"
-                                           ng-change="changeService(apiUrl, 'cwFilter','cw-ico.png')" value="/carwash/">
+                                    <input type="radio" ng-model="api" value="carwash">
                                     Автомойки
                                 </label>
                                 <label class="radio">
-                                    <input name="service" type="radio" ng-model="apiUrl"
-                                           ng-change="changeService(apiUrl, 'tsFilter','ts-ico.png')"
-                                           value="/tireservice/">
+                                    <input type="radio" ng-model="api" value="tireservice">
                                     Шиномонтажи
                                 </label>
+                                {$api$}
                             </div>
                         </div>
                     </div>
                     <h3 class="side-heading">Фильтр</h3>
                     <!-- Shopping Options Ends -->
-                    <div ng-show="apiUrl == '/autoservices/'">
+                    <div ng-show="api == 'autoservice'">
                         {% show_autoservice_filter %}
                     </div>
-                    <div ng-show="apiUrl == '/carwash/'">
+                    <div ng-show="api == 'carwash'">
                         {% show_carwash_filter %}
                     </div>
-                    <div ng-show="apiUrl == '/tireservice/'">
+                    <div ng-show="api == 'tireservice'">
                         {% show_tireservice_filter %}
                     </div>
                 </div>

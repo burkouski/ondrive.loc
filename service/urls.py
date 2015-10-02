@@ -13,6 +13,8 @@ urlpatterns = patterns('service.views',
     url(r'^tireservice/$', views.tireservice_list, name='tireservice_list'),
     url(r'^tireservice/(?P<filter_name>.*)/(?P<filter_alias>.*)/$', views.tireservice_filter, name='tireservice_filter'),
     url(r'^tireservice/(?P<service_alias>.*)/$', views.tireservice_detail, name='tireservice_detail'),
-    url(r'^api/autoservices/$', views.AutoserviceList.as_view(), name='autoservice_list'),
+    url(r'^api/autoservice/$', views.AutoserviceList.as_view(), name='autoservice_list'),
+    url(r'^api/carwash/$', views.CarWashList.as_view(), name='autoservice_list'),
+    url(r'^api/tireservice/$', views.TireServiceList.as_view(), name='autoservice_list'),
 
 )

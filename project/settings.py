@@ -139,5 +139,12 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 
 
+REST_FRAMEWORK = {
+    'PAGINATE_BY': 10,                 # Default to 10
+    'PAGINATE_BY_PARAM': 'pageSize',  # Allow client to override, using `?page_size=xxx`.
+    'MAX_PAGINATE_BY': 100             # Maximum limit allowed when using `?page_size=xxx`.
+}
+
+
 
 

@@ -2,7 +2,7 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, HttpResponse
 from service.models import AutoService, CarWash, TireService
 from service.filters import AutoserviceFilter
-from service.serializers import AutoserviceSerializer
+from service.serializers import AutoserviceSerializer, CarWashSerializer, TireServiceSerializer
 from django.db.models import Avg
 from django.apps import apps
 from django.contrib.contenttypes.models import ContentType
@@ -10,17 +10,50 @@ import json
 from itertools import chain
 from django.views.decorators.csrf import ensure_csrf_cookie
 import re
+import ast
 from rest_framework import generics, permissions, filters
 
 
 class AutoserviceList(generics.ListCreateAPIView):
-    queryset = AutoService.objects.all()
     serializer_class = AutoserviceSerializer
     permission_classes = [
         permissions.AllowAny
     ]
-    filter_backends = (filters.DjangoFilterBackend,)
-    filter_class = AutoserviceFilter
+
+    def get_queryset(self):
+        queryset = AutoService.objects.all()
+        filter = self.request.query_params.getlist('filter', None)
+        if filter  != []:
+            queryset = filtering(filter, queryset)
+        return queryset
+
+
+class CarWashList(generics.ListCreateAPIView):
+    serializer_class = CarWashSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]
+
+    def get_queryset(self):
+        queryset = CarWash.objects.all()
+        filter = self.request.query_params.getlist('filter', None)
+        if filter != []:
+            queryset = filtering(filter, queryset)
+        return queryset
+
+
+class TireServiceList(generics.ListCreateAPIView):
+    serializer_class = TireServiceSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]
+
+    def get_queryset(self):
+        queryset = TireService.objects.all()
+        filter = self.request.query_params.getlist('filter', None)
+        if filter  != []:
+            queryset = filtering(filter, queryset)
+        return queryset
 
 # @ensure_csrf_cookie
 def service_list(request):
@@ -130,53 +163,15 @@ def tireservice_filter(request,filter_name, filter_alias):
 
 
 # фильтрация объектов
-def filtering(post_data, objects):
-    obj = {}
-    quantity = 6
-    page = 1
-    print post_data
-    if post_data.get(u'meta'):
-        quantity = post_data[u'meta'][u'quantity']
-        page = post_data[u'meta'][u'page']
-        print(quantity)
-    if post_data.get(u'options'):
-        options = post_data[u'options']
-        for key in options:
-            obj[key] = options[key]
-        for key, val in obj.items():
-            for x in val:
-                objects = objects.filter(**{key: x})
-    objects = objects.annotate(sort=Avg('reviews__rate')).order_by('-sort')
-    map_objects = objects
-    objects = {
-        'info': [{
-                     'name': o.name,
-                     'logo': o.logo.url,
-                     'teaser': o.teaser,
-                     'city': o.city,
-                     'address': o.address,
-                     'building': o.building,
-                     'rating': o.get_rating(),
-                     'sort': o.sort,
-                     'url': o.get_absolute_url()} for o in objects[(quantity * page):(quantity * page + quantity)]],
+def filtering(filter, queryset):
+    filter = ast.literal_eval(filter[0])
+    queryset = queryset
+    for key, val in filter.items():
+        for item in val:
+            queryset = queryset.filter(**{key: item})
+    queryset = queryset.annotate(sort=Avg('reviews__rate')).order_by('-sort')
+    return queryset
 
-        'meta': objects.count()
-    }
-    map_objects = [{
-                       'name': o.name,
-                       'longitude': o.longitude,
-                       'latitude': o.latitude,
-                       'teaser': o.teaser,
-                       'city': o.city,
-                       'address': o.address,
-                       'building': o.building,
-                       'sort': o.sort,
-                       'url': o.get_absolute_url()} for o in map_objects]
-
-    a = json.dumps(
-        {'objects': objects, 'mapObjects': map_objects}
-    )
-    return a
 
 
 # получение контекста для детального описания сервиса

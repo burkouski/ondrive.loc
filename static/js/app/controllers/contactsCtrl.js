@@ -1,4 +1,4 @@
-ymapsApp.controller('contactsCtrl', ['$scope', 'services', function ($scope, services) {
+ondriveApp.controller('contactsCtrl', ['$scope', 'services', function ($scope, services) {
 
     var apiUrl = '/api/sendmessage/';
     $scope.ajaxLoader = false;

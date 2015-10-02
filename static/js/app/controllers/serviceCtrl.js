@@ -1,4 +1,4 @@
-ymapsApp.controller('serviceCtrl', ['$scope','services', function ($scope, services) {
+ondriveApp.controller('serviceCtrl', ['$scope','services', function ($scope, services) {
 
 
     $scope.starsInit = function (rating) {
