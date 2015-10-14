@@ -1,4 +1,4 @@
-ondriveApp = angular.module('ymapsApp', ['ymaps', 'ngResource', 'ngCookies', 'checklist-model','ngMask'])
+ondriveApp = angular.module('ondriveApp', ['ymaps', 'ngResource', 'ngCookies', 'checklist-model','ngMask'])
     .config(function ($interpolateProvider) {
         $interpolateProvider.startSymbol('{$');
         $interpolateProvider.endSymbol('$}');

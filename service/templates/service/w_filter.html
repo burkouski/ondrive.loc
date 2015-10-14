@@ -11,7 +11,7 @@
                     <label class="checkbox filter__option-label">
                         <input class="filter__option" type="checkbox"
                                checklist-model="{{ filter_name }}.{{ item.work_field_name }}"
-                               checklist-value="{{ item.id }}" ng-click="loadData()">
+                               checklist-value="{{ item.id }}" ng-click="loadData();loadMap(); resetPage()">
                         {{ item }}
                     </label>
                 {% endfor %}
@@ -19,8 +19,7 @@
         </div>
 
     {% endfor %}
-    {$ asFilter $}!!!!!!
     <div class="list-group-item">
-        <button type="button" class="btn btn-danger" ng-click="clearFilter('{{ filter_name }}')">Сбросить фильтр</button>
+        <button type="button" class="btn btn-danger" ng-click="clearFilter('{{ filter_name }}'); loadData(); loadMap()">Сбросить фильтр</button>
     </div>
 </div>
