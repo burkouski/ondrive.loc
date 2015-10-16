@@ -1,6 +1,7 @@
-ondriveApp.controller('registrationCtrl', ['$scope','services', function ($scope, services) {
+ondriveApp.controller('registrationCtrl', ['$scope','services2', function ($scope, services2) {
 
     var apiUrl = '/auth/registration/';
+    $scope.pattern = /^[a-zA-Z0-9]*$/;
     $scope.ajaxLoader = false;
     $scope.result = {
         resultMess: 'регистрация',
@@ -12,9 +13,8 @@ ondriveApp.controller('registrationCtrl', ['$scope','services', function ($scope
 
         if (form.$valid) {
             $scope.ajaxLoader = true;
-            services.list(apiUrl, $scope.user, function (result) {
+            services2.list(apiUrl, $scope.user, function (result) {
                     $scope.result = result;
-                    $scope.resultMess = 'Ваше сообщение успешно отправлено';
                     $scope.success = true;
                     $scope.ajaxLoader = false;
                 },

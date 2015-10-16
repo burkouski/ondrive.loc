@@ -23,4 +23,4 @@ class Page(models.Model):
         super(Page, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('page_view', kwargs={'page_alias': self.alias})
+        return reverse(u'page_view', kwargs={u'page_alias': self.alias})

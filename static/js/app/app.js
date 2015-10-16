@@ -6,5 +6,4 @@ ondriveApp = angular.module('ondriveApp', ['ymaps', 'ngResource', 'ngCookies', '
 
         $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        console.log( $http.defaults.headers.post['X-CSRFToken']);
     });

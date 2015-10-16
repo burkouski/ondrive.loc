@@ -9,7 +9,7 @@
     <title>{% sitetree_page_title from "main" %}</title>
 {% endblock %}
 {% block page %}
-    <div id="main-container" ng-app="ymapsApp" ng-controller="registrationCtrl">
+    <div id="main-container" ng-controller="registrationCtrl">
         <!-- Breadcrumb Starts -->
         {% block breadcrumbs %}
             {% sitetree_breadcrumbs from "main" %}
@@ -38,10 +38,10 @@
                                 <label for="userUsername" class="col-sm-5 wform__label">Имя пользователя:</label>
 
                                 <div class="col-sm-7">
-                                    <input type="text" class="wform__control" name="username" ng-model="user.username"
+                                    <input type="text" class="wform__control" name="username" ng-model="user.username" ng-pattern="pattern"
                                            required/>
                                     <span class="text-danger">{$ result.usernameErr $}</span>
-
+                                    <span class="text-danger" ng-show="wform.username.$error.pattern">Допустимы только латинские символы и цифры</span>
                                     <div ng-show="wform.$submitted">
                                         <span class="text-danger" ng-show="wform.username.$error.required">Заполните 'Имя пользователя'</span>
                                     </div>
@@ -51,10 +51,10 @@
                                 <label for="userEmail" class="col-sm-5 wform__label">Ваш email:</label>
 
                                 <div class="col-sm-7">
-                                    <input type="email" class="wform__control" name="email" ng-model="user.email"
+                                    <input type="email" class="wform__control" name="email" ng-model="user.email" ng-pattern="pattern"
                                            required/>
                                     <span class="text-danger">{$ result.emailErr $}</span>
-
+                                    <span class="text-danger" ng-show="wform.email.$error.pattern">Допустимы только латинские символы и цифры</span>
                                     <div ng-show="wform.$submitted">
                                         <span class="text-danger" ng-show="wform.email.$error.required">Заполните 'Ваш email'</span>
                                         <span class="text-danger" ng-show="wform.email.$error.email">Неверный адрес элекронной почты</span>
@@ -65,9 +65,9 @@
                                 <label for="userPassword" class="col-sm-5 wform__label">Пароль:</label>
 
                                 <div class="col-sm-7">
-                                    <input type="password" class="wform__control" name="password" ng-model="user.password"
+                                    <input type="password" class="wform__control" name="password" ng-model="user.password" ng-pattern="pattern"
                                            required/>
-
+                                    <span class="text-danger" ng-show="wform.password.$error.pattern">Допустимы только латинские символы и цифры</span>
                                     <div ng-show="wform.$submitted">
                                         <span class="text-danger" ng-show="wform.confirmPassword.$error.compare">Пароли не совпадают</span>
                                         <span class="text-danger" ng-show="wform.password.$error.required">Придумайте пароль</span>
@@ -79,8 +79,8 @@
 
                                 <div class="col-sm-7">
                                     <input class="wform__control" type="password" name="confirmPassword"
-                                           ng-model="user.confirmPassword" required compare-to="user.password"/>
-
+                                           ng-model="user.confirmPassword" required compare-to="user.password" ng-pattern="pattern"/>
+                                    <span class="text-danger" ng-show="wform.confirmPassword.$error.pattern">Допустимы только латинские символы и цифры</span>
                                     <div ng-show="wform.$submitted">
                                         <span class="text-danger" ng-show="wform.confirmPassword.$error.required">Повторите придуманный пароль</span>
                                         <span class="text-danger" ng-show="wform.confirmPassword.$error.compare">Пароли не совпадают</span>

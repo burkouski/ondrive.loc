@@ -166,7 +166,7 @@ class Service(models.Model):
 
 
 class Work(models.Model):
-    work_name = models.CharField("Вид работы", max_length=200)
+    work_name = models.CharField(u"Вид работы", max_length=200)
     alias = models.SlugField(max_length=100, blank=True)
     description = RichTextField(u'Текст категории фильтра', blank=True)
     lastmod = models.DateTimeField(auto_now=True, blank=True, null=True)
@@ -190,7 +190,7 @@ class Work(models.Model):
 
 class AddServices(Work):
     work_field_name = 'add_services'
-    logo = models.ImageField("иконка услуги", blank=True)
+    logo = models.ImageField(u"иконка услуги", blank=True)
 
     class Meta:
         verbose_name = u""
@@ -202,7 +202,7 @@ class AddServices(Work):
 # специализация авто
 class SpecializationWork(Work):
     work_field_name = 'specialization_work'
-    logo = models.ImageField("Логотип марки", blank=True)
+    logo = models.ImageField(u"Логотип марки", blank=True)
 
     class Meta:
         verbose_name = u""
@@ -326,13 +326,13 @@ class CarWashServices(Work):
 
 class CarWash(Service):
     type_carwash = models.ManyToManyField(TypeCarWash, related_name='type_carwash',
-                                          verbose_name='Вид мойки', blank=True)
+                                          verbose_name=u'Вид мойки', blank=True)
     type_vehicle = models.ManyToManyField(TypeVehicle, related_name='type_vehicle',
-                                          verbose_name='Вид транспорта', blank=True)
+                                          verbose_name=u'Вид транспорта', blank=True)
     car_wash_services = models.ManyToManyField(CarWashServices, related_name='car_wash_services',
-                                               verbose_name='Услуги', blank=True)
+                                               verbose_name=u'Услуги', blank=True)
     add_services = models.ManyToManyField(AddServices, related_name='carwash_add_services',
-                                          verbose_name='Дополнительные услуги', blank=True)
+                                          verbose_name=u'Дополнительные услуги', blank=True)
     reviews = GenericRelation(Review)
 
     class Meta:
@@ -369,11 +369,11 @@ class DiscWork(Work):
 
 class TireService(Service):
     tire_work = models.ManyToManyField(TireWork, related_name='tire_work',
-                                       verbose_name='Шины', blank=True)
+                                       verbose_name=u'Шины', blank=True)
     disc_work = models.ManyToManyField(DiscWork, related_name='disc_work',
-                                       verbose_name='Диски', blank=True)
+                                       verbose_name=u'Диски', blank=True)
     add_services = models.ManyToManyField(AddServices, related_name='tire_add_services',
-                                          verbose_name='Дополнительные услуги', blank=True)
+                                          verbose_name=u'Дополнительные услуги', blank=True)
     reviews = GenericRelation(Review)
 
     class Meta:

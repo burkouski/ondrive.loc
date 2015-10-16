@@ -14,29 +14,29 @@ class ReviewsInline(GenericTabularInline):
 class AutoServiceAdmin(admin.ModelAdmin):
     filter_horizontal = ('repair_work','diag_work','add_work', 'serv_work', 'specialization_work', 'add_services')
     fieldsets = (
-        ('Контактные данные', {
+        (u'Контактные данные', {
             'fields': (
                 'name', 'alias','city', 'address','building', 'site_url', 'email', 'get_logo_img', 'logo', 'phone_velcom',
                 'phone_velcom2', 'phone_mts', 'phone_mts2', 'phone_life', 'phone_life2', 'phone_city', 'phone_city2', 'owner')
         }),
-        ('Рабочие дни', {
+        (u'Рабочие дни', {
             'fields': ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')
         }),
-        ('Время работы', {
+        (u'Время работы', {
             'fields': (
                 'work_start', 'work_end', 'break_time_start', 'break_time_end', 'holiday_time_start',
                 'holiday_time_end')
         }),
-        ('Описание сервиса', {
+        (u'Описание сервиса', {
             'fields': ('teaser', 'full_desc', 'is_moderate')
         }),
-        ('Координаты для карты', {
+        (u'Координаты для карты', {
             'fields': ('latitude', 'longitude')
         }),
-        ('Виды работ', {
+        (u'Виды работ', {
             'fields': ('repair_work','diag_work','add_work', 'serv_work', 'specialization_work', 'add_services')
         }),
-        ('Мета данные', {
+        (u'Мета данные', {
             'fields': ('title', 'meta_keywords', 'meta_description')
         }),
 
@@ -49,29 +49,29 @@ class AutoServiceAdmin(admin.ModelAdmin):
 class CarWashAdmin(admin.ModelAdmin):
     #filter_horizontal = ('type_carwash', 'type_vehicle', 'car_wash_services', 'add_services')
     fieldsets = (
-        ('Контактные данные', {
+        (u'Контактные данные', {
             'fields': (
                 'name', 'alias', 'city', 'address','building', 'site_url', 'email', 'get_logo_img', 'logo', 'phone_velcom',
                 'phone_velcom2', 'phone_mts', 'phone_mts2', 'phone_life', 'phone_life2', 'phone_city', 'phone_city2','owner')
         }),
-        ('Рабочие дни', {
+        (u'Рабочие дни', {
             'fields': ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')
         }),
-        ('Время работы', {
+        (u'Время работы', {
             'fields': (
                 'work_start', 'work_end', 'break_time_start', 'break_time_end', 'holiday_time_start',
                 'holiday_time_end')
         }),
-        ('Описание сервиса', {
+        (u'Описание сервиса', {
             'fields': ('teaser', 'full_desc', 'is_moderate')
         }),
-        ('Координаты для карты', {
+        (u'Координаты для карты', {
             'fields': ('latitude', 'longitude')
         }),
-        ('Виды работ', {
+        (u'Виды работ', {
             'fields': ('type_carwash', 'type_vehicle', 'car_wash_services', 'add_services')
         }),
-        ('Мета данные', {
+        (u'Мета данные', {
             'fields': ('title', 'meta_keywords', 'meta_description')
         }),
 
@@ -82,29 +82,29 @@ class CarWashAdmin(admin.ModelAdmin):
 
 class TireServiceAdmin(admin.ModelAdmin):
     fieldsets = (
-        ('Контактные данные', {
+        (u'Контактные данные', {
             'fields': (
                 'name', 'alias', 'city', 'address','building', 'site_url', 'email', 'get_logo_img', 'logo', 'phone_velcom',
                 'phone_velcom2', 'phone_mts', 'phone_mts2', 'phone_life', 'phone_life2', 'phone_city', 'phone_city2','owner')
         }),
-        ('Рабочие дни', {
+        (u'Рабочие дни', {
             'fields': ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')
         }),
-        ('Время работы', {
+        (u'Время работы', {
             'fields': (
                 'work_start', 'work_end', 'break_time_start', 'break_time_end', 'holiday_time_start',
                 'holiday_time_end')
         }),
-        ('Описание сервиса', {
+        (u'Описание сервиса', {
             'fields': ('teaser', 'full_desc', 'is_moderate')
         }),
-        ('Координаты для карты', {
+        (u'Координаты для карты', {
             'fields': ('latitude', 'longitude')
         }),
-        ('Виды работ', {
+        (u'Виды работ', {
             'fields': ('tire_work', 'disc_work', 'add_services')
         }),
-        ('Мета данные', {
+        (u'Мета данные', {
             'fields': ('title', 'meta_keywords', 'meta_description')
         }),
 

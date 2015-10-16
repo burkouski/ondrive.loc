@@ -29,6 +29,7 @@ sitemaps = {'news_posts': NewsPostSitemap,
 
 
 urlpatterns = patterns('',
+    url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
     url(r'', include('service.urls', namespace='service')),
     url(r'', include('contacts.urls', namespace='contacts')),

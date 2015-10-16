@@ -18,27 +18,38 @@ ondriveApp.controller('serviceCtrl', ['$scope', '$cookieStore', 'services', func
         $scope.resetPage = resetPage;
         $scope.setPage = setPage;
         $scope.clearFilter = clearFilter;
-        console.log($scope.mapIcon)
         loadData();
         loadMap();
 
     };
 
     $scope.$watch("pageSize", function (newValue, oldValue) {
-        resetPage();
-        loadData();
+        if (newValue !== oldValue) {
+            resetPage();
+            loadData();
+        }
+
     });
 
     $scope.$watch("api", function (newValue, oldValue) {
-        setMapIcon(newValue);
-        loadData();
-        loadMap();
+        if (newValue !== oldValue) {
+            setMapIcon(newValue);
+            loadData();
+            loadMap();
+        }
+
     });
 
-    $scope.$watch('page', function () {
-        loadData();
+    $scope.$watch('page', function (newValue, oldValue) {
+        if (newValue !== oldValue) {
+            loadData();
+        }
+
     });
 
+    $scope.$watchGroup(['asFilter'], function (newVal, oldVal) {
+
+    }, true);
 
     function loadData() {
         var apiUrl = getApiUrl($scope.api);
@@ -48,6 +59,7 @@ ondriveApp.controller('serviceCtrl', ['$scope', '$cookieStore', 'services', func
             page: $scope.page,
             filter: filter
         };
+
         var service = services.getServices(apiUrl);
 
         $scope.services = service.query(query);
@@ -57,8 +69,8 @@ ondriveApp.controller('serviceCtrl', ['$scope', '$cookieStore', 'services', func
             $scope.services.quantity = result.count;
         });
 
-        var aTag = $("#service-anchor");
-        $('html,body').animate({scrollTop: aTag.offset().top - 100}, 'slow');
+        //var aTag = $("#service-anchor");
+        //$('html,body').animate({scrollTop: aTag.offset().top - 100}, 'slow');
     }
 
     function loadMap() {
@@ -68,25 +80,22 @@ ondriveApp.controller('serviceCtrl', ['$scope', '$cookieStore', 'services', func
                 filter: filter
             },
             map = services.getServices(apiUrl);
+
         $scope.map = map.query(query);
         $scope.map.$promise.then(function (result) {
             $scope.map = result.results;
-            console.log($scope.map)
         });
     }
 
     function setMapIcon(api) {
         if (api === 'autoservice') {
             $scope.mapIcon = 'as-ico.png';
-            console.log($scope.mapIcon);
         }
         else if (api === 'carwash') {
             $scope.mapIcon = 'cw-ico.png';
-            console.log($scope.mapIcon);
         }
         else if (api === 'tireservice') {
             $scope.mapIcon = 'ts-ico.png';
-            console.log($scope.mapIcon);
         }
     }
 
@@ -105,7 +114,7 @@ ondriveApp.controller('serviceCtrl', ['$scope', '$cookieStore', 'services', func
     function getFilter(api) {
         var filter = {};
         if (api === 'autoservice') {
-            return filter = $scope.asFilter
+            return filter = $scope.asFilter;
         }
         else if (api === 'carwash') {
             return filter = $scope.cwFilter

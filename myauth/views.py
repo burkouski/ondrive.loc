@@ -23,7 +23,6 @@ from django.http import Http404
 def user_register(request):
     args = {}
     args['success'] = True
-    #args.update(csrf(request))
     if request.method == 'POST':
         # username = request.POST.get('username', '')
         # email = request.POST.get('email', '')
@@ -91,8 +90,8 @@ def user_confirm(request, activation_key):
 
     user = user_profile
     user.is_active = True
-    user.is_staff = True
-    user.is_superuser = True
+    user.is_staff = False
+    user.is_superuser = False
     user.save()
     args['message'] = 'Спасибо за регистрацию'
     args['subMessage'] = 'ваш аккаунт подтвержден'
@@ -179,7 +178,6 @@ def user_board(request):
 
 @login_required
 def userprofile_edit(request):
-    print True
     context = RequestContext(request)
     args = {}
     user = UserProfile.objects.get(username=request.user)

@@ -5,7 +5,7 @@
 {% endblock %}
 {% block page %}
     <!-- Main Container Starts -->
-    <div id="main-container" ng-controller="autoserviceCtrl">
+    <div id="main-container" ng-controller="serviceCtrl" {% block ctrlInit %}{% endblock %}>
         <div class="row">
             <div class="col-md-12">
                 <!-- Breadcrumb Starts -->
@@ -31,52 +31,76 @@
             </div>
         </div>
         <section class="products-list wrap">
+            <!-- Products Row Starts -->
             <div class="row">
                 <!-- Primary Content Starts -->
 
                 <div class="col-md-9">
+                    <section class="map map_main">
+                        {% csrf_token %}
+                        <div class="map__wrap" ng-init="center=[53.889592, 27.562298];zoom=11">
+                            <yandex-map center="center" zoom="zoom" class="map__container">
+                                <ymap-marker ng-repeat="item in map"
+                                             index="$index+1"
+                                             coordinates="[item.longitude ,item.latitude]"
+                                             properties="{balloonContent: '<strong style='+'color:red'+'>'+item.name+'</strong><br>'+item.teaser+'<br>'+item.address}"
+                                             options="{
+                        iconLayout: 'default#image',
+                        iconImageHref: '/static/img/map/'+mapIcon,
+                        iconImageSize: [30, 48],
+                        iconImageOffset: [-15, -48],
 
+                        iconShape: {
+                            type: 'Circle',
+                            coordinates: [0, 0],
+                            radius: 20
+                        },
+                     }">
+
+                                </ymap-marker>
+                            </yandex-map>
+                        </div>
+
+                    </section>
                     <!-- Product Filter Starts -->
                     <div class="product-filter">
                         <div class="row">
                             <!--div class="col-md-3">
                                 <div class="display">
-                                    <span ng-class="{active: !gridView}" ng-click="changeView(false)">
-                                        <i class="fa fa-th-list" title="Отображать списком"></i>
-                                    </span>
-                                    <span ng-class="{active: gridView}" ng-click="changeView(true)">
-                                        <i class="fa fa-th" title="Отображать сеткой"></i>
-                                    </span>
+                                        <span ng-class="{active: !gridView}" ng-click="changeView(false)">
+                                            <i class="fa fa-th-list" title="Отображать списком"></i>
+                                        </span>
+                                        <span ng-class="{active: gridView}" ng-click="changeView(true)">
+                                            <i class="fa fa-th" title="Отображать сеткой"></i>
+                                        </span>
                                 </div>
                             </div-->
-                            <div class="col-md-4"><span class="control-label">Найдено сервисов - {$ meta $} </span>
+                            <div class="col-md-4"><span
+                                    class="control-label">Найдено сервисов - {$ services.quantity $} </span>
                             </div>
                             <div class="col-md-3 text-right">
                                 <label class="control-label">Показывать:</label>
                             </div>
                             <div class="col-md-2 text-right">
-                                <select class="form-control" ng-model="quantity"
-                                        ng-options="number for number in [6,12,24]" ng-change='changeQuantity()'>
-
+                                <select class="form-control" ng-model="pageSize"
+                                        ng-options="number for number in [6,12,24]">
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <!-- Product Filter Ends -->
-                    <!-- Product List Display Starts -->
 
-                    <div style="text-align: center" ng-show="!preloader"><img src="/static/img/ajax-loader.gif"
-                                                                              alt="preloader"/></div>
-                    <div class="row" ng-show="preloader">
+                    <div style="text-align: center" ng-show="preloader"><img src="/static/img/ajax-loader.gif"
+                                                                             alt="preloader"/></div>
+                    <div class="row" ng-show="!preloader">
 
-                        <!-- Product #1 Starts -->
+
                         <div class="product-preview" ng-class="{'col-xs-12': !gridView, 'col-xs-4': gridView}"
-                             ng-repeat="service in services" ng-cloak>
+                             ng-repeat="service in services.objects" ng-cloak>
                             <a href="{$ service.url $}" class="product-preview__link list clearfix">
                                 <div class="row">
                                     <div class="product-preview__img"
                                          ng-class="{'col-xs-4': !gridView, 'col-xs-12': gridView}">
-                                        <img src="{$ service.logo $}" alt=""
+                                        <img ng-src="{$ service.logo $}" alt=""
                                              class="img-responsive"/>
                                     </div>
                                     <div ng-class="{'col-xs-8': !gridView, 'col-xs-12': gridView}">
@@ -95,7 +119,8 @@
                                             {$ service.teaser $}
                                         </div>
                                         <div class="product-preview__address">
-                                            <p class="price-tax">Адрес: {$ service.address $}</p>
+                                            <p class="price-tax">Адрес: {$ service.city $}, {$ service.address $}, {$
+                                                service.building $}</p>
 
                                         </div>
                                     </div>
@@ -103,40 +128,30 @@
                             </a>
                         </div>
 
-                        <!-- Product #1 Ends -->
-
                     </div>
-                    <!-- Product List Display Ends -->
-                    <!-- Pagination & Results Starts -->
                     <div class="row">
-                        <!-- Pagination Starts -->
+
+                        <pagination page="page" page-size="pageSize" set-page="setPage(page)"
+                                    item-quantity="services.quantity"></pagination>
                         <div class="col-sm-6">
                             <ul class="pagination" ng-show="meta > quantity">
-                                <li class="pagination__item" ng-class="{'active': (curPage-1) == $index}" ng-repeat="pagin in pagination track by $index">
-                                    <a class="pagination__link" ng-click="changePage($index)" >{$ $index+1 $}</a>
+                                <li class="pagination__item" ng-class="{'active': (curPage-1) == $index}"
+                                    ng-repeat="pagin in pagination track by $index">
+                                    <a class="pagination__link" ng-click="setPage({page: $index})">{$ $index+1 $}</a>
                                 </li>
                             </ul>
                         </div>
-                        <!-- Pagination Ends -->
+
                     </div>
-                    <!-- Pagination & Results Ends -->
+
                 </div>
-                <!-- Primary Content Ends -->
-                <!-- Sidebar Starts -->
+
                 <div class="col-md-3">
-
-                    <!-- Shopping Options Starts -->
-                    {% block catalog_filter %}
-
+                    <h3 class="side-heading">Фильтр</h3>
+                   {% block catalog_filter %}
                     {% endblock %}
-                    <!-- Shopping Options Ends -->
-
                 </div>
-
-
-                <!-- Sidebar Ends -->
             </div>
         </section>
     </div>
-    <!-- Main Container Ends -->
 {% endblock %}

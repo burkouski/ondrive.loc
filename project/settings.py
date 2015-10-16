@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
@@ -58,7 +59,6 @@ INSTALLED_APPS = (
     'rest_framework',
 )
 MIDDLEWARE_CLASSES = (
-    #'django_hosts.middleware.HostsRequestMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -66,7 +66,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'django_hosts.middleware.HostsResponseMiddleware'
 )
 
 ROOT_URLCONF = 'project.urls'
@@ -113,6 +112,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     PROJECT_PATH + '/static',
 )
+#STATIC_ROOT = PROJECT_PATH + '/static'
+
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+# )
 
 MEDIA_URL = '/media/'
 
