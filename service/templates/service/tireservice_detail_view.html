@@ -3,24 +3,32 @@
 {% block work %}
     {#Виды работ #}
     {% if service.tire_work.all %}
-        <div class="work__type">
-            <h5 class="work__title">{{ service.tire_work.first.get_model_name }}</h5>
-            <ul class="work__list">
+        <div class="service__item">
+            <h2 class="service__title service__title--small">{{ service.tire_work.first.get_model_name }}:</h2>
+
+            <!-- Product Name Ends -->
+
+            <ul class="list-unstyled service__list">
+
                 {% for work in service.tire_work.all %}
-                    <li class="work__item">{{ work }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-    {% if service.disc_work.all %}
-        <div class="work__type">
-            <h5 class="work__title">{{ service.disc_work.first.get_model_name }}</h5>
-            <ul class="work__list">
-                {% for work in service.disc_work.all %}
-                    <li class="work__item">{{ work }}</li>
+                    <li class="service__work-item"><i class="fa fa-check service__work-icon"></i>{{ work }}</li>
                 {% endfor %}
             </ul>
         </div>
     {% endif %}
 
+    {% if service.disc_work.all %}
+        <div class="service__item">
+            <h2 class="service__title service__title--small">{{ service.disc_work.first.get_model_name }}:</h2>
+
+            <!-- Product Name Ends -->
+
+            <ul class="list-unstyled service__list">
+
+                {% for work in service.disc_work.all %}
+                    <li class="service__work-item"><i class="fa fa-check service__work-icon"></i>{{ work }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 {% endblock %}

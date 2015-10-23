@@ -389,7 +389,6 @@
 }
 .phone {
   position: relative;
-  display: inline-block;
   padding: 0 0 0 20px;
   font-weight: bold;
 }
@@ -520,6 +519,7 @@
 .service__param-name {
   min-width: 150px;
   display: inline-block;
+  vertical-align: top;
   color: #2f353b;
 }
 .service__work-item {
@@ -547,14 +547,24 @@
   text-transform: lowercase;
   line-height: 20px;
 }
+.service__phone-list {
+  display: inline-block;
+  max-width: 249px;
+}
 .service__workday-icon--blue {
   background: #00008b;
 }
 .service__workday-icon--red {
   background: #ef4135;
 }
+.service__workday-icon--orange {
+  background: #ffa500;
+}
 .service__desc {
   font-size: 16px;
+}
+.service__brand-img {
+  max-width: 60px;
 }
 .service-table__img {
   width: 300px;

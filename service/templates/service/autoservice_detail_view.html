@@ -52,7 +52,7 @@
         <ul class="list-unstyled service__list">
 
             {% for brend in service.specialization_work.all %}
-                <li class="service__work-item"><img src="{% if brend.logo %}{{ brend.logo.url }}{% endif %}" alt="{{ brend }}" title="{{ brend }}"/></li>
+                <li class="service__work-item"><img class="service__brand-img" src="{% if brend.logo %}{{ brend.logo.url }}{% endif %}" alt="{{ brend }}" title="{{ brend }}"/></li>
             {% endfor %}
         </ul>
     {% endif %}

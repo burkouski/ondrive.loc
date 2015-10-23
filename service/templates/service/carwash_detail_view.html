@@ -45,20 +45,6 @@
     {% endif %}
     </div>
     <div class="service__item">
-        {% if service.car_wash_services.all %}
-        <h2 class="service__title service__title--small">{{ service.car_wash_services.first.get_model_name }}:</h2>
-
-        <!-- Product Name Ends -->
-
-        <ul class="list-unstyled service__list">
-
-            {% for work in service.car_wash_services.all %}
-                <li class="service__work-item"><img src="{% if work.logo %}{{ work.logo.url }}{% endif %}" alt="{{ work }}"/></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
-    <div class="service__item">
         {% if service.add_services.all %}
         <h2 class="service__title service__title--small">{{ service.add_services.first.get_model_name }}:</h2>
 
@@ -67,7 +53,7 @@
         <ul class="list-unstyled service__list">
 
             {% for work in service.add_services.all %}
-                <li class="service__work-item">{{ work.work_name }}</li>
+                <li class="service__work-item"><img class="service__brand-img" src="{% if work.logo %}{{ work.logo.url }}{% endif %}" alt="{{ work }}" title="{{ work }}"/></li>
             {% endfor %}
         </ul>
     {% endif %}

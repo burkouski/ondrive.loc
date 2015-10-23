@@ -279,7 +279,7 @@ class AutoService(Service):
         verbose_name_plural = u"Автосервисы"
 
     def get_absolute_url(self):
-        return reverse('service:autoservice_detail', kwargs={'service_alias': self.alias})
+        return reverse('autoservice_detail', kwargs={'service_alias': self.alias})
 
 
 # class TireService(Service):

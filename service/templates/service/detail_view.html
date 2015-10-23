@@ -27,7 +27,7 @@
                 <div class="col-sm-4 service__images">
                     <a href="/">
                         <img src="{{ service.logo.url }}" alt="{{ service.name }}"
-                             class="img-responsive thumbnail service__img"/>
+                             class="img-responsive thumbnail service__img" title='{{ service.name }}' />
                     </a>
 
                     <div class="service__desc">
@@ -41,82 +41,96 @@
                     <div class="service__panel">
                         <div class="service__item">
                             <!-- Product Name Starts -->
-                            <h2 class="service__title">{{ service.name }}</h2>
+                            <h1 class="service__title">{{ service.name }}</h1>
                             <!-- Product Name Ends -->
                             <hr/>
                             <!-- Manufacturer Starts -->
-                            <ul class="list-unstyled service__list">
-                                <li class="service__list-item">
-                                    <span class="service__param-name">Рейтинг:</span>
-                                    {% if rating.rate__avg %}
-                                        <span class="service__rating">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled service__list">
+                                        <li class="service__list-item">
+                                            <span class="service__param-name">Рейтинг:</span>
+                                            {% if rating.rate__avg %}
+                                                <span class="service__rating">
 
                             <i ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').positiveStar track by $index"
                                style="color: red" class="fa fa-star"></i><i
-                                                ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').halfStar track by $index"
-                                                style="color: red" class="fa fa-star-half-o"></i><i
-                                                ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').negativeStar track by $index"
-                                                style="color: red" class="fa fa-star-o"></i>
+                                                        ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').halfStar track by $index"
+                                                        style="color: red" class="fa fa-star-half-o"></i><i
+                                                        ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').negativeStar track by $index"
+                                                        style="color: red" class="fa fa-star-o"></i>
                         </span>
-                                    {% else %}
-                                        <span class="service__param">нет оценок данного сервиса</span>
-                                    {% endif %}
+                                            {% else %}
+                                                <span class="service__param">нет оценок данного сервиса</span>
+                                            {% endif %}
 
 
-                                </li>
-                                <li class="service__list-item">
-                                    <span class="service__param-name">Адрес:</span> {{ service.city }}, {{ service.address }}, {{ service.building }}
-                                </li>
-                                {% if service.siteUrl %}
+                                        </li>
+                                        <li class="service__list-item">
+                                            <span class="service__param-name">Адрес:</span> {{ service.city }}, {{ service.address }}, {{ service.building }}
+                                        </li>
+                                        {% if service.siteUrl %}
+                                            <li class="service__list-item"><span
+                                                    class="service__param-name">Сайт:</span> {{ service.siteUrl }}</li>
+                                        {% endif %}
+                                        {% if service.email %}
+                                            <li class="service__list-item"><span
+                                                    class="service__param-name">E-mail:</span> {{ service.email }}</li>
+                                        {% endif %}
+                                        <li class="service__list-item">
+                                            <span class="service__param-name">Телефоны:</span>
+                                            <ul class="service__phone-list list-unstyled">
+                                                {% if service.phone_velcom %}
+                                                    <li class="phone"><i class="phone__icon icon icon-vel"><i
+                                                            class="path1"></i><i
+                                                            class="path2"></i><i class="path3"></i></i>
+                                                    <span
+                                                            class="service__param">{{ service.phone_velcom }}</span></li>
+                                                {% endif %}
+                                                {% if service.phone_velcom2 %}
+                                                    <li class="phone"><i
+                                                            class="phone__icon icon icon-city"></i>
+                                                    <span
+                                                            class="service__param">{{ service.phone_velcom2 }}</span></li>
+                                                {% endif %}
+                                                {% if service.phone_mts %}
+                                                    <li class="phone"><i class="phone__icon icon icon-mts"></i>
+                                                    <span class="service__param">{{ service.phone_mts }}</span></li>
+                                                {% endif %}
+                                                {% if service.phone_mts2 %}
+                                                    <li class="phone"><i class="phone__icon icon icon-mts"></i>
+                                                    <span
+                                                            class="service__param">{{ service.phone_mts2 }}</span></li>
+                                                {% endif %}
+                                                {% if service.phone_life %}
+                                                    <li class="phone"><i
+                                                            class="phone__icon icon icon-life"></i>
+                                                    <span
+                                                            class="service__param">{{ service.phone_life }}</span></li>
+                                                {% endif %}
+                                                {% if service.phone_life2 %}
+                                                    <li class="phone"><i
+                                                            class="phone__icon icon icon-life"></i>
+                                                    <span
+                                                            class="service__param">{{ service.phone_life2 }}</span></li>
+                                                {% endif %}
+                                                {% if service.phone_city %}
+                                                    <li class="phone"><i
+                                                            class="phone__icon icon icon-city"></i>
+                                                    <span
+                                                            class="service__param">{{ service.phone_city }}</span></li>
+                                                {% endif %}
+                                                {% if service.phone_city2 %}
+                                                    <li class="phone"><i
+                                                            class="phone__icon icon icon-city"></i>
+                                                    <span
+                                                            class="service__param">{{ service.phone_city2 }}</span></li>
+                                                {% endif %}
+                                    </ul>
+
+                                    </li>
                                     <li class="service__list-item"><span
-                                            class="service__param-name">Сайт:</span> {{ service.siteUrl }}</li>
-                                {% endif %}
-                                {% if service.email %}
-                                    <li class="service__list-item"><span
-                                            class="service__param-name">E-mail:</span> {{ service.email }}</li>
-                                {% endif %}
-                                <li class="service__list-item">
-                                    <span class="service__param-name">Телефоны:</span>
-                                    {% if service.phone_velcom %}
-                                        <span class="phone"><i class="phone__icon icon icon-vel"><i class="path1"></i><i
-                                                class="path2"></i><i class="path3"></i></i><span
-                                                class="service__param">{{ service.phone_velcom }}</span></span>
-                                    {% endif %}
-                                    {% if service.phone_velcom2 %}
-                                        <span class="phone"><i
-                                                class="phone__icon icon icon-city"></i><span
-                                                class="service__param">{{ service.phone_velcom2 }}</span></span>
-                                    {% endif %}
-                                    {% if service.phone_mts %}
-                                        <span class="phone"><i class="phone__icon icon icon-mts"></i><span
-                                                class="service__param">{{ service.phone_mts }}</span></span>
-                                    {% endif %}
-                                    {% if service.phone_mts2 %}
-                                        <span class="phone"><i class="phone__icon icon icon-mts"></i><span
-                                                class="service__param">{{ service.phone_mts2 }}</span></span>
-                                    {% endif %}
-                                    {% if service.phone_life %}
-                                        <span class="phone"><i
-                                                class="phone__icon icon icon-life"></i><span
-                                                class="service__param">{{ service.phone_life }}</span></span>
-                                    {% endif %}
-                                    {% if service.phone_life2 %}
-                                        <span class="phone"><i
-                                                class="phone__icon icon icon-life"></i><span
-                                                class="service__param">{{ service.phone_life2 }}</span></span>
-                                    {% endif %}
-                                    {% if service.phone_city %}
-                                        <span class="phone"><i
-                                                class="phone__icon icon icon-city"></i><span
-                                                class="service__param">{{ service.phone_city }}</span></span>
-                                    {% endif %}
-                                    {% if service.phone_city2 %}
-                                        <span class="phone"><i
-                                                class="phone__icon icon icon-city"></i><span
-                                                class="service__param">{{ service.phone_city2 }}</span></span>
-                                    {% endif %}
-                                </li>
-                                <li class="service__list-item"><span class="service__param-name">Рабочие дни:</span>
+                                            class="service__param-name">Рабочие дни:</span>
                 <span class="service__workday">
                     {% for day in service.get_workday_list %}
                         {% if day.0 == 'wd' %}
@@ -131,40 +145,40 @@
                         {% endif %}
                     {% endfor %}
                 </span>
-                                </li>
-                                <li class="service__list-item"><span class="service__param-name">Время работы:</span>
-                                    <span class="service__param">c {{ service.get_work_start_display }} до {{ service.get_work_end_display }}</span>
-                                </li>
-                            {% if service.break_time_start == 0 or service.break_time_end == 0 %}
-                                <li class="service__list-item"><span class="service__param-name">Время обеда:</span>
-                                    {{ service.break_time_start }}
-                                    <span class="service__param">c {{ service.get_break_time_start_display }} до {{ service.get_break_time_end_display }}</span>
-                                </li>
-                            {% else %}
-                                <li class="service__list-item"><span class="service__param-name">Время обеда:</span><span class="service__param">Без обеда</span>
-                                </li>
-                            {% endif %}
-                            {% if service.holiday_time_start.0 or service.holiday_time_end.0 %}
-                                <li class="service__list-item"><span class="service__param-name">Сокращенный день:</span>
-                                    <span class="service__param">c {{ service.get_holiday_time_start_display }} до {{ service.get_holiday_time_end_display }}</span>
-                                </li>
-                            {% endif %}
+                                    </li>
+                                    <li class="service__list-item"><span
+                                            class="service__param-name">Время работы:</span>
+                                        <span class="service__param">c {{ service.get_work_start_display }} до {{ service.get_work_end_display }}</span>
+                                    </li>
+                                    {% if service.break_time_start == 0 or service.break_time_end == 0 %}
+                                        <li class="service__list-item"><span
+                                                class="service__param-name">Время обеда:</span>
+                                            {{ service.break_time_start }}
+                                            <span class="service__param">c {{ service.get_break_time_start_display }} до {{ service.get_break_time_end_display }}</span>
+                                        </li>
+                                    {% else %}
+                                        <li class="service__list-item"><span
+                                                class="service__param-name">Время обеда:</span><span
+                                                class="service__param">Без обеда</span>
+                                        </li>
+                                    {% endif %}
+                                    {% if service.holiday_time_start == 0 or service.holiday_time_end == 0 %}
+                                        <li class="service__list-item"><span class="service__param-name">Сокращенный день:</span>
+                                            <span class="service__param">c {{ service.get_holiday_time_start_display }} до {{ service.get_holiday_time_end_display }}</span>
+                                        </li>
+                                    {% endif %}
 
-                            </ul>
-                        </div>
-                        {% block work %}
-
-                        {% endblock %}
-
-                        <!-- Manufacturer Ends -->
-                        <hr/>
-                        <section class="map map_main">
-                            <div class="map__wrap"
-                                 ng-init="coords=[55.21, 34.30];center=[{{ service.longitude }}, {{ service.latitude }}]; zoom='15'">
-                                <yandex-map center="center" zoom="zoom" class="map__container map__container--single">
-                                    <ymap-marker
-                                            coordinates="[{{ service.longitude }} ,{{ service.latitude }}]"
-                                            options="{
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <section class="map map_main">
+                                        <div class="map__wrap"
+                                             ng-init="coords=[55.21, 34.30];center=[{{ service.longitude }}, {{ service.latitude }}]; zoom='15'">
+                                            <yandex-map center="center" zoom="zoom"
+                                                        class="map__container map__container--single">
+                                                <ymap-marker
+                                                        coordinates="[{{ service.longitude }} ,{{ service.latitude }}]"
+                                                        options="{
                         iconLayout: 'default#image',
                         iconImageHref: '/static/img/map/as-ico.png',
                         iconImageSize: [30, 48],
@@ -177,10 +191,20 @@
                         },
                      }">
 
-                                    </ymap-marker>
-                                </yandex-map>
+                                                </ymap-marker>
+                                            </yandex-map>
+                                        </div>
+                                    </section>
+                                </div>
                             </div>
-                        </section>
+
+                        </div>
+                        {% block work %}
+
+                        {% endblock %}
+
+                        <!-- Manufacturer Ends -->
+                        <hr/>
 
                     </div>
                 </div>
@@ -193,7 +217,7 @@
                 <!-- Nav Tabs Starts -->
                 <ul class="nav nav-tabs">
                     {% if service.full_desc %}
-                        <li class="active"><a href="#tab-ainfo">Описание</a></li>
+                        <li class="active"><a href="#tab-desc">Описание</a></li>
                     {% endif %}
                     <li class="{% if not service.full_desc %}active{% endif %}"><a href="#tab-review">Отзывы</a></li>
                     <li><a href="#tab-sendreview">Оставить отзыв</a></li>

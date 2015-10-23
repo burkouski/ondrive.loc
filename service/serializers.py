@@ -17,15 +17,22 @@ class AutoserviceSerializer(serializers.ModelSerializer):
 
 
 class CarWashSerializer(serializers.ModelSerializer):
+    url = serializers.SerializerMethodField()
     class Meta:
         model = CarWash
         fields = (
-        'id', 'logo', 'name', 'teaser', 'city', 'address', 'building', 'longitude', 'latitude', 'type_carwash',
+        'id','url', 'logo', 'name', 'teaser', 'city', 'address', 'building', 'longitude', 'latitude', 'type_carwash',
         'type_vehicle', 'car_wash_services', 'add_services')
+    def get_url(self, obj):
+        return obj.get_absolute_url()
 
 
 class TireServiceSerializer(serializers.ModelSerializer):
+    url = serializers.SerializerMethodField()
     class Meta:
         model = TireService
-        fields = ('id', 'logo', 'name', 'teaser', 'city', 'address', 'building', 'longitude', 'latitude', 'tire_work',
+        fields = ('id','url', 'logo', 'name', 'teaser', 'city', 'address', 'building', 'longitude', 'latitude', 'tire_work',
                   'disc_work', 'add_services')
+
+    def get_url(self, obj):
+        return obj.get_absolute_url()

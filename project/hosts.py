@@ -1,7 +1,7 @@
 from django_hosts import patterns, host
-from django.views.generic import TemplateView
+from django.conf import settings
 
 host_patterns = patterns('',
-    host(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    host(r'(foo|bar)', 'service.urls', name='autoservice_list'),
+    host(r'^$', settings.ROOT_URLCONF, name='index'),
+    host(r'(services)', 'service.urls', name='service'),
 )

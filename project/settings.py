@@ -57,8 +57,11 @@ INSTALLED_APPS = (
     'pages',
     'htmlblock',
     'rest_framework',
+    'django_hosts'
 )
 MIDDLEWARE_CLASSES = (
+    'django_hosts.middleware.HostsRequestMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,9 +72,9 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'project.urls'
-AJAXIMAGE_AUTH_TEST = lambda u: True
+ROOT_HOSTCONF = 'project.hosts'
 WSGI_APPLICATION = 'project.wsgi.application'
-
+DEFAULT_HOST = 'index'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

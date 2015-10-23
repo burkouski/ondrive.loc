@@ -37,7 +37,7 @@
                     <a href="{{ post.category.get_absolute_url }}" class="post__category">{{ post.category }}</a>
                     <span class="post__pub-date">{{ post.pub_date }} </span>
                 </div>
-                <h3 class="post__title">{{ post.name }}</h3>
+                <h1 class="post__title">{{ post.name }}</h1>
                 {{ post.text|safe }}
                 <div>{{ post.video|safe }}</div>
             </div>

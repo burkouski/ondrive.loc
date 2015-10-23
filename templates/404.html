@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+{% load w_news %}
+{% load w_service %}
+
+{% block ajaxmeta %}
+    <meta name="fragment" content="!">
+{% endblock %}
+
+{% block page %}
+
+		<div id="main-container" class="container">
+		<!-- Breadcrumb Starts -->
+			<ol class="breadcrumb">
+				<li><a href="/">Главная</a></li>
+				<li class="active">404</li>
+			</ol>
+		<!-- Breadcrumb Ends -->
+		<!-- Main Heading Starts -->
+			<h2 class="main-heading text-center">
+				404 Ошибка
+			</h2>
+		<!-- Main Heading Ends -->
+		<!-- Content Starts -->
+			<div class="content-box text-center">
+				<h4 class="special-heading">Что-то пошло не так !</h4>
+				<h5>
+					Возможно страницы которую вы ищете никогда не сущнствовало.
+				</h5>
+				<br />
+				<p>
+					<a href="index.html" class="btn btn-warning text-uppercase">На главную</a>
+				</p>
+			</div>
+		<!-- Content Ends -->
+		</div>
+{%  endblock %}
