@@ -74,7 +74,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'project.urls'
 ROOT_HOSTCONF = 'project.hosts'
 WSGI_APPLICATION = 'project.wsgi.application'
-DEFAULT_HOST = 'index'
+DEFAULT_HOST = 'default'
+PARENT_HOST = 'ondrive.loc'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

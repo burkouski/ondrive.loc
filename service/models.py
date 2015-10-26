@@ -5,6 +5,7 @@ import datetime
 from pytils import translit
 from django.db import models
 from django.core.urlresolvers import reverse
+from django_hosts.resolvers import reverse
 from ckeditor.fields import RichTextField
 from reviews.models import Review
 from myauth.models import UserProfile
@@ -279,7 +280,7 @@ class AutoService(Service):
         verbose_name_plural = u"Автосервисы"
 
     def get_absolute_url(self):
-        return reverse('autoservice_detail', kwargs={'service_alias': self.alias})
+        return reverse('autoservice_detail',host='autoservices',  kwargs={'service_alias': self.alias})
 
 
 # class TireService(Service):
