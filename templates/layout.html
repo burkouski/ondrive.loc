@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load sitetree %}
+{% load hosts %}
 <!doctype html>
 <html lang="ru">
 <head>
@@ -67,7 +68,7 @@
             <!-- Logo Starts -->
             <div class="col-md-3 col-xs-12">
                 <div id="logo">
-                    <a href="/"><img src="{% static 'img/logo.png' %}" title="Grocery Shoppe" alt="Grocery Shoppe"
+                    <a href="{% host_url 'index' host 'default' %}"><img src="{% static 'img/logo.png' %}" title="Grocery Shoppe" alt="Grocery Shoppe"
                                      class="img-responsive"/></a>
                 </div>
             </div>
@@ -79,22 +80,22 @@
 
                     <div class="header-links">
                         <ul class="list-unstyled list-inline pull-left">
-                            <li><a href="/">Главная</a></li>
-                            <li><a href="/o-proekte/">О проекте</a></li>
+                            <li><a href="{% host_url 'index' host 'default' %}">Главная</a></li>
+                            <li><a href="{% host_url 'page_view' page_alias='o-proekte' host 'default' %}">О проекте</a></li>
                             <!--li><a href="#">Правила портала</a></li-->
-                            <li><a href="/cooperate/">Сотрудничество</a></li>
-                            <li><a href="/contacts/">Контакты</a></li>
+                            <li><a href="{% host_url 'contacts:cooperate' host 'default' %}">Сотрудничество</a></li>
+                            <li><a href="{% host_url 'contacts:contacts' host 'default' %}">Контакты</a></li>
 
                             <!--li><a href="#">Мой блог</a></li-->
 
                             <!--li><a href="cart.html"></a></li-->
                             {% if  not user.is_authenticated %}
                                 <!--li><a href="#">Мой профиль</a></li-->
-                                <li><a href="/auth/registration">Регистрация</a></li>
+                                <li><a href="{% host_url 'myauth:user_register' host 'default' %}">Регистрация</a></li>
                             {% else %}  
-                                <li><a href="/auth/user">Ваш профиль</a></li>
+                                <li><a href="{% host_url 'myauth:user_login' host 'default' %}">Ваш профиль</a></li>
                                 {% if user.autoservice_set.all or  user.carwash_set.all or user.tireservice_set.all %}
-                                    <li><a href="/auth/user/service/">Ваши сервисы</a></li>
+                                    <li><a href="{% host_url 'myauth:userprofile_service' host 'default' %}">Ваши сервисы</a></li>
                                 {% endif %}
                             {% endif %}
 
@@ -113,7 +114,7 @@
             <!-- Header Right Ends -->
             <div class="col-md-2 col-xs-12">
                 {% if user.is_authenticated %}
-                    <span>Вы вошли как: {{ user.username }} <a href="/auth/logout">Выйти</a></span>
+                    <span>Вы вошли как: {{ user.username }} <a href="{% host_url 'myauth:user_logout' host 'default' %}">Выйти</a></span>
                 {% else %}
                     <a class="btn btn-danger popup fancybox" href="#login-form">Войти</a>
                 {% endif %}
@@ -138,20 +139,20 @@
         <div class="collapse navbar-collapse navbar-cat-collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="/services/" class="dropdown-toggle" data-hover="dropdown"
+                    <a href="" class="dropdown-toggle" data-hover="dropdown"
                           data-delay="10">
                         Сервисы
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a tabindex="-1" href="/autoservices/">Автосервисы</a></li>
-                        <li><a tabindex="-1" href="/carwash/">Автомойки</a></li>
-                        <li><a tabindex="-1" href="/tireservice/">Шиномонтажи</a></li>
+                        <li><a tabindex="-1" href="{% host_url 'autoservice_list' host 'autoservices' %}">Автосервисы</a></li>
+                        <li><a tabindex="-1" href="{% host_url 'carwash_list' host 'carwashes' %}">Автомойки</a></li>
+                        <li><a tabindex="-1" href="{% host_url 'tireservice_list' host 'tireservices' %}">Шиномонтажи</a></li>
                     </ul>
                 </li>
-                <li><a href="/news/">Новости</a></li>
+                <li><a href="{% host_url 'news:post_list' host 'default' %}">Новости</a></li>
                 <!--li><a href="#">Машины</a></li-->
                 <!--li><a href="#">Обзоры</a></li-->
-                <li><a href="/tuning/">Тюнинг</a></li>
+                <li><a href="{% host_url 'tuning:tuning_post_list' host 'default' %}">Тюнинг</a></li>
                 <!--li><a href="/blogs">Блоги</a></li-->
                 <!--li><a href="/cars">Машины</a></li-->
             </ul>
@@ -168,7 +169,7 @@
     <div class="clearfix">
         <!-- Starts -->
         <p class="pull-left">
-            <a href="/">ondrive.by</a> &copy;Все права защищены 2015
+            <a href="{% host_url 'index' host 'default' %}">ondrive.by</a> &copy;Все права защищены 2015
         </p>
         <!-- Ends -->
 

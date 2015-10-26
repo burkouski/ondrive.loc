@@ -4,9 +4,9 @@ from django.conf import settings
 
 urlpatterns = patterns('service.views',
     url(r'^$', views.tireservice_list, name='tireservice_list'),
+    url(r'^api/', include('service.urls.api_urls', namespace='api')),
+    url(r'^(?P<service_alias>.*)/$', views.tireservice_detail, name='tireservice_detail'),
     url(r'^tireservice/(?P<filter_name>.*)/(?P<filter_alias>.*)/$', views.tireservice_filter, name='tireservice_filter'),
-    url(r'^tireservice/(?P<service_alias>.*)/$', views.tireservice_detail, name='tireservice_detail'),
-    url(r'', include('service.urls.api_urls', namespace='api')),
     # url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     # url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 

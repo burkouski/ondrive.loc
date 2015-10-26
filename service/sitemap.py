@@ -1,5 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from service.models import *
+from django.core.urlresolvers import reverse
 
 
 class AutoServicetSitemap(Sitemap):

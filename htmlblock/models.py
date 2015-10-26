@@ -17,3 +17,14 @@ class Htmlblock(models.Model):
 
     def __unicode__(self):
         return self.label
+
+
+class MetaData(models.Model):
+
+    label = models.CharField(u'Название для индентификации', max_length=200)
+    name = models.CharField(u'Заголовок метаданных', max_length=200)
+    title = models.CharField(u'title страницы', max_length=200)
+    description = models.CharField(u'description страницы', max_length=300)
+
+    def __unicode__(self):
+        return self.name

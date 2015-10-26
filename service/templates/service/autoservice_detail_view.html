@@ -1,4 +1,17 @@
 {% extends "service/detail_view.html" %}
+{% load hosts %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+        <li>
+            <a href="{% host_url 'index' host 'default' %}">ondrive.by</a>
+        </li>
+        <li>
+            <a href="{% host_url 'autoservice_list' host 'autoservices' %}">Каталог СТО</a>
+        </li>
+    <li>{{ service.name }}</li>
+    </ol>
+{% endblock %}
 
 {% block work %}
     <div class="service__item">

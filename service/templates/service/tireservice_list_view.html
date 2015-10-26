@@ -1,6 +1,26 @@
 {% extends "service/list_view.html" %}
 {% load w_service %}
 {% load htmlblock_tags %}
+{% load hosts %}
+
+{% block meta %}
+    <meta name="description" content="Каталог шиномонтажей в Минске. Карта расположения, все виды оказываемых услуг, описание организаций с телефонами и адресами. Удобный поисковый фильтр">
+{% endblock %}
+
+{% block title %}
+    <title>Каталог шиномонтажей в Минске</title>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li>
+            <a href="{% host_url 'index' host 'default' %}">ondrive.by</a>
+        </li>
+        <li>
+            Каталог шиномонтажей
+        </li>
+    </ol>
+{% endblock %}
 
 {% block catalog_heading %}
     {% if filter.description %}

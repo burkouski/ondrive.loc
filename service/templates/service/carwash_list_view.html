@@ -1,6 +1,28 @@
 {% extends "service/list_view.html" %}
 {% load w_service %}
 {% load htmlblock_tags %}
+{% load hosts %}
+{% show_page_title 'carwashes'%}
+
+{% block meta %}
+    <meta name="description" content="Каталог автомоек в Минске. Карта расположения, все виды оказываемых услуг, описание организаций с телефонами и адресами. Удобный поисковый фильтр">
+{% endblock %}
+
+{% block title %}
+    <title>Каталог автомоек  в Минске</title>
+{% endblock %}
+
+{% block breadcrumbs %}
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="{% host_url 'index' host 'default' %}">ondrive.by</a>
+        </li>
+        <li>
+            Каталог автомоек
+        </li>
+    </ol>
+{% endblock %}
 
 {% block catalog_heading %}
     {% if filter.description %}

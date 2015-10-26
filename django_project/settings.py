@@ -71,9 +71,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'project.urls'
-ROOT_HOSTCONF = 'project.hosts'
-WSGI_APPLICATION = 'project.wsgi.application'
+ROOT_URLCONF = 'django_project.urls'
+ROOT_HOSTCONF = 'django_project.hosts'
+WSGI_APPLICATION = 'django_project.wsgi.application'
 DEFAULT_HOST = 'default'
 PARENT_HOST = 'ondrive.loc'
 

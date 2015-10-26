@@ -3,7 +3,7 @@ import datetime
 from django.db import models
 from django.contrib.auth.models import User, UserManager
 from PIL import Image
-from project import settings
+from django_project import settings
 
 
 class UserProfile(User):

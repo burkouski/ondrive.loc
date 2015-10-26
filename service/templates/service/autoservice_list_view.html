@@ -1,19 +1,40 @@
 {% extends "service/list_view.html" %}
 {% load w_service %}
 {% load htmlblock_tags %}
+{% load hosts %}
+
+{% block meta %}
+    <meta name="description" content="Каталог СТО, автомастерских в Минске. Карта расположения, все виды оказываемых услуг, описание организаций с телефонами и адресами. Удобный поисковый фильтр">
+{% endblock %}
+
+{% block title %}
+    <title>Каталог СТО в Минске</title>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li>
+            <a href="{% host_url 'index' host 'default' %}">ondrive.by</a>
+        </li>
+        <li>
+            Каталог СТО
+        </li>
+    </ol>
+{% endblock %}
 
 {% block catalog_heading %}
     {% if filter.description %}
-        <h2 class="main-heading2">
-                    {{ filter.work_name }}
-                </h2>
-                <!-- Main Heading Ends -->
-                <div class="row cat-intro">
 
-                    <div class="col-sm-12 cat-body">
-                        {{ filter.description|safe }}
-                    </div>
-                </div>
+        <h2 class="main-heading2">
+            {{ filter.work_name }}
+        </h2>
+        <!-- Main Heading Ends -->
+        <div class="row cat-intro">
+
+            <div class="col-sm-12 cat-body">
+                {{ filter.description|safe }}
+            </div>
+        </div>
     {% else %}
         {% show_htmlblock 'autoservices' %}
     {% endif %}
