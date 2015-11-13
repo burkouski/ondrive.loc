@@ -43,14 +43,14 @@
     {% endif %}
     </div>
     <div class="service__item">
-    {% if service.car_wash_services.all %}
-        <h2 class="service__title service__title--small">{{ service.car_wash_services.first.get_model_name }}:</h2>
+    {% if service.carwash_services.all %}
+        <h2 class="service__title service__title--small">{{ service.carwash_services.first.get_model_name }}:</h2>
 
         <!-- Product Name Ends -->
 
         <ul class="list-unstyled service__list">
 
-            {% for work in service.car_wash_services.all %}
+            {% for work in service.carwash_services.all %}
                 <li class="service__work-item"><i class="fa fa-check service__work-icon"></i>{{ work }}</li>
             {% endfor %}
         </ul>

@@ -64,8 +64,8 @@
                                              options="{
                         iconLayout: 'default#image',
                         iconImageHref: '/static/img/map/'+mapIcon,
-                        iconImageSize: [30, 48],
-                        iconImageOffset: [-15, -48],
+                        iconImageSize: [15, 24],
+                        iconImageOffset: [-7, -24],
 
                         iconShape: {
                             type: 'Circle',
@@ -127,12 +127,7 @@
                                         <h4 class="product-preview__title">{$ service.name $}</h4>
 
                                         <div ng-show="service.rating">
-                                            <i ng-repeat="star in starsInit(service.rating).positiveStar track by $index"
-                                               style="color: red" class="fa fa-star"></i><i
-                                                ng-repeat="star in starsInit(service.rating).halfStar track by $index"
-                                                style="color: red" class="fa fa-star-half-o"></i><i
-                                                ng-repeat="star in starsInit(service.rating).negativeStar track by $index"
-                                                style="color: red" class="fa fa-star-o"></i>
+                                            <rating avg-rating="service.rating"></rating>
                                         </div>
                                         <div ng-show="!service.rating">нет оценок</div>
                                         <div class="product-preview__desc">

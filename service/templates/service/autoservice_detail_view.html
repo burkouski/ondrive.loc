@@ -43,6 +43,20 @@
     {% endif %}
     </div>
     <div class="service__item">
+    {% if service.serv_work.all %}
+        <h2 class="service__title service__title--small">{{ service.serv_work.first.get_model_name }}:</h2>
+
+        <!-- Product Name Ends -->
+
+        <ul class="list-unstyled service__list">
+
+            {% for work in service.serv_work.all %}
+                <li class="service__work-item"><i class="fa fa-check service__work-icon"></i>{{ work }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <div class="service__item">
     {% if service.add_work.all %}
         <h2 class="service__title service__title--small">{{ service.add_work.first.get_model_name }}:</h2>
 

@@ -41,6 +41,7 @@ class AutoServiceAdmin(admin.ModelAdmin):
         }),
 
     )
+    list_display = ('name','latitude', 'longitude')
     inlines = [ReviewsInline]
     readonly_fields = ('get_logo_img',)
 
@@ -69,13 +70,14 @@ class CarWashAdmin(admin.ModelAdmin):
             'fields': ('latitude', 'longitude')
         }),
         (u'Виды работ', {
-            'fields': ('type_carwash', 'type_vehicle', 'car_wash_services', 'add_services')
+            'fields': ('type_carwash', 'type_vehicle', 'carwash_services', 'add_services')
         }),
         (u'Мета данные', {
             'fields': ('title', 'meta_keywords', 'meta_description')
         }),
 
     )
+    list_display = ('name','latitude', 'longitude')
     inlines = [ReviewsInline]
     readonly_fields = ('get_logo_img',)
 
@@ -109,6 +111,7 @@ class TireServiceAdmin(admin.ModelAdmin):
         }),
 
     )
+    list_display = ('name','latitude', 'longitude')
     #filter_horizontal = ('tire_work', 'disc_work', 'add_services')
     inlines = [ReviewsInline]
     readonly_fields = ('get_logo_img',)

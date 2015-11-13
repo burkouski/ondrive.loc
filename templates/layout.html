@@ -93,7 +93,7 @@
                                 <!--li><a href="#">Мой профиль</a></li-->
                                 <li><a href="{% host_url 'myauth:user_register' host 'default' %}">Регистрация</a></li>
                             {% else %}  
-                                <li><a href="{% host_url 'myauth:user_login' host 'default' %}">Ваш профиль</a></li>
+                                <li><a href="{% host_url 'myauth:user_board' host 'default' %}">Ваш профиль</a></li>
                                 {% if user.autoservice_set.all or  user.carwash_set.all or user.tireservice_set.all %}
                                     <li><a href="{% host_url 'myauth:userprofile_service' host 'default' %}">Ваши сервисы</a></li>
                                 {% endif %}
@@ -182,6 +182,9 @@
 
 <!-- JavaScript Files -->
 <!-- build:js ./dist/vendor.js -->
+<script>
+    CSRF_TOKEN = '{{ csrf_token }}';
+</script>
 <script src="/static/js/vendor/jquery-1.11.1.min.js"></script>
 <script src="/static/js/vendor/jquery-migrate-1.2.1.min.js"></script>
 <script src="/static/js/app/vendor/angular.js"></script>
@@ -195,10 +198,12 @@
 <script src="/static/js/app/directives/checklist-model.js"></script>
 <script src="/static/js/app/directives/compareValue.js"></script>
 <script src="/static/js/app/directives/paginationDirective.js"></script>
+<script src="/static/js/app/directives/ratingDirective.js"></script>
 <script src="/static/js/app/services/getJsonService.js"></script>
 <script src="/static/js/app/controllers/autoserviceCtrl.js"></script>
 <script src="/static/js/app/controllers/serviceCtrl.js"></script>
 <script src="/static/js/app/controllers/contactsCtrl.js"></script>
+<script src="/static/js/app/controllers/reviewCtrl.js"></script>
 <script src="/static/js/app/controllers/loginCtrl.js"></script>
 <script src="/static/js/app/controllers/requestCtrl.js"></script>
 <script src="/static/js/app/controllers/registrationCtrl.js"></script>
@@ -216,42 +221,41 @@
 {% block add_script %}
 {% endblock %}
 <!-- Yandex.Metrika counter -->
+<!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=30408477&amp;from=informer"
+target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/30408477/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:30408477,lang:'ru'});return false}catch(e){}" /></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
 <script type="text/javascript">
-(function (d, w, c) {
-    (w[c] = w[c] || []).push(function() {
-        try {
-            w.yaCounter30408477 = new Ya.Metrika({id:30408477,
-                    webvisor:true,
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter30408477 = new Ya.Metrika({
+                    id:30408477,
                     clickmap:true,
                     trackLinks:true,
-                    accurateTrackBounce:true});
-        } catch(e) { }
-    });
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
 
-    var n = d.getElementsByTagName("script")[0],
-        s = d.createElement("script"),
-        f = function () { n.parentNode.insertBefore(s, n); };
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
 
-    if (w.opera == "[object Opera]") {
-        d.addEventListener("DOMContentLoaded", f, false);
-    } else { f(); }
-})(document, window, "yandex_metrika_callbacks");
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
 </script>
-<noscript><div><img src="//mc.yandex.ru/watch/30408477" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/30408477" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-68013210-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </body>
 {% endblock %}
 </html>

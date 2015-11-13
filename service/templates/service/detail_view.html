@@ -14,7 +14,7 @@
     <div id="main-container" ng-app="ymapsApp" ng-controller="serviceCtrl">
         <!-- Breadcrumb Starts -->
         {% block breadcrumbs %}
-                {% endblock %}
+        {% endblock %}
         <!-- Breadcrumb Ends -->
         <div class="wrap">
 
@@ -25,7 +25,7 @@
                 <div class="col-sm-4 service__images">
                     <a href="/">
                         <img src="{{ service.logo.url }}" alt="{{ service.name }}"
-                             class="img-responsive thumbnail service__img" title='{{ service.name }}' />
+                             class="img-responsive thumbnail service__img" title='{{ service.name }}'/>
                     </a>
 
                     <div class="service__desc">
@@ -52,11 +52,11 @@
                                                 <span class="service__rating">
 
                             <i ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').positiveStar track by $index"
-                               style="color: red" class="fa fa-star"></i><i
-                                                        ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').halfStar track by $index"
-                                                        style="color: red" class="fa fa-star-half-o"></i><i
-                                                        ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').negativeStar track by $index"
-                                                        style="color: red" class="fa fa-star-o"></i>
+                               style="color: red" class="fa fa-star"></i>
+                            <i ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').halfStar track by $index"
+                               style="color: red" class="fa fa-star-half-o"></i>
+                            <i ng-repeat="star in starsInit('{{ rating.rate__avg|stringformat:"f" }}').negativeStar track by $index"
+                               style="color: red" class="fa fa-star-o"></i>
                         </span>
                                             {% else %}
                                                 <span class="service__param">нет оценок данного сервиса</span>
@@ -67,9 +67,11 @@
                                         <li class="service__list-item">
                                             <span class="service__param-name">Адрес:</span> {{ service.city }}, {{ service.address }}, {{ service.building }}
                                         </li>
-                                        {% if service.siteUrl %}
+                                        {% if service.site_url %}
                                             <li class="service__list-item"><span
-                                                    class="service__param-name">Сайт:</span> {{ service.siteUrl }}</li>
+                                                    class="service__param-name">Сайт:</span> <a target="_blank"
+                                                                                                href="{{ service.site_url }}">{{ service.site_url }}</a>
+                                            </li>
                                         {% endif %}
                                         {% if service.email %}
                                             <li class="service__list-item"><span
@@ -83,17 +85,19 @@
                                                             class="path1"></i><i
                                                             class="path2"></i><i class="path3"></i></i>
                                                     <span
-                                                            class="service__param">{{ service.phone_velcom }}</span></li>
+                                                            class="service__param">{{ service.phone_velcom }}</span>
+                                                    </li>
                                                 {% endif %}
                                                 {% if service.phone_velcom2 %}
                                                     <li class="phone"><i
                                                             class="phone__icon icon icon-city"></i>
                                                     <span
-                                                            class="service__param">{{ service.phone_velcom2 }}</span></li>
+                                                            class="service__param">{{ service.phone_velcom2 }}</span>
+                                                    </li>
                                                 {% endif %}
                                                 {% if service.phone_mts %}
                                                     <li class="phone"><i class="phone__icon icon icon-mts"></i>
-                                                    <span class="service__param">{{ service.phone_mts }}</span></li>
+                                                        <span class="service__param">{{ service.phone_mts }}</span></li>
                                                 {% endif %}
                                                 {% if service.phone_mts2 %}
                                                     <li class="phone"><i class="phone__icon icon icon-mts"></i>
@@ -124,11 +128,11 @@
                                                     <span
                                                             class="service__param">{{ service.phone_city2 }}</span></li>
                                                 {% endif %}
-                                    </ul>
+                                            </ul>
 
-                                    </li>
-                                    <li class="service__list-item"><span
-                                            class="service__param-name">Рабочие дни:</span>
+                                        </li>
+                                        <li class="service__list-item"><span
+                                                class="service__param-name">Рабочие дни:</span>
                 <span class="service__workday">
                     {% for day in service.get_workday_list %}
                         {% if day.0 == 'wd' %}
@@ -143,28 +147,34 @@
                         {% endif %}
                     {% endfor %}
                 </span>
-                                    </li>
-                                    <li class="service__list-item"><span
-                                            class="service__param-name">Время работы:</span>
-                                        <span class="service__param">c {{ service.get_work_start_display }} до {{ service.get_work_end_display }}</span>
-                                    </li>
-                                    {% if service.break_time_start == 0 or service.break_time_end == 0 %}
+                                        </li>
                                         <li class="service__list-item"><span
-                                                class="service__param-name">Время обеда:</span>
-                                            {{ service.break_time_start }}
-                                            <span class="service__param">c {{ service.get_break_time_start_display }} до {{ service.get_break_time_end_display }}</span>
+                                                class="service__param-name">Время работы:</span>
+                                        <span class="service__param">
+                                            {% if service.work_start == service.work_end %}Круглосуточно
+                                            {% else %}
+                                                c {{ service.get_work_start_display }} до
+                                                {{ service.get_work_end_display }}
+                                            {% endif %}
+                                        </span>
                                         </li>
-                                    {% else %}
-                                        <li class="service__list-item"><span
-                                                class="service__param-name">Время обеда:</span><span
-                                                class="service__param">Без обеда</span>
-                                        </li>
-                                    {% endif %}
-                                    {% if service.holiday_time_start == 0 or service.holiday_time_end == 0 %}
-                                        <li class="service__list-item"><span class="service__param-name">Сокращенный день:</span>
-                                            <span class="service__param">c {{ service.get_holiday_time_start_display }} до {{ service.get_holiday_time_end_display }}</span>
-                                        </li>
-                                    {% endif %}
+                                        {% if service.break_time_start == 0 or service.break_time_end == 0 %}
+                                            <li class="service__list-item"><span
+                                                    class="service__param-name">Время обеда:</span>
+                                                {{ service.break_time_start }}
+                                                <span class="service__param">c {{ service.get_break_time_start_display }} до {{ service.get_break_time_end_display }}</span>
+                                            </li>
+                                        {% else %}
+                                            <li class="service__list-item"><span
+                                                    class="service__param-name">Время обеда:</span><span
+                                                    class="service__param">Без обеда</span>
+                                            </li>
+                                        {% endif %}
+                                        {% if service.holiday_time_start == 0 or service.holiday_time_end == 0 %}
+                                            <li class="service__list-item"><span class="service__param-name">Сокращенный день:</span>
+                                                <span class="service__param">c {{ service.get_holiday_time_start_display }} до {{ service.get_holiday_time_end_display }}</span>
+                                            </li>
+                                        {% endif %}
 
                                     </ul>
                                 </div>
@@ -253,16 +263,17 @@
 
                     <!-- Additional Information Ends -->
                     <!-- Review Starts -->
-                    <div class="tab-pane" id="tab-sendreview">
+                    <div class="tab-pane" ng-controller="reviewCtrl" id="tab-sendreview">
                         {% if user.is_authenticated %}
                             <div class="text-danger col-sm-10 col-sm-offset-2">{$ result $}</div>
                             <form ng-submit="reviewSubmit()" class="form-horizontal">
-                                <input ng-model="review.relate" class="hidden" type="text"
-                                       ng-init="review.relate = '{{ service.get_content_type }}'"/>
-                                <input ng-model="review.username" class="hidden" type="text"
-                                       ng-init="review.username = '{{ user.username }}'"/>
-                                <input ng-model="review.obj_id" class="hidden" type="text"
-                                       ng-init="review.obj_id = '{{ service.id }}'"/>
+                            {% csrf_token %}
+                                <input ng-model="review.content_type" class="hidden" type="text"
+                                       ng-init="review.content_type_id = '{{ service.get_content_type }}'"/>
+                                <input ng-model="review.author" class="hidden" type="text"
+                                       ng-init="review.author = '{{ user.username }}'"/>
+                                <input ng-model="review.object_id" class="hidden" type="text"
+                                       ng-init="review.object_id = '{{ service.id }}'"/>
 
                                 <div class="form-group required">
                                     <div class="text-danger error col-sm-10 col-sm-offset-2">{$ error.textError $}</div>
@@ -270,7 +281,7 @@
 
                                     <div class="col-sm-10">
 
-                        <textarea ng-model="review.text" name="text" rows="5" id="input-review"
+                        <textarea ng-model="review.review" name="text" rows="5" id="input-review"
                                   class="form-control"></textarea>
 
                                         <div class="help-block">

@@ -330,7 +330,7 @@ class CarWash(Service):
                                           verbose_name=u'Вид мойки', blank=True)
     type_vehicle = models.ManyToManyField(TypeVehicle, related_name='type_vehicle',
                                           verbose_name=u'Вид транспорта', blank=True)
-    car_wash_services = models.ManyToManyField(CarWashServices, related_name='car_wash_services',
+    carwash_services = models.ManyToManyField(CarWashServices, related_name='carwash_services',
                                                verbose_name=u'Услуги', blank=True)
     add_services = models.ManyToManyField(AddServices, related_name='carwash_add_services',
                                           verbose_name=u'Дополнительные услуги', blank=True)

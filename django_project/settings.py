@@ -35,6 +35,8 @@ AUTHENTICATION_BACKENDS = (
     'myauth.auth_backends.CustomUserModelBackend',
 )
 CUSTOM_USER_MODEL = 'myauth.UserProfile'
+SESSION_COOKIE_DOMAIN = '.ondrive.loc'
+SESSION_COOKIE_NAME = 'ondrivesession'
 
 INSTALLED_APPS = (
     'suit',

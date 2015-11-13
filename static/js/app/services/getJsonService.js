@@ -6,21 +6,21 @@ ondriveApp.factory('services', ['$resource', function ($resource) {
     };
 }]);
 
-ondriveApp.factory('services2', ['$http', function ($http) {
+ondriveApp.factory('Request', ['$http', function ($http) {
 
     return {
-        list: function (url, data, callback, error) {
+        sendRequest: function (url, data, callback, error) {
             $http({
                 method: 'POST',
                 data: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-                },
-                //dataType: 'json',
                 url: url,
                 responseType: 'json'
             }).success(callback).error(error);
         }
     };
 }]);
+
+ondriveApp.factory('Review', function($resource) {
+  return $resource('/reviews/api/createreview/'); // Note the full endpoint address
+});
 

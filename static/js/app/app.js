@@ -3,7 +3,7 @@ ondriveApp = angular.module('ondriveApp', ['ymaps', 'ngResource', 'ngCookies', '
         $interpolateProvider.startSymbol('{$');
         $interpolateProvider.endSymbol('$}');
     }).run(function ($http, $cookies) {
-
-        $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+        console.log(CSRF_TOKEN);
+        $http.defaults.headers.post['X-CSRFToken'] = CSRF_TOKEN;
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     });
