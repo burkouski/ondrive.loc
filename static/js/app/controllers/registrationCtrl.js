@@ -1,4 +1,4 @@
-ondriveApp.controller('registrationCtrl', ['$scope','services2', function ($scope, services2) {
+ondriveApp.controller('registrationCtrl', ['$scope','Request', function ($scope, services2) {
 
     var apiUrl = '/auth/registration/';
     $scope.pattern = /^[a-zA-Z0-9]*$/;
