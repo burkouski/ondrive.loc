@@ -1,4 +1,5 @@
-ondriveApp.directive('rating', function () {
+angular.module('ondriveApp')
+    .directive('rating', function () {
     return {
         restrict: 'E',
         scope: {

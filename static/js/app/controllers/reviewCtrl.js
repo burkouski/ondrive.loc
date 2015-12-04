@@ -1,39 +1,44 @@
-ondriveApp.controller('reviewCtrl', ['$scope', 'Request', function ($scope, Request) {
+(function () {
+    'use strict';
 
-    var apiUrl = '/reviews/api/createreview/';
+    angular.module('ondriveApp')
+        .controller('reviewCtrl', ['$scope', 'Request', function ($scope, Request) {
 
-    $scope.error = {};
+            var apiUrl = '/reviews/api/createreview/';
 
-    $scope.reviewSubmit = function () {
-        if (!$scope.review.review) {
+            $scope.error = {};
 
-            $scope.error.textError = 'Пожалуйста заполните поле отзыва';
-        }
-        else {
-            $scope.error.textError = '';
-        }
-        if (!$scope.review.rate) {
+            $scope.reviewSubmit = function () {
+                if (!$scope.review.review) {
 
-            $scope.error.rateError = 'Пожалуйста выставьте оценку качества';
-        }
-        else {
-            $scope.error.rateError = '';
-        }
+                    $scope.error.textError = 'Пожалуйста заполните поле отзыва';
+                }
+                else {
+                    $scope.error.textError = '';
+                }
+                if (!$scope.review.rate) {
 
-        if ($scope.review.review && $scope.review.rate) {
+                    $scope.error.rateError = 'Пожалуйста выставьте оценку качества';
+                }
+                else {
+                    $scope.error.rateError = '';
+                }
 
-            Request.sendRequest(apiUrl, $scope.review, createReviewCallback, createReviewError)
+                if ($scope.review.review && $scope.review.rate) {
 
-        }
-    };
+                    Request.sendRequest(apiUrl, $scope.review, createReviewCallback, createReviewError)
+
+                }
+            };
 
 
-    function createReviewCallback() {
-        $scope.result = 'Спасибо за ваше мнение! Отзыв будет опубликован после модерации.';
-    };
+            function createReviewCallback() {
+                $scope.result = 'Спасибо за ваше мнение! Отзыв будет опубликован после модерации.';
+            };
 
-    function createReviewError() {
-        $scope.result = 'Что-то пошло не так. Мы исправим это в ближайшее время';
-    };
+            function createReviewError() {
+                $scope.result = 'Что-то пошло не так. Мы исправим это в ближайшее время';
+            };
 
-}]);
+        }]);
+})();

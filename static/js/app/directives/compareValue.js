@@ -1,27 +1,32 @@
-ondriveApp.directive("compareTo", function() {
-    return {
-        //restrict: 'A',
-        require: "ngModel",
-        scope: {
-            otherModelValue: "=compareTo"
-        },
-        link: function(scope, element, attributes, ngModel) {
+(function() {
+    'use strict';
 
-            ngModel.$validators.compare = function(modelValue) {
-                if (!modelValue || !scope.otherModelValue) {
-                    return true
-                }
-                else {
-                    return modelValue == scope.otherModelValue;
-                }
+    angular.module('ondriveApp')
+        .directive("compareTo", function () {
+            return {
+                //restrict: 'A',
+                require: "ngModel",
+                scope: {
+                    otherModelValue: "=compareTo"
+                },
+                link: function (scope, element, attributes, ngModel) {
 
-                //console.log()
+                    ngModel.$validators.compare = function (modelValue) {
+                        if (!modelValue || !scope.otherModelValue) {
+                            return true
+                        }
+                        else {
+                            return modelValue == scope.otherModelValue;
+                        }
+
+                        //console.log()
+                    };
+
+                    scope.$watch("otherModelValue", function () {
+                        ngModel.$validate();
+                        console.log('true')
+                    });
+                }
             };
-
-            scope.$watch("otherModelValue", function() {
-                ngModel.$validate();
-                console.log('true')
-            });
-        }
-    };
-})
+        })
+})();
